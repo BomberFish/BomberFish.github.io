@@ -11,3 +11,33 @@ body {
     background: #000;
   }
 }
+
+#rainbow,
+#rainbow:hover {
+  transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+
+#rainbow:hover {
+  transform: scale(1.05);
+  transform-origin: top left;
+  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 8s ease infinite;
+}
+
+@keyframes rainbow {
+  0% {
+      background-position: 0% 50%
+  }
+
+  50% {
+      background-position: 100% 25%
+  }
+
+  100% {
+      background-position: 0% 50%
+  }
+}
