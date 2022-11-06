@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
   <body>
+    <a href="https://bomberfish.ca/games" style="margin: 2%">❮ Go Back</a>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=1024 height=768></canvas>
       <div id="unity-loading-bar">
@@ -56,11 +57,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/icedood-web.loader.js";
+      var loaderUrl = buildUrl + "/icedood-web-uncompressed.loader.js";
       var config = {
-        dataUrl: buildUrl + "/icedood-web.data.gz",
-        frameworkUrl: buildUrl + "/icedood-web.framework.js.gz",
-        codeUrl: buildUrl + "/icedood-web.wasm.gz",
+        dataUrl: buildUrl + "/icedood-web-uncompressed.data",
+        frameworkUrl: buildUrl + "/icedood-web-uncompressed.framework.js",
+        codeUrl: buildUrl + "/icedood-web-uncompressed.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "bomberfish",
         productName: "icedodo but worse",
