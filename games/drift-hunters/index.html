@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Drift Hunters</title>
-<link rel="stylesheet" href="css/drift_hunters.css" type="text/css">
-</head>
-<body>
-  <a href="https://bomberfish.ca/games" style="margin: 2%">❮ Go Back</a>
-<div class="gamearea"><div id="game"></div><div class="footer"><div class="webgl-logo"></div><div class="fullscreen"></div><div class="title">Drift Hunters</div></div></div>
-<script src="js/drift_hunters.js"></script>
-<script src="js/c3424117-6565-4523-8dd5-6ce071aaca6d.js"></script>
-<script src="js/598c011a-cc78-4813-8838-f0c8b36628c2.js"></script>
-<script src="js/start.js"></script>
-</body>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player</title>
+    <link rel="stylesheet" href="data/style.css">
+    <script src="data/UnityProgress.js"></script>  
+    <script src="data/UnityLoader.js"></script>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "data/index.json", {onProgress: UnityProgress});
+    </script>
+  </head>
+  <body>
+    <a href="https://bomberfish.ca/games" style="margin: 2%">❮ Go Back</a>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+      <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">Drift Hunters</div>
+      </div>
+    </div>
+  </body>
 </html>
