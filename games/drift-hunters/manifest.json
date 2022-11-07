@@ -1,0 +1,30 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "Drift Hunters Unblocked",
+  "default_locale": "en_US",
+  "manifest_version": 3,
+  "version": "1.5",
+  "description": "__MSG_description__",
+  "icons": {
+    "128": "images/128.png"
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "host_permissions": ["https://sdkgame.net/*", "https://cdp.cloud.unity3d.com/*", "https://www.google.com/*", "https://www.google.com.ar/*", "https://www.google.com.mx/*", "https://www.google.com.au/*", "https://www.google.co.uk/*", "https://www.google.com.au/*", "https://www.google.nl/*", "https://www.google.at/*", "https://www.google.co.nz/*", "https://www.google.br/*", "https://www.google.no/*", "https://www.google.ca/*", "https://www.google.fr/*", "https://www.google.cl/*", "https://www.google.co.jp/*", "https://www.google.com.ph/*", "https://www.google.com.sg/*", "https://www.google.dk/*", "https://www.google.es/*", "https://www.google.fi/*", "https://www.google.se/*", "https://www.google.ch/*", "https://www.google.de/*", "https://www.google.com.tw/*", "https://www.google.com.hk/*", "https://www.google.co.in/*", "https://www.google.co.id/*", "https://www.google.ie/*", "https://www.google.co.ve/*", "https://www.google.it/*", "https://www.google.com.vn/*", "https://www.google.com.my/*"
+  ],
+  "permissions": [
+    "alarms",
+    "declarativeNetRequest"
+  ],
+
+  "minimum_chrome_version": "102",
+  "action": {
+    "default_icon": "images/24.png",
+    "default_title": "Drift Hunters"
+  }
+}

@@ -5,6 +5,6 @@
   "asmMemoryUrl": "drift_hunters.asm.memory.unityweb",
   "asmFrameworkUrl": "drift_hunters.asm.framework.unityweb",
   "backgroundUrl": "drift_hunters.jpg",
-  "splashScreenStyle": "Dark",
-  "backgroundColor": "#000000"
+  "splashScreenStyle": "Light",
+  "backgroundColor": "#FFFFFF"
 }
