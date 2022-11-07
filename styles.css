@@ -41,3 +41,8 @@ body {
       background-position: 0% 50%
   }
 }
+
+a {
+  color: #8cf;
+  font-weight: bold;
+}
