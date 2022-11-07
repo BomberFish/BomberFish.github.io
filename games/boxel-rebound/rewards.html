@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="utf-8">
+        <title>Boxel Rebound Rewards</title>
+        <meta name="description" content="Earn rewards for supporting Kargoh's Youtube channel">
+        <meta name="keywords" content="chrome web store extension game">
+        <meta name="author" content="Jacob DeBenedetto">
+        <meta name="viewport" content="width=device-width, minimum-scale=1">
+        <link rel="icon" type="image/png" href="img/icons/icon.png">
+        <link href="css/materia-icons.css" rel="stylesheet">
+        <link href="css/boxel-icons.css" rel="stylesheet">
+        <link href="css/rewards.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="row">
+            <div class="col">
+                <div class="header">
+                    <img src="img/icons/icon.png">
+                    <h1>Boxel Rebound Rewards</h1>
+                    <p>Earn free rewards by watching our videos!</p>
+                </div>
+                <div class="rewards">
+                    <div class="row skins">
+                        <div class="col-8">
+                            <div class="details">
+                                <div class="icon">
+                                    <div class="shape"></div>
+                                </div>
+                                <div class="description">
+                                    <strong>Free Skin</strong>
+                                    <span>Unlock the heart skin</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a href="#activate-skin" class="button free">Unlock Skin</a>
+                        </div>
+                    </div>
+                    <div class="row downloads">
+                        <div class="col-8">
+                            <div class="details">
+                                <div class="icon">
+                                    <div class="shape"></div>
+                                    <div class="value">10</div>
+                                </div>
+                                <div class="description">
+                                    <strong>Daily Downloads</strong>
+                                    <span>Play more community levels</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a href="#add-downloads" class="button free">Add More</a>
+                        </div>
+                    </div>
+                    <div class="row uploads">
+                        <div class="col-8">
+                            <div class="details">
+                                <div class="icon">
+                                    <div class="shape"></div>
+                                    <div class="value">5</div>
+                                </div>
+                                <div class="description">
+                                    <strong>Daily Uploads</strong>
+                                    <span>Share more community levels</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a href="#add-uploads" class="button free">Add More</a>
+                        </div>
+                    </div>
+                    <div class="row levels">
+                        <div class="col-8">
+                            <div class="details">
+                                <div class="icon">
+                                    <div class="shape"></div>
+                                    <div class="value">3</div>
+                                </div>
+                                <div class="description">
+                                    <strong>Max Levels</strong>
+                                    <span>Increase max custom levels</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <a href="#add-levels" class="button free">Add More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="popup">
+            <div class="background"></div>
+            <div class="wrapper">
+                <span aria-label="close popup" class="btn close" tabindex="0">x</span>
+                <div class="content">
+                    <div class="step-1">
+                        <h1><strong><em>Step 1:</em></strong> <span>Watch any of</span> <strong><em>Kargoh's</em></strong> <span>videos</span></h1>
+                        <div class="youtube-container">
+                            <iframe src="https://www.youtube.com/embed/x5YTnZeo8kk" frameborder="0"></iframe>
+                        </div>
+                        <p class="instructions breathe invisible">
+                            Please watch more than <strong><em>5 minutes</em></strong> to enable step 2
+                        </p>
+                    </div>
+                    <div class="step-2">
+                        <h1><strong><em>Step 2:</em></strong> <span>Activate</span></h1>
+                        <form id="verify">
+                            <input name="username" type="hidden" placeholder="ex: kargoh">
+                            <button class="button" type="submit">Activate <img src="img/icons/add-icon.svg"></button>
+                        </form>
+                    </div>
+                    <div class="step-3 hidden"></div>
+                </div>
+            </div>
+        </div>
+
+        <!--Game foundation-->
+        <script src="js/jquery-3.3.1.min.js"></script>
+        <script src="js/StorageManager.js"></script>
+        <script src="js/rewards.js"></script>
+    </body>
+</html>
