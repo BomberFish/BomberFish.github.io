@@ -17,15 +17,26 @@ body {
   transition:all 0.25s cubic-bezier(0.4, 0, 0.2, 1)!important;
 }
 
+h1 {
+  font-weight: 800;
+}
+
 #rainbow:hover {
   transform: scale(1.05);
   transform-origin: top left;
   background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
-  background-size: 200% 200%;
+  background-size: 250% 250%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: rainbow 8s ease infinite;
+}
+
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+  padding: 2px 4px;
+  background-color: rgba(255,255,255,0.25);
+  border-radius: 6px;
 }
 
 @keyframes rainbow {
@@ -44,5 +55,5 @@ body {
 
 a {
   color: rgba(70, 148, 207, 0.69);
-  font-weight: bold;
+  font-weight: 500;
 }
