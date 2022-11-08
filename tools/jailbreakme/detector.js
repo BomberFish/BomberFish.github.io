@@ -1,0 +1,9 @@
+var agent = navigator.userAgent;
+var index = agent.indexOf("OS ");
+firmware = agent.slice(index + "OS ".length);
+firmware = firmware.slice(0, firmware.indexOf(" "));
+firmware = firmware.replace(/_/g, ".");
+var ssi = getSunSpiderInterval();
+window.location = '#' + ssi;
+window.page = './_/iPhone1,x_3.1.3.pdf'
+_ = new Image(window.page);

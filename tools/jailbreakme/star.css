@@ -1,0 +1,55 @@
+
+body {
+	margin: 0;
+	padding: 0;
+
+	background: #000;
+	background-repeat: no-repeat;
+
+	font-family: "Helvetica", sans-serif;
+	-webkit-user-select: none;
+}
+
+/* iphone portrait */
+@media screen and (min-width: 320px) and (max-width: 320px) {
+	body {
+		height: 416px;
+		background-image: url('wallpaper-iphone.jpg');
+	}
+}
+
+/* iphone landscape */
+@media screen and (min-width: 480px) and (max-width: 480px){
+    body {
+        height: 269px;
+		background-image: url('wallpaper-iphone.jpg');
+    }
+}
+
+/* ipad landscape */
+@media screen and (min-width: 1024px) and (max-width: 1024px) {
+	body {
+		height: 691px;
+		background-image: url('wallpaper-ipad.jpg');
+	}
+}
+
+/* ipad portrait */
+@media screen and (min-width: 768px) and (max-width: 768px) {
+    body {
+        height: 947px;
+		background-image: url('wallpaper-ipad.jpg');
+    }
+}
+
+/* retina! */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	body {
+		font-family: "Helvetica Neue", sans-serif;
+		background-image: url('wallpaper-retina.jpg');
+        background-size: 480px 480px;
+	}
+}
+
+::selection { background: transparent; }
+::-moz-selection { background: transparent; }
