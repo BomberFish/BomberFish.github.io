@@ -37,7 +37,7 @@ var UnityLoader = UnityLoader || {
       a = URL.createObjectURL(new Blob(['UnityLoader["' + n + '"]=', e], {type: "text/javascript"}));
     if (n === "88dca12b126b56bb3891e7ba16aa7897" || n === "1e0861c747f92b07f50f762db23dfc53")
       return t(n);
-    UnityLoader.Blobs[a] = r, o.src = "js/loading.js", o.onload = function () {
+    UnityLoader.Blobs[a] = r, o.src = "/games/drift-hunters/js/loading.js", o.onload = function () {
       URL.revokeObjectURL(a), t(n)
     }, document.body.appendChild(o)
   }, allocateHeapJob: function (e, t) {
@@ -1873,7 +1873,7 @@ var UnityLoader = UnityLoader || {
     }
   }
 };
-var gameInstance = UnityLoader.instantiate("game", "./unity/drift_hunters.json", {onProgress: UnityProgress});
+var gameInstance = UnityLoader.instantiate("game", "/games/drift-hunters/unity/drift_hunters.json", {onProgress: UnityProgress});
 document.getElementsByClassName('fullscreen')[0].addEventListener('click', () => {
   gameInstance.SetFullscreen(1)
 });
