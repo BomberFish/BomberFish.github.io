@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slope Unblocked</title>
+    <style>
+        .cookie-overlay {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      background: #fff;
+      z-index: 2051;
+      line-height: 25px;
+      font-size: 20px;
+      border-radius: 6px;
+      padding: 10px;
+
+    
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+    .mr-3{
+      padding: 20px 10px;
+    }
+    a {
+      text-decoration: underline;
+    }
+
+    .close-cookies {
+      cursor: pointer;
+    }
+
+    @include media-breakpoint-down(md) {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 0;
+
+      > div:first-child {
+        width: auto;
+      }
+    }
+  }
+  </style>
+</head>
+<body>
+    <iframe src="index.html" frameborder="0" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden;"></iframe>
+    <div class="cookie-overlay p-4 d-none" id="popupPlay">
+        <div class="d-flex">
+            <div class="mr-3">Because we're working in a sandbox in this version, several data storage functionalities aren't available. You can improve your experience by going to our homepage.<br>We don't seek for permission or store any personal information about our users.</div>
+            <li style="padding: 5px; display: inline-block; position: absolute;right: 10px;top: 0;"><a style="color: #ffffff; text-decoration: none;" href="#">❌</a></li>
+        </div>
+        <a class="btn btn-primary mt-3 accept-cookies" href="http://sloperungames.online" target="_blank" style="padding: 10px;">Play Online</a>
+    </div>
+    <script src="ext.js"></script>
+
+</body>
+</html>

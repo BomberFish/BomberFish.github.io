@@ -1,0 +1,36 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 3,
+  "name": "__MSG_title__",
+  "version": "2.1",
+  "default_locale": "en",
+  "description": "__MSG_description__",
+  "homepage_url": "https://sloperungames.online/",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "__MSG_title__",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png",
+      "180": "images/icon180.png"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "sandbox": {
+    "pages": ["index.html"]
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "32": "images/icon32.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png",
+    "180": "images/icon180.png"
+  }
+}
