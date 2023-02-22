@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadDescription</key>
+			<string>Configures restrictions</string>
+			<key>PayloadDisplayName</key>
+			<string>Restrictions</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.applicationaccess.D8BA1874-0041-49EE-8BC0-1249F52DC122</string>
+			<key>PayloadType</key>
+			<string>com.apple.applicationaccess</string>
+			<key>PayloadUUID</key>
+			<string>D8BA1874-0041-49EE-8BC0-1249F52DC122</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>allowEnablingRestrictions</key>
+			<false/>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Parents HATE this one simple trick!!!</string>
+	<key>PayloadDisplayName</key>
+	<string>Disable Screen Time</string>
+	<key>PayloadIdentifier</key>
+	<string>ca.bomberfish.screentimebegone</string>
+	<key>PayloadOrganization</key>
+	<string>BomberFish Industries</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>9C3D9300-803C-45BF-A784-6DD8E776CBA7</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
