@@ -5,6 +5,7 @@
 #
 # Neofetch: A command-line system information tool written in bash 3.2+.
 # https://github.com/dylanaraps/neofetch
+# ChromeOS optimized version by BomberFish
 #
 # The MIT License (MIT)
 #
@@ -28,7 +29,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-version=7.1.0
+version=7.2.0
 
 # Fallback to a value of '5' for shells which support bash
 # but do not set the 'BASH_' shell variables (osh).
@@ -1112,11 +1113,13 @@ get_distro() {
                 esac
 
             elif [[ $(< /proc/version) == *chrome-bot* || -f /dev/cros_ec ]]; then
+                # totally not written by chatgpt :trolley:
+                cros_version=$(grep -oE 'CHROMEOS_RELEASE_BRANCH_NUMBER=([0-9]+)' /etc/lsb-release | cut -d= -f2)
                 [[ $distro != *Chrome* ]] &&
                     case $distro_shorthand in
-                        on)   distro+=" [Chrome OS]" ;;
-                        tiny) distro="Chrome OS" ;;
-                        *)    distro+=" on Chrome OS" ;;
+                        on)   distro+=" [Chrome OS $cros_version]" ;;
+                        tiny) distro="Chrome OS $cros_version" ;;
+                        *)    distro+="Chrome OS $cros_version" ;;
                     esac
                     distro=${distro## on }
             fi
