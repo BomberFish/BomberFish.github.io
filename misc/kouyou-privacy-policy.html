@@ -6,17 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kouyou Analytics Privacy Policy</title>
     <style>
+         :root {
+            --systemGray4: rgba(209, 209, 214, 1);
+            --fg: rgba(0, 0, 0, 1);
+            --bg: rgba(255, 255, 255, 1);
+        }
+        
         body {
-            background: white;
-            color: black;
+            background: var(--bg);
+            color: var(--fg);
             font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'Roboto Flex', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'!important;
-            margin: 2%;
+            margin: 3%!important;
         }
         
         @media (prefers-color-scheme: dark) {
-            body {
-                background: black;
-                color: white;
+             :root {
+                --systemGray4: rgba(209, 209, 214, 1);
+                --fg: rgba(255, 255, 255, 1);
+                --bg: rgba(0, 0, 0, 1);
             }
         }
         
@@ -24,38 +31,57 @@
             font-weight: 650;
             text-align: left!important;
         }
+
+        strong {
+            font-size: 1.05rem;
+        }
+
+        br-small {
+            line-height: 0.8rem!important;
+            font-size: 0.8rem!important;
+            content: "ㅤ";
+        }
+        
+        anchor {
+            font-weight: 850;
+            opacity: 0.8;
+            color: var(--systemGray4)
+        }
     </style>
 </head>
 
 <body>
-  <section id="data-we-collect">
-    <h2>Data we collect</h2>
-    <p>
-      <strong>Full</strong>
-        <ul>
-            <li>>Device Model</li>
-            <li>Device iOS Version</li>
-            <li>Whether it is your first launch or not</li>
-            <li>Language Region</li>
-            <li>Anonymized crash logs, <strong>ONLY if</strong> you click "report to developer".</li>
-            <li>App version (for updates)</li>
-        </ul>
-
-        <strong>Limited</strong>
-        <ul>
-            <li>App version (for updates)</li>
-            <li>Whether it is your first launch or not</li>
-        </ul>
-
-        <strong>Disabled</strong>
-        <br>
-        No HTTP requests ever sent.
-    </p>
-  </section>
-  <section id="use">
-    <h2>How your data is used</h2>
-    <p>Data collected is only used for user statistics and error reporting.</p>
-  </section>
+    <section id="data-we-collect">
+        <h2>Data we collect</h2>
+        <p>The amount of data the app sends can be directly changed from its settings. There are three options to choose from: Full, Limited, and None (also known as Disabled).</p>
+        <!-- <br> -->
+        <br-small>ㅤ</br-small>
+        <p>
+            <strong>Full</strong>
+            <ul type="dash">
+                <li>Device Model</li>
+                <li>Device iOS Version</li>
+                <li>Whether it is your first launch or not</li>
+                <li>Language Region</li>
+                <li>Anonymized crash logs, <strong>ONLY if</strong> you click "report to developer".</li>
+                <li>App version (for updates)</li>
+            </ul>
+            <br>
+            <strong>Limited</strong>
+            <ul>
+                <li>App version (for updates)</li>
+                <li>Whether it is your first launch or not</li>
+            </ul>
+            <br>
+            <strong>None/Disabled</strong>
+            <br><br> <ul><li>No data is collected. The app will only contact the server to check for updates if the toggle is enabled in its settings.</li></ul>
+        </p>
+    </section>
+    <br><br>
+    <section id="use">
+        <h2>How your data is used</h2>
+        <p>Data collected is only used for user statistics and error reporting.</p>
+    </section>
 </body>
 
 </html>
