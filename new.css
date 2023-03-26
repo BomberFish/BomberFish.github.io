@@ -208,6 +208,9 @@ a:hover {
 }
 
 @media (prefers-reduced-motion) {
+  #gradient-container {
+    display: none;
+  }
   .rainbow:hover {
       scale: 1;
       transform: scale(1);
@@ -218,6 +221,9 @@ a:hover {
 }
 
 @media (prefers-contrast: more) {
+  :root {
+    --vibrancy2: rgba(255, 255, 255, 0.15);
+  }
   a {
       color: #0433FF;
   }
