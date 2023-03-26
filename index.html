@@ -1,22 +1,42 @@
+<!-- this website makes even the most powerful of gaming pcs whimper in fear -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)"> 
-  <link rel="stylesheet" href="styles.css">
-  <title>Home - bomberfish.ca</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BomberFish</title>
+    <link rel="stylesheet" href="new.css">
 </head>
+
 <body>
-  <h1 id="rainbow">The new (and improved) bomberfish.ca!</h1>
-  <p>Now with <code>IPv6</code> and <code>https</code>!</p>
-  <br><br>
-  <a href="projects/index.html">/projects</a><br>
-  <a href="tools/index.html">/tools</a><br>
-  <a href="coolthings/index.html">/coolthings</a><br>
-  <a href="games/index.html">/games</a><br>
-  <a rel="me" href="https://fosstodon.org/@BomberFish" style="display: none; visibility: hidden; color: transparent;">If you see this, something's seriously wrong with your browser!</a>
+    <canvas id="gradient-canvas">
+  </canvas>
+    <div id="container">
+        <div id="container-inner">
+            <div id="main">
+              <img id="pfp" src="./misc/pfps/bomberfish.png">
+              <h1><mono>BomberFish</mono></h1>
+              <div>
+                <span><a href="https://github.com/BomberFish" target="_blank" rel="noopener noreferrer"><img class="social" alt="GitHub" src="./images/github-mark.svg"></a></span>
+                <span><a href="https://fosstodon.org/@BomberFish" target="_blank" rel="noopener noreferrer"><img class="social" alt="Mastodon" src="./images/mastodon-logo-black.svg"></a></span>
+                <span><a href="https://discord.com/users/470637062870269952" target="_blank" rel="noopener noreferrer"><img class="social" alt="Discord" src="./images/discord-mark-black.svg"></a></span>
+              </div>
+              <div id="list">
+                <div>💻 Web & Swift Dev</div>
+                <div>🇨🇦 Canadian</div>
+                <div id="age">🗓️ 14 years old</div>
+              </div>
+              <img id="git-stats" alt="GitHub Stats" src="https://github-readme-stats.vercel.app/api?username=BomberFish&show_icons=true&theme=transparent&icon_color=00ff00&text_color=ffffff&title_color=00ff00&&bg_color=000000">
+              <div id="toggle-container">Gradient background <span><input id="gradient-enabled" onchange='toggleGradient(this);' class="apple-switch" type="checkbox" ></span></div>
+                <div id="footer">Not working? <a href="./classic.html">Go back to the classic site.</a></div>
+            </div>
+        </div>
+    </div>
+    <script src="./fluid.js"></script>
+    <script src="./script.js"></script>
 </body>
+
 </html>

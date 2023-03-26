@@ -1,0 +1,298 @@
+:root {
+    --gradient-color-1: #00ef8b;
+    --gradient-color-2: #a4f46e;
+    --gradient-color-3: #383bff;
+    --gradient-color-4: #27cdff;
+    --vibrancy1: rgba(255, 255, 255, 0.1);
+    --vibrancy2: rgba(255, 255, 255, 0.15);
+    --fg: rgba(0, 0, 0, 1);
+    --bg: rgba(255, 255, 255, 1);
+    --link: rgb(0, 115, 181);
+}
+
+@media (prefers-color-scheme: dark) {
+    /*styles go here*/
+     :root {
+        --gradient-color-1: #00ca76;
+        --gradient-color-2: #7ebe54;
+        --gradient-color-3: #2a2cbd;
+        --gradient-color-4: #1e99be;
+        --vibrancy1: rgba(0, 0, 0, 0.1);
+        --vibrancy2: rgba(0, 0, 0, 0.15);
+        --fg: rgba(255, 255, 255, 1);
+        --bg: rgba(0, 0, 0, 1);
+        --link: rgb(0, 162, 255);
+    }
+}
+
+h1,h2 {
+  margin: 0.5rem;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'Roboto Flex', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-size: 1.1rem;
+    color: var(--fg);
+    font-weight: 550;
+    /* fallback if browser doesn't support webgl */
+    /* if browser doesnt support gradients */
+    background: var(--bg);
+    /* gradient */
+    background: linear-gradient(72deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 33%, var(--gradient-color-3) 66%, var(--gradient-color-4) 100%);
+}
+
+#pfp {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 100%;
+}
+
+#pfp:hover {
+  transform: scale(1.25) rotate(360deg);
+}
+
+#pfp,
+#pfp:hover {
+  transition: all 0.75s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+
+#gradient-canvas {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#container {
+    background: var(--vibrancy1);
+    /* funky positioning */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* safari nonstandard moment workaround */
+    -webkit-backdrop-filter: blur(75px);
+    /* just in case */
+    -moz-backdrop-filter: blur(75px);
+    /* saner more standard browsers */
+    backdrop-filter: blur(75px);
+    /* flexbox black magic from bing ai */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
+}
+
+.social {
+  width: 2.25rem;
+  height: 2.25rem;
+  filter: brightness(0) saturate(100%) brightness(120%);
+  margin: 0 2%;
+}
+
+.social:hover {
+  filter: brightness(0) saturate(100%) brightness(0%)
+}
+
+@media (prefers-color-scheme: dark) {
+  .social {
+    filter: brightness(0) saturate(100%) invert(1) brightness(80%)
+  }
+  
+  .social:hover {
+    filter: brightness(0) saturate(100%) invert(1) brightness(500%)
+  }
+}
+
+.social, .social:hover {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+
+#container-inner {
+  /* more funky positioning */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* more flexbox black magic from bing ai */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+}
+
+#main {
+  text-align: center!important;
+  background: var(--vibrancy2);
+  padding: 4% 3%;
+  border-radius: 16px;
+  /* safari nonstandard moment workaround */
+  -webkit-backdrop-filter: blur(75px);
+  /* just in case */
+  -moz-backdrop-filter: blur(75px);
+  /* saner more standard browsers */
+  backdrop-filter: blur(75px);
+  z-index: 2;
+}
+
+#main > * {
+  text-align: center!important;
+}
+
+#list {
+  font-size: 1.05rem;
+  margin: 0.5rem;
+  margin-bottom: 0.75rem
+}
+
+#git-stats {
+  margin: 1%;
+}
+
+#list > * {
+  margin: 0.25rem;
+}
+
+#footer {
+  font-size: 0.9rem
+}
+
+mono {
+    font-family: ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Mono', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+}
+
+a {
+  text-decoration: none!important;
+  color: var(--link)
+}
+
+a:hover {
+  text-decoration: underline!important;
+}
+
+.rainbow:hover {
+  /* transform: scale(1.05); */
+  transform-origin: top left;
+  background-image: repeating-linear-gradient(45deg, violet, indigo, blue, green, yellow, orange, red, violet);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 8s ease infinite;
+}
+
+.rainbow,
+.rainbow:hover {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1)!important;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Firefox */
+    -moz-user-select: none;
+    /* IE10+/Edge */
+    -ms-user-select: none;
+    /* Standard */
+    user-select: none;
+}
+
+@media (prefers-reduced-motion) {
+  .rainbow:hover {
+      scale: 1;
+      transform: scale(1);
+      animation-duration: 12s;
+      background-size: 125% 125%;
+      transition-duration: 1s!important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  a {
+      color: #0433FF;
+  }
+  @media (prefers-color-scheme: dark) {
+      a {
+          color: #758FFF;
+      }
+  }
+  .rainbow:hover {
+      animation: none;
+      background-image: none;
+      -webkit-background-clip: none;
+      background-clip: none;
+      -webkit-text-fill-color: inherit;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+      background-position: 0% 50%
+  }
+  50% {
+      background-position: 100% 25%
+  }
+  100% {
+      background-position: 0% 50%
+  }
+}
+
+input.apple-switch {
+  position: relative;
+  -webkit-appearance: none;
+  outline: none;
+  width: 50px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #D9DADC;
+  border-radius: 50px;
+  box-shadow: inset -20px 0 0 0 #fff;
+}
+
+input.apple-switch:after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  background: transparent;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+}
+
+input.apple-switch:checked {
+  box-shadow: inset 20px 0 0 0 #4ed164;
+  border-color: #4ed164;
+}
+
+input.apple-switch:checked:after {
+  left: 20px;
+  box-shadow: -2px 4px 3px rgba(0,0,0,0.05);
+}
+
+input.apple-switch,
+input.apple-switch:after,
+input.apple-switch:checked,
+input.apple-switch:checked:after {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1)!important;
+}
+
+#toggle-container {
+  margin: auto;
+  /* even more flexbox black magic from bing ai */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center;
+}
