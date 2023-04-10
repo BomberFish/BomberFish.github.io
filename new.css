@@ -129,7 +129,7 @@ body {
   z-index: 1;
   /* more flexbox black magic from bing ai */
   display: flex; 
-  flex-direction: column; 
+  flex-direction: row; 
   justify-content: center; 
   align-items: center;
 }
@@ -146,6 +146,7 @@ body {
   /* saner more standard browsers */
   backdrop-filter: blur(75px);
   z-index: 2;
+  display: inline;
 }
 
 #main > * {
