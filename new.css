@@ -55,7 +55,7 @@ body {
     /* if browser doesnt support gradients */
     background: var(--bg);
     /* gradient */
-    background: linear-gradient(72deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 33%, var(--gradient-color-3) 66%, var(--gradient-color-4) 100%);
+    background: linear-gradient(150deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 33%, var(--gradient-color-3) 88%, var(--gradient-color-4) 100%);
 }
 
 #pfp {
@@ -104,12 +104,13 @@ body {
 }
 
 .social {
-  /* width: 2.25rem;
+  width: 2.25rem;
   height: 2.25rem;
   filter: brightness(0) saturate(100%) brightness(120%);
   margin: 0 2%;
 }
 
+/*
 .social:hover {
   filter: brightness(0) saturate(100%) brightness(0%)
 }
