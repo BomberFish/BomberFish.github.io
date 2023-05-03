@@ -25,10 +25,10 @@
 } */
 
 :root {
-  --gradient-color-1: #9A33D4;
-  --gradient-color-2: #71269d;
-  --gradient-color-3: #000000;
-  --gradient-color-4: #313131;
+  --gradient-color-1: #a444dc;
+  --gradient-color-2: #9A33D4;
+  --gradient-color-3: #71269d;
+  --gradient-color-4: #000000;
   --vibrancy1: rgba(0, 0, 0, 0.1);
   --vibrancy2: rgba(0, 0, 0, 0.15);
   --fg: rgba(255, 255, 255, 1);
@@ -55,12 +55,12 @@ body {
     /* if browser doesnt support gradients */
     background: var(--bg);
     /* gradient */
-    background: linear-gradient(150deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 33%, var(--gradient-color-3) 88%, var(--gradient-color-4) 100%);
+    background: linear-gradient(150deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 18%, var(--gradient-color-3) 33%, var(--gradient-color-4) 100%);
 }
 
 #pfp {
-  width: 4rem;
-  height: 4rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 100%;
 }
 
@@ -271,6 +271,7 @@ a:hover {
 
 input.apple-switch {
   position: relative;
+  appearance: none;
   -webkit-appearance: none;
   outline: none;
   width: 50px;
@@ -294,8 +295,8 @@ input.apple-switch:after {
 }
 
 input.apple-switch:checked {
-  box-shadow: inset 20px 0 0 0 #4ed164;
-  border-color: #4ed164;
+  box-shadow: inset 20px 0 0 0 rgb(191,90,242);
+  border-color: rgb(191,90,242);
 }
 
 input.apple-switch:checked:after {
