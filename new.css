@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --gradient-color-1: #00ef8b;
     --gradient-color-2: #a4f46e;
     --gradient-color-3: #383bff;
@@ -11,7 +11,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-    /*styles go here*/
      :root {
         --gradient-color-1: #00ca76;
         --gradient-color-2: #7ebe54;
@@ -23,6 +22,18 @@
         --bg: rgba(0, 0, 0, 1);
         --link: rgb(0, 162, 255);
     }
+} */
+
+:root {
+  --gradient-color-1: #9A33D4;
+  --gradient-color-2: #71269d;
+  --gradient-color-3: #000000;
+  --gradient-color-4: #313131;
+  --vibrancy1: rgba(0, 0, 0, 0.1);
+  --vibrancy2: rgba(0, 0, 0, 0.15);
+  --fg: rgba(255, 255, 255, 1);
+  --bg: rgba(0, 0, 0, 1);
+  --link: rgb(0, 162, 255);
 }
 
 h1,h2 {
@@ -93,7 +104,7 @@ body {
 }
 
 .social {
-  width: 2.25rem;
+  /* width: 2.25rem;
   height: 2.25rem;
   filter: brightness(0) saturate(100%) brightness(120%);
   margin: 0 2%;
@@ -111,6 +122,14 @@ body {
   .social:hover {
     filter: brightness(0) saturate(100%) invert(1) brightness(500%)
   }
+} */
+
+.social {
+  filter: brightness(0) saturate(100%) invert(1) brightness(80%)
+}
+
+.social:hover {
+  filter: brightness(0) saturate(100%) invert(1) brightness(500%)
 }
 
 .social, .social:hover {
@@ -226,12 +245,7 @@ a:hover {
     --vibrancy2: rgba(255, 255, 255, 0.15);
   }
   a {
-      color: #0433FF;
-  }
-  @media (prefers-color-scheme: dark) {
-      a {
-          color: #758FFF;
-      }
+      color: #758FFF;
   }
   .rainbow:hover {
       animation: none;
