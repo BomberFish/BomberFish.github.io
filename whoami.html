@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="card.css" />
+    <link rel="stylesheet" href="common.css" />
+  </head>
+  <body>
+    <img
+      style="border-radius: 20%; border: 3px solid rebeccapurple"
+      src="misc/pfps/bomberfish.png"
+      width="100"
+      height="100"
+      alt="BomberFish's profile picture"
+    />
+    <br /><br />
+    <h2>Hi, I'm Hariz! (a.k.a. BomberFish)</h2>
+    <span
+      >I'm a <span id="age" style="font-family: sans-serif">15</span> year old
+      (aspiring) software developer from Canada, who loves tinkering with
+      whatever devices I find.</span
+    >
+  </body>
+  <script>
+    function calculate_age(birth_month, birth_day, birth_year) {
+      today_date = new Date();
+      today_year = today_date.getFullYear();
+      today_month = today_date.getMonth();
+      today_day = today_date.getDate();
+      age = today_year - birth_year;
+
+      if (today_month < birth_month - 1) {
+        age--;
+      }
+      if (birth_month - 1 == today_month && today_day < birth_day) {
+        age--;
+      }
+      return age;
+    }
+    document.getElementById("age").innerHTML =
+      calculate_age(10, 22, 2008);
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    if (dd == 22 && mm == 10) {
+      var item = document.createElement("h1");
+      item.innerHTML = "🥳 It's my birthday!";
+      document.body.appendChild(item);
+    }
+  </script>
+</html>

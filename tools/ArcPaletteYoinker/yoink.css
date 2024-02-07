@@ -1,0 +1,55 @@
+.color {
+    width: auto;
+    margin-block: 1rem;
+    font-size: 1.3rem;
+    height: 2rem;
+}
+
+#fgsecondary {
+ background-color: var(--arc-palette-foregroundSecondary);
+}
+
+#cutout {
+    background-color: var(--arc-palette-cutoutColor);
+}
+
+#mincontrast {
+    background-color: var(--arc-palette-minContrastColor);
+}
+
+#maxcontrast {
+    background-color: var(--arc-palette-maxContrastColor);
+}
+
+#fgtertiary {
+    background-color: var(--arc-palette-foregroundTertiary);
+}
+
+#bgextra {
+    background-color: var(--arc-palette-backgroundExtra);
+}
+
+#title {
+    background-color: var(--arc-palette-title);
+}
+
+#hover {
+    background-color: var(--arc-palette-hover);
+}
+
+#simplecolor {
+    background-color: var(--arc-background-simple-color);
+}
+
+#bg {
+    background-color: var(--arc-palette-background);
+}
+
+#sub {
+    background-color: var(--arc-palette-subtitle);
+}
+
+#fgprimary {
+    background-color: var(--arc-palette-foregroundPrimary);
+}
+
