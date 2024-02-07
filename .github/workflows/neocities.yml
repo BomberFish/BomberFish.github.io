@@ -16,9 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     # When the dist_dir is ready, deploy it to neocities
     steps:
-      - name: Deploy to neocities
+      - name: Copy files
+      run: |
+        mkdir -p public
+        cp -r * public
+        - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
           api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
           cleanup: false
-          dist_dir: .
+          dist_dir: public
