@@ -1,7 +1,13 @@
+if (document.querySelector("html").attributes["data-darkreader-scheme"] !== undefined || document.querySelector("html").attributes["data-darkreader-mode"] !== undefined) {
+    alert("Hi!!! It looks like you're using Dark Reader. Sadly, it messes with my epic styling. If you could disable it for this site, that would be great. Thanks!")
+}
+
 var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
 var vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
 document.body.addEventListener('resize', function() {
+    warpDeinit();
+    warpInit();
     vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
     vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
     if (vw < vh) {
@@ -24,13 +30,13 @@ function warp() {
     let checkbox = document.querySelector('#warp');
     let checkboxValue = checkbox.checked ? checkbox.value : null;
     if (checkboxValue === "on") {
-        console.log("Warp speed, captain!")
+        console.log("Engage.")
         warpInit();
         document.getElementById("holder").classList.remove('hidden')
     } else {
-        console.log("Warp drive disengaged.")
         warpDeinit();
         document.getElementById("holder").classList.add('hidden')
+        console.log("Warp drive disengaged.")
     }
 }
 

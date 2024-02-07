@@ -1,11 +1,16 @@
 // https://codepen.io/NiklasKnaack/pen/OmwgKb <3
 
+var animationID;
+
 function warpDeinit() {
   var canvas = document.getElementById("warpCanvas");
   if (canvas) {
     canvas.remove();
   }
-  document.body.replaceWith(document.body.cloneNode(true));
+
+  document.querySelectorAll("a").forEach((e) => {
+    e.replaceWith(e.cloneNode(true));
+  });
 
   const navLinks = document.querySelectorAll("nav a");
   const iframe = document.getElementById("frame");
@@ -16,10 +21,23 @@ function warpDeinit() {
       iframe.src = this.href;
     });
   });
+
+  cancelAnimationFrame(animationID);
+}
+
+function addEventListenerToElements(query, eventType, callback) {
+  const elements = document.querySelectorAll(query);
+  elements.forEach((element) => {
+    element.addEventListener(eventType, callback);
+  });
 }
 
 function warpInit() {
+  console.log("Making it so.");
   var mobile = false;
+
+  var body = document.body,
+    html = document.documentElement;
 
   //---
 
@@ -29,13 +47,18 @@ function warpInit() {
 
   //---
 
+  var main = document.querySelector("main");
+
   var canvasWidth = Math.max(
     document.documentElement.clientWidth || 0,
     window.innerWidth || 0
   );
   var canvasHeight = Math.max(
-    document.documentElement.clientHeight || 0,
-    window.innerHeight || 0
+    body.scrollHeight,
+    body.offsetHeight,
+    html.clientHeight,
+    html.scrollHeight,
+    html.offsetHeight
   );
 
   //---
@@ -49,19 +72,19 @@ function warpInit() {
   };
 
   if (!mobile) {
-    document.body.addEventListener("mousemove", mouseMoveHandler);
-    document.body.addEventListener("mousedown", mouseDownHandler);
-    document.body.addEventListener("mouseup", mouseUpHandler);
-    document.body.addEventListener("mouseenter", mouseEnterHandler);
-    document.body.addEventListener("mouseleave", mouseLeaveHandler);
+    addEventListenerToElements("a", "mousemove", mouseMoveHandler);
+    addEventListenerToElements("a", "mousedown", mouseDownHandler);
+    addEventListenerToElements("a", "mouseup", mouseUpHandler);
+    addEventListenerToElements("a", "mouseenter", mouseEnterHandler);
+    addEventListenerToElements("a", "mouseleave", mouseLeaveHandler);
 
     // $(canvas).css("cursor", "pointer");
     // canvas.style.cursor = "pointer";
   } else {
-    document.body.addEventListener("touchstart", touchStartHandler, false);
-    document.body.addEventListener("touchend", touchEndHandler, false);
-    document.body.addEventListener("touchmove", touchMoveHandler, false);
-    document.body.addEventListener("touchcancel", touchCancelHandler, false);
+    addEventListenerToElements("a", "touchstart", touchStartHandler, false);
+    addEventListenerToElements("a", "touchend", touchEndHandler, false);
+    addEventListenerToElements("a", "touchmove", touchMoveHandler, false);
+    addEventListenerToElements("a", "touchcancel", touchCancelHandler, false);
   }
 
   document.getElementById("effect").appendChild(canvas);
@@ -242,7 +265,7 @@ function warpInit() {
   })();
 
   function animloop() {
-    requestAnimFrame(animloop);
+    animationID = requestAnimFrame(animloop);
     render();
   }
 
