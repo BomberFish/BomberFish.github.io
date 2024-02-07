@@ -16,9 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     # When the dist_dir is ready, deploy it to neocities
     steps:
-      - name: Deploy to neocities
-        uses: bcomnes/deploy-to-neocities@v1
+      - uses: actions/checkout@v1
+      - uses: kognise/neocities-deploy-action@v1
         with:
-          api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
-          cleanup: false
-          dist_dir: 
+          neocities_token: ${{ secrets.NEOCITIES_API_TOKEN }}
+          directory: '.'
