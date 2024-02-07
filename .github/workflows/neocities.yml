@@ -16,10 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     # When the dist_dir is ready, deploy it to neocities
     steps:
-      - name: Copy files
-        run: |
-          mkdir -p public
-          cp -r * public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
