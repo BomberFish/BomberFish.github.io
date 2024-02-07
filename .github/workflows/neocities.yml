@@ -21,4 +21,4 @@ jobs:
         with:
           api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
           cleanup: false
-          dist_dir: /home/runner/work/BomberFish.github.io/BomberFish.github.io
+          dist_dir: 
