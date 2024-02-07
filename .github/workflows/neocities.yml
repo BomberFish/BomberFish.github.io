@@ -16,12 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     # When the dist_dir is ready, deploy it to neocities
     steps:
-      - name: Copy files
-        run: |
-          cp -r * ./public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
           api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
           cleanup: false
-          dist_dir: public
+          dist_dir: /home/runner/work/BomberFish.github.io/BomberFish.github.io
