@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Copy files
         run: |
-          cp -r $(pwd) $(pwd)/public
+          cp -r * ./public
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1
         with:
