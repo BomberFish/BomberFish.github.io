@@ -15,11 +15,64 @@
     />
     <br /><br />
     <h2>Hi, I'm Hariz! (a.k.a. BomberFish)</h2>
-    <span
-      >I'm a <span id="age" style="font-family: sans-serif">15</span> year old
+    <p>
+      I'm a <span id="age" style="font-family: sans-serif">15</span> year old
       (aspiring) software developer from Canada, who loves tinkering with
-      whatever devices I find.</span
-    >
+      whatever devices I find.
+    </p>
+
+    <h3>Stuff I do</h3>
+    <ul>
+      <li>Programming. Like lots of it.</li>
+      <li>
+        Playing video games sometimes. Been playing a lot of Geometry Dash
+        lately.
+      </li>
+      <li>Guitar! Pretty cool eh?</li>
+    </ul>
+
+    <h3>About this site</h3>
+    <p>
+      First of all, if you're here from my custom domain bomberfish.ca, thanks
+      for being a real one. I've recently switched to Neocities for hosting my
+      website, and I'm loving it so far. I'll drop some credits down below for
+      stuff I used to build this page.
+    </p>
+
+    <h3>Credit where credit is due</h3>
+    <h4>Inspiration</h4>
+    <ul>
+      <li>
+        <a href="https://justanoval.neocities.org/">Justan Oval</a>'s webpage
+      </li>
+    </ul>
+    <h4>Assets</h4>
+    <ul>
+      <li>
+        <a href="https://yesterweb.org/no-to-web3/">This particular page</a> for
+        the stars background
+      </li>
+      <li>
+        <a href="https://www.colorzilla.com/gradient-editor/">Colorzilla</a> for
+        the cool aqua-like gradient. (tip: select Grey Gloss #2!)
+      </li>
+      <li>
+        <a href="https://cdpn.io/OmwgKb">This Codepen</a> for the warp drive
+      </li>
+      <li>
+        <a href="https://github.com/khang-nd/7.css">7.css</a> for the Windows 7 styled scrollbar
+      </li>
+    </ul>
+    <h4>Fonts</h4>
+    <ul>
+      <li>
+        <a href="https://fonts.google.com/specimen/Honk">Honk</a> for the header font (seriously, it's so cool)
+      </li>
+      <li>
+        <a href="https://fonts.google.com/specimen/Pixelify+Sans">Pixelify Sans</a> for the body font
+      </li>
+    </ul>
+    <p>And of course, huge props to GitHub for creating Copilot! Copilot really helped me with some code and troubleshooting.</p>
   </body>
   <script>
     function calculate_age(birth_month, birth_day, birth_year) {
@@ -37,8 +90,7 @@
       }
       return age;
     }
-    document.getElementById("age").innerHTML =
-      calculate_age(10, 22, 2008);
+    document.getElementById("age").innerHTML = calculate_age(10, 22, 2008);
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, "0");
     var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!

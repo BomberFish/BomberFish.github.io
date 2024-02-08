@@ -1,4 +1,4 @@
-// https://codepen.io/NiklasKnaack/pen/OmwgKb <3
+// https://cdpn.io/OmwgKb <3
 
 var animationID;
 
