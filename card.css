@@ -1,5 +1,6 @@
 body {
     margin: 3%!important;
+    height: max-content!important;
 }
 
 h1 {

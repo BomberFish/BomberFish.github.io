@@ -98,9 +98,9 @@ main {
   text-align: start;
   overflow: hidden;
   left: 0;
-  top: 20%;
+  top: 10vh;
   width: 200px; /* adjust as needed */
-  height: 60%;
+  height: 80vh;
   overflow: auto;
   padding-inline: 1vw;
 
