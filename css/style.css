@@ -1,0 +1,675 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 999 version
+*/
+
+@import url("common.css");
+@import url("components/win7/scrollbars.css");
+
+:root {
+  --aqua-gradient: linear-gradient(
+    to bottom,
+    #f2f6f8ff 0%,
+    #d8e1e7ff 50%,
+    #b5c6d0ff 51%,
+    #e0eff9ff 100%
+  );
+}
+
+body {
+  background-color: black;
+  background-image: url("./assets/stars.gif") !important;
+  /* so the browser doesn't smear vasaline over the stars background */
+  image-rendering: -webkit-optimize-contrast !important;
+  -ms-interpolation-mode: nearest-neighbor !important;
+  image-rendering: -moz-crisp-edges !important;
+  image-rendering: -o-pixelated !important;
+  image-rendering: pixelated !important;
+  background-repeat: repeat;
+  min-height: 100vh;
+  margin: 1%;
+  font-size: 14px;
+  padding: 0;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+body:has(#holder:not(.hidden)) {
+  background-image: none !important;
+}
+
+body,
+body:has(#holder:not(.hidden)) {
+  -webkit-transition: background-image 0.5s;
+  -o-transition: background-image 0.5s;
+  -moz-transition: background-image 0.5s;
+  transition: background-image 0.5s;
+}
+
+#blinkies {
+  position: absolute;
+  bottom: 0;
+}
+
+#header,
+#main {
+  display: block;
+}
+
+main {
+  /* more flexbox stuff */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: start;
+
+  -webkit-align-self: flex-start;
+
+      -ms-flex-item-align: start;
+
+          align-self: flex-start;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+#sidebar {
+  position: fixed;
+  text-align: start;
+  overflow: hidden;
+  left: 0;
+  top: 10vh;
+  width: 200px; /* adjust as needed */
+  height: 80vh;
+  overflow: auto;
+  padding-inline: 1vw;
+
+  border-width: 4px;
+  -webkit-border-image: var(--aqua-gradient) 1;
+  -moz-border-image: var(--aqua-gradient) 1;
+  -o-border-image: var(--aqua-gradient) 1;
+  border-image: var(--aqua-gradient) 1;
+  border-style: solid;
+  border-left: 0;
+
+  background-image: url("./assets/stars2.webp") !important;
+  -webkit-background-size: 50% 50%;
+  -moz-background-size: 50%;
+  -o-background-size: 50%;
+  background-size: 50%;
+  /* so the browser doesn't smear vasaline over the stars background */
+  image-rendering: -webkit-optimize-contrast !important;
+  -ms-interpolation-mode: nearest-neighbor !important;
+  image-rendering: -moz-crisp-edges !important;
+  image-rendering: -o-pixelated !important;
+  image-rendering: pixelated !important;
+  background-repeat: repeat;
+  /* background: var(--aqua-gradient) */
+}
+
+#sidebar,
+#sidebar.collapsed {
+  -webkit-transition: width 0.5s, height 0.5s, top 0.5s, font-size 0.5s;
+  -o-transition: width 0.5s, height 0.5s, top 0.5s, font-size 0.5s;
+  -moz-transition: width 0.5s, height 0.5s, top 0.5s, font-size 0.5s;
+  transition: width 0.5s, height 0.5s, top 0.5s, font-size 0.5s;
+}
+
+#sidebar > *:not(#collapser),
+#sidebar.collapsed > *:not(#collapser) {
+  -webkit-transition: opacity 0.5s, font-size 0.5s;
+  -o-transition: opacity 0.5s, font-size 0.5s;
+  -moz-transition: opacity 0.5s, font-size 0.5s;
+  transition: opacity 0.5s, font-size 0.5s;
+}
+
+#collapser,
+#collapser:hover {
+  /* epic animated collapse (sure this might not fit into the whole 2000s aesthetic, but why not do it anyway?) */
+  -webkit-transition: background-image 0.5s, background 0.5s, color 0.5s;
+  -o-transition: background-image 0.5s, background 0.5s, color 0.5s;
+  -moz-transition: background-image 0.5s, background 0.5s, color 0.5s;
+  transition: background-image 0.5s, background 0.5s, color 0.5s;
+  cursor: pointer;
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: var(--aqua-gradient);
+  font-size: 1rem;
+  font-family: "Pixelify Sans", sans-serif;
+  text-align: center;
+  color: #222266;
+  border: 0;
+}
+
+button:not(#collapser) {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+#collapser {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 1.5rem;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 3rem;
+  height: 3rem;
+}
+
+#sidebar.collapsed {
+  padding: 0;
+  overflow: hidden !important;
+  width: 3rem;
+  height: 3rem;
+}
+
+#sidebar.collapsed > *:not(#collapser) {
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#sidebar a {
+  text-decoration: none;
+  font-size: 15px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+nav {
+  margin-block: 2.5vh;
+}
+
+nav > a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 2vw;
+  margin-right: 8px;
+  padding: 10px;
+  border-width: 4px;
+  -webkit-border-image: var(--aqua-gradient) 1;
+  -moz-border-image: var(--aqua-gradient) 1;
+  -o-border-image: var(--aqua-gradient) 1;
+  border-image: var(--aqua-gradient) 1;
+  border-style: solid;
+  background: black;
+}
+
+/* 
+so y'know how i was talking about recreating that 2000s charm with modern technologies?
+well this right here is something so fresh out the oven not even the latest webkit can handle it!!!
+it changes the palette of the text through this fresh new typography trend: COLRv1! sorry iphone (and other webkit browser) users, you'll have to stick with an ugly white outline :/. 
+*/
+@font-palette-values --woahthatlookscool {
+  font-family: Honk;
+  /*
+  all gradients are formatted as: bottom-to-top
+  observations:
+  - palette 0: purple-orange-yellow
+  - palette 1: yellow-green-blue-purple
+  - palette 2: grayscale with yellow shadow (eww)
+  - palette 3: black with green-turquoise gradient shadow
+    - palette 4: metallic-silver purplish gradient with purple shadow
+    - palette 5: purple-bronzeish? with purple shadow
+    - palette 6: 🌈RAINBOWS🌈
+    - palette 7: plain. white. text. (how boring)
+  */
+  base-palette: 1;
+}
+
+@supports font-tech(color-COLRv1) {
+  #header > span {
+    font-palette: --woahthatlookscool;
+  }
+}
+
+#header > span {
+  font-family: "Honk", system-ui;
+  font-weight: 900;
+  font-size: 10vw;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* animations */
+  -webkit-animation: squiggly 1s ease-in-out infinite;
+  -moz-animation: squiggly 1s ease-in-out infinite;
+  -o-animation: squiggly 1s ease-in-out infinite;
+  animation: squiggly 1s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* animations */
+@-webkit-keyframes squiggly {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  25% {
+    -webkit-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  75% {
+    -webkit-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-moz-keyframes squiggly {
+  0% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  25% {
+    -moz-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  50% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+  75% {
+    -moz-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@-o-keyframes squiggly {
+  0% {
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  25% {
+    -o-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  50% {
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  75% {
+    -o-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  100% {
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes squiggly {
+  0% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  25% {
+    -webkit-transform: translateY(3vh);
+    -moz-transform: translateY(3vh);
+    -o-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  50% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  75% {
+    -webkit-transform: translateY(3vh);
+    -moz-transform: translateY(3vh);
+    -o-transform: translateY(3vh);
+    transform: translateY(3vh);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  font-size: 3vw;
+}
+
+.center {
+  text-align: center;
+  /* MOAR FLEXBOX */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-width: 100%;
+  -webkit-box-align: top;
+  -webkit-align-items: top;
+  -moz-box-align: top;
+  -ms-flex-align: top;
+  align-items: bottom;
+}
+
+#frame {
+  /* MOAR!!! FLEXBOX!!!!!! */
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
+  align-self: center;
+  -ms-grid-column-align: center;
+  justify-self: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  margin-block: 3%;
+  width: 60vw;
+  height: 65vw;
+  border-width: 4px;
+  -webkit-border-image: var(--aqua-gradient) 1;
+  -moz-border-image: var(--aqua-gradient) 1;
+  -o-border-image: var(--aqua-gradient) 1;
+  border-image: var(--aqua-gradient) 1;
+  border-style: solid;
+}
+
+#effect {
+  position: absolute;
+  width: 100%;
+  min-height: 100vw;
+}
+
+#warpCanvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+#holder {
+  /* background-color: #000; */
+  width: 100%;
+  min-height: 100vw;
+  position: absolute;
+  z-index: -1;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Customize the label (the container) */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid;
+  -webkit-border-image: var(--aqua-gradient) 1;
+  -moz-border-image: var(--aqua-gradient) 1;
+  -o-border-image: var(--aqua-gradient) 1;
+  border-image: var(--aqua-gradient) 1;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ffffff33;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-image: var(--aqua-gradient);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #222266;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.container,
+.container input ~ .checkmark .container:hover input ~ .checkmark,
+.container input:checked ~ .checkmark {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+@media (orientation: portrait) {
+  #sidebar {
+    padding-left: 2vw;
+    border-top: 0;
+    border-bottom: 0;
+    top: 0;
+    height: 100%;
+    width: 40%;
+    font-size: 3.5vw;
+  }
+
+  #sidebar a {
+    font-size: 3vw;
+  }
+
+  body:has(#sidebar:not(.collapsed)) main {
+    opacity: 0.5;
+    -webkit-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+  }
+
+  main {
+    opacity: 1;
+
+    -webkit-transition: opacity 0.5s;
+    -o-transition: opacity 0.5s;
+    -moz-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+  }
+
+  @-webkit-keyframes squiggly {
+    0% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    50% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    75% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @-moz-keyframes squiggly {
+    0% {
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    50% {
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+    }
+    75% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    100% {
+      -moz-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @-o-keyframes squiggly {
+    0% {
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    50% {
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+    75% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    100% {
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @keyframes squiggly {
+    0% {
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+    25% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    50% {
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+    75% {
+      -webkit-transform: translateY(1.5vh);
+      -moz-transform: translateY(1.5vh);
+      -o-transform: translateY(1.5vh);
+      transform: translateY(1.5vh);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+}

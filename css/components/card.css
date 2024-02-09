@@ -1,3 +1,6 @@
+@import url("../common.css");
+@import url("./win7/scrollbars.css");
+
 body {
     margin: 3%!important;
     height: max-content!important;

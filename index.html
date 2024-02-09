@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BomberFish's homepage</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div id="holder" class="hidden">
@@ -60,8 +60,9 @@
         <a href="./tools">Tools</a>
         <a href="./coolthings">Cool stuff</a>
         <br /><br />
-        <label class="container"
-          >Enable Warp Drive (super experimental!!!)
+        <label class="container">
+          <p>Enable Warp Drive (super experimental!!!)</p>
+          <p id="warpFPS"></p>
           <input type="checkbox" id="warp" onclick="warp()" />
           <span class="checkmark"></span>
         </label>
@@ -100,5 +101,8 @@
     </div>
     <script src="script.js"></script>
     <script src="warp.js"></script>
+    <!-- 100% privacy friendly analytics --> 
+    <script async defer src="https://site-stats.bomberfish.ca/latest.js"></script> 
+    <noscript><img src="https://site-stats.bomberfish.ca/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>
   </body>
 </html>

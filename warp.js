@@ -1,6 +1,8 @@
 // https://cdpn.io/OmwgKb <3
 
 var animationID;
+var times = [];
+var fps;
 
 window.mobileCheck = function () {
   let check = false;
@@ -19,6 +21,7 @@ window.mobileCheck = function () {
 };
 
 function warpDeinit() {
+  document.getElementById("warpFPS").innerHTML = "";
   var canvas = document.getElementById("warpCanvas");
   if (canvas) {
     canvas.remove();
@@ -277,6 +280,14 @@ function warpInit() {
   })();
 
   function animloop() {
+    const now = performance.now();
+    while (times.length > 0 && times[0] <= now - 1000) {
+      times.shift();
+    }
+    times.push(now);
+    fps = times.length;
+    // console.log(fps);
+    document.getElementById("warpFPS").innerHTML = "FPS: " + fps;
     animationID = requestAnimFrame(animloop);
     render();
   }
