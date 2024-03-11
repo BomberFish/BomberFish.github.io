@@ -1,73 +1,47 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: since 1990,dead
-*/
-
-
 body {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', 'Roboto Flex', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', Helvetica, Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    color: #000;
-    background-color: #fff;
-    margin: 2%;
-}
-
-a, a:visited {
-    color: #663399; /* for older browsers */
-    color: rebeccapurple;
-}
-
-a:hover {
-    color: #8844ee;
-}
-
-ul > li {
-    margin-block: 4px;
-}
-
-footer {
-    border-top: 1px solid #ccc;
+    background: #1e1e2e;
+    color: #cdd6f4;
+    font-family: system-ui, sans-serif;
+    margin: 2% 3%;
 }
 
 img.circle {
     -webkit-border-radius: 100%;
-       -moz-border-radius: 100%;
-            border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
     display: inline;
     float: left;
+    margin-right: 1em;
 }
 
-h1.inline {
-    margin-left: 0.625em;
-    margin-top: 20px;
-    font-size: 50px;
+a,
+a:visited:hover {
+    color: #cba6f7;
 }
 
-.inline {
-    display: inline;
+a:visited {
+    color: rgb(163, 132, 199);
 }
 
-.block {
-    display: block;
-}
-
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     body {
-        color: #fff;
-        background-color: #000;
+        background: #eff1f5;
+        color: #4c4f69;
     }
 
-    a, a:visited {
-        color: #8844ee;
+    a,
+    a:visited:hover {
+        color: #8839ef;
     }
 
-    a:hover {
-        color: #954cde;
+    a:visited {
+        color: #a16be6;
     }
+}
 
-    nav > a > img {
-        -webkit-filter: invert(100%);
-                filter: invert(100%);
-    }
+h0 {
+    font-size: 3em;
+    font-weight: 700;
+    margin: 0.67em 0;
+    display: block;
 }
