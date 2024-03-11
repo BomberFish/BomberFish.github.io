@@ -1,0 +1,47 @@
+body {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    font-family: system-ui, sans-serif;
+    margin: 2% 3%;
+}
+
+img.circle {
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    display: inline;
+    float: left;
+    margin-right: 1em;
+}
+
+a,
+a:visited:hover {
+    color: #cba6f7;
+}
+
+a:visited {
+    color: rgb(163, 132, 199);
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background: #eff1f5;
+        color: #4c4f69;
+    }
+
+    a,
+    a:visited:hover {
+        color: #8839ef;
+    }
+
+    a:visited {
+        color: #a16be6;
+    }
+}
+
+h0 {
+    font-size: 3em;
+    font-weight: 700;
+    margin: 0.67em 0;
+    display: block;
+}
