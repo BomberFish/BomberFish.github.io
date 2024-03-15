@@ -2,7 +2,38 @@ body {
     background: #1e1e2e;
     color: #cdd6f4;
     font-family: system-ui, sans-serif;
-    margin: 2% 3%;
+}
+
+nav {
+    background: #181825;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1em 0;
+    width: 100vw;
+    height: 2.5rem;
+    margin: 0;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+nav h2 {
+    justify-self: flex-start;
+}
+
+nav span {
+    justify-self: flex-end;
+    margin-left: auto;
+    padding-right: 1em;
+}
+
+main {
+    margin-top: 2rem;
+    padding: 1em;
 }
 
 img.circle {
@@ -10,8 +41,12 @@ img.circle {
     -moz-border-radius: 100%;
     border-radius: 100%;
     display: inline;
-    float: left;
-    margin-right: 1em;
+    margin-left: 1em;
+    margin-right: 0.5em;
+    transition: transform 1.25s cubic-bezier(0.3, 0, 0, 1);
+    transform: rotate(0deg);
+    background: black;
+    padding: 3px;
 }
 
 a,
@@ -36,6 +71,10 @@ a:visited {
 
     a:visited {
         color: #a16be6;
+    }
+
+    nav {
+        background: #e6e9ef;
     }
 }
 
