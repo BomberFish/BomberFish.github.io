@@ -355,7 +355,6 @@ const Nav: Component<{}, { rotation: number }> = function () {
         alt="Me!"
         width="32"
         height="32"
-        style={use`transform: rotate(${this.rotation}deg)`} // MARK: FIXME: ROTATION
         on:click={() => {
           this.rotation += 1440; 
           document.getElementById(
@@ -389,21 +388,21 @@ const App: Component<
       "AnuraOS",
       "Major contributions since v2.x",
       2024,
-      "Major contributions since v2.x"
+      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since the start of v2 development. Anura 2.0 is slated for release in September 2024."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/mandelapro.jpg",
       "Mandela Pro",
       "Cancelled customization app",
       2024,
-      "Cancelled customization app"
+      "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/picasso.jpg",
       "Picasso",
       "Co-developer, worked with @sourceloc",
       2023,
-      "Co-developer, worked with @sourceloc"
+      "Picasso is a customization app for iOS 15.0-17.0, using security vulnerabilities to allow for deep customization. I worked with sourcelocation to develop it, and it was first released in August 2023."
     ),
   ];
 
