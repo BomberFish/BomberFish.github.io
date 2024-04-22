@@ -55,12 +55,6 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         transform: translateX(-50%);
       }
 
-      @media (pointer: coarse) {
-        .inner {
-          width: 100%;
-        }
-      }
-
       img {
         width: 90%;
         height: auto;
@@ -87,7 +81,6 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       article {
-        margin: 1rem;
         margin-top: 9rem;
         width: 100%;
         display: flex;
@@ -98,6 +91,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       p {
         align-self: flex-start;
         font-size: 1.25rem;
+        margin-inline: 1rem;
       }
 
       button {
@@ -439,7 +433,7 @@ const App: Component<
       color: rgb(163, 132, 199);
     }
 
-    @media (prefers-color-scheme: light) {
+    /*@media (prefers-color-scheme: light) {
       background: #eff1f5;
       color: #4c4f69;
 
@@ -455,7 +449,7 @@ const App: Component<
       nav {
         background: #e6e9ef;
       }
-    }
+    }*/
 
     #projects-container {
       display: grid;

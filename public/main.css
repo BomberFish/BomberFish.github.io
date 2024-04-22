@@ -2,7 +2,7 @@ body {
   background: #1e1e2e;
   color: #cdd6f4;
   font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
-      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a,
@@ -31,14 +31,25 @@ a:visited {
 } */
 
 .popup.transparent .inner {
-    top: 100vw;
+  top: 100vw;
+  transition: 0.3s ease-in-out;
 }
 
 .popup.transparent,
 .popup {
-    transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+  transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+}
+
+.popup .inner {
+  transition: 0.4s ease-in-out;
 }
 
 .popup.transparent {
-    opacity: 0;
-  } 
+  opacity: 0;
+}
+
+@media (orientation: portrait) {
+  .popup .inner {
+    width: 100%!important;
+  }
+}
