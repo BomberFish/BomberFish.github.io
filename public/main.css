@@ -1,0 +1,44 @@
+body {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
+      "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a,
+a:visited:hover {
+  color: #cba6f7;
+}
+
+a:visited {
+  color: rgb(163, 132, 199);
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    background: #eff1f5;
+    color: #4c4f69;
+  }
+
+  a,
+  a:visited:hover {
+    color: #8839ef;
+  }
+
+  a:visited {
+    color: #a16be6;
+  }
+}
+
+.popup.transparent .inner {
+    top: 100vw;
+}
+
+.popup.transparent,
+.popup {
+    transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+}
+
+.popup.transparent {
+    opacity: 0;
+  } 
