@@ -1,3 +1,17 @@
+:root:has(.no-js) {
+  --base: #1e1e2e;
+  --text: #cdd6f4;
+  --accent: #cba6f7;
+  --accent-hover: #8839ef;
+  --accent-visited: #a16be6;
+}
+
+.no-js t {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+
 body {
   background: #1e1e2e;
   color: #cdd6f4;

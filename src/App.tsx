@@ -40,6 +40,9 @@ class ProjectCardDetails {
 const ThemePicker: Component<{}, {}> = function () {
   this.mount = () => {
     var root = document.documentElement;
+    document.head
+      .querySelector("meta[name=theme-color]")!
+      .setAttribute("content", store.theme.mantle);
     root.style.setProperty("--text", store.theme.text);
     root.style.setProperty("--overlay1", store.theme.overlay1);
     root.style.setProperty("--surface0", store.theme.surface0);
@@ -95,8 +98,7 @@ const ThemePicker: Component<{}, {}> = function () {
       background: none;
       border: none;
       color: var(--text);
-      font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
-        "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui;
       font-size: 1rem;
       padding: 0.5rem;
       margin: 0.5rem;
@@ -119,6 +121,9 @@ const ThemePicker: Component<{}, {}> = function () {
           store.theme = themes[(index + 1) % themes.length];
 
           var root = document.documentElement;
+          document.head
+            .querySelector("meta[name=theme-color]")!
+            .setAttribute("content", store.theme.mantle);
           root.style.setProperty("--text", store.theme.text);
           root.style.setProperty("--overlay1", store.theme.overlay1);
           root.style.setProperty("--surface0", store.theme.surface0);
@@ -432,7 +437,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
       padding-right: 1.75em;
 
       a {
-        color: var(--accent);
+        // color: var(--text);
         text-decoration: none;
         font-size: 1.1rem;
         display: flex;
@@ -457,7 +462,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
         <h2 style="display: inline">BomberFish</h2>
       </span>
       <span id="nav">
-        <a href="https://blog.bomberfish.ca">
+        <a href="https://blog.bomberfish.ca" target="_blank">
           <span class="material-symbols-outlined">open_in_new</span>
           &nbsp;&nbsp;Go to Blog
         </a>
