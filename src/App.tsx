@@ -1,5 +1,17 @@
 import "dreamland/dev";
 
+let store = $store({
+  theme: {
+    name: "Catppuccin Mocha",
+    text: "#cdd6f4",
+    overlay1: "#7f849c",
+    surface0: "#313244",
+    base: "#1e1e2e",
+    mantle: "#181825",
+    accent: "#cba6f7",
+  },
+}, { ident: "my-store", backing: "localstorage", autosave: "auto" });
+
 class ProjectCardDetails {
   img: string;
   title: string;
@@ -21,6 +33,98 @@ class ProjectCardDetails {
     this.largeDesc = largeDesc;
   }
 }
+
+const ThemePicker: Component<{}, {}> = function () {
+
+  this.mount = () => {
+    var root = document.documentElement;
+        root.style.setProperty('--text', store.theme.text);
+        root.style.setProperty('--overlay1', store.theme.overlay1);
+        root.style.setProperty('--surface0', store.theme.surface0);
+        root.style.setProperty('--base', store.theme.base);
+        root.style.setProperty('--mantle', store.theme.mantle);
+        root.style.setProperty('--accent', store.theme.accent);
+  }
+
+  const mocha = {
+    name: "Catppuccin Mocha",
+    text: "#cdd6f4",
+    overlay1: "#7f849c",
+    surface0: "#313244",
+    base: "#1e1e2e",
+    mantle: "#181825",
+    accent: "#cba6f7",
+  }
+
+  const macchiato = {
+    name: "Catppuccin Macchiato",
+    text: "#cad3f5",
+    overlay1: "#8087a2",
+    surface0: "#363a4f",
+    base: "#24273a",
+    mantle: "#1e2030",
+    accent: "#c6a0f6",
+  }
+
+  const frappe = {
+    name: "Catppuccin Frappe",
+    text: "#c6d0f5",
+    overlay1: "#838ba7",
+    surface0: "#414559",
+    base: "#303446",
+    mantle: "#292c3c",
+    accent: "#ca9ee6",
+  }
+
+  const latte = {
+    name: "Catppuccin Latte",
+    text: "#4c4f69",
+    overlay1: "#8c8fa1",
+    surface0: "#ccd0da",
+    base: "#eff1f5",
+    mantle: "#e6e9ef",
+    accent: "#8839ef",
+  }
+
+  const themes = [mocha, macchiato, frappe, latte]
+
+  this.css = css`
+    button {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin: 0.5rem;
+      cursor: pointer;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+    }
+  `;
+
+  return (
+    <div>
+      <button on:click={()=>{
+        let index = themes.indexOf(store.theme)
+        store.theme = themes[(index + 1) % themes.length]
+
+        var root = document.documentElement;
+        root.style.setProperty('--text', store.theme.text);
+        root.style.setProperty('--overlay1', store.theme.overlay1);
+        root.style.setProperty('--surface0', store.theme.surface0);
+        root.style.setProperty('--base', store.theme.base);
+        root.style.setProperty('--mantle', store.theme.mantle);
+        root.style.setProperty('--accent', store.theme.accent);
+      }}><span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;{use(store.theme.name)}</button>
+    </div>
+  );
+};
 
 const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
   function () {
@@ -100,37 +204,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         border: none;
         width: 25px;
         height: 25px;
-      }
-
-      .crossmark {
-        margin-top: -7.5px;
-        margin-right: 10px;
-        position: relative;
-        display: inline-block;
-        &:after {
-          position: absolute;
-          content: "";
-          display: block;
-          width: 15px;
-          height: 0px;
-          border: solid #fff;
-          border-width: 0 0px 2.5px 0;
-          transform: rotate(45deg);
-          left: 0;
-          top: 0;
-        }
-        &:before {
-          position: absolute;
-          content: "";
-          display: block;
-          width: 15px;
-          height: 0px;
-          border: solid #fff;
-          border-width: 0 0px 2.5px 0;
-          transform: rotate(-45deg);
-          left: 0;
-          top: 0;
-        }
+        color: var(--text);
       }
     `;
 
@@ -148,7 +222,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 }, 200);
               }}
             >
-              <div class="crossmark" />
+              <span class="material-symbols-outlined">close</span>
             </button>
             <img src={this.project.img} />
             <p>{this.project.largeDesc}</p>
@@ -160,7 +234,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
 const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
   this.css = css`
-    background: #313244;
+    background: var(--surface0);
     width: 320px;
     border-radius: 0.9rem;
     padding-bottom: 0.2rem;
@@ -180,7 +254,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
     }
 
     sub {
-      color: #7f849c;
+      color: var(--overlay1);
     }
 
     .title {
@@ -276,7 +350,7 @@ const Intro: Component<{}, {}> = function () {
 const Nav: Component<{}, { rotation: number }> = function () {
   this.rotation = 0;
   this.css = css`
-    background: #181825;
+    background: var(--mantle);
     position: fixed;
     top: 0;
     left: 0;
@@ -284,9 +358,9 @@ const Nav: Component<{}, { rotation: number }> = function () {
     z-index: 100;
     padding: 1em 0;
     width: 100vw;
-    height: 2.5rem;
+    height: 3.5rem;
     margin: 0;
-    padding: 5px;
+    padding: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -305,8 +379,11 @@ const Nav: Component<{}, { rotation: number }> = function () {
     -ms-flex-align: center;
     align-items: center;
 
+    border-radius: 0 0 1em 1em;
+
     h2 {
       justify-self: flex-start;
+      margin: 0;
     }
 
     img {
@@ -335,28 +412,44 @@ const Nav: Component<{}, { rotation: number }> = function () {
       padding: 3px;
     }
 
-    span {
+    #title {
+      display: flex;
+      align-items: center;
+      justify-self: flex-start;
+    }
+
+    #nav {
       justify-self: flex-end;
       margin-left: auto;
-      padding-right: 1em;
+      padding-right: 1.75em;
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+      }
     }
   `;
   return (
     <nav>
-      <img
-        id="logo"
-        src="misc/pfps/bomberfish.png"
-        alt="Me!"
-        width="32"
-        height="32"
-        style={{ transform: use`rotate(${this.rotation}deg)` }}
-        on:click={() => {
-          this.rotation += 1440; 
-        }}
-      />
-      <h2 style="display: inline">BomberFish</h2>
-      <span>
-        <a href="https://blog.bomberfish.ca">Go to Blog</a>
+      <span id="title">
+        <img
+          id="logo"
+          src="misc/pfps/bomberfish.png"
+          alt="Me!"
+          width="32"
+          height="32"
+          style={{ transform: use`rotate(${this.rotation}deg)` }}
+          on:click={() => {
+            this.rotation += 1440;
+          }}
+        />
+        <h2 style="display: inline">BomberFish</h2>
+      </span>
+      <span id="nav">
+        <a href="https://blog.bomberfish.ca"><span class="material-symbols-outlined">open_in_new</span>&nbsp;&nbsp;Go to Blog</a>
       </span>
     </nav>
   );
@@ -369,7 +462,7 @@ const App: Component<
     // text: string
   },
   {
-    // types for internal state
+    // types for internal store
     rotation: number;
     projects: ProjectCardDetails[];
   }
@@ -380,7 +473,7 @@ const App: Component<
       "AnuraOS",
       "Major contributions since v2.x",
       2024,
-      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since the start of v2 development. Anura 2.0 is slated for release in September 2024."
+      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since the start of v2 development, most of which reworked various parts of the UI. AnuraOS 2.0 is slated for release in September 2024."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/mandelapro.jpg",
@@ -396,12 +489,26 @@ const App: Component<
       2023,
       "Picasso is a customization app for iOS 15.0-17.0, using security vulnerabilities to allow for deep customization. I worked with sourcelocation to develop it, and it was first released in August 2023."
     ),
+    new ProjectCardDetails(
+      "/proj-thumbnails/appcommander.jpg",
+      "AppCommander",
+      "App Manager for iOS 15.0-16.1.2",
+      2023,
+      "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023."
+    ),
+    new ProjectCardDetails(
+      "/proj-thumbnails/cowabunga.jpg",
+      "Cowabunga MDC",
+      "Major contributions",
+      2023,
+      "Cowabunga was a major project I contributed to in 2023. It was a customization app for iOS 14.0-16.1.2, using the MacDirtyCow vunerability to allow for deep customization. My contributions included adding tools such as an enterprise certificate blacklist remover, and a tool to remove the three-app limit on developer-signed apps."
+    ),
   ];
 
   this.rotation = 0;
   this.css = css`
-    background: #1e1e2e;
-    color: #cdd6f4;
+    background: var(--base);
+    color: var(--text);
     font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
       "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0;
@@ -416,6 +523,8 @@ const App: Component<
 
     h2 {
       font-size: 1.6rem;
+      margin-bottom: 0;
+      margin-top: 1rem;
     }
 
     nav h2 {
@@ -424,39 +533,21 @@ const App: Component<
 
     a,
     a:visited:hover {
-      color: #cba6f7;
+      color: var(--accent);
     }
 
     a:visited {
       color: rgb(163, 132, 199);
     }
 
-    /*@media (prefers-color-scheme: light) {
-      background: #eff1f5;
-      color: #4c4f69;
-
-      a,
-      a:visited:hover {
-        color: #8839ef;
-      }
-
-      a:visited {
-        color: #a16be6;
-      }
-
-      nav {
-        background: #e6e9ef;
-      }
-    }*/
-
     #projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 0fr));
-      grid-gap: 2rem;
+      grid-gap: 0 2rem;
     }
 
     #content {
-      margin-top: 2rem;
+      margin-top: 2.5rem;
       padding: 1em;
     }
 
@@ -476,10 +567,11 @@ const App: Component<
 
   return (
     <main>
+      <ThemePicker />
       <Nav />
       <div id="content">
         <Intro />
-        <h2>Projects</h2>
+        <h2>My work</h2>
         <div id="projects-container">
           {use(this.projects, (projects) =>
             projects.map((project) => <Card detail={project} />)

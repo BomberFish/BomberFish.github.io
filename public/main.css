@@ -1,6 +1,8 @@
 body {
   background: #1e1e2e;
   color: #cdd6f4;
+  background: var(--base);
+  color: var(--text);
   font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
     "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
