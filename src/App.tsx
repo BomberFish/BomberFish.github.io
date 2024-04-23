@@ -349,11 +349,9 @@ const Nav: Component<{}, { rotation: number }> = function () {
         alt="Me!"
         width="32"
         height="32"
+        style={{ transform: use`rotate(${this.rotation}deg)` }}
         on:click={() => {
           this.rotation += 1440; 
-          document.getElementById(
-            "logo"
-          )!.style.transform = `rotate(${this.rotation}deg)`;
         }}
       />
       <h2 style="display: inline">BomberFish</h2>
