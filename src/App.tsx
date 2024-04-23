@@ -1,16 +1,19 @@
 import "dreamland/dev";
 
-let store = $store({
-  theme: {
-    name: "Catppuccin Mocha",
-    text: "#cdd6f4",
-    overlay1: "#7f849c",
-    surface0: "#313244",
-    base: "#1e1e2e",
-    mantle: "#181825",
-    accent: "#cba6f7",
+let store = $store(
+  {
+    theme: {
+      name: "Catppuccin Mocha",
+      text: "#cdd6f4",
+      overlay1: "#7f849c",
+      surface0: "#313244",
+      base: "#1e1e2e",
+      mantle: "#181825",
+      accent: "#cba6f7",
+    },
   },
-}, { ident: "my-store", backing: "localstorage", autosave: "auto" });
+  { ident: "my-store", backing: "localstorage", autosave: "auto" }
+);
 
 class ProjectCardDetails {
   img: string;
@@ -35,16 +38,15 @@ class ProjectCardDetails {
 }
 
 const ThemePicker: Component<{}, {}> = function () {
-
   this.mount = () => {
     var root = document.documentElement;
-        root.style.setProperty('--text', store.theme.text);
-        root.style.setProperty('--overlay1', store.theme.overlay1);
-        root.style.setProperty('--surface0', store.theme.surface0);
-        root.style.setProperty('--base', store.theme.base);
-        root.style.setProperty('--mantle', store.theme.mantle);
-        root.style.setProperty('--accent', store.theme.accent);
-  }
+    root.style.setProperty("--text", store.theme.text);
+    root.style.setProperty("--overlay1", store.theme.overlay1);
+    root.style.setProperty("--surface0", store.theme.surface0);
+    root.style.setProperty("--base", store.theme.base);
+    root.style.setProperty("--mantle", store.theme.mantle);
+    root.style.setProperty("--accent", store.theme.accent);
+  };
 
   const mocha = {
     name: "Catppuccin Mocha",
@@ -54,7 +56,7 @@ const ThemePicker: Component<{}, {}> = function () {
     base: "#1e1e2e",
     mantle: "#181825",
     accent: "#cba6f7",
-  }
+  };
 
   const macchiato = {
     name: "Catppuccin Macchiato",
@@ -64,7 +66,7 @@ const ThemePicker: Component<{}, {}> = function () {
     base: "#24273a",
     mantle: "#1e2030",
     accent: "#c6a0f6",
-  }
+  };
 
   const frappe = {
     name: "Catppuccin Frappe",
@@ -74,7 +76,7 @@ const ThemePicker: Component<{}, {}> = function () {
     base: "#303446",
     mantle: "#292c3c",
     accent: "#ca9ee6",
-  }
+  };
 
   const latte = {
     name: "Catppuccin Latte",
@@ -84,16 +86,17 @@ const ThemePicker: Component<{}, {}> = function () {
     base: "#eff1f5",
     mantle: "#e6e9ef",
     accent: "#8839ef",
-  }
+  };
 
-  const themes = [mocha, macchiato, frappe, latte]
+  const themes = [mocha, macchiato, frappe, latte];
 
   this.css = css`
     button {
       background: none;
       border: none;
       color: var(--text);
-      font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui;
+      font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
+        "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 1rem;
       padding: 0.5rem;
       margin: 0.5rem;
@@ -110,18 +113,23 @@ const ThemePicker: Component<{}, {}> = function () {
 
   return (
     <div>
-      <button on:click={()=>{
-        let index = themes.indexOf(store.theme)
-        store.theme = themes[(index + 1) % themes.length]
+      <button
+        on:click={() => {
+          let index = themes.indexOf(store.theme);
+          store.theme = themes[(index + 1) % themes.length];
 
-        var root = document.documentElement;
-        root.style.setProperty('--text', store.theme.text);
-        root.style.setProperty('--overlay1', store.theme.overlay1);
-        root.style.setProperty('--surface0', store.theme.surface0);
-        root.style.setProperty('--base', store.theme.base);
-        root.style.setProperty('--mantle', store.theme.mantle);
-        root.style.setProperty('--accent', store.theme.accent);
-      }}><span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;{use(store.theme.name)}</button>
+          var root = document.documentElement;
+          root.style.setProperty("--text", store.theme.text);
+          root.style.setProperty("--overlay1", store.theme.overlay1);
+          root.style.setProperty("--surface0", store.theme.surface0);
+          root.style.setProperty("--base", store.theme.base);
+          root.style.setProperty("--mantle", store.theme.mantle);
+          root.style.setProperty("--accent", store.theme.accent);
+        }}
+      >
+        <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
+        {use(store.theme.name)}
+      </button>
     </div>
   );
 };
@@ -449,7 +457,10 @@ const Nav: Component<{}, { rotation: number }> = function () {
         <h2 style="display: inline">BomberFish</h2>
       </span>
       <span id="nav">
-        <a href="https://blog.bomberfish.ca"><span class="material-symbols-outlined">open_in_new</span>&nbsp;&nbsp;Go to Blog</a>
+        <a href="https://blog.bomberfish.ca">
+          <span class="material-symbols-outlined">open_in_new</span>
+          &nbsp;&nbsp;Go to Blog
+        </a>
       </span>
     </nav>
   );
