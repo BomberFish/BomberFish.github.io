@@ -1,0 +1,15 @@
+{
+  "hash": "11ababba",
+  "configHash": "1251140a",
+  "lockfileHash": "c5cfac8b",
+  "browserHash": "f0cf2afb",
+  "optimized": {
+    "dreamland/dev": {
+      "src": "../../node_modules/dreamland/dist/dev.js",
+      "file": "dreamland_dev.js",
+      "fileHash": "4c4583eb",
+      "needsInterop": true
+    }
+  },
+  "chunks": {}
+}
