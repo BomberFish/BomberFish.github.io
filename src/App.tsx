@@ -437,7 +437,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
       padding-right: 1.75em;
 
       a {
-        // color: var(--text);
+        color: var(--accent);
         text-decoration: none;
         font-size: 1.1rem;
         display: flex;
@@ -489,7 +489,7 @@ const App: Component<
       "AnuraOS",
       "Major contributions since v2.x",
       2024,
-      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since the start of v2 development, most of which reworked various parts of the UI. AnuraOS 2.0 is slated for release in September 2024."
+      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0, which contains my contributions, is currently slated for release in September 2024."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/mandelapro.jpg",
@@ -503,14 +503,14 @@ const App: Component<
       "Picasso",
       "Co-developer, worked with @sourceloc",
       2023,
-      "Picasso is a customization app for iOS 15.0-17.0, using security vulnerabilities to allow for deep customization. I worked with sourcelocation to develop it, and it was first released in August 2023."
+      "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. I worked with sourcelocation to develop it, and it was first released in August 2023."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/appcommander.jpg",
       "AppCommander",
       "App Manager for iOS 15.0-16.1.2",
       2023,
-      "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023."
+      "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/cowabunga.jpg",
