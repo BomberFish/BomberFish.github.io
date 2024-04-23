@@ -64,6 +64,12 @@ a:visited {
   opacity: 0;
 }
 
+.popup.transparent .popup-bg {
+  transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+  backdrop-filter: blur(0px);
+  background: rgba(0,0,0,0);
+}
+
 @media (orientation: portrait) {
   .popup .inner {
     width: 100%!important;

@@ -144,7 +144,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
     this.mount = () => {
       setTimeout(() => {
         this.root.classList.remove("transparent");
-      }, 10);
+      }, 1);
     };
 
     this.css = css`
@@ -156,7 +156,6 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       z-index: 100;
       width: 100vw;
       height: 100vh;
-      background: rgba(17, 17, 27, 0.4);
 
       transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
 
@@ -170,6 +169,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 100;
       }
 
       img {
@@ -219,10 +219,32 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         height: 25px;
         color: var(--text);
       }
+
+
+      .popup-bg {
+        transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+        background: rgba(17, 17, 27, 0.2);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 90;
+        width: 100vw;
+        height: 100vh;
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px)
+      }
     `;
 
     return (
       <div class="popup transparent">
+        <div class="popup-bg" on:click={() => {
+                this.root.classList.add("transparent");
+                setTimeout(() => {
+                  this.root.remove();
+                }, 200);
+              }}></div>
         <div class="inner">
           <article>
             <span id="title">{this.project.title}</span>
