@@ -690,7 +690,6 @@ const App: Component<
 
   return (
     <main>
-      <ThemePicker />
       <Nav />
       <div id="content">
         <Intro />
@@ -711,6 +710,7 @@ const App: Component<
           </sub>
         </span>
       </div>
+      <ThemePicker />
     </main>
   );
 };
