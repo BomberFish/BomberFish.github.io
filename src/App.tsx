@@ -94,52 +94,64 @@ const ThemePicker: Component<{}, {}> = function () {
   const themes = [mocha, macchiato, frappe, latte];
 
   this.css = css`
-    button {
-      background: var(--base);
-      border-top-left-radius: 0.5rem;
-      border: none;
-      color: var(--text);
-      font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui;
-      font-size: 1rem;
-      padding: 0.75rem;
-      cursor: pointer;
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      z-index: 1000;
+    background: var(--surface0);
+    border-top-left-radius: 1rem;
+    border: none;
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.75rem;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
 
-      display: flex;
-      align-items: center;
+    display: flex;
+    align-items: center;
 
-      user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-    }
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
   `;
 
   return (
-    <div>
-      <button
-        on:click={() => {
-          let index = themes.indexOf(store.theme);
-          store.theme = themes[(index + 1) % themes.length];
+    <button
+      on:pointerdown={() => {
+        let index = themes.indexOf(store.theme);
+        store.theme = themes[(index + 1) % themes.length];
 
-          var root = document.documentElement;
-          document.head
-            .querySelector("meta[name=theme-color]")!
-            .setAttribute("content", store.theme.mantle);
-          root.style.setProperty("--text", store.theme.text);
-          root.style.setProperty("--overlay1", store.theme.overlay1);
-          root.style.setProperty("--surface0", store.theme.surface0);
-          root.style.setProperty("--base", store.theme.base);
-          root.style.setProperty("--mantle", store.theme.mantle);
-          root.style.setProperty("--accent", store.theme.accent);
-        }}
-      >
-        <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
-        {use(store.theme.name)}
-      </button>
-    </div>
+        var root = document.documentElement;
+        document.head
+          .querySelector("meta[name=theme-color]")!
+          .setAttribute("content", store.theme.mantle);
+        root.style.setProperty("--text", store.theme.text);
+        root.style.setProperty("--overlay1", store.theme.overlay1);
+        root.style.setProperty("--surface0", store.theme.surface0);
+        root.style.setProperty("--base", store.theme.base);
+        root.style.setProperty("--mantle", store.theme.mantle);
+        root.style.setProperty("--accent", store.theme.accent);
+      }}
+      on:contextMenu={(e: PointerEvent) => {
+        e.preventDefault();
+        let index = themes.indexOf(store.theme);
+        store.theme = themes[(index - 1) % themes.length];
+
+        var root = document.documentElement;
+        document.head
+          .querySelector("meta[name=theme-color]")!
+          .setAttribute("content", store.theme.mantle);
+        root.style.setProperty("--text", store.theme.text);
+        root.style.setProperty("--overlay1", store.theme.overlay1);
+        root.style.setProperty("--surface0", store.theme.surface0);
+        root.style.setProperty("--base", store.theme.base);
+        root.style.setProperty("--mantle", store.theme.mantle);
+        root.style.setProperty("--accent", store.theme.accent);
+      }}
+    >
+      <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
+      {use(store.theme.name)}
+    </button>
   );
 };
 
@@ -165,7 +177,8 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       .inner {
         background: #313244;
-        width: 60%;
+        min-width: 400px;
+        width: 40%;
         height: 100%;
         padding: 1rem;
         padding-top: 0;
@@ -177,9 +190,9 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       img {
-        width: 90%;
+        width: 95%;
         height: auto;
-        border-radius: 2rem;
+        border-radius: 1.25rem;
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
@@ -226,9 +239,11 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         appearance: none;
         background: none;
         border: none;
-        width: 25px;
-        height: 25px;
+        // width: 25px;
+        // height: 25px;
         color: var(--text);
+        display: flex;
+        align-items: center;
       }
 
       .popup-bg {
@@ -251,7 +266,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       <div class="popup transparent">
         <div
           class="popup-bg"
-          on:click={() => {
+          on:pointerdown={() => {
             this.root.classList.add("transparent");
             setTimeout(() => {
               this.root.remove();
@@ -263,13 +278,14 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
             <span id="title">{this.project.title}</span>
 
             <button
-              on:click={() => {
+              on:pointerdown={() => {
                 this.root.classList.add("transparent");
                 setTimeout(() => {
                   this.root.remove();
                 }, 200);
               }}
             >
+              <span class="keyboard-shortcut">esc</span>
               <span class="material-symbols-outlined">close</span>
             </button>
             <img src={this.project.img} />
@@ -308,6 +324,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       display: flex;
       align-items: center;
       margin-top: 0.5rem;
+      font-family: var(--font-display);
     }
 
     .title > span {
@@ -330,7 +347,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
   return (
     <div
       class="card"
-      on:click={() => {
+      on:pointerdown={() => {
         document.body.appendChild(<LargeProjectView project={this.detail} />);
       }}
     >
@@ -368,7 +385,6 @@ const Intro: Component<{}, {}> = function () {
           <li>Python</li>
         </ul>
         <li>I use Arch btw</li>
-        
       </ul>
       <h2>Things on this site</h2>
       <ul>
@@ -470,7 +486,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
       -o-transform: rotate(0deg);
       transform: rotate(0deg);
       background: black;
-      padding: 3px;
+      padding: 2px;
 
       user-select: none;
       -webkit-user-drag: none;
@@ -481,6 +497,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
       display: flex;
       align-items: center;
       justify-self: flex-start;
+      font-family: var(--font-mono);
     }
 
     #nav {
@@ -510,8 +527,8 @@ const Nav: Component<{}, { rotation: number }> = function () {
           width="32"
           height="32"
           style={{ transform: use`rotate(${this.rotation}deg)` }}
-          on:click={() => {
-            this.rotation += 1440;
+          on:pointerdown={() => {
+            this.rotation -= 1440;
           }}
         />
         <h2 style="display: inline">BomberFish</h2>
@@ -587,16 +604,14 @@ const App: Component<
   this.css = css`
     background: var(--base);
     color: var(--text);
-    font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
-      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--font-body)
     margin: 0;
     padding: 0;
 
     h1,
     h2,
     h3 {
-      font-family: "Inter Tight", "Inter", "SF Pro Text", "SF Pro",
-        -apple-system, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: var(--font-display)
     }
 
     h2 {
@@ -667,7 +682,12 @@ const App: Component<
           )}
         </div>
         <span>
-          <sub>Website made with &lt;3 in <a href="https://github.com/MercuryWorkshop/DreamlandJS">DreamlandJS</a></sub>
+          <sub>
+            Website made with &lt;3 in{" "}
+            <a href="https://github.com/MercuryWorkshop/DreamlandJS">
+              DreamlandJS
+            </a>
+          </sub>
         </span>
       </div>
     </main>
@@ -676,4 +696,15 @@ const App: Component<
 
 window.addEventListener("load", () => {
   document.getElementById("app")!.replaceWith(<App />);
+  document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      document.querySelectorAll(".popup").forEach((popup) => {
+        popup.classList.add("transparent");
+        setTimeout(() => {
+          popup.remove();
+        }, 200);
+      });
+    }
+  });
 });

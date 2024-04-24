@@ -1,3 +1,11 @@
+:root {
+  --font-display: "Inter Tight", "Inter", "SF Pro Display", "SF Pro", "SF Pro Text", -apple-system,
+    system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "Inter", "SF Pro Text", "SF Pro", -apple-system, system-ui,
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
 :root:has(.no-js) {
   --base: #1e1e2e;
   --text: #cdd6f4;
@@ -11,14 +19,12 @@
   font-size: 1.2rem;
 }
 
-
 body {
   background: #1e1e2e;
   color: #cdd6f4;
   background: var(--base);
   color: var(--text);
-  font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-body);
 }
 
 a,
@@ -67,11 +73,21 @@ a:visited {
 .popup.transparent .popup-bg {
   transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
   backdrop-filter: blur(0px);
-  background: rgba(0,0,0,0);
+  background: rgba(0, 0, 0, 0);
 }
 
 @media (orientation: portrait) {
   .popup .inner {
-    width: 100%!important;
+    width: 100% !important;
   }
+}
+
+.keyboard-shortcut {
+  font-size: 0.85rem;
+  margin: 0.5rem;
+  font-family: var(--font-mono);
+  color: var(--overlay1);
+  border: 1px solid var(--overlay1);
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.3rem;
 }
