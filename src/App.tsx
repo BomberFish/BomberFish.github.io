@@ -95,13 +95,13 @@ const ThemePicker: Component<{}, {}> = function () {
 
   this.css = css`
     button {
-      background: none;
+      background: var(--base);
+      border-top-left-radius: 0.5rem;
       border: none;
       color: var(--text);
       font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui;
       font-size: 1rem;
-      padding: 0.5rem;
-      margin: 0.5rem;
+      padding: 0.75rem;
       cursor: pointer;
       position: fixed;
       bottom: 0;
@@ -110,6 +110,10 @@ const ThemePicker: Component<{}, {}> = function () {
 
       display: flex;
       align-items: center;
+
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
     }
   `;
 
@@ -176,6 +180,9 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         width: 90%;
         height: auto;
         border-radius: 2rem;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
       }
 
       #title {
@@ -195,6 +202,10 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         top: 2rem;
         right: 2rem;
         margin-top: 1rem;
+
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
       }
 
       article {
@@ -220,7 +231,6 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         color: var(--text);
       }
 
-
       .popup-bg {
         transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
         background: rgba(17, 17, 27, 0.2);
@@ -233,18 +243,21 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         width: 100vw;
         height: 100vh;
         backdrop-filter: blur(1px);
-        -webkit-backdrop-filter: blur(1px)
+        -webkit-backdrop-filter: blur(1px);
       }
     `;
 
     return (
       <div class="popup transparent">
-        <div class="popup-bg" on:click={() => {
-                this.root.classList.add("transparent");
-                setTimeout(() => {
-                  this.root.remove();
-                }, 200);
-              }}></div>
+        <div
+          class="popup-bg"
+          on:click={() => {
+            this.root.classList.add("transparent");
+            setTimeout(() => {
+              this.root.remove();
+            }, 200);
+          }}
+        ></div>
         <div class="inner">
           <article>
             <span id="title">{this.project.title}</span>
@@ -282,14 +295,13 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
     }
 
     img {
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
       border-radius: 0.9rem;
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    sub {
-      color: var(--overlay1);
     }
 
     .title {
@@ -344,6 +356,20 @@ const Intro: Component<{}, {}> = function () {
         I'm a 15 year old (aspiring) software developer from Canada, who loves
         tinkering with whatever devices I find.
       </p>
+      <h2>More stuff about me</h2>
+      <ul>
+        <li>I was one of the winners of the 2024 Swift Student Challenge</li>
+        <li>I know the following programming languages:</li>
+        <ul>
+          <li>Swift</li>
+          <li>JavaScript/TypeScript</li>
+          <li>C/C++/Objective-C</li>
+          <li>Bash</li>
+          <li>Python</li>
+        </ul>
+        <li>I use Arch btw</li>
+        
+      </ul>
       <h2>Things on this site</h2>
       <ul>
         <li>
@@ -445,6 +471,10 @@ const Nav: Component<{}, { rotation: number }> = function () {
       transform: rotate(0deg);
       background: black;
       padding: 3px;
+
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
     }
 
     #title {
@@ -464,6 +494,10 @@ const Nav: Component<{}, { rotation: number }> = function () {
         font-size: 1.1rem;
         display: flex;
         align-items: center;
+
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
       }
     }
   `;
@@ -471,7 +505,6 @@ const Nav: Component<{}, { rotation: number }> = function () {
     <nav>
       <span id="title">
         <img
-          id="logo"
           src="misc/pfps/bomberfish.png"
           alt="Me!"
           width="32"
@@ -519,6 +552,13 @@ const App: Component<
       "Cancelled customization app",
       2024,
       "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0."
+    ),
+    new ProjectCardDetails(
+      "/proj-thumbnails/dssos.jpg",
+      "dssOS",
+      "Live OS for ChromeOS devices",
+      2023,
+      "dssOS was one of my first projects involving ChromeOS, and was a live development environment for ChromeOS devices. It used a modified diagnostic tool to boot into a Linux chroot, which you could use for programming. dssOS was created in November 2023."
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/picasso.jpg",
@@ -603,6 +643,15 @@ const App: Component<
         border: 0.1px dashed var(--accent);
       }
     }
+
+    ::selection {
+      background: var(--accent);
+      color: var(--base);
+    }
+
+    sub {
+      color: var(--overlay1);
+    }
   `;
 
   return (
@@ -617,6 +666,9 @@ const App: Component<
             projects.map((project) => <Card detail={project} />)
           )}
         </div>
+        <span>
+          <sub>Website made with &lt;3 in <a href="https://github.com/MercuryWorkshop/DreamlandJS">DreamlandJS</a></sub>
+        </span>
       </div>
     </main>
   );
