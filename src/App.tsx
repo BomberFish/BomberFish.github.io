@@ -1,4 +1,4 @@
-import "dreamland/dev";
+import "dreamland";
 
 let store = $store(
   {
@@ -12,7 +12,7 @@ let store = $store(
       accent: "#cba6f7",
     },
   },
-  { ident: "my-store", backing: "localstorage", autosave: "auto" }
+  { ident: "theme", backing: "localstorage", autosave: "auto" }
 );
 
 class ProjectCardDetails {
