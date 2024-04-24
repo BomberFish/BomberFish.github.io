@@ -260,6 +260,10 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         backdrop-filter: blur(1px);
         -webkit-backdrop-filter: blur(1px);
       }
+      
+      kbd {
+        margin-right: 0.65rem;
+      }
     `;
 
     return (
@@ -285,7 +289,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 }, 200);
               }}
             >
-              <span class="keyboard-shortcut">esc</span>
+              <kbd>esc</kbd>
               <span class="material-symbols-outlined">close</span>
             </button>
             <img src={this.project.img} />
@@ -342,14 +346,28 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       margin-top: 0.5rem;
       margin-bottom: 1rem;
     }
+
+    kbd {
+      position: absolute;
+      right: 1rem;
+      top: 75%;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
   `;
 
   return (
     <div
       class="card"
-      on:pointerdown={() => {
+      on:pointerup={() => {
         document.body.appendChild(<LargeProjectView project={this.detail} />);
       }}
+      on:keydown={(e: KeyboardEvent) => {
+        if (e.key === "Enter") {
+          document.body.appendChild(<LargeProjectView project={this.detail} />);
+        }
+      }}
+      tabindex="0"
     >
       <div class="img-container">
         <img src={this.detail.img} />
@@ -360,6 +378,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
           <sub> • ({this.detail.year})</sub>
         </div>
         <p>{this.detail.blurb}</p>
+        <kbd>↩</kbd>
       </div>
     </div>
   );
@@ -687,6 +706,8 @@ const App: Component<
             <a href="https://github.com/MercuryWorkshop/DreamlandJS">
               DreamlandJS
             </a>
+            <br></br>
+            Pro tip: you can navigate this site with your keyboard! Press <kbd>tab</kbd> to start.
           </sub>
         </span>
       </div>

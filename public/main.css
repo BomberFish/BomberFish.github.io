@@ -14,6 +14,10 @@
   --accent-visited: #a16be6;
 }
 
+li::marker {
+  color: #cba6f7;
+}
+
 .no-js t {
   font-weight: 500;
   font-size: 1.2rem;
@@ -82,12 +86,52 @@ a:visited {
   }
 }
 
-.keyboard-shortcut {
+kbd {
   font-size: 0.85rem;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
   font-family: var(--font-mono);
   color: var(--overlay1);
   border: 1px solid var(--overlay1);
-  padding: 0.2rem 0.3rem;
+  padding: 0.15rem 0.6rem;
   border-radius: 0.3rem;
+}
+
+.card:focus kbd,
+.card:focus-visible kbd {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+:focus,
+:focus-visible {
+  outline: 2px solid #cba6f7;
+  outline-offset: 2px;
+  border-radius: 0.1rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--surface0);
+  border-radius: 9999px;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+  transition: background 0.2s;
+}
+
+.card:focus,
+.card:focus-visible {
+  outline: none;
+  border-color: var(--accent)!important;
+  border-style: solid!important;
 }

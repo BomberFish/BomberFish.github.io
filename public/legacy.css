@@ -128,3 +128,9 @@ h0 {
   margin: 0.67em 0;
   display: block;
 }
+
+:focus,
+:focus-visible {
+  outline: 2px solid #cba6f7;
+  outline-offset: 2px;
+}
