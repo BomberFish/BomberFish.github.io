@@ -370,7 +370,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       tabindex="0"
     >
       <div class="img-container">
-        <img src={this.detail.img} />
+        <img src={this.detail.img} alt={this.detail.blurb} />
       </div>
       <div class="detail">
         <div class="title">
@@ -542,7 +542,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
       <span id="title">
         <img
           src="misc/pfps/bomberfish.png"
-          alt="Me!"
+          alt="My profile picture"
           width="32"
           height="32"
           style={{ transform: use`rotate(${this.rotation}deg)` }}
@@ -576,42 +576,42 @@ const App: Component<
 > = function () {
   this.projects = [
     new ProjectCardDetails(
-      "/proj-thumbnails/anura.jpg",
+      "/proj-thumbnails/anura.webp",
       "AnuraOS",
       "Major contributions since v2.x",
       2024,
       "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0, which contains my contributions, is currently slated for release in September 2024."
     ),
     new ProjectCardDetails(
-      "/proj-thumbnails/mandelapro.jpg",
+      "/proj-thumbnails/mandelapro.webp",
       "Mandela Pro",
       "Cancelled customization app",
       2024,
       "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0."
     ),
     new ProjectCardDetails(
-      "/proj-thumbnails/dssos.jpg",
+      "/proj-thumbnails/dssos.webp",
       "dssOS",
       "Live OS for ChromeOS devices",
       2023,
       "dssOS was one of my first projects involving ChromeOS, and was a live development environment for ChromeOS devices. It used a modified diagnostic tool to boot into a Linux chroot, which you could use for programming. dssOS was created in November 2023."
     ),
     new ProjectCardDetails(
-      "/proj-thumbnails/picasso.jpg",
+      "/proj-thumbnails/picasso.webp",
       "Picasso",
       "Co-developer, worked with @sourceloc",
       2023,
       "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. I worked with sourcelocation to develop it, and it was first released in August 2023."
     ),
     new ProjectCardDetails(
-      "/proj-thumbnails/appcommander.jpg",
+      "/proj-thumbnails/appcommander.webp",
       "AppCommander",
       "App Manager for iOS 15.0-16.1.2",
       2023,
       "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023."
     ),
     new ProjectCardDetails(
-      "/proj-thumbnails/cowabunga.jpg",
+      "/proj-thumbnails/cowabunga.webp",
       "Cowabunga MDC",
       "Major contributions",
       2023,
