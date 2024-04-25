@@ -7,6 +7,7 @@ let store = $store(
       text: "#cdd6f4",
       overlay1: "#7f849c",
       surface0: "#313244",
+      subtext0: "#a6adc8",
       base: "#1e1e2e",
       mantle: "#181825",
       accent: "#cba6f7",
@@ -21,41 +22,32 @@ class ProjectCardDetails {
   blurb: string;
   year: number;
   largeDesc: string;
+  links?: { name: string; url: string; icon?: string }[];
 
   constructor(
     imgURL: string,
     title: string,
     blurb: string,
     year: number,
-    largeDesc: string
+    largeDesc: string,
+    links?: { name: string; url: string; icon?: string }[]
   ) {
     this.img = imgURL;
     this.title = title;
     this.blurb = blurb;
     this.year = year;
     this.largeDesc = largeDesc;
+    this.links = links;
   }
 }
 
 const ThemePicker: Component<{}, {}> = function () {
-  this.mount = () => {
-    var root = document.documentElement;
-    document.head
-      .querySelector("meta[name=theme-color]")!
-      .setAttribute("content", store.theme.mantle);
-    root.style.setProperty("--text", store.theme.text);
-    root.style.setProperty("--overlay1", store.theme.overlay1);
-    root.style.setProperty("--surface0", store.theme.surface0);
-    root.style.setProperty("--base", store.theme.base);
-    root.style.setProperty("--mantle", store.theme.mantle);
-    root.style.setProperty("--accent", store.theme.accent);
-  };
-
   const mocha = {
     name: "Catppuccin Mocha",
     text: "#cdd6f4",
     overlay1: "#7f849c",
     surface0: "#313244",
+    subtext0: "#a6adc8",
     base: "#1e1e2e",
     mantle: "#181825",
     accent: "#cba6f7",
@@ -66,6 +58,7 @@ const ThemePicker: Component<{}, {}> = function () {
     text: "#cad3f5",
     overlay1: "#8087a2",
     surface0: "#363a4f",
+    subtext0: "#a5adcb",
     base: "#24273a",
     mantle: "#1e2030",
     accent: "#c6a0f6",
@@ -76,6 +69,7 @@ const ThemePicker: Component<{}, {}> = function () {
     text: "#c6d0f5",
     overlay1: "#838ba7",
     surface0: "#414559",
+    subtext0: "#a5adce",
     base: "#303446",
     mantle: "#292c3c",
     accent: "#ca9ee6",
@@ -86,6 +80,7 @@ const ThemePicker: Component<{}, {}> = function () {
     text: "#4c4f69",
     overlay1: "#8c8fa1",
     surface0: "#ccd0da",
+    subtext0: "#6c6f85",
     base: "#eff1f5",
     mantle: "#e6e9ef",
     accent: "#8839ef",
@@ -128,6 +123,7 @@ const ThemePicker: Component<{}, {}> = function () {
         root.style.setProperty("--text", store.theme.text);
         root.style.setProperty("--overlay1", store.theme.overlay1);
         root.style.setProperty("--surface0", store.theme.surface0);
+        root.style.setProperty("--subtext0", store.theme.subtext0);
         root.style.setProperty("--base", store.theme.base);
         root.style.setProperty("--mantle", store.theme.mantle);
         root.style.setProperty("--accent", store.theme.accent);
@@ -144,6 +140,7 @@ const ThemePicker: Component<{}, {}> = function () {
         root.style.setProperty("--text", store.theme.text);
         root.style.setProperty("--overlay1", store.theme.overlay1);
         root.style.setProperty("--surface0", store.theme.surface0);
+        root.style.setProperty("--subtext0", store.theme.subtext0);
         root.style.setProperty("--base", store.theme.base);
         root.style.setProperty("--mantle", store.theme.mantle);
         root.style.setProperty("--accent", store.theme.accent);
@@ -176,26 +173,31 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
 
       .inner {
-        background: #313244;
+        background: var(--base);
         min-width: 400px;
-        width: 40%;
-        height: 100%;
+        width: 60vw;
+        height: 60vh;
         padding: 1rem;
         padding-top: 0;
         position: absolute;
-        top: 0;
+        top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        border-radius: 1.25rem;
+        transform: translateX(-50%) translateY(-50%);
         z-index: 100;
+        border: 0.25px solid var(--surface0);
       }
 
       img {
-        width: 95%;
-        height: auto;
+        width: auto;
+        max-width: 35vw;
+        height: 45vh;
         border-radius: 1.25rem;
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
+        object-fit: cover;
+        cursor: pointer;
       }
 
       #title {
@@ -225,14 +227,18 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         margin-top: 9rem;
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
       }
 
-      p {
+      .desc {
         align-self: flex-start;
         font-size: 1.25rem;
         margin-inline: 1rem;
+      }
+
+      .desc p {
+        margin-left: 0.5rem;
       }
 
       button {
@@ -248,7 +254,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       .popup-bg {
         transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
-        background: rgba(17, 17, 27, 0.2);
+        background: rgba(17, 17, 27, 0.4);
         position: fixed;
         top: 0;
         left: 0;
@@ -260,9 +266,48 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         backdrop-filter: blur(1px);
         -webkit-backdrop-filter: blur(1px);
       }
-      
+
       kbd {
         margin-right: 0.65rem;
+      }
+
+      .link {
+        color: var(--text);
+        background: var(--surface0);
+        text-decoration: none;
+
+        font-size: 1.2rem;
+
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+
+        .material-symbols-outlined {
+          font-size: 1.6rem;
+          margin-right: 0.5rem;
+        }
+
+        .link-inner {
+          display: flex;
+          align-items: center;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 0.1px solid var(--overlay1);
+      }
+
+      p.link {
+        color: var(--subtext0);
+        font-style: italic;
+        border-style: dashed;
+      }
+
+      .links {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
+        gap: 0.5rem;
       }
     `;
 
@@ -292,8 +337,38 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
               <kbd>esc</kbd>
               <span class="material-symbols-outlined">close</span>
             </button>
-            <img src={this.project.img} />
-            <p>{this.project.largeDesc}</p>
+            <img
+              src={this.project.img}
+              on:pointerdown={() => {
+                window.open(this.project.img, "_blank");
+              }}
+            />
+            <div class="desc">
+              <p>{this.project.largeDesc}</p>
+
+              <div class="links">
+                {$if(
+                  this.project.links?.length === 0,
+                  <p class="link">
+                    <span class="link-inner">
+                      <span class="material-symbols-outlined">link_off</span>
+                      No links available
+                    </span>
+                  </p>
+                )}
+
+                {this.project.links?.map((link) => (
+                  <a href={link.url} target="_blank" class="link">
+                    <span class="link-inner">
+                      <span class="material-symbols-outlined">
+                        {link.icon ?? "globe"}
+                      </span>
+                      {link.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
           </article>
         </div>
       </div>
@@ -443,8 +518,13 @@ const Intro: Component<{}, {}> = function () {
   );
 };
 
-const Nav: Component<{}, { rotation: number }> = function () {
+const Nav: Component<
+  {},
+  { rotation: number; name: string; nameState: boolean }
+> = function () {
   this.rotation = 0;
+  this.name = "BomberFish";
+  this.nameState = false;
   this.css = css`
     background: var(--mantle);
     position: fixed;
@@ -480,6 +560,7 @@ const Nav: Component<{}, { rotation: number }> = function () {
     h2 {
       justify-self: flex-start;
       margin: 0;
+      cursor: pointer;
     }
 
     img {
@@ -550,7 +631,17 @@ const Nav: Component<{}, { rotation: number }> = function () {
             this.rotation -= 1440;
           }}
         />
-        <h2 style="display: inline">BomberFish</h2>
+        <h2
+          style="display: inline"
+          on:click={() => {
+            this.nameState = !this.nameState;
+            for (let i = 0; i < this.name.length; i++) {
+              setTimeout(() => {}, i * 100);
+            }
+          }}
+        >
+          BomberFish
+        </h2>
       </span>
       <span id="nav">
         <a href="https://blog.bomberfish.ca" target="_blank">
@@ -578,44 +669,100 @@ const App: Component<
     new ProjectCardDetails(
       "/proj-thumbnails/anura.webp",
       "AnuraOS",
-      "Major contributions since v2.x",
+      "Contributor to webOS since v2.x",
       2024,
-      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0, which contains my contributions, is currently slated for release in September 2024."
+      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in mid-2024, with a full release planned for later this year.",
+      [
+        {
+          name: "AnuraOS (v1.x)",
+          url: "https://anura.pro",
+        },
+        {
+          name: "AnuraOS (v2.0, preview)",
+          url: "https://anura.bomberfish.ca",
+        },
+      ]
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/mandelapro.webp",
       "Mandela Pro",
       "Cancelled customization app",
       2024,
-      "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0."
+      "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0.",
+      []
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/dssos.webp",
       "dssOS",
-      "Live OS for ChromeOS devices",
+      "Live dev environment for ChromeOS devices",
       2023,
-      "dssOS was one of my first projects involving ChromeOS, and was a live development environment for ChromeOS devices. It used a modified diagnostic tool to boot into a Linux chroot, which you could use for programming. dssOS was created in November 2023."
+      "dssOS was one of my first projects involving ChromeOS, and was a live development environment for ChromeOS devices. It used a modified diagnostic tool to boot into a Linux chroot, which you could use for programming. dssOS was created in November 2023.",
+      [
+        {
+          name: "Website",
+          url: "https://dssos.nineeleven.tech",
+        },
+      ]
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/picasso.webp",
       "Picasso",
-      "Co-developer, worked with @sourceloc",
+      "iOS customization app with 100k+ users",
       2023,
-      "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. I worked with sourcelocation to develop it, and it was first released in August 2023."
+      "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. At its peak, it had over 100,000 active users. I worked with sourcelocation to develop it, and it was first released in August 2023.",
+      [
+        {
+          name: "Source Release",
+          url: "https://github.com/sourcelocation/Picasso-v3",
+          icon: "code",
+        },
+        {
+          name: "Discord",
+          url: "https://discord.gg/b6bwaDK2VZ",
+          icon: "chat",
+        },
+      ]
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/appcommander.webp",
       "AppCommander",
       "App Manager for iOS 15.0-16.1.2",
       2023,
-      "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023."
+      "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023.",
+      [
+        {
+          name: "Source Code (v1)",
+          url: "https://github.com/BomberFish/AppCommander-legacy",
+          icon: "code",
+        },
+        {
+          name: "Source Code (v2)",
+          url: "https://github.com/BomberFish/AppCommander",
+          icon: "code",
+        },
+      ]
     ),
     new ProjectCardDetails(
       "/proj-thumbnails/cowabunga.webp",
       "Cowabunga MDC",
-      "Major contributions",
+      "Major contributor to customization app",
       2023,
-      "Cowabunga was a major project I contributed to in 2023. It was a customization app for iOS 14.0-16.1.2, using the MacDirtyCow vunerability to allow for deep customization. My contributions included adding tools such as an enterprise certificate blacklist remover, and a tool to remove the three-app limit on developer-signed apps."
+      "Cowabunga was a major project I contributed to in 2023. It was a customization app for iOS 14.0-16.1.2, using the MacDirtyCow vunerability to allow for deep customization. My contributions included adding tools such as an enterprise certificate blacklist remover, and a tool to remove the three-app limit on developer-signed apps.",
+      [
+        {
+          name: "Source Code",
+          url: "https://github.com/leminlimez/Cowabunga",
+          icon: "code",
+        },
+        {
+          name: "Website",
+          url: "https://cowabun.ga",
+        },
+        {
+          name: "Discord",
+          url: "https://discord.gg/cowabunga",
+        },
+      ]
     ),
   ];
 
@@ -676,6 +823,16 @@ const App: Component<
         box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
         border: 0.1px dashed var(--accent);
       }
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        border-color: var(--accent)!important;
+        border-style: solid!important;
+        transform: scale(1.02);
+        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
+      }
     }
 
     ::selection {
@@ -684,7 +841,7 @@ const App: Component<
     }
 
     sub {
-      color: var(--overlay1);
+      color: var(--subtext0);
     }
   `;
 
@@ -706,7 +863,8 @@ const App: Component<
               DreamlandJS
             </a>
             <br></br>
-            Pro tip: you can navigate this site with your keyboard! Press <kbd>tab</kbd> to start.
+            Pro tip: you can navigate this site with your keyboard! Press{" "}
+            <kbd>tab</kbd> to start.
           </sub>
         </span>
       </div>
@@ -716,6 +874,17 @@ const App: Component<
 };
 
 window.addEventListener("load", () => {
+  var root = document.documentElement;
+  document.head
+    .querySelector("meta[name=theme-color]")!
+    .setAttribute("content", store.theme.mantle);
+  root.style.setProperty("--text", store.theme.text);
+  root.style.setProperty("--overlay1", store.theme.overlay1);
+  root.style.setProperty("--surface0", store.theme.surface0);
+  root.style.setProperty("--base", store.theme.base);
+  root.style.setProperty("--mantle", store.theme.mantle);
+  root.style.setProperty("--accent", store.theme.accent);
+  root.style.setProperty("--subtext0", store.theme.subtext0);
   document.getElementById("app")!.replaceWith(<App />);
   document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
     if (e.key === "Escape") {

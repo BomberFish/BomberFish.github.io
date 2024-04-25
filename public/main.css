@@ -58,7 +58,7 @@ a:visited {
 
 .popup.transparent .inner {
   top: 100vw;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .popup.transparent,
@@ -67,7 +67,7 @@ a:visited {
 }
 
 .popup .inner {
-  transition: 0.4s ease-in-out;
+  transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1)
 }
 
 .popup.transparent {
@@ -83,6 +83,18 @@ a:visited {
 @media (orientation: portrait) {
   .popup .inner {
     width: 100% !important;
+    height: 100% !important;
+    transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
+  }
+
+  .popup .inner article {
+    flex-direction: column;
+  }
+
+  .popup .inner article img {
+    width: 90vw;
+    max-width: initial;
+    height: auto;
   }
 }
 
@@ -90,8 +102,8 @@ kbd {
   font-size: 0.85rem;
   /* margin: 0.5rem; */
   font-family: var(--font-mono);
-  color: var(--overlay1);
-  border: 1px solid var(--overlay1);
+  color: var(--subtext0);
+  border: 1px solid var(--subtext0);
   padding: 0.15rem 0.6rem;
   border-radius: 0.3rem;
 }
@@ -127,11 +139,4 @@ kbd {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent);
   transition: background 0.2s;
-}
-
-.card:focus,
-.card:focus-visible {
-  outline: none;
-  border-color: var(--accent)!important;
-  border-style: solid!important;
 }
