@@ -195,7 +195,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       img {
         width: auto;
         max-width: 35vw;
-        height: 45vh;
+        height: 100%;
         border-radius: 1.25rem;
         user-select: none;
         -webkit-user-drag: none;
@@ -382,7 +382,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
             <div class="article-inner">
               <img
                 src={this.project.img}
-                on:pointerdown={() => {
+                on:pointerup={() => {
                   window.open(this.project.img, "_blank");
                 }}
               />
@@ -681,12 +681,6 @@ const Nav: Component<
         />
         <h2
           style="display: inline"
-          on:click={() => {
-            this.nameState = !this.nameState;
-            for (let i = 0; i < this.name.length; i++) {
-              setTimeout(() => {}, i * 100);
-            }
-          }}
         >
           BomberFish
         </h2>
