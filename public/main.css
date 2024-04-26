@@ -1,8 +1,8 @@
 :root {
-  --font-display: "Inter Tight", "Inter", "SF Pro Display", "SF Pro", "SF Pro Text", -apple-system,
-    system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --font-body: "Inter", "SF Pro Text", "SF Pro", -apple-system, system-ui,
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: "Inter Tight", "Inter", "SF Pro Display", "SF Pro", "SF Pro Text", -apple-system, BlinkMacSystemFont,
+    system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
+  --font-body: "Inter", "SF Pro Text", "SF Pro", -apple-system, BlinkMacSystemFont, system-ui,
+    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 

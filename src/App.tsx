@@ -216,8 +216,8 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       article {
         overflow: scroll;
-        display: flex;
-        align-items: center;
+        display: grid;
+        place-items: center;
         height: 60vh;
       }
 
@@ -225,12 +225,13 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         overflow: scroll;
         position: relative;
         width: 100%;
-        height: calc(100% - 6rem);
+        height: calc(100% - 7rem);
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         overflow: scroll;
         align-self: flex-end;
+        justify-self: center
       }
 
       .head {
@@ -489,12 +490,11 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
 const Intro: Component<{}, {}> = function () {
   return (
     <article>
-      <h2>About me</h2>
+      <h1>Hi 👋</h1>
       <p>
-        I'm a 15 year old (aspiring) software developer from Canada, who loves
-        tinkering with whatever devices I find.
+        I'm Hariz, a high school student from Canada. I'm a wannabe software engineer and I sometimes do things.
       </p>
-      <h2>More stuff about me</h2>
+      <h2>Some stuff about me</h2>
       <ul>
         <li>I was one of the winners of the 2024 Swift Student Challenge</li>
         <li>I know the following programming languages:</li>
@@ -507,7 +507,34 @@ const Intro: Component<{}, {}> = function () {
         </ul>
         <li>I use Arch btw</li>
       </ul>
-      <h2>Things on this site</h2>
+      <h2>Contact</h2>
+      <ul>
+        <li>
+          <a href="https://github.com/BomberFish">GitHub</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/bomberfish77">Twitter</a>
+        </li>
+        <li>
+          <a href="mailto:hariz@bomberfish.ca">Email</a>
+          <ul><li>I might be slow to respond, I don't check my email often.</li></ul>
+        </li>
+        <li>
+            Discord
+          <ul>
+            <li>@bomberfish <strong>(MAIN)</strong></li>
+            <li>@hanz_was_here</li>
+            <li>@pageprotectionlayer</li>
+            <li>@securepagetablemonitor</li>
+          </ul>
+        </li>
+        <li>
+          <span>Signal: @bomberfish.77</span>
+          <ul><li>Please only use this if all else fails.</li></ul>
+        </li>
+      </ul>
+
+      <h2>Other things on this site</h2>
       <ul>
         <li>
           <a href="https://bomberfish.ca/games">/games</a>
@@ -517,28 +544,6 @@ const Intro: Component<{}, {}> = function () {
         </li>
         <li>
           <a href="./tools/index.html">/tools</a>
-        </li>
-      </ul>
-      <h1>Contact</h1>
-      <ul>
-        <li>
-          <a href="https://github.com/BomberFish">GitHub</a>
-        </li>
-        <li>
-          <a href="https://twitter.com/bomberfish77">Twitter</a>
-        </li>
-        <li>
-          <a href="mailto:hariz@bomberfish.ca">Email</a> (I don't check my
-          emails often)
-        </li>
-        <li>
-          <span>
-            Discord: @bomberfish, @hanz_was_here, @pageprotectionlayer,
-            @securepagetablemonitor
-          </span>
-        </li>
-        <li>
-          <span>Signal: @bomberfish.77</span>
         </li>
       </ul>
     </article>
@@ -698,7 +703,7 @@ const App: Component<
       "AnuraOS",
       "Contributor to webOS since v2.x",
       2024,
-      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in mid-2024, with a full release planned for later this year.",
+      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in Q2 2024, with a full release planned for later this year.",
       [
         {
           name: "AnuraOS (v1.x)",
