@@ -4,6 +4,7 @@ let store = $store(
   {
     theme: {
       name: "Catppuccin Mocha",
+      shortName: "Mocha",
       text: "#cdd6f4",
       overlay1: "#7f849c",
       surface0: "#313244",
@@ -15,6 +16,24 @@ let store = $store(
   },
   { ident: "theme", backing: "localstorage", autosave: "auto" }
 );
+
+function updatePage() {
+  var root = document.documentElement;
+        document.head
+          .querySelector("meta[name=theme-color]")!
+          .setAttribute("content", store.theme.mantle);
+        root.style.setProperty("--text", store.theme.text);
+        root.style.setProperty("--overlay1", store.theme.overlay1);
+        root.style.setProperty("--surface0", store.theme.surface0);
+        root.style.setProperty("--subtext0", store.theme.subtext0);
+        root.style.setProperty("--base", store.theme.base);
+        root.style.setProperty("--mantle", store.theme.mantle);
+        root.style.setProperty("--accent", store.theme.accent);
+        document.body.classList.forEach(el => {
+          document.body.classList.remove(el)
+        });
+        document.body.classList.add(store.theme.shortName)
+}
 
 class ProjectCardDetails {
   img: string;
@@ -44,6 +63,7 @@ class ProjectCardDetails {
 const ThemePicker: Component<{}, {}> = function () {
   const mocha = {
     name: "Catppuccin Mocha",
+    shortName: "Mocha",
     text: "#cdd6f4",
     overlay1: "#7f849c",
     surface0: "#313244",
@@ -55,6 +75,7 @@ const ThemePicker: Component<{}, {}> = function () {
 
   const macchiato = {
     name: "Catppuccin Macchiato",
+    shortName: "Macchiato",
     text: "#cad3f5",
     overlay1: "#8087a2",
     surface0: "#363a4f",
@@ -65,7 +86,8 @@ const ThemePicker: Component<{}, {}> = function () {
   };
 
   const frappe = {
-    name: "Catppuccin Frappe",
+    name: "Catppuccin Frappé",
+    shortName: "Frappe",
     text: "#c6d0f5",
     overlay1: "#838ba7",
     surface0: "#414559",
@@ -77,6 +99,7 @@ const ThemePicker: Component<{}, {}> = function () {
 
   const latte = {
     name: "Catppuccin Latte",
+    shortName: "Latte",
     text: "#4c4f69",
     overlay1: "#8c8fa1",
     surface0: "#ccd0da",
@@ -116,34 +139,14 @@ const ThemePicker: Component<{}, {}> = function () {
         let index = themes.indexOf(store.theme);
         store.theme = themes[(index + 1) % themes.length];
 
-        var root = document.documentElement;
-        document.head
-          .querySelector("meta[name=theme-color]")!
-          .setAttribute("content", store.theme.mantle);
-        root.style.setProperty("--text", store.theme.text);
-        root.style.setProperty("--overlay1", store.theme.overlay1);
-        root.style.setProperty("--surface0", store.theme.surface0);
-        root.style.setProperty("--subtext0", store.theme.subtext0);
-        root.style.setProperty("--base", store.theme.base);
-        root.style.setProperty("--mantle", store.theme.mantle);
-        root.style.setProperty("--accent", store.theme.accent);
+        updatePage()
       }}
       on:contextMenu={(e: PointerEvent) => {
         e.preventDefault();
         let index = themes.indexOf(store.theme);
         store.theme = themes[(index - 1) % themes.length];
 
-        var root = document.documentElement;
-        document.head
-          .querySelector("meta[name=theme-color]")!
-          .setAttribute("content", store.theme.mantle);
-        root.style.setProperty("--text", store.theme.text);
-        root.style.setProperty("--overlay1", store.theme.overlay1);
-        root.style.setProperty("--surface0", store.theme.surface0);
-        root.style.setProperty("--subtext0", store.theme.subtext0);
-        root.style.setProperty("--base", store.theme.base);
-        root.style.setProperty("--mantle", store.theme.mantle);
-        root.style.setProperty("--accent", store.theme.accent);
+        updatePage()
       }}
     >
       <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
@@ -287,8 +290,8 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         z-index: 90;
         width: 100vw;
         height: 100vh;
-        backdrop-filter: blur(1px);
-        -webkit-backdrop-filter: blur(1px);
+        backdrop-filter: blur(1.5px);
+        -webkit-backdrop-filter: blur(1.5px);
       }
 
       kbd {
@@ -919,17 +922,7 @@ const App: Component<
 };
 
 window.addEventListener("load", () => {
-  var root = document.documentElement;
-  document.head
-    .querySelector("meta[name=theme-color]")!
-    .setAttribute("content", store.theme.mantle);
-  root.style.setProperty("--text", store.theme.text);
-  root.style.setProperty("--overlay1", store.theme.overlay1);
-  root.style.setProperty("--surface0", store.theme.surface0);
-  root.style.setProperty("--base", store.theme.base);
-  root.style.setProperty("--mantle", store.theme.mantle);
-  root.style.setProperty("--accent", store.theme.accent);
-  root.style.setProperty("--subtext0", store.theme.subtext0);
+  updatePage()
   document.getElementById("app")!.replaceWith(<App />);
   document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
     if (e.key === "Escape") {

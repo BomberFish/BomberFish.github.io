@@ -10,12 +10,10 @@
   --base: #1e1e2e;
   --text: #cdd6f4;
   --accent: #cba6f7;
-  --accent-hover: #8839ef;
-  --accent-visited: #a16be6;
 }
 
 li::marker {
-  color: #cba6f7;
+  color: var(--accent);
 }
 
 .no-js t {
@@ -23,6 +21,7 @@ li::marker {
   font-size: 1.2rem;
 }
 
+html,
 body {
   background: #1e1e2e;
   color: #cdd6f4;
@@ -154,3 +153,8 @@ kbd {
   background: transparent;
 }
 
+body.Latte .card:hover,
+body.Latte, .card:focus,
+body.Latte .card:focus-visible {
+  box-shadow: 0 0 20px rgba(24, 24, 37, 0.3);
+}
