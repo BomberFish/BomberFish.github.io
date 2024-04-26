@@ -479,6 +479,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       class="card"
       on:pointerup={() => {
         document.body.appendChild(<LargeProjectView project={this.detail} />);
+        (document.activeElement as HTMLElement)?.blur();
       }}
       on:keydown={(e: KeyboardEvent) => {
         if (e.key === "Enter") {
@@ -491,7 +492,6 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
             this.root.dispatchEvent(ptr);
 
             this.root.classList.remove("active");
-            (document.activeElement as HTMLElement)?.blur();
           }, 200);
         }
       }}
@@ -536,10 +536,14 @@ const Intro: Component<{}, {}> = function () {
       <h2>Contact</h2>
       <ul>
         <li>
-          <a href="https://github.com/BomberFish" target="blank">GitHub</a>
+          <a href="https://github.com/BomberFish" target="blank">
+            GitHub
+          </a>
         </li>
         <li>
-          <a href="https://twitter.com/bomberfish77" target="blank">Twitter</a>
+          <a href="https://twitter.com/bomberfish77" target="blank">
+            Twitter
+          </a>
         </li>
         <li>
           <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
@@ -728,11 +732,11 @@ const App: Component<
       "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in Q2 2024, with a full release planned for later this year.",
       [
         {
-          name: "AnuraOS (v1.x)",
+          name: "v1.x (production instance)",
           url: "https://anura.pro",
         },
         {
-          name: "AnuraOS (v2.0, preview)",
+          name: "v2.0 (preview instance, no v86)",
           url: "https://anura.bomberfish.ca",
         },
       ]
@@ -815,6 +819,7 @@ const App: Component<
         {
           name: "Discord",
           url: "https://discord.gg/cowabunga",
+          icon: "chat",
         },
       ]
     ),
@@ -920,12 +925,24 @@ const App: Component<
         <div>
           <sub>
             Website made with &lt;3 in{" "}
-            <a href="https://github.com/MercuryWorkshop/DreamlandJS" target="blank">
+            <a
+              href="https://github.com/MercuryWorkshop/DreamlandJS"
+              target="blank"
+            >
               DreamlandJS
             </a>
             <br></br>
-            <span>This website is licenced under the GNU Affero GPL Version 3. <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">Learn more.</a></span>
-            <br></br><br></br>
+            <span>
+              This website is licenced under the GNU Affero GPL Version 3.{" "}
+              <a
+                href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+                target="_blank"
+              >
+                Learn more.
+              </a>
+            </span>
+            <br></br>
+            <br></br>
             Pro tip: you can navigate this site with your keyboard! Press{" "}
             <kbd>tab</kbd> to start.
           </sub>
