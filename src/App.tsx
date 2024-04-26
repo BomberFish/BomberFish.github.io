@@ -112,7 +112,7 @@ const ThemePicker: Component<{}, {}> = function () {
 
   return (
     <button
-      on:pointerdown={() => {
+      on:click={() => {
         let index = themes.indexOf(store.theme);
         store.theme = themes[(index + 1) % themes.length];
 
@@ -350,7 +350,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
             <span id="title">{this.project.title}</span>
 
             <button
-              on:pointerdown={() => {
+              on:click={() => {
                 this.root.classList.add("transparent");
                 setTimeout(() => {
                   this.root.remove();
