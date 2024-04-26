@@ -132,7 +132,7 @@ kbd {
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--mantle);
 }
 
 *::-webkit-scrollbar-thumb {
