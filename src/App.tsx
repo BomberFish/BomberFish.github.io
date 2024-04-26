@@ -138,7 +138,7 @@ const ThemePicker: Component<{}, {}> = function () {
       on:click={() => {
         let index = themes.indexOf(store.theme);
         store.theme = themes[(index + 1) % themes.length];
-        u;
+
         updatePage();
       }}
       on:contextMenu={(e: PointerEvent) => {
