@@ -299,6 +299,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         color: var(--text);
         background: var(--surface0);
         text-decoration: none;
+        cursor: pointer
 
         font-size: 1.2rem;
 
@@ -320,12 +321,24 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         justify-content: center;
 
         border: 0.1px solid var(--overlay1);
+        
+        transition: color 0.2s;
+      }
+
+      .link:hover {
+        transition: color 0.2s;
+        color: var(--accent);
       }
 
       p.link {
         color: var(--subtext0);
-        font-style: italic;
+        //font-style: italic;
         border-style: dashed;
+        cursor: not-allowed;
+      }
+
+      p.link:hover {
+        color: var(--subtext0);
       }
 
       .links {
