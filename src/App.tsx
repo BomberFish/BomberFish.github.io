@@ -137,7 +137,8 @@ const ThemePicker: Component<{}, {}> = function () {
     <button
       on:click={() => {
         let index = themes.indexOf(store.theme);
-        store.theme = themes[(index + 1) % themes.length];u
+        store.theme = themes[(index + 1) % themes.length];
+        u;
         updatePage();
       }}
       on:contextMenu={(e: PointerEvent) => {
@@ -481,7 +482,17 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       }}
       on:keydown={(e: KeyboardEvent) => {
         if (e.key === "Enter") {
-          document.body.appendChild(<LargeProjectView project={this.detail} />);
+          this.root.classList.add("active");
+          setTimeout(() => {
+            var ptr = new PointerEvent("pointerup", {
+              bubbles: true,
+              cancelable: true,
+            });
+            this.root.dispatchEvent(ptr);
+
+            this.root.classList.remove("active");
+            (document.activeElement as HTMLElement)?.blur();
+          }, 200);
         }
       }}
       tabindex="0"
@@ -525,13 +536,13 @@ const Intro: Component<{}, {}> = function () {
       <h2>Contact</h2>
       <ul>
         <li>
-          <a href="https://github.com/BomberFish">GitHub</a>
+          <a href="https://github.com/BomberFish" target="blank">GitHub</a>
         </li>
         <li>
-          <a href="https://twitter.com/bomberfish77">Twitter</a>
+          <a href="https://twitter.com/bomberfish77" target="blank">Twitter</a>
         </li>
         <li>
-          <a href="mailto:hariz@bomberfish.ca">Email</a>
+          <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
           <ul>
             <li>I might be slow to respond, I don't check my email often.</li>
           </ul>
@@ -872,9 +883,16 @@ const App: Component<
         outline: none;
         border-color: var(--accent)!important;
         border-style: solid!important;
-        transform: scale(1.02);
+        transform: scale(1.05);
         transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
+      }
+
+      &:active,
+      &.active,
+      &:active:focus {
+        transform: scale(0.95);
+        transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
       }
     }
 
@@ -899,17 +917,19 @@ const App: Component<
             projects.map((project) => <Card detail={project} />)
           )}
         </div>
-        <span>
+        <div>
           <sub>
             Website made with &lt;3 in{" "}
-            <a href="https://github.com/MercuryWorkshop/DreamlandJS">
+            <a href="https://github.com/MercuryWorkshop/DreamlandJS" target="blank">
               DreamlandJS
             </a>
             <br></br>
+            <span>This website is licenced under the GNU Affero GPL Version 3. <a href="https://www.gnu.org/licenses/agpl-3.0.en.html" target="_blank">Learn more.</a></span>
+            <br></br><br></br>
             Pro tip: you can navigate this site with your keyboard! Press{" "}
             <kbd>tab</kbd> to start.
           </sub>
-        </span>
+        </div>
       </div>
       <ThemePicker />
     </main>
