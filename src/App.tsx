@@ -186,6 +186,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         transform: translateX(-50%) translateY(-50%);
         z-index: 100;
         border: 0.25px solid var(--surface0);
+        overflow: hidden;
       }
 
       img {
@@ -201,34 +202,56 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       #title {
-        align-self: flex-start;
         font-size: 2.25rem;
-        display: inline;
-        margin-top: 1rem;
+        margin-block: 0;
+        padding-left: 1rem;
         font-weight: 600;
-
-        position: absolute;
-        top: 2rem;
-        left: 2rem;
       }
 
       button {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        margin-top: 1rem;
-
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
       }
 
       article {
-        margin-top: 9rem;
+        overflow: scroll;
+        display: flex;
+        align-items: center;
+        height: 60vh;
+      }
+
+      .article-inner {
+        overflow: scroll;
+        position: relative;
         width: 100%;
+        height: calc(100% - 6rem);
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        overflow: scroll;
+        align-self: flex-end;
+      }
+
+      .head {
         display: flex;
         flex-direction: row;
         align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 6rem;
+        position: fixed;
+        top: -1px;
+        left: 0;
+        right: 0;
+        background: var(--mantle);
+        border-radius: 1.25rem 1.25rem 0 0;
+        margin: 0;
+        z-index: 1000;
+      }
+
+      .head > * {
+        margin: 2rem 2rem;
       }
 
       .desc {
@@ -323,7 +346,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
           }}
         ></div>
         <div class="inner">
-          <article>
+          <div class="head">
             <span id="title">{this.project.title}</span>
 
             <button
@@ -337,36 +360,40 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
               <kbd>esc</kbd>
               <span class="material-symbols-outlined">close</span>
             </button>
-            <img
-              src={this.project.img}
-              on:pointerdown={() => {
-                window.open(this.project.img, "_blank");
-              }}
-            />
-            <div class="desc">
-              <p>{this.project.largeDesc}</p>
+          </div>
+          <article>
+            <div class="article-inner">
+              <img
+                src={this.project.img}
+                on:pointerdown={() => {
+                  window.open(this.project.img, "_blank");
+                }}
+              />
+              <div class="desc">
+                <p>{this.project.largeDesc}</p>
 
-              <div class="links">
-                {$if(
-                  this.project.links?.length === 0,
-                  <p class="link">
-                    <span class="link-inner">
-                      <span class="material-symbols-outlined">link_off</span>
-                      No links available
-                    </span>
-                  </p>
-                )}
-
-                {this.project.links?.map((link) => (
-                  <a href={link.url} target="_blank" class="link">
-                    <span class="link-inner">
-                      <span class="material-symbols-outlined">
-                        {link.icon ?? "globe"}
+                <div class="links">
+                  {$if(
+                    this.project.links?.length === 0,
+                    <p class="link">
+                      <span class="link-inner">
+                        <span class="material-symbols-outlined">link_off</span>
+                        No links available
                       </span>
-                      {link.name}
-                    </span>
-                  </a>
-                ))}
+                    </p>
+                  )}
+
+                  {this.project.links?.map((link) => (
+                    <a href={link.url} target="_blank" class="link">
+                      <span class="link-inner">
+                        <span class="material-symbols-outlined">
+                          {link.icon ?? "globe"}
+                        </span>
+                        {link.name}
+                      </span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
           </article>

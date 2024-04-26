@@ -15,6 +15,6 @@
     "vite-plugin-minify": "^1.5.2"
   },
   "dependencies": {
-    "dreamland": "^0.0.13"
+    "dreamland": "0.0.14-patch"
   }
 }
