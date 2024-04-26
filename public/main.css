@@ -154,7 +154,7 @@ kbd {
 }
 
 body.Latte .card:hover,
-body.Latte, .card:focus,
+body.Latte .card:focus,
 body.Latte .card:focus-visible {
   box-shadow: 0 0 20px rgba(24, 24, 37, 0.3);
 }
