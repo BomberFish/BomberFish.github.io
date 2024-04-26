@@ -19,20 +19,20 @@ let store = $store(
 
 function updatePage() {
   var root = document.documentElement;
-        document.head
-          .querySelector("meta[name=theme-color]")!
-          .setAttribute("content", store.theme.mantle);
-        root.style.setProperty("--text", store.theme.text);
-        root.style.setProperty("--overlay1", store.theme.overlay1);
-        root.style.setProperty("--surface0", store.theme.surface0);
-        root.style.setProperty("--subtext0", store.theme.subtext0);
-        root.style.setProperty("--base", store.theme.base);
-        root.style.setProperty("--mantle", store.theme.mantle);
-        root.style.setProperty("--accent", store.theme.accent);
-        document.body.classList.forEach(el => {
-          document.body.classList.remove(el)
-        });
-        document.body.classList.add(store.theme.shortName)
+  document.head
+    .querySelector("meta[name=theme-color]")!
+    .setAttribute("content", store.theme.mantle);
+  root.style.setProperty("--text", store.theme.text);
+  root.style.setProperty("--overlay1", store.theme.overlay1);
+  root.style.setProperty("--surface0", store.theme.surface0);
+  root.style.setProperty("--subtext0", store.theme.subtext0);
+  root.style.setProperty("--base", store.theme.base);
+  root.style.setProperty("--mantle", store.theme.mantle);
+  root.style.setProperty("--accent", store.theme.accent);
+  document.body.classList.forEach((el) => {
+    document.body.classList.remove(el);
+  });
+  document.body.classList.add(store.theme.shortName);
 }
 
 class ProjectCardDetails {
@@ -137,16 +137,14 @@ const ThemePicker: Component<{}, {}> = function () {
     <button
       on:click={() => {
         let index = themes.indexOf(store.theme);
-        store.theme = themes[(index + 1) % themes.length];
-
-        updatePage()
+        store.theme = themes[(index + 1) % themes.length];u
+        updatePage();
       }}
       on:contextMenu={(e: PointerEvent) => {
         e.preventDefault();
         let index = themes.indexOf(store.theme);
         store.theme = themes[(index - 1) % themes.length];
-
-        updatePage()
+        updatePage();
       }}
     >
       <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
@@ -508,7 +506,8 @@ const Intro: Component<{}, {}> = function () {
     <article>
       <h1>Hi 👋</h1>
       <p>
-        I'm Hariz, a high school student from Canada. I'm a wannabe software engineer and I sometimes do things.
+        I'm Hariz, a high school student from Canada. I'm a wannabe software
+        engineer and I sometimes do things.
       </p>
       <h2>Some stuff about me</h2>
       <ul>
@@ -533,12 +532,16 @@ const Intro: Component<{}, {}> = function () {
         </li>
         <li>
           <a href="mailto:hariz@bomberfish.ca">Email</a>
-          <ul><li>I might be slow to respond, I don't check my email often.</li></ul>
+          <ul>
+            <li>I might be slow to respond, I don't check my email often.</li>
+          </ul>
         </li>
         <li>
-            Discord
+          Discord
           <ul>
-            <li>@bomberfish <strong>(MAIN)</strong></li>
+            <li>
+              @bomberfish <strong>(MAIN)</strong>
+            </li>
             <li>@hanz_was_here</li>
             <li>@pageprotectionlayer</li>
             <li>@securepagetablemonitor</li>
@@ -546,7 +549,9 @@ const Intro: Component<{}, {}> = function () {
         </li>
         <li>
           <span>Signal: @bomberfish.77</span>
-          <ul><li>Please only use this if all else fails.</li></ul>
+          <ul>
+            <li>Please only use this if all else fails.</li>
+          </ul>
         </li>
       </ul>
 
@@ -679,11 +684,7 @@ const Nav: Component<
             this.rotation -= 1440;
           }}
         />
-        <h2
-          style="display: inline"
-        >
-          BomberFish
-        </h2>
+        <h2 style="display: inline">BomberFish</h2>
       </span>
       <span id="nav">
         <a href="https://blog.bomberfish.ca" target="_blank">
@@ -916,7 +917,7 @@ const App: Component<
 };
 
 window.addEventListener("load", () => {
-  updatePage()
+  updatePage();
   document.getElementById("app")!.replaceWith(<App />);
   document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
     if (e.key === "Escape") {
