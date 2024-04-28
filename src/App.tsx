@@ -531,6 +531,7 @@ const Intro: Component<{}, {}> = function () {
           <li>Bash</li>
           <li>Python</li>
         </ul>
+        <li>I am a licenced member of <a href="https://mercurywork.shop" target="blank">Mercury Workshop</a></li>
         <li>I use Arch btw</li>
       </ul>
       <h2>Contact</h2>
