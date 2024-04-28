@@ -531,18 +531,33 @@ const Intro: Component<{}, {}> = function () {
           <li>Bash</li>
           <li>Python</li>
         </ul>
-        <li>I am a licenced member of <a href="https://mercurywork.shop" target="blank">Mercury Workshop</a></li>
+        <li>
+          I am a licenced member of{" "}
+          <a href="https://mercurywork.shop" target="blank">
+            Mercury Workshop
+          </a>
+        </li>
         <li>I use Arch btw</li>
       </ul>
       <h2>Contact</h2>
       <ul>
         <li>
-          <a href="https://github.com/BomberFish" target="blank">
+          <a href="https://github.com/BomberFish" target="blank" rel="me">
             GitHub
           </a>
         </li>
         <li>
-          <a href="https://twitter.com/bomberfish77" target="blank">
+          <a href="https://fosstodon.org/@BomberFish" target="blank" rel="me">
+            Fediverse
+          </a>
+        </li>
+        <li>
+          <a href="https://reddit.com/u/DALEK_77" target="blank" rel="me">
+            Reddit
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
             Twitter
           </a>
         </li>
