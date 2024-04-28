@@ -112,7 +112,7 @@ const ThemePicker: Component<{}, {}> = function () {
   const themes = [mocha, macchiato, frappe, latte];
 
   this.css = css`
-    background: transparent;
+    background: var(--base);
     border-top-left-radius: 1rem;
     border: none;
     color: var(--text);
