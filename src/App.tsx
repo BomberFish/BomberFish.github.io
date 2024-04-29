@@ -542,11 +542,6 @@ const Intro: Component<{}, {}> = function () {
       <h2>Contact</h2>
       <ul>
         <li>
-          <a href="https://github.com/BomberFish" target="blank" rel="me">
-            GitHub
-          </a>
-        </li>
-        <li>
           <a href="https://fosstodon.org/@BomberFish" target="blank" rel="me">
             Fediverse
           </a>
@@ -562,6 +557,11 @@ const Intro: Component<{}, {}> = function () {
           </a>
         </li>
         <li>
+          <a href="https://github.com/BomberFish" target="blank" rel="me">
+            GitHub
+          </a>
+        </li>
+        <li>
           <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
           <ul>
             <li>I might be slow to respond, I don't check my email often.</li>
@@ -571,7 +571,7 @@ const Intro: Component<{}, {}> = function () {
           Discord
           <ul>
             <li>
-              @bomberfish <strong>(MAIN)</strong>
+              @bomberfish <strong>(Main account)</strong>
             </li>
             <li>@hanz_was_here</li>
             <li>@pageprotectionlayer</li>
@@ -599,6 +599,33 @@ const Intro: Component<{}, {}> = function () {
         </li>
       </ul>
     </article>
+  );
+};
+
+const Footer: Component<{}, {}> = function () {
+  return (
+    <footer>
+      <sub>
+        Website made with &lt;3 in{" "}
+        <a href="https://github.com/MercuryWorkshop/DreamlandJS" target="blank">
+          DreamlandJS
+        </a>
+        <br></br>
+        <span>
+          This website is licenced under the GNU Affero GPL Version 3.{" "}
+          <a
+            href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+            target="_blank"
+          >
+            Learn more.
+          </a>
+        </span>
+        <br></br>
+        <br></br>
+        Pro tip: you can navigate this site with your keyboard! Press{" "}
+        <kbd>tab</kbd> to start.
+      </sub>
+    </footer>
   );
 };
 
@@ -690,6 +717,8 @@ const Nav: Component<
       padding-right: 1.75em;
 
       a {
+        transform: scale(1);
+        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         color: var(--accent);
         text-decoration: none;
         font-size: 1.1rem;
@@ -699,6 +728,11 @@ const Nav: Component<
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
+
+        &:hover {
+          transform: scale(1.025);
+          transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        }
       }
     }
   `;
@@ -865,13 +899,14 @@ const App: Component<
       font-size: 1.5rem;
     }
 
+    a:visited {
+      color: color-mix(in srgb, var(--accent) 70%, var(--base) 30%);
+    }
+
     a,
     a:visited:hover {
       color: var(--accent);
-    }
-
-    a:visited {
-      color: rgb(163, 132, 199);
+      transition: color 0.1s;
     }
 
     #projects-container {
@@ -938,31 +973,7 @@ const App: Component<
             projects.map((project) => <Card detail={project} />)
           )}
         </div>
-        <div>
-          <sub>
-            Website made with &lt;3 in{" "}
-            <a
-              href="https://github.com/MercuryWorkshop/DreamlandJS"
-              target="blank"
-            >
-              DreamlandJS
-            </a>
-            <br></br>
-            <span>
-              This website is licenced under the GNU Affero GPL Version 3.{" "}
-              <a
-                href="https://www.gnu.org/licenses/agpl-3.0.en.html"
-                target="_blank"
-              >
-                Learn more.
-              </a>
-            </span>
-            <br></br>
-            <br></br>
-            Pro tip: you can navigate this site with your keyboard! Press{" "}
-            <kbd>tab</kbd> to start.
-          </sub>
-        </div>
+        <Footer />
       </div>
       <ThemePicker />
     </main>
