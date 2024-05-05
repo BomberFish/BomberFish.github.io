@@ -171,6 +171,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       z-index: 100;
       width: 100vw;
       height: 100vh;
+      transform: translateZ(100px);
 
       transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
 
@@ -426,6 +427,8 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
     padding-bottom: 0.2rem;
     margin: 1.5rem;
 
+    transform: translateZ(50px);
+
     .img-container {
       width: 320px;
       height: auto;
@@ -603,6 +606,11 @@ const Intro: Component<{}, {}> = function () {
 };
 
 const Footer: Component<{}, {}> = function () {
+  this.css = css`
+  div > kbd {
+    margin-right: 0.65rem;
+  }
+  `
   return (
     <footer>
       <sub>
@@ -621,9 +629,22 @@ const Footer: Component<{}, {}> = function () {
           </a>
         </span>
         <br></br>
-        <br></br>
         Pro tip: you can navigate this site with your keyboard! Press{" "}
         <kbd>tab</kbd> to start.
+        <br></br>
+        <br></br>
+        <div>
+          <kbd>↑</kbd>
+          <kbd>↑</kbd>
+          <kbd>↓</kbd>
+          <kbd>↓</kbd>
+          <kbd>←</kbd>
+          <kbd>→</kbd>
+          <kbd>←</kbd>
+          <kbd>→</kbd>
+          <kbd>b</kbd>
+          <kbd>a</kbd>
+        </div>
       </sub>
     </footer>
   );
@@ -882,6 +903,7 @@ const App: Component<
     font-family: var(--font-body)
     margin: 0;
     padding: 0;
+    // transition: transform 1s cubic-bezier(0.3, 0, 0.6, 1);
 
     h1,
     h2,
@@ -983,7 +1005,23 @@ const App: Component<
 window.addEventListener("load", () => {
   updatePage();
   document.getElementById("app")!.replaceWith(<App />);
+
+  var konamiCurrent = 0;
+  var konamiCode = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "b",
+    "a",
+  ];
+
   document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
+    console.log(e.key);
     if (e.key === "Escape") {
       e.preventDefault();
       document.querySelectorAll(".popup").forEach((popup) => {
@@ -992,6 +1030,22 @@ window.addEventListener("load", () => {
           popup.remove();
         }, 200);
       });
+    }
+
+    if (e.key === konamiCode[konamiCurrent]) {
+      console.debug("match");
+      e.preventDefault();
+      konamiCurrent++;
+
+      if (konamiCurrent === konamiCode.length) {
+        konamiCurrent = 0;
+        document.querySelector("main")?.classList.add("secretEffect");
+        setTimeout(() => {
+          document.querySelector("main")?.classList.remove("secretEffect");
+        }, 3000);
+      }
+    } else {
+      konamiCurrent = 0;
     }
   });
 });
