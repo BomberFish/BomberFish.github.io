@@ -1,5 +1,7 @@
 import "dreamland";
 
+// MARK: THEMING
+
 let store = $store(
   {
     theme: {
@@ -33,31 +35,6 @@ function updatePage() {
     document.body.classList.remove(el);
   });
   document.body.classList.add(store.theme.shortName);
-}
-
-class ProjectCardDetails {
-  img: string;
-  title: string;
-  blurb: string;
-  year: number;
-  largeDesc: string;
-  links?: { name: string; url: string; icon?: string }[];
-
-  constructor(
-    imgURL: string,
-    title: string,
-    blurb: string,
-    year: number,
-    largeDesc: string,
-    links?: { name: string; url: string; icon?: string }[]
-  ) {
-    this.img = imgURL;
-    this.title = title;
-    this.blurb = blurb;
-    this.year = year;
-    this.largeDesc = largeDesc;
-    this.links = links;
-  }
 }
 
 const ThemePicker: Component<{}, {}> = function () {
@@ -111,7 +88,7 @@ const ThemePicker: Component<{}, {}> = function () {
 
   const themes = [mocha, macchiato, frappe, latte];
 
-  this.css = css`
+  this.css = `
     background: var(--base);
     border-top-left-radius: 1rem;
     border: none;
@@ -154,6 +131,232 @@ const ThemePicker: Component<{}, {}> = function () {
   );
 };
 
+// MARK: PROJECTS
+class ProjectCardDetails {
+  img: string;
+  title: string;
+  blurb: string;
+  year: number;
+  largeDesc: string;
+  links?: { name: string; url: string; icon?: string }[];
+
+  constructor(
+    imgURL: string,
+    title: string,
+    blurb: string,
+    year: number,
+    largeDesc: string,
+    links?: { name: string; url: string; icon?: string }[]
+  ) {
+    this.img = imgURL;
+    this.title = title;
+    this.blurb = blurb;
+    this.year = year;
+    this.largeDesc = largeDesc;
+    this.links = links;
+  }
+}
+
+const projects = [
+  new ProjectCardDetails(
+    "/proj-thumbnails/anura.webp",
+    "AnuraOS",
+    "Contributor to webOS since v2.x",
+    2024,
+    "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in Q2 2024, with a full release planned for later this year.",
+    [
+      {
+        name: "v1.x (production instance)",
+        url: "https://anura.pro",
+      },
+      {
+        name: "v2.0 (preview instance, no v86)",
+        url: "https://anura.bomberfish.ca",
+      },
+    ]
+  ),
+  new ProjectCardDetails(
+    "/proj-thumbnails/mandelapro.webp",
+    "Mandela Pro",
+    "Cancelled customization app",
+    2024,
+    "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0.",
+    []
+  ),
+  new ProjectCardDetails(
+    "/proj-thumbnails/dssos.webp",
+    "dssOS",
+    "Live dev environment for ChromeOS devices",
+    2023,
+    "dssOS was one of my first projects involving ChromeOS, and was a live development environment for ChromeOS devices. It used a modified diagnostic tool to boot into a Linux chroot, which you could use for programming. dssOS was created in November 2023.",
+    [
+      {
+        name: "Website",
+        url: "https://dssos.nineeleven.tech",
+      },
+    ]
+  ),
+  new ProjectCardDetails(
+    "/proj-thumbnails/picasso.webp",
+    "Picasso",
+    "iOS customization app with 100k+ users",
+    2023,
+    "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. At its peak, it had over 100,000 active users. I worked with sourcelocation to develop it, and it was first released in August 2023.",
+    [
+      {
+        name: "Source Release",
+        url: "https://github.com/sourcelocation/Picasso-v3",
+        icon: "code",
+      },
+      {
+        name: "Discord",
+        url: "https://discord.gg/b6bwaDK2VZ",
+        icon: "chat",
+      },
+    ]
+  ),
+  new ProjectCardDetails(
+    "/proj-thumbnails/appcommander.webp",
+    "AppCommander",
+    "App Manager for iOS 15.0-16.1.2",
+    2023,
+    "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023.",
+    [
+      {
+        name: "Source Code (v1)",
+        url: "https://github.com/BomberFish/AppCommander-legacy",
+        icon: "code",
+      },
+      {
+        name: "Source Code (v2)",
+        url: "https://github.com/BomberFish/AppCommander",
+        icon: "code",
+      },
+    ]
+  ),
+  new ProjectCardDetails(
+    "/proj-thumbnails/cowabunga.webp",
+    "Cowabunga MDC",
+    "Major contributor to customization app",
+    2023,
+    "Cowabunga was a major project I contributed to in 2023. It was a customization app for iOS 14.0-16.1.2, using the MacDirtyCow vunerability to allow for deep customization. My contributions included adding tools such as an enterprise certificate blacklist remover, and a tool to remove the three-app limit on developer-signed apps.",
+    [
+      {
+        name: "Source Code",
+        url: "https://github.com/leminlimez/Cowabunga",
+        icon: "code",
+      },
+      {
+        name: "Website",
+        url: "https://cowabun.ga",
+      },
+      {
+        name: "Discord",
+        url: "https://discord.gg/cowabunga",
+        icon: "chat",
+      },
+    ]
+  ),
+];
+
+const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
+  this.css = `
+    background: var(--surface0);
+    width: 320px;
+    border-radius: 0.9rem;
+    padding-bottom: 0.2rem;
+    margin: 1.5rem;
+
+    transform: translateZ(50px);
+
+    .img-container {
+      width: 320px;
+      height: auto;
+      aspect-ratio: 512 / 277;
+    }
+
+    img {
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      border-radius: 0.9rem;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-family: var(--font-display);
+    }
+
+    .title > span {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+    }
+
+    .detail {
+      margin: 1rem;
+      margin-top: 0.1rem;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    kbd {
+      position: absolute;
+      right: 1rem;
+      top: 75%;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+  `;
+
+  return (
+    <div
+      class="card"
+      on:pointerup={() => {
+        document.body.appendChild(<LargeProjectView project={this.detail} />);
+        (document.activeElement as HTMLElement)?.blur();
+      }}
+      on:keydown={(e: KeyboardEvent) => {
+        if (e.key === "Enter") {
+          this.root.classList.add("active");
+          setTimeout(() => {
+            var ptr = new PointerEvent("pointerup", {
+              bubbles: true,
+              cancelable: true,
+            });
+            this.root.dispatchEvent(ptr);
+
+            this.root.classList.remove("active");
+          }, 200);
+        }
+      }}
+      tabindex="0"
+    >
+      <div class="img-container">
+        <img src={this.detail.img} alt={this.detail.blurb} />
+      </div>
+      <div class="detail">
+        <div class="title">
+          <span>{this.detail.title}</span>
+          <sub> • ({this.detail.year})</sub>
+        </div>
+        <p>{this.detail.blurb}</p>
+        <kbd>↩</kbd>
+      </div>
+    </div>
+  );
+};
+
+// MARK: LARGE PROJECT
+
 const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
   function () {
     this.mount = () => {
@@ -162,7 +365,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }, 1);
     };
 
-    this.css = css`
+    this.css = `
       position: fixed;
       top: 0;
       left: 0;
@@ -419,103 +622,11 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
     );
   };
 
-const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
-  this.css = css`
-    background: var(--surface0);
-    width: 320px;
-    border-radius: 0.9rem;
-    padding-bottom: 0.2rem;
-    margin: 1.5rem;
-
-    transform: translateZ(50px);
-
-    .img-container {
-      width: 320px;
-      height: auto;
-      aspect-ratio: 512 / 277;
-    }
-
-    img {
-      user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      border-radius: 0.9rem;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .title {
-      display: flex;
-      align-items: center;
-      margin-top: 0.5rem;
-      font-family: var(--font-display);
-    }
-
-    .title > span {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-right: 0.5rem;
-    }
-
-    .detail {
-      margin: 1rem;
-      margin-top: 0.1rem;
-    }
-
-    p {
-      margin-top: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    kbd {
-      position: absolute;
-      right: 1rem;
-      top: 75%;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-  `;
-
-  return (
-    <div
-      class="card"
-      on:pointerup={() => {
-        document.body.appendChild(<LargeProjectView project={this.detail} />);
-        (document.activeElement as HTMLElement)?.blur();
-      }}
-      on:keydown={(e: KeyboardEvent) => {
-        if (e.key === "Enter") {
-          this.root.classList.add("active");
-          setTimeout(() => {
-            var ptr = new PointerEvent("pointerup", {
-              bubbles: true,
-              cancelable: true,
-            });
-            this.root.dispatchEvent(ptr);
-
-            this.root.classList.remove("active");
-          }, 200);
-        }
-      }}
-      tabindex="0"
-    >
-      <div class="img-container">
-        <img src={this.detail.img} alt={this.detail.blurb} />
-      </div>
-      <div class="detail">
-        <div class="title">
-          <span>{this.detail.title}</span>
-          <sub> • ({this.detail.year})</sub>
-        </div>
-        <p>{this.detail.blurb}</p>
-        <kbd>↩</kbd>
-      </div>
-    </div>
-  );
-};
-
+// MARK: MAIN BODY
 const Intro: Component<{}, {}> = function () {
+  this.css = `
+    width: 100%;
+  `;
   return (
     <article>
       <h1>Hi 👋</h1>
@@ -606,11 +717,11 @@ const Intro: Component<{}, {}> = function () {
 };
 
 const Footer: Component<{}, {}> = function () {
-  this.css = css`
-  div > kbd {
-    margin-right: 0.65rem;
-  }
-  `
+  this.css = `
+    div > kbd {
+      margin-right: 0.65rem;
+    }
+  `;
   return (
     <footer>
       <sub>
@@ -657,7 +768,7 @@ const Nav: Component<
   this.rotation = 0;
   this.name = "BomberFish";
   this.nameState = false;
-  this.css = css`
+  this.css = `
     background: var(--mantle);
     position: fixed;
     top: 0;
@@ -782,122 +893,16 @@ const Nav: Component<
   );
 };
 
-// typescript syntax for defining components
 const App: Component<
+  {},
   {
-    // component properties. if you had a component that took a property like `<Button text="..." /> you would use a type like the one in the following line
-    // text: string
-  },
-  {
-    // types for internal store
     rotation: number;
     projects: ProjectCardDetails[];
   }
 > = function () {
-  this.projects = [
-    new ProjectCardDetails(
-      "/proj-thumbnails/anura.webp",
-      "AnuraOS",
-      "Contributor to webOS since v2.x",
-      2024,
-      "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in Q2 2024, with a full release planned for later this year.",
-      [
-        {
-          name: "v1.x (production instance)",
-          url: "https://anura.pro",
-        },
-        {
-          name: "v2.0 (preview instance, no v86)",
-          url: "https://anura.bomberfish.ca",
-        },
-      ]
-    ),
-    new ProjectCardDetails(
-      "/proj-thumbnails/mandelapro.webp",
-      "Mandela Pro",
-      "Cancelled customization app",
-      2024,
-      "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0.",
-      []
-    ),
-    new ProjectCardDetails(
-      "/proj-thumbnails/dssos.webp",
-      "dssOS",
-      "Live dev environment for ChromeOS devices",
-      2023,
-      "dssOS was one of my first projects involving ChromeOS, and was a live development environment for ChromeOS devices. It used a modified diagnostic tool to boot into a Linux chroot, which you could use for programming. dssOS was created in November 2023.",
-      [
-        {
-          name: "Website",
-          url: "https://dssos.nineeleven.tech",
-        },
-      ]
-    ),
-    new ProjectCardDetails(
-      "/proj-thumbnails/picasso.webp",
-      "Picasso",
-      "iOS customization app with 100k+ users",
-      2023,
-      "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. At its peak, it had over 100,000 active users. I worked with sourcelocation to develop it, and it was first released in August 2023.",
-      [
-        {
-          name: "Source Release",
-          url: "https://github.com/sourcelocation/Picasso-v3",
-          icon: "code",
-        },
-        {
-          name: "Discord",
-          url: "https://discord.gg/b6bwaDK2VZ",
-          icon: "chat",
-        },
-      ]
-    ),
-    new ProjectCardDetails(
-      "/proj-thumbnails/appcommander.webp",
-      "AppCommander",
-      "App Manager for iOS 15.0-16.1.2",
-      2023,
-      "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023.",
-      [
-        {
-          name: "Source Code (v1)",
-          url: "https://github.com/BomberFish/AppCommander-legacy",
-          icon: "code",
-        },
-        {
-          name: "Source Code (v2)",
-          url: "https://github.com/BomberFish/AppCommander",
-          icon: "code",
-        },
-      ]
-    ),
-    new ProjectCardDetails(
-      "/proj-thumbnails/cowabunga.webp",
-      "Cowabunga MDC",
-      "Major contributor to customization app",
-      2023,
-      "Cowabunga was a major project I contributed to in 2023. It was a customization app for iOS 14.0-16.1.2, using the MacDirtyCow vunerability to allow for deep customization. My contributions included adding tools such as an enterprise certificate blacklist remover, and a tool to remove the three-app limit on developer-signed apps.",
-      [
-        {
-          name: "Source Code",
-          url: "https://github.com/leminlimez/Cowabunga",
-          icon: "code",
-        },
-        {
-          name: "Website",
-          url: "https://cowabun.ga",
-        },
-        {
-          name: "Discord",
-          url: "https://discord.gg/cowabunga",
-          icon: "chat",
-        },
-      ]
-    ),
-  ];
-
+  this.projects = projects;
   this.rotation = 0;
-  this.css = css`
+  this.css = `
     background: var(--base);
     color: var(--text);
     font-family: var(--font-body)
@@ -1002,26 +1007,359 @@ const App: Component<
   );
 };
 
+function convertRemToPixels(rem: number) {    
+  return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
+
+// MARK: COOL 3D SHIT
+// thanks cooleletronis (writabl)
+const Screen: Component<
+  {
+    x?: number;
+    y?: number;
+    z?: number;
+    rx?: number;
+    ry?: number;
+    rz?: number;
+    width?: number;
+    height?: number;
+  },
+  {
+    children: Element;
+  }
+> = function () {
+  this.css = `
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  
+    width: ${this.width || 100}px;
+    height: ${this.height || 100}px;
+  
+    transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
+  `;
+
+  this.x ||= 0;
+  this.y ||= 0;
+  this.z ||= 0;
+  this.rx ||= 0;
+  this.ry ||= 0;
+  this.rz ||= 0;
+
+  this.mount = () => {
+    // works around a bug i will fix later
+    handle(
+      use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${
+        this.z || 0
+      }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${
+        this.rz || 0
+      }deg`,
+      (v) => ((this.root as HTMLElement).style.cssText = v)
+    );
+  };
+
+  return <div>{this.children}</div>;
+};
+
+const Ground: Component<{}, {}> = function () {
+  this.css = `
+  display: grid;
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: repeat(7, 1fr);
+
+  .tile {
+    background: var(--base);
+    border: 10px solid var(--mantle);
+    width: 150px;
+    height: 150px;
+  }
+  `
+
+  return (
+    <div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+    </div>
+  )
+};
+
+const ThreeDeeApp: Component<
+  {},
+  {
+    projects: ProjectCardDetails[];
+    rotation: number;
+    x: number;
+    y: number;
+    z: number;
+    r: number;
+    speed: number;
+  }
+> = function () {
+  this.projects = projects;
+  this.rotation = 0;
+  this.speed = 1.5;
+
+  this.css = `
+    width: 100%;
+    height: 100%;
+    perspective: var(--perspective);
+  
+    camera {
+      position: absolute;
+      inset: 0;
+      pointer-events: all;
+      perspective: var(--perspective);
+      backface-visibility: hidden;
+      contain: layout style size;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+  
+    stage {
+      position: fixed;
+      top: 50%!important;
+      left: 50%!important;
+      inset: 0;
+      backface-visibility: shown;
+      transform-style: preserve-3d;
+    }
+
+    debug {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      position: fixed;
+      top: 0.5rem;
+      left: 0.8rem;
+      width: 200px;
+
+      a {
+        display: flex;
+        text-decoration: none;
+        font-size: 100%!important;
+      }
+    }
+    input {
+      accent-color: var(--accent);
+    }
+
+    }
+  `;
+
+  this.x = window.innerWidth / -3;
+  this.y = window.innerHeight / -16;
+  this.z = -200;
+  this.r = 10;
+
+  this.mount = () => {
+    function easeOutCirc(x: number) {
+      return Math.sqrt(1 - Math.pow(x - 1, 2));
+    }
+
+    console.debug("mount");
+    const c = Math.abs(-1000 - this.z);
+    console.debug(c);
+    for (let i = 0; i < c; i++) {
+      setTimeout(() => {
+        console.debug("tick");
+        this.z -= 1;
+      }, easeOutCirc(i / c) * 500);
+    }
+
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        console.debug("tick");
+        this.r -= 1;
+      }, easeOutCirc(i / 10) * 500);
+    }
+  };
+
+  setInterval(() => {
+    if (keydown("ArrowRight")) {
+      this.r += 0.5;
+    }
+    if (keydown("ArrowLeft")) {
+      this.r -= 0.5;
+    }
+
+    if (keydown("ArrowUp")) {
+      this.y += this.speed;
+    }
+    if (keydown("ArrowDown")) {
+      this.y -= this.speed;
+    }
+
+    if (keydown("w")) {
+      move(0, this.speed);
+    }
+
+    if (keydown("s")) {
+      move(0, -this.speed);
+    }
+
+    if (keydown("a")) {
+      move(-this.speed, 0);
+    }
+
+    if (keydown("d")) {
+      move(this.speed, 0);
+    }
+  });
+
+  const move = (x: number, z: number) => {
+    // a bit more complex than neccesary because i'm bad at math
+    const vel = -Math.hypot(x, z);
+    const r = Math.atan2(z, x);
+    const ang = this.r * -(Math.PI / 180) + r + Math.PI / 2;
+
+    this.z += Math.cos(ang) * vel;
+    this.x += Math.sin(ang) * vel;
+  };
+
+  return (
+    <div>
+      <debug>
+        <a href="./" style="color: var(--accent)"><span class="material-symbols-outlined">arrow_back</span> Back to sanity</a>
+        <br></br>
+        <input type="range" min="0" max="100" id="speed" value={use(this.speed, v => v * 10)} on:change={() => {
+          this.speed = +(document.getElementById("speed") as HTMLInputElement).value / 10;
+        }} />
+        <label for="speed">Speed</label>
+        <div>x: {use(this.x, (v) => v.toFixed(2))}</div>
+        <div>y: {use(this.y, (v) => v.toFixed(2))}</div>
+        <div>z: {use(this.z, (v) => v.toFixed(2))}</div>
+        <div>r: {use(this.r, (v) => v.toFixed(2))}</div>
+        <br></br>
+        <div>Use WASD to move</div>
+        <div>Use L/R Arrow Keys to rotate camera</div>
+        <div>Use U/D Arrow Keys to move up/down</div>
+      </debug>
+      <camera
+        style={{
+          transform: use`translate3d(0px,0px, var(--perspective)) rotateX(0deg) rotateY(${this.r}deg) rotateZ(0deg) perspective(var(--perspective))`,
+        }}
+      >
+        <stage
+          style={{
+            transform: use`translate3d(${this.x}px, ${this.y}px, ${this.z}px)`,
+          }}
+        >
+          <Screen
+            ry={0}
+            y={-6}
+            width={window.innerWidth * 0.4}
+            height={window.innerHeight * 0.5}
+          >
+            <Intro />
+          </Screen>
+          <Screen ry={10} x={-12} y={-12} z={-15} width={400} height={320 * 4}>
+            <article>
+              <div id="projects-container">
+                {use(this.projects, (projects) =>
+                  projects.map((project) => <Card detail={project} />)
+                )}
+              </div>
+            </article>
+          </Screen>
+          <Screen ry={-5} x={-10} y={-11.5} z={-7} width={window.innerWidth} height={convertRemToPixels(3.5)} >
+            <Nav />
+          </Screen>
+          <Screen rx={-90} rz={2} width={1050} height={1350} x={-4} y={-5} z={-3}>
+            <Ground />  
+          </Screen>
+        </stage>
+      </camera>
+    </div>
+  );
+};
+
+let keys = new Map();
+document.addEventListener("keydown", (e) => {
+  keys.set(e.key, true);
+});
+document.addEventListener("keyup", (e) => {
+  keys.delete(e.key);
+});
+function keydown(key: string) {
+  return keys.has(key);
+}
+
+// MARK: WINDOW LOAD
 window.addEventListener("load", () => {
-  updatePage();
-  document.getElementById("app")!.replaceWith(<App />);
-
-  var konamiCurrent = 0;
-  var konamiCode = [
-    "ArrowUp",
-    "ArrowUp",
-    "ArrowDown",
-    "ArrowDown",
-    "ArrowLeft",
-    "ArrowRight",
-    "ArrowLeft",
-    "ArrowRight",
-    "b",
-    "a",
-  ];
-
-  document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
-    console.log(e.key);
+  document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       e.preventDefault();
       document.querySelectorAll(".popup").forEach((popup) => {
@@ -1031,21 +1369,46 @@ window.addEventListener("load", () => {
         }, 200);
       });
     }
-
-    if (e.key === konamiCode[konamiCurrent]) {
-      console.debug("match");
-      e.preventDefault();
-      konamiCurrent++;
-
-      if (konamiCurrent === konamiCode.length) {
-        konamiCurrent = 0;
-        document.querySelector("main")?.classList.add("secretEffect");
-        setTimeout(() => {
-          document.querySelector("main")?.classList.remove("secretEffect");
-        }, 3000);
-      }
-    } else {
-      konamiCurrent = 0;
-    }
   });
+
+  let params = new URL(window.location.href).searchParams;
+  console.debug(params);
+  if (params.has("higherdimension")) {
+    document.getElementById("app")!.replaceWith(<ThreeDeeApp />);
+    document.body.classList.add("cool");
+  } else {
+    updatePage();
+    document.getElementById("app")!.replaceWith(<App />);
+
+    var konamiCurrent = 0;
+    var konamiCode = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ];
+
+    document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
+      console.log(e.key);
+
+      if (e.key === konamiCode[konamiCurrent]) {
+        console.debug("match");
+        e.preventDefault();
+        konamiCurrent++;
+
+        if (konamiCurrent === konamiCode.length) {
+          konamiCurrent = 0;
+          window.location.href = (new URL(window.location.href)).origin + "/?higherdimension";
+        }
+      } else {
+        konamiCurrent = 0;
+      }
+    });
+  }
 });
