@@ -1007,7 +1007,7 @@ const App: Component<
   );
 };
 
-function convertRemToPixels(rem: number) {    
+function convertRemToPixels(rem: number) {
   return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
 
@@ -1074,7 +1074,7 @@ const Ground: Component<{}, {}> = function () {
     width: 150px;
     height: 150px;
   }
-  `
+  `;
 
   return (
     <div>
@@ -1150,7 +1150,7 @@ const Ground: Component<{}, {}> = function () {
       <div class="tile"></div>
       <div class="tile"></div>
     </div>
-  )
+  );
 };
 
 const ThreeDeeApp: Component<
@@ -1292,11 +1292,23 @@ const ThreeDeeApp: Component<
   return (
     <div>
       <debug>
-        <a href="./" style="color: var(--accent)"><span class="material-symbols-outlined">arrow_back</span> Back to sanity</a>
+        <a href="./" style="color: var(--accent)">
+          <span class="material-symbols-outlined">arrow_back</span> Back to
+          sanity
+        </a>
         <br></br>
-        <input type="range" min="0" max="100" id="speed" value={use(this.speed, v => v * 10)} on:change={() => {
-          this.speed = +(document.getElementById("speed") as HTMLInputElement).value / 10;
-        }} />
+        <input
+          type="range"
+          min="0"
+          max="100"
+          id="speed"
+          value={use(this.speed, (v) => v * 10)}
+          on:change={() => {
+            this.speed =
+              +(document.getElementById("speed") as HTMLInputElement).value /
+              10;
+          }}
+        />
         <label for="speed">Speed</label>
         <div>x: {use(this.x, (v) => v.toFixed(2))}</div>
         <div>y: {use(this.y, (v) => v.toFixed(2))}</div>
@@ -1334,11 +1346,26 @@ const ThreeDeeApp: Component<
               </div>
             </article>
           </Screen>
-          <Screen ry={-5} x={-10} y={-11.5} z={-7} width={window.innerWidth} height={convertRemToPixels(3.5)} >
+          <Screen
+            ry={-5}
+            x={-10}
+            y={-11.5}
+            z={-7}
+            width={window.innerWidth}
+            height={convertRemToPixels(3.5)}
+          >
             <Nav />
           </Screen>
-          <Screen rx={-90} rz={2} width={1050} height={1350} x={-4} y={-5} z={-3}>
-            <Ground />  
+          <Screen
+            rx={-90}
+            rz={2}
+            width={1050}
+            height={1350}
+            x={-4}
+            y={-5}
+            z={-3}
+          >
+            <Ground />
           </Screen>
         </stage>
       </camera>
@@ -1404,7 +1431,8 @@ window.addEventListener("load", () => {
 
         if (konamiCurrent === konamiCode.length) {
           konamiCurrent = 0;
-          window.location.href = (new URL(window.location.href)).origin + "/?higherdimension";
+          window.location.href =
+            new URL(window.location.href).origin + "/?higherdimension";
         }
       } else {
         konamiCurrent = 0;
