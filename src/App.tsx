@@ -1079,6 +1079,18 @@ const Screen: Component<
   );
 };
 
+function numberInput(text: string, initialValue: number): number {
+  let ans = prompt(text, initialValue.toString());
+  if (ans) {
+    if (isNaN(+ans)) {
+      alert("Invalid input");
+      return initialValue;
+    }
+    return +ans;
+  }
+  return initialValue;
+}
+
 const Ground: Component<{}, {}> = function () {
   this.css = `
   display: grid;
@@ -1271,34 +1283,54 @@ const ThreeDeeApp: Component<
 
     if (keydown("ArrowRight")) {
       this.r += 0.5;
+      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
+      document.documentElement.style.setProperty("--bgmoveX", `${+orig - 2.5}px`);
     }
     if (keydown("ArrowLeft")) {
       this.r -= 0.5;
+      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
+      document.documentElement.style.setProperty("--bgmoveX", `${+orig + 2.5}px`);
     }
 
     if (keydown("ArrowUp")) {
       this.y += keydown("Shift") ? this.speed * this.mult : this.speed;
+      let orig = document.documentElement.style.getPropertyValue("--bgmoveY").replace("px", "");
+      document.documentElement.style.setProperty("--bgmoveY", `${+orig + 0.5}px`);
     }
     if (keydown("ArrowDown")) {
       this.y -= keydown("Shift") ? this.speed * this.mult : this.speed;
+      let orig = document.documentElement.style.getPropertyValue("--bgmoveY").replace("px", "");
+      document.documentElement.style.setProperty("--bgmoveY", `${+orig - 0.5}px`);
     }
 
     if (keydown("w")) {
-      move(0, keydown("Shift") ? this.speed * this.mult : this.speed);
+      let speed = keydown("Shift") ? this.speed * this.mult : this.speed;
+      move(0, speed);
+      let orig = document.documentElement.style.getPropertyValue("--bgscale") || "1";
+      document.documentElement.style.setProperty("--bgscale", `${+orig + speed * 0.00015}`);
     }
 
     if (keydown("s")) {
-      move(0, -(keydown("Shift") ? this.speed * this.mult : this.speed));
+      let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed)
+      move(0, speed);
+      let orig = document.documentElement.style.getPropertyValue("--bgscale") || "1";
+      document.documentElement.style.setProperty("--bgscale", `${+orig + speed * 0.00015}`);
     }
 
     if (keydown("a")) {
-      move(-(keydown("Shift") ? this.speed * this.mult : this.speed), 0);
+      let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed)
+      move(speed, 0);
+      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
+      document.documentElement.style.setProperty("--bgmoveX", `${+orig - speed * 0.5}px`);
     }
 
     if (keydown("d")) {
-      move(keydown("Shift") ? this.speed * this.mult : this.speed, 0);
+      let speed = keydown("Shift") ? this.speed * this.mult : this.speed
+      move(speed, 0);
+      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
+      document.documentElement.style.setProperty("--bgmoveX", `${+orig - speed * 0.5}px`);
     }
-  });
+  }); 
 
   const move = (x: number, z: number) => {
     // a bit more complex than neccesary because i'm bad at math
@@ -1330,11 +1362,23 @@ const ThreeDeeApp: Component<
               10;
           }}
         />
-        <label for="speed">Speed</label>
-        <div>x: {use(this.x, (v) => v.toFixed(2))}</div>
-        <div>y: {use(this.y, (v) => v.toFixed(2))}</div>
-        <div>z: {use(this.z, (v) => v.toFixed(2))}</div>
-        <div>r: {use(this.r, (v) => v.toFixed(2))}</div>
+        <label for="speed" on:pointerdown={() => {
+          this.speed = numberInput("Enter new speed", this.speed * 10) / 10;
+        }}>
+          Speed
+        </label>
+        <div on:pointerdown={() => {
+          this.x = numberInput("Enter new position", this.x);
+        }}>x: {use(this.x, (v) => v.toFixed(2))}</div>
+        <div on:pointerdown={() => {
+          this.y = numberInput("Enter new position", this.y);
+        }}>y: {use(this.y, (v) => v.toFixed(2))}</div>
+        <div on:pointerdown={() => {
+          this.z = numberInput("Enter new position", this.z);
+        }}>z: {use(this.z, (v) => v.toFixed(2))}</div>
+        <div on:pointerdown={() => {
+          this.r = numberInput("Enter new position", this.r);
+        }}>r: {use(this.r, (v) => v.toFixed(2))}</div>
         <br></br>
         <div>Use WASD to move</div>
         <div>Use L/R Arrow Keys to rotate camera</div>

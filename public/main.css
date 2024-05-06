@@ -23,6 +23,9 @@
 :root {
   --perspective: 1000px;
   --gridsize: 50px;
+  --bgmoveX: -19px;
+  --bgmoveY: -19px;
+  --bgscale: 1;
 }
 
 li::marker {
@@ -58,15 +61,20 @@ body.cool {
   background: transparent;
 }
 
-html:has(body.cool),
 body.cool {
-  background-image: linear-gradient(45deg, var(--surface0), var(--crust))!important;
+  background: var(--base);
+  background-image: radial-gradient(
+    var(--overlay1) calc(var(--bgscale) * var(--bgscale) * 1.5px),
+    transparent 0
+  );
+  background-size: calc(40px * var(--bgscale)) calc(40px * var(--bgscale));
+  background-position: var(--bgmoveX) var(--bgmoveY);
 }
 
 body.cool > div > camera > stage > div:has(nav) {
   border: 1px solid var(--surface0);
   transition: 0.3s;
-  border-radius: 1rem!important;
+  border-radius: 1rem !important;
 
   &:hover {
     border-color: var(--accent);
