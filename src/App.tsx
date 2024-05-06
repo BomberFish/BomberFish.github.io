@@ -908,7 +908,6 @@ const App: Component<
     font-family: var(--font-body)
     margin: 0;
     padding: 0;
-    // transition: transform 1s cubic-bezier(0.3, 0, 0.6, 1);
 
     h1,
     h2,
@@ -979,11 +978,6 @@ const App: Component<
       }
     }
 
-    ::selection {
-      background: var(--accent);
-      color: var(--base);
-    }
-
     sub {
       color: var(--subtext0);
     }
@@ -1036,7 +1030,10 @@ const Screen: Component<
   
     width: ${this.width || 100}px;
     height: ${this.height || 100}px;
+
+    transition: 0.75s transform cubic-bezier(0.37, 0, 0.63, 1);
   
+    transform-origin: 50% 0;
     transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
   `;
 
@@ -1059,7 +1056,27 @@ const Screen: Component<
     );
   };
 
-  return <div>{this.children}</div>;
+  return (
+    <div
+      on:mouseenter={() => {
+        if (this.rz !== undefined) {
+          this.z! += 0.3;
+        }
+      }}
+      on:mouseleave={() => {
+        if (this.rz !== undefined) {
+          this.z! -= 0.3;
+        }
+      }}
+      on:dblclick={() => {
+        if (this.rz !== undefined) {
+          this.rz! += 360;
+        }
+      }}
+    >
+      {this.children}
+    </div>
+  );
 };
 
 const Ground: Component<{}, {}> = function () {
@@ -1163,11 +1180,13 @@ const ThreeDeeApp: Component<
     z: number;
     r: number;
     speed: number;
+    mult: number;
   }
 > = function () {
   this.projects = projects;
   this.rotation = 0;
   this.speed = 1.5;
+  this.mult = 2;
 
   this.css = `
     width: 100%;
@@ -1234,20 +1253,22 @@ const ThreeDeeApp: Component<
     console.debug(c);
     for (let i = 0; i < c; i++) {
       setTimeout(() => {
-        console.debug("tick");
+        console.debug("z anim tick");
         this.z -= 1;
       }, easeOutCirc(i / c) * 500);
     }
 
     for (let i = 0; i < 20; i++) {
       setTimeout(() => {
-        console.debug("tick");
+        console.debug("rot anim tick");
         this.r -= 1;
       }, easeOutCirc(i / 10) * 500);
     }
   };
 
   setInterval(() => {
+    // console.debug("polling inputs", keys)
+
     if (keydown("ArrowRight")) {
       this.r += 0.5;
     }
@@ -1256,26 +1277,26 @@ const ThreeDeeApp: Component<
     }
 
     if (keydown("ArrowUp")) {
-      this.y += this.speed;
+      this.y += keydown("Shift") ? this.speed * this.mult : this.speed;
     }
     if (keydown("ArrowDown")) {
-      this.y -= this.speed;
+      this.y -= keydown("Shift") ? this.speed * this.mult : this.speed;
     }
 
     if (keydown("w")) {
-      move(0, this.speed);
+      move(0, keydown("Shift") ? this.speed * this.mult : this.speed);
     }
 
     if (keydown("s")) {
-      move(0, -this.speed);
+      move(0, -(keydown("Shift") ? this.speed * this.mult : this.speed));
     }
 
     if (keydown("a")) {
-      move(-this.speed, 0);
+      move(-(keydown("Shift") ? this.speed * this.mult : this.speed), 0);
     }
 
     if (keydown("d")) {
-      move(this.speed, 0);
+      move(keydown("Shift") ? this.speed * this.mult : this.speed, 0);
     }
   });
 
@@ -1362,8 +1383,8 @@ const ThreeDeeApp: Component<
             width={1050}
             height={1350}
             x={-4}
-            y={-5}
-            z={-3}
+            y={-10}
+            z={10}
           >
             <Ground />
           </Screen>
