@@ -2,6 +2,8 @@ import "dreamland";
 
 // MARK: THEMING
 
+let deferRender = false;
+
 let store = $store(
   {
     theme: {
@@ -15,6 +17,7 @@ let store = $store(
       mantle: "#181825",
       accent: "#cba6f7",
     },
+    playMusic: true,
   },
   { ident: "theme", backing: "localstorage", autosave: "auto" }
 );
@@ -721,6 +724,18 @@ const Footer: Component<{}, {}> = function () {
     div > kbd {
       margin-right: 0.65rem;
     }
+
+    div > a {
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.2s;
+    }
+
+    div:hover > a {
+      opacity: 1;
+      pointer-events: auto;
+      transition: 0.2s;
+    }
   `;
   return (
     <footer>
@@ -755,6 +770,7 @@ const Footer: Component<{}, {}> = function () {
           <kbd>→</kbd>
           <kbd>b</kbd>
           <kbd>a</kbd>
+          <a href="/?higherdimension">I'm lazy</a>
         </div>
       </sub>
     </footer>
@@ -1197,7 +1213,7 @@ const ThreeDeeApp: Component<
 > = function () {
   this.projects = projects;
   this.rotation = 0;
-  this.speed = 1.5;
+  this.speed = 1;
   this.mult = 2;
 
   this.css = `
@@ -1250,10 +1266,10 @@ const ThreeDeeApp: Component<
     }
   `;
 
-  this.x = window.innerWidth / -3;
+  this.x = window.innerWidth / -40;
   this.y = window.innerHeight / -16;
   this.z = -200;
-  this.r = 10;
+  this.r = -10;
 
   this.mount = () => {
     function easeOutCirc(x: number) {
@@ -1270,10 +1286,10 @@ const ThreeDeeApp: Component<
       }, easeOutCirc(i / c) * 500);
     }
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 30; i++) {
       setTimeout(() => {
         console.debug("rot anim tick");
-        this.r -= 1;
+        this.r += 1;
       }, easeOutCirc(i / 10) * 500);
     }
   };
@@ -1283,54 +1299,92 @@ const ThreeDeeApp: Component<
 
     if (keydown("ArrowRight")) {
       this.r += 0.5;
-      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
-      document.documentElement.style.setProperty("--bgmoveX", `${+orig - 2.5}px`);
+      let orig = document.documentElement.style
+        .getPropertyValue("--bgmoveX")
+        .replace("px", "");
+      document.documentElement.style.setProperty(
+        "--bgmoveX",
+        `${+orig - 2.5}px`
+      );
     }
     if (keydown("ArrowLeft")) {
       this.r -= 0.5;
-      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
-      document.documentElement.style.setProperty("--bgmoveX", `${+orig + 2.5}px`);
+      let orig = document.documentElement.style
+        .getPropertyValue("--bgmoveX")
+        .replace("px", "");
+      document.documentElement.style.setProperty(
+        "--bgmoveX",
+        `${+orig + 2.5}px`
+      );
     }
 
     if (keydown("ArrowUp")) {
       this.y += keydown("Shift") ? this.speed * this.mult : this.speed;
-      let orig = document.documentElement.style.getPropertyValue("--bgmoveY").replace("px", "");
-      document.documentElement.style.setProperty("--bgmoveY", `${+orig + 0.5}px`);
+      let orig = document.documentElement.style
+        .getPropertyValue("--bgmoveY")
+        .replace("px", "");
+      document.documentElement.style.setProperty(
+        "--bgmoveY",
+        `${+orig + 0.5}px`
+      );
     }
     if (keydown("ArrowDown")) {
       this.y -= keydown("Shift") ? this.speed * this.mult : this.speed;
-      let orig = document.documentElement.style.getPropertyValue("--bgmoveY").replace("px", "");
-      document.documentElement.style.setProperty("--bgmoveY", `${+orig - 0.5}px`);
+      let orig = document.documentElement.style
+        .getPropertyValue("--bgmoveY")
+        .replace("px", "");
+      document.documentElement.style.setProperty(
+        "--bgmoveY",
+        `${+orig - 0.5}px`
+      );
     }
 
     if (keydown("w")) {
-      let speed = keydown("Shift") ? this.speed * this.mult : this.speed;
+      let speed = keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1;
       move(0, speed);
-      let orig = document.documentElement.style.getPropertyValue("--bgscale") || "1";
-      document.documentElement.style.setProperty("--bgscale", `${+orig + speed * 0.00015}`);
+      let orig =
+        document.documentElement.style.getPropertyValue("--bgscale") || "1";
+      document.documentElement.style.setProperty(
+        "--bgscale",
+        `${+orig + speed * 0.00015}`
+      );
     }
 
     if (keydown("s")) {
-      let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed)
+      let speed = -(keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1);
       move(0, speed);
-      let orig = document.documentElement.style.getPropertyValue("--bgscale") || "1";
-      document.documentElement.style.setProperty("--bgscale", `${+orig + speed * 0.00015}`);
+      let orig =
+        document.documentElement.style.getPropertyValue("--bgscale") || "1";
+      document.documentElement.style.setProperty(
+        "--bgscale",
+        `${+orig + speed * 0.00015}`
+      );
     }
 
     if (keydown("a")) {
-      let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed)
+      let speed = -(keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1);
       move(speed, 0);
-      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
-      document.documentElement.style.setProperty("--bgmoveX", `${+orig - speed * 0.5}px`);
+      let orig = document.documentElement.style
+        .getPropertyValue("--bgmoveX")
+        .replace("px", "");
+      document.documentElement.style.setProperty(
+        "--bgmoveX",
+        `${+orig - speed * 0.5}px`
+      );
     }
 
     if (keydown("d")) {
-      let speed = keydown("Shift") ? this.speed * this.mult : this.speed
+      let speed = keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1;
       move(speed, 0);
-      let orig = document.documentElement.style.getPropertyValue("--bgmoveX").replace("px", "");
-      document.documentElement.style.setProperty("--bgmoveX", `${+orig - speed * 0.5}px`);
+      let orig = document.documentElement.style
+        .getPropertyValue("--bgmoveX")
+        .replace("px", "");
+      document.documentElement.style.setProperty(
+        "--bgmoveX",
+        `${+orig - speed * 0.5}px`
+      );
     }
-  }); 
+  });
 
   const move = (x: number, z: number) => {
     // a bit more complex than neccesary because i'm bad at math
@@ -1362,27 +1416,61 @@ const ThreeDeeApp: Component<
               10;
           }}
         />
-        <label for="speed" on:pointerdown={() => {
-          this.speed = numberInput("Enter new speed", this.speed * 10) / 10;
-        }}>
-          Speed
+        <label
+          for="speed"
+          on:pointerdown={() => {
+            this.speed = numberInput("Enter new speed", this.speed);
+          }}
+        >
+          {use`Speed (${this.speed})`}
         </label>
-        <div on:pointerdown={() => {
-          this.x = numberInput("Enter new position", this.x);
-        }}>x: {use(this.x, (v) => v.toFixed(2))}</div>
-        <div on:pointerdown={() => {
-          this.y = numberInput("Enter new position", this.y);
-        }}>y: {use(this.y, (v) => v.toFixed(2))}</div>
-        <div on:pointerdown={() => {
-          this.z = numberInput("Enter new position", this.z);
-        }}>z: {use(this.z, (v) => v.toFixed(2))}</div>
-        <div on:pointerdown={() => {
-          this.r = numberInput("Enter new position", this.r);
-        }}>r: {use(this.r, (v) => v.toFixed(2))}</div>
+        <div
+          on:pointerdown={() => {
+            this.x = numberInput("Enter new position", this.x);
+          }}
+        >
+          x: {use(this.x, (v) => v.toFixed(2))}
+        </div>
+        <div
+          on:pointerdown={() => {
+            this.y = numberInput("Enter new position", this.y);
+          }}
+        >
+          y: {use(this.y, (v) => v.toFixed(2))}
+        </div>
+        <div
+          on:pointerdown={() => {
+            this.z = numberInput("Enter new position", this.z);
+          }}
+        >
+          z: {use(this.z, (v) => v.toFixed(2))}
+        </div>
+        <div
+          on:pointerdown={() => {
+            this.r = numberInput("Enter new position", this.r);
+          }}
+        >
+          r: {use(this.r, (v) => v.toFixed(2))}
+        </div>
         <br></br>
         <div>Use WASD to move</div>
         <div>Use L/R Arrow Keys to rotate camera</div>
         <div>Use U/D Arrow Keys to move up/down</div>
+        <br></br>
+        {use(store.playMusic, (v) => (
+          <div
+            on:click={() => {
+              store.playMusic = !store.playMusic;
+              store.playMusic !== false
+                ? document.dispatchEvent(new Event("music-restart"))
+                : document.dispatchEvent(new Event("end-music"));
+            }}
+          >
+            <span class="material-symbols-outlined">
+              {v !== false ? "volume_up" : "volume_off"}
+            </span>
+          </div>
+        ))}
       </debug>
       <camera
         style={{
@@ -1396,7 +1484,9 @@ const ThreeDeeApp: Component<
         >
           <Screen
             ry={0}
+            x={-3}
             y={-6}
+            z={-5}
             width={window.innerWidth * 0.4}
             height={window.innerHeight * 0.5}
           >
@@ -1404,11 +1494,29 @@ const ThreeDeeApp: Component<
           </Screen>
           <Screen ry={10} x={-12} y={-12} z={-15} width={400} height={320 * 4}>
             <article>
+              <h2>My work</h2>
               <div id="projects-container">
                 {use(this.projects, (projects) =>
                   projects.map((project) => <Card detail={project} />)
                 )}
               </div>
+            </article>
+          </Screen>
+          <Screen
+            ry={-40}
+            x={13.5}
+            y={-5}
+            z={-10}
+            width={window.innerWidth * 0.4}
+            height={window.innerHeight * 0.5}
+          >
+            <article>
+              <h2>Blog</h2>
+              <iframe
+                style="width: 100%; height: 100%;"
+                src="https://blog.bomberfish.ca"
+                frameborder="0"
+              ></iframe>
             </article>
           </Screen>
           <Screen
@@ -1427,13 +1535,54 @@ const ThreeDeeApp: Component<
             width={1050}
             height={1350}
             x={-4}
-            y={-10}
+            y={-15}
             z={10}
           >
             <Ground />
           </Screen>
         </stage>
       </camera>
+    </div>
+  );
+};
+
+const ClickWall: Component<{}, {}> = function () {
+  this.css = `
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    backdrop-filter: blur(40px);
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    transition: 0.4s;
+    
+
+    &.transparent {
+      background: rgba(255, 255, 255, 0);
+      backdrop-filter: blur(0px);
+      opacity: 0;
+      transition: 0.4s;
+      pointer-events: none;
+    }
+  `;
+
+  return (
+    <div
+      on:click={() => {
+        this.root.classList.add("transparent");
+        setTimeout(() => {
+          this.root.remove();
+        }, 400);
+        deferRender = false;
+        document.dispatchEvent(new Event("music-restart"));
+      }}
+    >
+      <h1>Click to continue</h1>
     </div>
   );
 };
@@ -1466,6 +1615,35 @@ window.addEventListener("load", () => {
   let params = new URL(window.location.href).searchParams;
   console.debug(params);
   if (params.has("higherdimension")) {
+    let audio: HTMLAudioElement = new Audio("/epic.ogg");
+    audio.loop = true;
+
+    document.addEventListener("end-music", () => {
+      audio.pause();
+    });
+
+    document.addEventListener("music-restart", () => {
+      audio.play();
+    });
+
+    // const audioCtx = new AudioContext();
+    // const analyser = audioCtx.createAnalyser();
+
+    // const source = audioCtx.createMediaElementSource(audio);
+    // console.debug(source);
+    // source.connect(analyser).connect(audioCtx.destination);
+    // console.debug(source);
+
+    if (store.playMusic !== false) {
+      audio.play().catch((e) => {
+        console.error(e);
+        document.body.appendChild(<ClickWall />);
+        deferRender = true;
+        return;
+      });
+      // audioCtx.resume();
+    }
+
     document.getElementById("app")!.replaceWith(<ThreeDeeApp />);
     document.body.classList.add("cool");
   } else {
