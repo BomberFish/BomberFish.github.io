@@ -939,16 +939,6 @@ const App: Component<
       font-size: 1.5rem;
     }
 
-    a:visited {
-      color: color-mix(in srgb, var(--accent) 70%, var(--base) 30%);
-    }
-
-    a,
-    a:visited:hover {
-      color: var(--accent);
-      transition: color 0.1s;
-    }
-
     #projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 0fr));

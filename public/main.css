@@ -99,13 +99,15 @@ body.cool > div > camera > stage > div > article {
   width: 100%;
 }
 
+
 a,
 a:visited:hover {
-  color: #cba6f7;
+  color: var(--accent);
+  transition: color 0.1s;
 }
 
 a:visited {
-  color: rgb(163, 132, 199);
+  color: color-mix(in srgb, var(--accent) 70%, var(--base) 30%)!;
 }
 
 .secretEffect {
