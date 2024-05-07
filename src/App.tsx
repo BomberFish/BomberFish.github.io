@@ -2,8 +2,6 @@ import "dreamland";
 
 // MARK: THEMING
 
-let deferRender = false;
-
 let store = $store(
   {
     theme: {
@@ -1213,7 +1211,7 @@ const ThreeDeeApp: Component<
 > = function () {
   this.projects = projects;
   this.rotation = 0;
-  this.speed = 1;
+  this.speed = 4;
   this.mult = 2;
 
   this.css = `
@@ -1340,7 +1338,7 @@ const ThreeDeeApp: Component<
     }
 
     if (keydown("w")) {
-      let speed = keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1;
+      let speed = keydown("Shift") ? this.speed * this.mult : this.speed;
       move(0, speed);
       let orig =
         document.documentElement.style.getPropertyValue("--bgscale") || "1";
@@ -1351,7 +1349,7 @@ const ThreeDeeApp: Component<
     }
 
     if (keydown("s")) {
-      let speed = -(keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1);
+      let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed);
       move(0, speed);
       let orig =
         document.documentElement.style.getPropertyValue("--bgscale") || "1";
@@ -1362,7 +1360,7 @@ const ThreeDeeApp: Component<
     }
 
     if (keydown("a")) {
-      let speed = -(keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1);
+      let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed);
       move(speed, 0);
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
@@ -1374,7 +1372,7 @@ const ThreeDeeApp: Component<
     }
 
     if (keydown("d")) {
-      let speed = keydown("Shift") ? this.speed + 1 * this.mult : this.speed + 1;
+      let speed = keydown("Shift") ? this.speed * this.mult : this.speed;
       move(speed, 0);
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
@@ -1578,7 +1576,6 @@ const ClickWall: Component<{}, {}> = function () {
         setTimeout(() => {
           this.root.remove();
         }, 400);
-        deferRender = false;
         document.dispatchEvent(new Event("music-restart"));
       }}
     >
@@ -1638,7 +1635,6 @@ window.addEventListener("load", () => {
       audio.play().catch((e) => {
         console.error(e);
         document.body.appendChild(<ClickWall />);
-        deferRender = true;
         return;
       });
       // audioCtx.resume();
