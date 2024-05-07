@@ -67,7 +67,7 @@ body.cool {
     var(--overlay1) calc(var(--bgscale) * var(--bgscale) * 1.5px),
     transparent 0
   );
-  background-size: calc(40px * var(--bgscale)) calc(40px * var(--bgscale));
+  background-size: calc(20px * var(--bgscale)) calc(20px * var(--bgscale));
   background-position: var(--bgmoveX) var(--bgmoveY);
 }
 

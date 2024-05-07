@@ -1201,7 +1201,7 @@ const ThreeDeeApp: Component<
 > = function () {
   this.projects = projects;
   this.rotation = 0;
-  this.speed = 4;
+  this.speed = 5;
   this.mult = 2;
 
   this.css = `
@@ -1313,7 +1313,7 @@ const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveY",
-        `${+orig + 0.5}px`
+        `${+orig + 0.35}px`
       );
     }
     if (keydown("ArrowDown")) {
@@ -1323,30 +1323,31 @@ const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveY",
-        `${+orig - 0.5}px`
+        `${+orig - 0.35}px`
       );
     }
 
     if (keydown("w")) {
       let speed = keydown("Shift") ? this.speed * this.mult : this.speed;
       move(0, speed);
-      let orig =
-        document.documentElement.style.getPropertyValue("--bgscale") || "1";
-      document.documentElement.style.setProperty(
-        "--bgscale",
-        `${+orig + speed * 0.00015}`
-      );
+      // too buggy
+      // let orig =
+      //   document.documentElement.style.getPropertyValue("--bgscale") || "1";
+      // document.documentElement.style.setProperty(
+      //   "--bgscale",
+      //   `${+orig + speed * 0.00015}`
+      // );
     }
 
     if (keydown("s")) {
       let speed = -(keydown("Shift") ? this.speed * this.mult : this.speed);
       move(0, speed);
-      let orig =
-        document.documentElement.style.getPropertyValue("--bgscale") || "1";
-      document.documentElement.style.setProperty(
-        "--bgscale",
-        `${+orig + speed * 0.00015}`
-      );
+      // let orig =
+      //   document.documentElement.style.getPropertyValue("--bgscale") || "1";
+      // document.documentElement.style.setProperty(
+      //   "--bgscale",
+      //   `${+orig + speed * 0.00015}`
+      // );
     }
 
     if (keydown("a")) {
@@ -1357,7 +1358,7 @@ const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveX",
-        `${+orig - speed * 0.5}px`
+        `${+orig - speed * 0.35}px`
       );
     }
 
@@ -1369,7 +1370,7 @@ const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveX",
-        `${+orig - speed * 0.5}px`
+        `${+orig - speed * 0.35}px`
       );
     }
   });
@@ -1509,13 +1510,35 @@ const ThreeDeeApp: Component<
           </Screen>
           <Screen
             ry={-5}
-            x={-10}
-            y={-11.5}
+            x={4}
+            y={-8.5}
             z={-7}
-            width={window.innerWidth}
+            width={window.innerWidth * 0.4}
             height={convertRemToPixels(3.5)}
           >
-            <Nav />
+            <div
+              style={{
+                background: "var(--mantle)",
+                margin: "0",
+                padding: "0",
+                fontSize: "1.5rem",
+                fontWeight: "600",
+                fontFamily: "var(--font-mono)",
+              }}
+            >
+              <marquee
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <img
+                  src="/misc/pfps/bomberfish.png"
+                  style="width: 1.5rem;height:1.5rem;border-radius:50%;margin-right:5px;"
+                ></img>
+                BomberFish
+              </marquee>
+            </div>
           </Screen>
           <Screen
             rx={-90}
