@@ -632,27 +632,31 @@ const Intro: Component<{}, {}> = function () {
     <article>
       <h1>Hi 👋</h1>
       <p>
-        I'm Hariz, a high school student from Canada. I'm a wannabe software
-        engineer and I sometimes do things.
+        I'm Hariz, a high school student from Canada. I'm a wannabe "software
+        engineer" and I sometimes do cool things.
       </p>
-      <h2>Some stuff about me</h2>
+      <p>
+        I'm into webdev, native iOS development, and a bit of security research.
+      </p>
+      <h2>About me</h2>
       <ul>
         <li>I was one of the winners of the 2024 Swift Student Challenge</li>
-        <li>I know the following programming languages:</li>
+        <li>I know the following programming languages (well):</li>
         <ul>
-          <li>Swift</li>
+          <li>Swift (the GOAT)</li>
           <li>JavaScript/TypeScript</li>
           <li>C/C++/Objective-C</li>
           <li>Bash</li>
           <li>Python</li>
         </ul>
         <li>
-          I am a licenced member of{" "}
+          I'm a member of{" "}
           <a href="https://mercurywork.shop" target="blank">
             Mercury Workshop
           </a>
         </li>
-        <li>I use Arch btw</li>
+        <li>I play the guitar (!!)</li>
+        <li>I use Arch (btw)</li>
       </ul>
       <h2>Contact</h2>
       <ul>
@@ -739,7 +743,7 @@ const Footer: Component<{}, {}> = function () {
     <footer>
       <sub>
         Website made with &lt;3 in{" "}
-        <a href="https://github.com/MercuryWorkshop/DreamlandJS" target="blank">
+        <a href="https://dreamland.js.org" target="blank">
           DreamlandJS
         </a>
         <br></br>
@@ -753,23 +757,40 @@ const Footer: Component<{}, {}> = function () {
           </a>
         </span>
         <br></br>
-        Pro tip: you can navigate this site with your keyboard! Press{" "}
-        <kbd>tab</kbd> to start.
-        <br></br>
-        <br></br>
-        <div>
-          <kbd>↑</kbd>
-          <kbd>↑</kbd>
-          <kbd>↓</kbd>
-          <kbd>↓</kbd>
-          <kbd>←</kbd>
-          <kbd>→</kbd>
-          <kbd>←</kbd>
-          <kbd>→</kbd>
-          <kbd>b</kbd>
-          <kbd>a</kbd>
-          <a href="/?higherdimension">I'm lazy</a>
-        </div>
+        {$if(
+          new URL(window.location.href).searchParams.get("higherdimension") === null,
+          <div>
+            <div>
+              Pro tip: you can navigate this site with your keyboard! Press{" "}
+              <kbd>tab</kbd> to start.
+              <br></br>
+              <br></br>
+            </div>
+            <div>
+              <kbd>↑</kbd>
+              <kbd>↑</kbd>
+              <kbd>↓</kbd>
+              <kbd>↓</kbd>
+              <kbd>←</kbd>
+              <kbd>→</kbd>
+              <kbd>←</kbd>
+              <kbd>→</kbd>
+              <kbd>b</kbd>
+              <kbd>a</kbd>
+              <a href="/?higherdimension">I'm lazy</a>
+            </div>
+          </div>
+        )}
+
+<br></br>
+        <img
+          src="https://simpleanalyticsbadges.com/bomberfish.ca?logo=cba6f7&text=cdd6f4&background=181825&radius=8"
+          title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          crossorigin="anonymous"
+        />
+        <p>bomberfish.ca is a <strong>blink-free zone</strong>.</p>
       </sub>
     </footer>
   );
@@ -857,10 +878,21 @@ const Nav: Component<
       font-family: var(--font-mono);
     }
 
+    h2 {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    sub {
+      font-size: 0.7rem;
+      color: var(--subtext0)
+    }
+
     #nav {
       justify-self: flex-end;
       margin-left: auto;
-      padding-right: 1.75em;
+      padding-right: 1.75rem;
 
       a {
         transform: scale(1);
@@ -895,7 +927,10 @@ const Nav: Component<
             this.rotation -= 1440;
           }}
         />
-        <h2 style="display: inline">BomberFish</h2>
+        <h2>
+          BomberFish
+          <sub>(he/him)</sub>
+        </h2>
       </span>
       <span id="nav">
         <a href="https://blog.bomberfish.ca" target="_blank">
@@ -1021,6 +1056,7 @@ const Screen: Component<
     rz?: number;
     width?: number;
     height?: number;
+    autoHeight?: boolean;
   },
   {
     children: Element;
@@ -1032,11 +1068,29 @@ const Screen: Component<
     left: 0;
     bottom: 0;
   
-    width: ${this.width || 100}px;
-    height: ${this.height || 100}px;
+    width: ${this.width + "px" || "auto"};
+    height: ${this.height + "px" || "auto"};
 
     transition: 0.75s transform cubic-bezier(0.37, 0, 0.63, 1);
-  
+
+    article {
+      background: #11111baa;
+      backdrop-filter: blur(10px);
+      padding: 0.75em;
+      border-radius: 1rem;
+      border: 1px solid var(--surface0);
+      transition: 0.3s;
+      overflow: auto;
+      height: ${this.autoHeight ? "auto" : "100%"};
+    
+      &:hover {
+        border-color: var(--accent);
+        transition: border-color 0.3s;
+      }
+    
+      width: 100%;
+    }
+
     transform-origin: 50% 0;
     transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
   `;
@@ -1095,7 +1149,7 @@ function numberInput(text: string, initialValue: number): number {
   return initialValue;
 }
 
-const Ground: Component<{}, {}> = function () {
+const SuperCoolAndEpicDanceFloor: Component<{}, {}> = function () {
   this.css = `
   display: grid;
   grid-template-rows: repeat(9, 1fr);
@@ -1104,6 +1158,7 @@ const Ground: Component<{}, {}> = function () {
   .tile {
     background: var(--base);
     border: 10px solid var(--mantle);
+    animation: 1s linear infinite forwards borderPulse;
     width: 150px;
     height: 150px;
   }
@@ -1186,6 +1241,73 @@ const Ground: Component<{}, {}> = function () {
   );
 };
 
+const ThreeDeeInfo: Component<{},{}> = function () {
+  return (
+    <article>
+              <h2>About the 3D view</h2>
+              <h3>Quick Start</h3>
+              <ul>
+                <li>Use WASD to move</li>
+                <li>Use the left and right arrow keys to rotate the camera</li>
+                <li>Use the up and down arrow keys to move up/down</li>
+              </ul>
+              <p>Check behind you to see my blog.</p>
+              <h3>How I did it</h3>
+              <p>
+                The 3D effects are done purely with CSS transforms. No WebGL,
+                canvas elements, smoke, or mirrors. I use a JavaScript framework
+                called{" "}
+                <a href="https://dreamland.js.org/?kawaii" target="_blank">
+                  DreamlandJS
+                </a>{" "}
+                for basic reactivity, and to make development easier. You can
+                check out the source of this page{" "}
+                <a
+                  href="https://github.com/BomberFish/BomberFish.github.io/blob/master/src/App.tsx"
+                  target="_blank"
+                >
+                  here
+                </a>
+                . (warning: spaghetti code)
+              </p>
+              <h3>FAQ</h3>
+              <div>Q: Why?</div>
+              <div>A: Because it's cool :3</div>
+              <br></br>
+              <div>Q: Why can't I click any links?</div>
+              <div>
+                A: You are using Firefox. The Firefox devs (in their infinite
+                wisdom) refuse to implement modern standards correctly.
+              </div>
+              <br></br>
+              <div>Q: This is so cool, why isn't it the default view?</div>
+              <div>
+                A: It's an accessibility nightmare, and doesn't even work right
+                on most browsers (thanks Mozilla). Also, it's completely broken
+                on phones! (I'm just too lazy to implement mobile controls :P)
+              </div>
+              <br></br>
+              <div>Q: GRRR!! Why did you use a JS framework!! So bloated!!</div>
+              <div>
+                A: Calm down Mr.Vanilla-purist. I'm sure you're great fun at
+                parties.
+              </div>
+              <br></br>
+              <div>Q: Where did you get the idea?</div>
+              <div>
+                I was mainly inspired by{" "}
+                <a href="https://dev.coolelectronics.me" target="_blank">
+                  coolelectronics' website
+                </a>
+                , which pulls off something similar. I actually used some of his
+                code for this site (cooleletronis{" "}
+                {/* yes this is mispelled on purpose */} if you are reading this
+                thank you), so it wouldn't be possible without him.
+              </div>
+            </article>
+  )
+}
+
 const ThreeDeeApp: Component<
   {},
   {
@@ -1260,12 +1382,16 @@ const ThreeDeeApp: Component<
   this.r = -10;
 
   this.mount = () => {
+    // alert(window.innerWidth)
     function easeOutCirc(x: number) {
       return Math.sqrt(1 - Math.pow(x - 1, 2));
     }
 
     console.debug("mount");
-    const c = Math.abs(-1000 - this.z);
+    const c = Math.abs(
+      -(1000 + (2188 /* god this is so jank */ / window.innerWidth) * 200) -
+        this.z
+    );
     console.debug(c);
     for (let i = 0; i < c; i++) {
       setTimeout(() => {
@@ -1442,10 +1568,6 @@ const ThreeDeeApp: Component<
           r: {use(this.r, (v) => v.toFixed(2))}
         </div>
         <br></br>
-        <div>Use WASD to move</div>
-        <div>Use L/R Arrow Keys to rotate camera</div>
-        <div>Use U/D Arrow Keys to move up/down</div>
-        <br></br>
         {use(store.playMusic, (v) => (
           <div
             on:click={() => {
@@ -1472,16 +1594,14 @@ const ThreeDeeApp: Component<
           }}
         >
           <Screen
-            ry={0}
-            x={-3}
-            y={-6}
-            z={-5}
-            width={window.innerWidth * 0.4}
-            height={window.innerHeight * 0.5}
+            ry={10}
+            rx={10}
+            x={-12}
+            y={-12}
+            z={-15}
+            width={400}
+            height={320 * 4}
           >
-            <Intro />
-          </Screen>
-          <Screen ry={10} x={-12} y={-12} z={-15} width={400} height={320 * 4}>
             <article>
               <h2>My work</h2>
               <div id="projects-container">
@@ -1492,10 +1612,44 @@ const ThreeDeeApp: Component<
             </article>
           </Screen>
           <Screen
+            ry={-20}
+            x={-4}
+            y={-6}
+            z={-5}
+            width={window.innerWidth * 0.4}
+            height={window.innerHeight * 0.5}
+          >
+            <Intro />
+          </Screen>
+          <Screen
+            // ry={30}
+            rx={30}
+            x={2}
+            y={5}
+            z={-4}
+            autoHeight={true}
+          >
+            <article>
+              <Footer />
+            </article>
+          </Screen>
+          <Screen
             ry={-40}
-            x={13.5}
-            y={-5}
+            rz={10}
+            rx={-2}
+            x={14}
+            y={-6}
             z={-10}
+            width={window.innerWidth * 0.2}
+            height={window.innerHeight * 0.5}
+          >
+            <ThreeDeeInfo />
+          </Screen>
+          <Screen
+            ry={200}
+            x={-5}
+            y={-5}
+            z={-20}
             width={window.innerWidth * 0.4}
             height={window.innerHeight * 0.5}
           >
@@ -1549,7 +1703,7 @@ const ThreeDeeApp: Component<
             y={-15}
             z={10}
           >
-            <Ground />
+            <SuperCoolAndEpicDanceFloor />
           </Screen>
         </stage>
       </camera>
