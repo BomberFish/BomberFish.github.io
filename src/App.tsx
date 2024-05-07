@@ -1521,8 +1521,8 @@ const ThreeDeeApp: Component<
         <br></br>
         <input
           type="range"
-          min="0"
-          max="100"
+          min="0.1"
+          max="200"
           id="speed"
           value={use(this.speed, (v) => v * 10)}
           on:change={() => {
