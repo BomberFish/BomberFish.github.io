@@ -1073,6 +1073,9 @@ const Screen: Component<
 
     transition: 0.75s transform cubic-bezier(0.37, 0, 0.63, 1);
 
+    transform-origin: 50% 0;
+    transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
+
     article {
       background: #11111baa;
       backdrop-filter: blur(10px);
@@ -1090,9 +1093,6 @@ const Screen: Component<
     
       width: 100%;
     }
-
-    transform-origin: 50% 0;
-    transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
   `;
 
   this.x ||= 0;
