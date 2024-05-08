@@ -46,14 +46,18 @@ body {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   background: #1e1e2e;
   color: #cdd6f4;
-  background: var(--mantle);
+  background: var(--crust);
   color: var(--text);
 }
 
 html:has(body.cool),
 body.cool {
+  display: initial;
   padding: 0;
   overflow: hidden;
   width: 100%;
@@ -61,8 +65,9 @@ body.cool {
   background: transparent;
 }
 
+body,
 body.cool {
-  background: var(--base);
+  background: var(--crust);
   background-image: radial-gradient(
     var(--overlay1) calc(var(--bgscale) * var(--bgscale) * 1.5px),
     transparent 0
@@ -70,7 +75,10 @@ body.cool {
   background-size: calc(20px * var(--bgscale)) calc(20px * var(--bgscale));
   background-position: var(--bgmoveX) var(--bgmoveY);
 }
-
+/* 
+body:not(.cool) {
+  transition: 0.4s background-position ease
+} */
 
 #oneko {
   z-index: 99999;
@@ -150,6 +158,21 @@ a:visited {
 }
 
 @media (orientation: portrait) {
+
+  main {
+    display: initial!important;
+    width:100vw;
+  }
+
+  #theme-name {
+    display: none;
+  }
+  
+  #content,
+  nav {
+    width: calc(100vw - 1em)!important
+  }
+
   .popup .inner {
     width: 100% !important;
     height: 100% !important;
@@ -211,7 +234,7 @@ kbd {
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--mantle);
+  background: transparent;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -222,7 +245,7 @@ kbd {
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background: var(--overlay1);
+  background: var(--base);
   transition: background 0.2s;
 }
 
@@ -255,5 +278,21 @@ body.Latte .card:focus-visible {
   }
   100% {
     border-color: var(--crust);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .card:focus,
+  .card:focus-visible,
+  .card:active,
+  .card:active:focus,
+  nav a {
+    transform: scale(1)!important;
+  }
+
+  .popup .inner {
+    transition: opacity 0.4s!important;
   }
 }

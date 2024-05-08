@@ -5,7 +5,7 @@ import "dreamland";
 let store = $store(
   {
     theme: {
-      name: "Catppuccin Mocha",
+      name: "Mocha",
       shortName: "Mocha",
       text: "#cdd6f4",
       overlay1: "#7f849c",
@@ -13,6 +13,7 @@ let store = $store(
       subtext0: "#a6adc8",
       base: "#1e1e2e",
       mantle: "#181825",
+      crust: "#11111b",
       accent: "#cba6f7",
     },
     playMusic: true,
@@ -31,6 +32,7 @@ function updatePage() {
   root.style.setProperty("--subtext0", store.theme.subtext0);
   root.style.setProperty("--base", store.theme.base);
   root.style.setProperty("--mantle", store.theme.mantle);
+  root.style.setProperty("--crust", store.theme.crust);
   root.style.setProperty("--accent", store.theme.accent);
   document.body.classList.forEach((el) => {
     document.body.classList.remove(el);
@@ -40,7 +42,7 @@ function updatePage() {
 
 const ThemePicker: Component<{}, {}> = function () {
   const mocha = {
-    name: "Catppuccin Mocha",
+    name: "Mocha",
     shortName: "Mocha",
     text: "#cdd6f4",
     overlay1: "#7f849c",
@@ -48,11 +50,12 @@ const ThemePicker: Component<{}, {}> = function () {
     subtext0: "#a6adc8",
     base: "#1e1e2e",
     mantle: "#181825",
+    crust: "#11111b",
     accent: "#cba6f7",
   };
 
   const macchiato = {
-    name: "Catppuccin Macchiato",
+    name: "Macchiato",
     shortName: "Macchiato",
     text: "#cad3f5",
     overlay1: "#8087a2",
@@ -60,11 +63,12 @@ const ThemePicker: Component<{}, {}> = function () {
     subtext0: "#a5adcb",
     base: "#24273a",
     mantle: "#1e2030",
+    crust: "#181926",
     accent: "#c6a0f6",
   };
 
   const frappe = {
-    name: "Catppuccin Frappé",
+    name: "Frappé",
     shortName: "Frappe",
     text: "#c6d0f5",
     overlay1: "#838ba7",
@@ -72,11 +76,12 @@ const ThemePicker: Component<{}, {}> = function () {
     subtext0: "#a5adce",
     base: "#303446",
     mantle: "#292c3c",
+    crust: "#232634",
     accent: "#ca9ee6",
   };
 
   const latte = {
-    name: "Catppuccin Latte",
+    name: "Latte",
     shortName: "Latte",
     text: "#4c4f69",
     overlay1: "#8c8fa1",
@@ -84,23 +89,24 @@ const ThemePicker: Component<{}, {}> = function () {
     subtext0: "#6c6f85",
     base: "#eff1f5",
     mantle: "#e6e9ef",
+    crust: "#dce0e8",
     accent: "#8839ef",
   };
 
   const themes = [mocha, macchiato, frappe, latte];
 
   this.css = `
-    background: var(--base);
-    border-top-left-radius: 1rem;
+    background: transparent;
+    border-radius: 0.4rem;
     border: none;
     color: var(--text);
     font-family: var(--font-body);
     font-size: 1rem;
-    padding: 0.75rem;
+    // padding: 0.75rem;
     cursor: pointer;
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    // position: fixed;
+    // bottom: 0;
+    // right: 0;
     z-index: 1000;
 
     display: flex;
@@ -109,6 +115,10 @@ const ThemePicker: Component<{}, {}> = function () {
     user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
+
+    .material-symbols-outlined {
+      font-size: 1.5rem;
+    }
   `;
 
   return (
@@ -127,7 +137,7 @@ const ThemePicker: Component<{}, {}> = function () {
       }}
     >
       <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
-      {use(store.theme.name)}
+      <span id="theme-name">{use(store.theme.name)}</span>
     </button>
   );
 };
@@ -664,6 +674,7 @@ const Intro: Component<{}, {}> = function () {
           <a href="https://fosstodon.org/@BomberFish" target="blank" rel="me">
             Fediverse
           </a>
+          &nbsp;(@BomberFish@fosstodon.org)
         </li>
         <li>
           <a href="https://reddit.com/u/DALEK_77" target="blank" rel="me">
@@ -812,16 +823,17 @@ const Nav: Component<
   this.nameState = false;
   this.css = `
     background: var(--mantle);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    justify-self: flex-start;
     z-index: 100;
-    padding: 1em 0;
-    width: 100vw;
+    padding: 0.25em 1em;
+    width: 80vw;
     height: 3.5rem;
     margin: 0;
-    padding: 0;
+    // padding: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -840,7 +852,7 @@ const Nav: Component<
     -ms-flex-align: center;
     align-items: center;
 
-    border-radius: 0 0 1em 1em;
+    // border-radius: 0 0 1em 1em;
 
     h2 {
       justify-self: flex-start;
@@ -899,7 +911,10 @@ const Nav: Component<
     #nav {
       justify-self: flex-end;
       margin-left: auto;
-      padding-right: 1.75rem;
+      // padding-right: 1.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
 
       a {
         transform: scale(1);
@@ -942,8 +957,9 @@ const Nav: Component<
       <span id="nav">
         <a href="https://blog.bomberfish.ca" target="_blank">
           <span class="material-symbols-outlined">open_in_new</span>
-          &nbsp;&nbsp;Go to Blog
+          &nbsp;&nbsp;Blog
         </a>
+        <ThemePicker />
       </span>
     </nav>
   );
@@ -954,16 +970,30 @@ const App: Component<
   {
     rotation: number;
     projects: ProjectCardDetails[];
+    prevMouseX: number;
+    prevMouseY: number;
+    prevX: number;
+    prevY: number;
+    timeout: boolean;
   }
 > = function () {
+  this.prevMouseX = 0;
+  this.prevMouseY = 0;
+  this.prevX = 0;
+  this.prevY = 0;
   this.projects = projects;
   this.rotation = 0;
+  this.timeout = false;
   this.css = `
-    background: var(--base);
+    // background: var(--crust);
     color: var(--text);
-    font-family: var(--font-body)
+    font-family: var(--font-body);
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     h1,
     h2,
@@ -985,11 +1015,14 @@ const App: Component<
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 0fr));
       grid-gap: 0 2rem;
+      place-items: center;
+      place-content: center;
     }
 
     #content {
-      margin-top: 2.5rem;
+      background: var(--base);
       padding: 1em;
+      width: 80vw;
     }
 
     .card {
@@ -1016,7 +1049,6 @@ const App: Component<
         box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
       }
 
-      &:active,
       &.active,
       &:active:focus {
         transform: scale(0.95);
@@ -1030,7 +1062,26 @@ const App: Component<
   `;
 
   return (
-    <main>
+    <main on:mousemove={(e: MouseEvent)=>{
+      // i feel like this is way more complicated than it needs to be
+      console.debug(e.clientX, e.clientY);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        console.log("user prefers less motion");
+        return;
+      }
+      const offsetX = this.prevMouseX - e.clientX;
+      const offsetY = this.prevMouseY - e.clientY;
+      console.debug(offsetX, offsetY);
+      const x = this.prevX - (offsetX * 0.06);
+      const y = this.prevY - (offsetY * 0.06);
+      console.debug(x, y);
+      document.documentElement.style.setProperty("--bgmoveX", x + "px");
+      document.documentElement.style.setProperty("--bgmoveY", y + "px");
+      this.prevMouseX = e.clientX;
+      this.prevMouseY = e.clientY;
+      this.prevX = x;
+      this.prevY = y;
+    }}>
       <Nav />
       <div id="content">
         <Intro />
@@ -1042,7 +1093,6 @@ const App: Component<
         </div>
         <Footer />
       </div>
-      <ThemePicker />
     </main>
   );
 };
