@@ -1799,6 +1799,7 @@ window.addEventListener("load", () => {
     // console.debug(source);
 
     if (store.playMusic !== false) {
+      console.log("music start")
       audio.play().catch((e) => {
         console.error(e);
         document.body.appendChild(<ClickWall />);
@@ -1810,6 +1811,9 @@ window.addEventListener("load", () => {
     document.getElementById("app")!.replaceWith(<ThreeDeeApp />);
     document.body.classList.add("cool");
   } else {
+    let sc = document.createElement("script");
+    sc.src = "/oneko.js"
+    document.body.appendChild(sc)
     updatePage();
     document.getElementById("app")!.replaceWith(<App />);
 

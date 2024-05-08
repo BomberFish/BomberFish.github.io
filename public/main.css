@@ -72,7 +72,9 @@ body.cool {
 }
 
 
-
+#oneko {
+  z-index: 99999;
+}
 
 a,
 a:visited:hover {
