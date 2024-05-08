@@ -758,7 +758,8 @@ const Footer: Component<{}, {}> = function () {
         </span>
         <br></br>
         {$if(
-          new URL(window.location.href).searchParams.get("higherdimension") === null,
+          new URL(window.location.href).searchParams.get("higherdimension") ===
+            null,
           <div>
             <div>
               Pro tip: you can navigate this site with your keyboard! Press{" "}
@@ -781,16 +782,22 @@ const Footer: Component<{}, {}> = function () {
             </div>
           </div>
         )}
-
-<br></br>
-        <img
-          src="https://simpleanalyticsbadges.com/bomberfish.ca?logo=cba6f7&text=cdd6f4&background=181825&radius=8"
-          title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
-          loading="lazy"
-          referrerpolicy="no-referrer"
-          crossorigin="anonymous"
-        />
-        <p>bomberfish.ca is a <strong>blink-free zone</strong>.</p>
+        <br></br>
+        <a
+          href="https://dashboard.simpleanalytics.com/bomberfish.ca"
+          target="_blank"
+        >
+          <img
+            src="https://simpleanalyticsbadges.com/bomberfish.ca?logo=cba6f7&text=cdd6f4&background=181825&radius=8"
+            title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
+            loading="lazy"
+            referrerpolicy="no-referrer"
+            crossorigin="anonymous"
+          />
+        </a>
+        <p>
+          bomberfish.ca is a <strong>blink-free zone</strong>.
+        </p>
       </sub>
     </footer>
   );
@@ -1241,72 +1248,69 @@ const SuperCoolAndEpicDanceFloor: Component<{}, {}> = function () {
   );
 };
 
-const ThreeDeeInfo: Component<{},{}> = function () {
+const ThreeDeeInfo: Component<{}, {}> = function () {
   return (
     <article>
-              <h2>About the 3D view</h2>
-              <h3>Quick Start</h3>
-              <ul>
-                <li>Use WASD to move</li>
-                <li>Use the left and right arrow keys to rotate the camera</li>
-                <li>Use the up and down arrow keys to move up/down</li>
-              </ul>
-              <p>Check behind you to see my blog.</p>
-              <h3>How I did it</h3>
-              <p>
-                The 3D effects are done purely with CSS transforms. No WebGL,
-                canvas elements, smoke, or mirrors. I use a JavaScript framework
-                called{" "}
-                <a href="https://dreamland.js.org/?kawaii" target="_blank">
-                  DreamlandJS
-                </a>{" "}
-                for basic reactivity, and to make development easier. You can
-                check out the source of this page{" "}
-                <a
-                  href="https://github.com/BomberFish/BomberFish.github.io/blob/master/src/App.tsx"
-                  target="_blank"
-                >
-                  here
-                </a>
-                . (warning: spaghetti code)
-              </p>
-              <h3>FAQ</h3>
-              <div>Q: Why?</div>
-              <div>A: Because it's cool :3</div>
-              <br></br>
-              <div>Q: Why can't I click any links?</div>
-              <div>
-                A: You are using Firefox. The Firefox devs (in their infinite
-                wisdom) refuse to implement modern standards correctly.
-              </div>
-              <br></br>
-              <div>Q: This is so cool, why isn't it the default view?</div>
-              <div>
-                A: It's an accessibility nightmare, and doesn't even work right
-                on most browsers (thanks Mozilla). Also, it's completely broken
-                on phones! (I'm just too lazy to implement mobile controls :P)
-              </div>
-              <br></br>
-              <div>Q: GRRR!! Why did you use a JS framework!! So bloated!!</div>
-              <div>
-                A: Calm down Mr.Vanilla-purist. I'm sure you're great fun at
-                parties.
-              </div>
-              <br></br>
-              <div>Q: Where did you get the idea?</div>
-              <div>
-                I was mainly inspired by{" "}
-                <a href="https://dev.coolelectronics.me" target="_blank">
-                  coolelectronics' website
-                </a>
-                , which pulls off something similar. I actually used some of his
-                code for this site (cooleletronis{" "}
-                {/* yes this is mispelled on purpose */} if you are reading this
-                thank you), so it wouldn't be possible without him.
-              </div>
-            </article>
-  )
-}
+      <h2>About the 3D view</h2>
+      <h3>Quick Start</h3>
+      <ul>
+        <li>Use WASD to move</li>
+        <li>Use the left and right arrow keys to rotate the camera</li>
+        <li>Use the up and down arrow keys to move up/down</li>
+      </ul>
+      <p>Check behind you to see my blog.</p>
+      <h3>How I did it</h3>
+      <p>
+        The 3D effects are done purely with CSS transforms. No WebGL, canvas
+        elements, smoke, or mirrors. I use a JavaScript framework called{" "}
+        <a href="https://dreamland.js.org/?kawaii" target="_blank">
+          DreamlandJS
+        </a>{" "}
+        for basic reactivity, and to make development easier. You can check out
+        the source of this page{" "}
+        <a
+          href="https://github.com/BomberFish/BomberFish.github.io/blob/master/src/App.tsx"
+          target="_blank"
+        >
+          here
+        </a>
+        . (warning: spaghetti code)
+      </p>
+      <h3>FAQ</h3>
+      <div>Q: Why?</div>
+      <div>A: Because it's cool :3</div>
+      <br></br>
+      <div>Q: Why can't I click any links?</div>
+      <div>
+        A: You are using Firefox. The Firefox devs (in their infinite wisdom)
+        refuse to implement modern standards correctly.
+      </div>
+      <br></br>
+      <div>Q: This is so cool, why isn't it the default view?</div>
+      <div>
+        A: It's an accessibility nightmare, and doesn't even work right on most
+        browsers (thanks Mozilla). Also, it's completely broken on phones! (I'm
+        just too lazy to implement mobile controls :P)
+      </div>
+      <br></br>
+      <div>Q: GRRR!! Why did you use a JS framework!! So bloated!!</div>
+      <div>
+        A: Calm down Mr.Vanilla-purist. I'm sure you're great fun at parties.
+      </div>
+      <br></br>
+      <div>Q: Where did you get the idea?</div>
+      <div>
+        I was mainly inspired by{" "}
+        <a href="https://dev.coolelectronics.me" target="_blank">
+          coolelectronics' website
+        </a>
+        , which pulls off something similar. I actually used some of his code
+        for this site (cooleletronis {/* yes this is mispelled on purpose */} if
+        you are reading this thank you), so it wouldn't be possible without him.
+      </div>
+    </article>
+  );
+};
 
 const ThreeDeeApp: Component<
   {},
@@ -1799,7 +1803,7 @@ window.addEventListener("load", () => {
     // console.debug(source);
 
     if (store.playMusic !== false) {
-      console.log("music start")
+      console.log("music start");
       audio.play().catch((e) => {
         console.error(e);
         document.body.appendChild(<ClickWall />);
@@ -1812,8 +1816,8 @@ window.addEventListener("load", () => {
     document.body.classList.add("cool");
   } else {
     let sc = document.createElement("script");
-    sc.src = "/oneko.js"
-    document.body.appendChild(sc)
+    sc.src = "/oneko.js";
+    document.body.appendChild(sc);
     updatePage();
     document.getElementById("app")!.replaceWith(<App />);
 
