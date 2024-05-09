@@ -18,7 +18,7 @@ let store = $store(
     },
     playMusic: true,
   },
-  { ident: "theme", backing: "localstorage", autosave: "auto" }
+  { ident: "userOptions", backing: "localstorage", autosave: "auto" }
 );
 
 function updatePage() {
