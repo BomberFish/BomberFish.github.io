@@ -23,19 +23,19 @@ let store = $store(
 
 function updatePage() {
   var root = document.documentElement;
-  console.log(store.theme)
+  console.log(store.theme);
   if (
-      store.theme.name == undefined ||
-      store.theme.shortName == undefined  ||
-      store.theme.text == undefined  ||
-      store.theme.overlay1 == undefined  ||
-      store.theme.surface0 == undefined  ||
-      store.theme.subtext0 == undefined  ||
-      store.theme.base == undefined  ||
-      store.theme.crust == undefined  ||
-      store.theme.accent == undefined 
+    store.theme.name == undefined ||
+    store.theme.shortName == undefined ||
+    store.theme.text == undefined ||
+    store.theme.overlay1 == undefined ||
+    store.theme.surface0 == undefined ||
+    store.theme.subtext0 == undefined ||
+    store.theme.base == undefined ||
+    store.theme.crust == undefined ||
+    store.theme.accent == undefined
   ) {
-    console.log("theme is corrupted or out of date, resetting")
+    console.log("theme is corrupted or out of date, resetting");
     store.theme = {
       name: "Mocha",
       shortName: "Mocha",
@@ -47,7 +47,7 @@ function updatePage() {
       mantle: "#181825",
       crust: "#11111b",
       accent: "#cba6f7",
-    }
+    };
     updatePage();
   }
 
@@ -691,14 +691,16 @@ const Intro: Component<{}, {}> = function () {
       <h2>About me</h2>
       <ul>
         <li>I was one of the winners of the 2024 Swift Student Challenge</li>
-        <li>I know the following programming languages (well):</li>
-        <ul>
-          <li>Swift (the GOAT)</li>
-          <li>JavaScript/TypeScript</li>
-          <li>C/C++/Objective-C</li>
-          <li>Bash</li>
-          <li>Python</li>
-        </ul>
+        <li>
+          I know the following programming languages (well):
+          <ul>
+            <li>Swift (the GOAT)</li>
+            <li>JavaScript/TypeScript</li>
+            <li>C/C++/Objective-C</li>
+            <li>Bash</li>
+            <li>Python</li>
+          </ul>
+        </li>
         <li>
           I'm a member of{" "}
           <a href="https://mercurywork.shop" target="blank">
