@@ -1,4 +1,3 @@
-console.log('%c Hello, World!', 'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: 3px 3px 0 #fab387 , 6px 6px 0 #f9e2af , 9px 9px 0 #a6e3a1 , 12px 12px 0 #94e2d5 , 15px 15px 0 #89b4fa , 18px 18px 0 #b4befe , 21px 21px 0 #cba6f7');
 import "dreamland";
 
 // MARK: THEMING
@@ -1929,6 +1928,7 @@ function keydown(key: string) {
 
 // MARK: WINDOW LOAD
 window.addEventListener("load", () => {
+  console.log('%c Hello, World!', 'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: 3px 3px 0 #fab387 , 6px 6px 0 #f9e2af , 9px 9px 0 #a6e3a1 , 12px 12px 0 #94e2d5 , 15px 15px 0 #89b4fa , 18px 18px 0 #b4befe , 21px 21px 0 #cba6f7');
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       e.preventDefault();
