@@ -947,7 +947,7 @@ const Nav: Component<
       gap: 0.25rem;
     }
 
-    sub {
+    subt {
       font-size: 0.7rem;
       color: var(--subtext0)
     }
