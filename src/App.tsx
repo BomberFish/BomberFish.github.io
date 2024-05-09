@@ -1137,7 +1137,7 @@ const App: Component<
       }
     }
 
-    sub {
+    subt {
       color: var(--subtext0);
     }
   `;
