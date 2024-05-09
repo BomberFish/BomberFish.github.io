@@ -384,9 +384,9 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
     >
       <div class="img-container">
         <img
+          loading="lazy"
           src={this.detail.img}
           alt={this.detail.blurb}
-          loading="lazy"
           referrerpolicy="no-referrer"
           crossorigin="anonymous"
         />
@@ -632,11 +632,11 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
           <article>
             <div class="article-inner">
               <img
+                loading="lazy"
                 src={this.project.img}
                 on:pointerup={() => {
                   window.open(this.project.img, "_blank");
                 }}
-                loading="lazy"
                 referrerpolicy="no-referrer"
                 crossorigin="anonymous"
               />
@@ -1040,10 +1040,10 @@ const WebButton: Component<
   return (
     <a href={this.href} target="_blank">
       <img
+        loading="lazy"
         src={this.src}
         alt={this.alt || this.title || ""}
         title={this.title || this.alt || ""}
-        loading="lazy"
         referrerpolicy="no-referrer"
         crossorigin="anonymous"
       />
@@ -1849,9 +1849,9 @@ const ThreeDeeApp: Component<
                 }}
               >
                 <img
+                  loading="lazy"
                   src="/favicon.ico"
                   style="width: 1.5rem;height:1.5rem;border-radius:50%;margin-right:5px;"
-                  loading="lazy"
                   referrerpolicy="no-referrer"
                   crossorigin="anonymous"
                 ></img>
