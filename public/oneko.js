@@ -139,6 +139,7 @@ function isMobile (opts) {
       nekoEl.style.left = `${nekoPosX - 16}px`;
       nekoEl.style.top = `${nekoPosY - 16}px`;
       nekoEl.style.zIndex = Number.MAX_VALUE;
+      nekoEl.style.transition = "none";
   
       let nekoFile = "./oneko-ctp.gif"
       const curScript = document.currentScript
