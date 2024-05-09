@@ -121,6 +121,11 @@ body:not(.cool) {
   body {
     background: var(--base)
   }
+
+  #darkreader-warning {
+    width: 100vw;
+    border-radius: 0;
+  }
 }
 
 

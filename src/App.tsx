@@ -1,179 +1,177 @@
 import "dreamland";
 
 const sharedCSS = css`
-a:not(nav a) {
-  text-decoration: none;
-  border-bottom: 1px dotted var(--accent);
-  transition: 0.2s border;
-}
-
-a,
-a:visited:hover {
-  color: var(--accent);
-  transition: color 0.1s;
-}
-
-a:visited {
-  color: color-mix(in srgb, var(--accent) 70%, var(--base) 30%)!;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card:hover,
-  .card:focus,
-  .card:focus-visible,
-  .card:active,
-  .card:active:focus,
-  nav a {
-    transform: scale(1)!important;
+  a:not(nav a, :has(img)) {
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+    transition: 0.2s border;
   }
 
-  .popup .inner {
-    transition: opacity 0.4s!important;
+  a,
+  a:visited:hover {
+    color: var(--accent);
+    transition: color 0.1s;
   }
-}
 
-@keyframes borderPulse {
-  0% {
-    border-color: var(--crust);
+  a:visited {
+    color: color-mix(in srgb, var(--accent) 70%, var(--base) 30%) !;
   }
-  10% {
-    border-color: var(--accent);
+
+  @media (prefers-reduced-motion: reduce) {
+    .card:hover,
+    .card:focus,
+    .card:focus-visible,
+    .card:active,
+    .card:active:focus,
+    nav a {
+      transform: scale(1) !important;
+    }
+
+    .popup .inner {
+      transition: opacity 0.4s !important;
+    }
   }
-  85% {
-    border-color: var(--crust);
+
+  @keyframes borderPulse {
+    0% {
+      border-color: var(--crust);
+    }
+    10% {
+      border-color: var(--accent);
+    }
+    85% {
+      border-color: var(--crust);
+    }
+    100% {
+      border-color: var(--crust);
+    }
   }
-  100% {
-    border-color: var(--crust);
+
+  ::selection {
+    background: var(--accent);
+    color: var(--base);
   }
-}
 
-::selection {
-  background: var(--accent);
-  color: var(--base);
-}
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
 
-::-webkit-scrollbar,
-*::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
+  ::-webkit-scrollbar-track,
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-::-webkit-scrollbar-track,
-*::-webkit-scrollbar-track {
-  background: transparent;
-}
+  ::-webkit-scrollbar-thumb,
+  *::-webkit-scrollbar-thumb {
+    background: var(--surface0);
+    border-radius: 9999px;
+    margin: 0 2px;
+    transition: background 0.2s;
+  }
 
-::-webkit-scrollbar-thumb,
-*::-webkit-scrollbar-thumb {
-  background: var(--surface0);
-  border-radius: 9999px;
-  margin: 0 2px;
-  transition: background 0.2s;
-}
+  ::-webkit-scrollbar-thumb:hover,
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--base);
+    transition: background 0.2s;
+  }
 
-::-webkit-scrollbar-thumb:hover,
-*::-webkit-scrollbar-thumb:hover {
-  background: var(--base);
-  transition: background 0.2s;
-}
-
-::-webkit-scrollbar-button,
-*::-webkit-scrollbar-button,
-::-webkit-scrollbar-corner,
-*::-webkit-scrollbar-corner {
-  display: none;
-  background: transparent;
-}
-
-
-.card:focus kbd,
-.card:focus-visible kbd {
-  opacity: 1;
-  transition: opacity 0.2s;
-}
-
-:focus,
-:focus-visible {
-  outline: 2px solid #cba6f7;
-  outline-offset: 2px;
-  border-radius: 0.1rem;
-}
-
-subt {
-  color: var(--subtext0)
-}
-
-kbd {
-  font-size: 0.85rem;
-  /* margin: 0.5rem; */
-  font-family: var(--font-mono);
-  color: var(--subtext0);
-  border: 1px solid var(--subtext0);
-  padding: 0.15rem 0.6rem;
-  border-radius: 0.3rem;
-}
-
-.popup.transparent .inner {
-  top: 100vw;
-  transition: 0.2s ease-in-out;
-}
-
-.popup.transparent,
-.popup {
-  transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
-}
-
-.popup .inner {
-  transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
-}
-
-.popup.transparent {
-  opacity: 0;
-}
-
-.popup.transparent .popup-bg {
-  transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(0px);
-  background: rgba(0, 0, 0, 0);
-}
-
-@media (orientation: portrait) {
-  display: initial!important;
-      width:100vw;
-  
-  #theme-name {
+  ::-webkit-scrollbar-button,
+  *::-webkit-scrollbar-button,
+  ::-webkit-scrollbar-corner,
+  *::-webkit-scrollbar-corner {
     display: none;
+    background: transparent;
   }
-  
-  #content,
-  nav {
-    width: calc(100vw - 1em)!important
+
+  .card:focus kbd,
+  .card:focus-visible kbd {
+    opacity: 1;
+    transition: opacity 0.2s;
   }
-  
+
+  :focus,
+  :focus-visible {
+    outline: 2px solid #cba6f7;
+    outline-offset: 2px;
+    border-radius: 0.1rem;
+  }
+
+  subt {
+    color: var(--subtext0);
+  }
+
+  kbd {
+    font-size: 0.85rem;
+    /* margin: 0.5rem; */
+    font-family: var(--font-mono);
+    color: var(--subtext0);
+    border: 1px solid var(--subtext0);
+    padding: 0.15rem 0.6rem;
+    border-radius: 0.3rem;
+  }
+
+  .popup.transparent .inner {
+    top: 100vw;
+    transition: 0.2s ease-in-out;
+  }
+
+  .popup.transparent,
+  .popup {
+    transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+  }
+
   .popup .inner {
-    width:  max(100%,100vw) !important;
-    height:  max(100%,100vh) !important;
     transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
   }
-  
-  .popup .inner article {
-    height: max(100%,100vh);
+
+  .popup.transparent {
+    opacity: 0;
   }
-  
-  .popup .inner .article-inner {
-    flex-direction: column;
-    align-items: center;
+
+  .popup.transparent .popup-bg {
+    transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0);
   }
-  
-  .popup .inner article img {
-    width: 90vw;
-    max-width: initial;
-    height: auto;
-    justify-self: center;
+
+  @media (orientation: portrait) {
+    display: initial !important;
+    width: 100vw;
+
+    #theme-name {
+      display: none;
+    }
+
+    #content,
+    nav {
+      width: calc(100vw - 1em) !important;
+    }
+
+    .popup .inner {
+      width: max(100%, 100vw) !important;
+      height: max(100%, 100vh) !important;
+      transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
+    }
+
+    .popup .inner article {
+      height: max(100%, 100vh);
+    }
+
+    .popup .inner .article-inner {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .popup .inner article img {
+      width: 90vw;
+      max-width: initial;
+      height: auto;
+      justify-self: center;
+    }
   }
-  }
-  
 `;
 
 // MARK: THEMING
@@ -538,7 +536,9 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
     <div
       class="card"
       on:pointerup={() => {
-        document.querySelector("main")!.appendChild(<LargeProjectView project={this.detail} />);
+        document
+          .querySelector("main")!
+          .appendChild(<LargeProjectView project={this.detail} />);
         (document.activeElement as HTMLElement)?.blur();
       }}
       on:keydown={(e: KeyboardEvent) => {
@@ -2106,6 +2106,64 @@ function keydown(key: string) {
   return keys.has(key);
 }
 
+const DarkReaderWarning: Component<{}, {}> = function () {
+  this.mount = () => {
+    setInterval(() => {
+      if (
+        !document.documentElement.getAttribute("data-darkreader-mode") ||
+        !document.documentElement.getAttribute("data-darkreader-scheme")
+      ) {
+        this.root.remove();
+      }
+    });
+  };
+
+  function ctpRed(): string {
+    switch (document.body.classList[0]) {
+      case "Mocha":
+        return "#f38ba8";
+      case "Macchiato":
+        return "#ed8796";
+      case "Frappe":
+        return "#e78284";
+      case "Latte":
+        return "#d20f39";
+      default:
+        return "#f00";
+    }
+  }
+
+  this.css = `
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background: var(--surface0);
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    border-top-left-radius: 0.75rem;
+
+    span {
+      color: ${ctpRed()};
+    }
+
+  `;
+
+  return (
+    <div id="darkreader-warning">
+      <span class="material-symbols-outlined">warning</span>{" "}
+      <p>Dark Reader breaks this site.</p>
+      <p>Please disable it.</p>
+    </div>
+  );
+};
+
 // MARK: WINDOW LOAD
 window.addEventListener("load", () => {
   document.addEventListener("keydown", (e) => {
@@ -2193,4 +2251,13 @@ window.addEventListener("load", () => {
       }
     });
   }
+
+  setInterval(() => {
+    if (
+      document.documentElement.getAttribute("data-darkreader-mode") ||
+      document.documentElement.getAttribute("data-darkreader-scheme")
+    ) {
+      document.body.appendChild(<DarkReaderWarning />);
+    }
+  }, 1000);
 });
