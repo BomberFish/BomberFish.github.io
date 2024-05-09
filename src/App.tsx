@@ -988,6 +988,7 @@ const Nav: Component<
     <nav>
       <span id="title">
         <img
+          loading="lazy"
           src="/favicon.ico"
           alt="My profile picture"
           width="32"
