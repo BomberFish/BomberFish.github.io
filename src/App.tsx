@@ -274,9 +274,10 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
   this.css = `
     background: var(--surface0);
     width: 320px;
+    height: 265px;
     border-radius: 0.9rem;
     padding-bottom: 0.2rem;
-    margin: 1.5rem;
+    // margin: 1.5rem;
 
     transform: translateZ(50px);
 
@@ -352,7 +353,13 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       tabindex="0"
     >
       <div class="img-container">
-        <img src={this.detail.img} alt={this.detail.blurb} />
+        <img
+          src={this.detail.img}
+          alt={this.detail.blurb}
+          loading="lazy"
+          referrerpolicy="no-referrer"
+          crossorigin="anonymous"
+        />
       </div>
       <div class="detail">
         <div class="title">
@@ -599,6 +606,9 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 on:pointerup={() => {
                   window.open(this.project.img, "_blank");
                 }}
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                crossorigin="anonymous"
               />
               <div class="desc">
                 <p>{this.project.largeDesc}</p>
@@ -734,20 +744,26 @@ const Intro: Component<{}, {}> = function () {
 
 const Footer: Component<{}, {}> = function () {
   this.css = `
-    div > kbd {
+    #konami > kbd {
       margin-right: 0.65rem;
     }
 
-    div > a {
+    #konami > a {
       opacity: 0;
       pointer-events: none;
       transition: 0.2s;
     }
 
-    div:hover > a {
+    #konami:hover > a {
       opacity: 1;
       pointer-events: auto;
       transition: 0.2s;
+    }
+
+    #webbtns {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(max(31px, 1.9375rem), 0fr));
+      grid-gap: calc(max(31px, 1.9375rem) * 3.5);
     }
   `;
   return (
@@ -778,7 +794,7 @@ const Footer: Component<{}, {}> = function () {
               <br></br>
               <br></br>
             </div>
-            <div>
+            <div id="konami">
               <kbd>↑</kbd>
               <kbd>↑</kbd>
               <kbd>↓</kbd>
@@ -794,18 +810,18 @@ const Footer: Component<{}, {}> = function () {
           </div>
         )}
         <br></br>
-        <a
-          href="https://dashboard.simpleanalytics.com/bomberfish.ca"
-          target="_blank"
-        >
-          <img
+        <div id="webbtns">
+          <WebButton
             src="https://simpleanalyticsbadges.com/bomberfish.ca?logo=cba6f7&text=cdd6f4&background=181825&radius=8"
             title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
-            loading="lazy"
-            referrerpolicy="no-referrer"
-            crossorigin="anonymous"
+            href="https://dashboard.simpleanalytics.com/bomberfish.ca"
           />
-        </a>
+          <WebButton
+            src="/dlbadge.webp"
+            title="Built with dreamland.js"
+            href="https://dreamland.js.org"
+          />
+        </div>
         <p>
           bomberfish.ca is a <strong>blink-free zone</strong>.
         </p>
@@ -865,8 +881,8 @@ const Nav: Component<
       -moz-border-radius: 100%;
       border-radius: 100%;
       display: inline;
-      margin-left: 1em;
-      margin-right: 0.5em;
+      margin-left: 0;
+      margin-right: 0.4em;
       -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
       transition: -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
       -o-transition: -o-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
@@ -940,7 +956,7 @@ const Nav: Component<
     <nav>
       <span id="title">
         <img
-          src="misc/pfps/bomberfish.png"
+          src="/favicon.ico"
           alt="My profile picture"
           width="32"
           height="32"
@@ -962,6 +978,43 @@ const Nav: Component<
         <ThemePicker />
       </span>
     </nav>
+  );
+};
+
+const WebButton: Component<
+  {
+    src: string;
+    href: string;
+    alt?: string;
+    title?: string;
+    rounded?: boolean;
+    radius?: string;
+  },
+  {}
+> = function () {
+  this.css = `
+  width: max-content;
+  height: max(31px, 1.9375rem);
+  img {
+    width: auto;
+    height: max(31px, 1.9375rem);
+    border-radius: ${
+      this.rounded ? (this.radius ? this.radius : "0.5rem") : "0px"
+    }
+  }
+  `;
+
+  return (
+    <a href={this.href} target="_blank">
+      <img
+        src={this.src}
+        alt={this.alt || this.title || ""}
+        title={this.title || this.alt || ""}
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        crossorigin="anonymous"
+      />
+    </a>
   );
 };
 
@@ -1014,7 +1067,7 @@ const App: Component<
     #projects-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 0fr));
-      grid-gap: 0 2rem;
+      grid-gap: 2rem;
       place-items: center;
       place-content: center;
     }
@@ -1061,36 +1114,56 @@ const App: Component<
     }
   `;
 
+  setTimeout(()=>{
+    document.querySelector("main")?.dispatchEvent(new MouseEvent("move", {
+      clientX: window.innerWidth,
+      clientY: window.innerHeight,
+    }))
+  }, 2)
+
   return (
-    <main on:mousemove={(e: MouseEvent)=>{
-      // i feel like this is way more complicated than it needs to be
-      console.debug(e.clientX, e.clientY);
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        console.log("user prefers less motion");
-        return;
-      }
-      const offsetX = this.prevMouseX - e.clientX;
-      const offsetY = this.prevMouseY - e.clientY;
-      console.debug(offsetX, offsetY);
-      const x = this.prevX - (offsetX * 0.06);
-      const y = this.prevY - (offsetY * 0.06);
-      console.debug(x, y);
-      document.documentElement.style.setProperty("--bgmoveX", x + "px");
-      document.documentElement.style.setProperty("--bgmoveY", y + "px");
-      this.prevMouseX = e.clientX;
-      this.prevMouseY = e.clientY;
-      this.prevX = x;
-      this.prevY = y;
-    }}>
+    <main
+      on:mousemove={(e: MouseEvent) => {
+        // i feel like this is way more complicated than it needs to be
+        console.debug(e.clientX, e.clientY);
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          console.log("user prefers less motion");
+          return;
+        }
+        const offsetX = this.prevMouseX - e.clientX;
+        const offsetY = this.prevMouseY - e.clientY;
+        console.debug(offsetX, offsetY);
+        const x = this.prevX - offsetX * 0.06;
+        const y = this.prevY - offsetY * 0.06;
+        console.debug(x, y);
+        document.documentElement.style.setProperty("--bgmoveX", x + "px");
+        document.documentElement.style.setProperty("--bgmoveY", y + "px");
+        this.prevMouseX = e.clientX;
+        this.prevMouseY = e.clientY;
+        this.prevX = x;
+        this.prevY = y;
+      }}
+    >
       <Nav />
       <div id="content">
         <Intro />
-        <h2>My work</h2>
+        <h2 style="margin-bottom: 0.83em!important;">My work</h2>
         <div id="projects-container">
           {use(this.projects, (projects) =>
             projects.map((project) => <Card detail={project} />)
           )}
         </div>
+        <h2>Website Design Philosophy</h2>
+        <ul>
+          <li>Be as keyboard-accessible as possible.</li>
+          <li>
+            JavaScript is not the enemy. Take advantage of all the latest
+            gizmos.
+          </li>
+          <li>Optimize for size. Some people use Canadian cellular data.</li>
+          <li>Have some fun. Don't be too bland.</li>
+        </ul>
+        <br></br>
         <Footer />
       </div>
     </main>
@@ -1741,8 +1814,11 @@ const ThreeDeeApp: Component<
                 }}
               >
                 <img
-                  src="/misc/pfps/bomberfish.png"
+                  src="/favicon.ico"
                   style="width: 1.5rem;height:1.5rem;border-radius:50%;margin-right:5px;"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                  crossorigin="anonymous"
                 ></img>
                 BomberFish
               </marquee>
