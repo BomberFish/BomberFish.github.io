@@ -23,20 +23,19 @@ let store = $store(
 
 function updatePage() {
   var root = document.documentElement;
-
+  console.log(store.theme)
   if (
-    !(
-      store.theme.name ||
-      store.theme.shortName ||
-      store.theme.text ||
-      store.theme.overlay1 ||
-      store.theme.surface0 ||
-      store.theme.subtext0 ||
-      store.theme.base ||
-      store.theme.crust ||
-      store.theme.accent
-    )
+      store.theme.name == undefined ||
+      store.theme.shortName == undefined  ||
+      store.theme.text == undefined  ||
+      store.theme.overlay1 == undefined  ||
+      store.theme.surface0 == undefined  ||
+      store.theme.subtext0 == undefined  ||
+      store.theme.base == undefined  ||
+      store.theme.crust == undefined  ||
+      store.theme.accent == undefined 
   ) {
+    console.log("theme is corrupted or out of date, resetting")
     store.theme = {
       name: "Mocha",
       shortName: "Mocha",
