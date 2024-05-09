@@ -18,7 +18,7 @@ const sharedCSS = css`
   }
 
   h1,
-  h2 {
+  h2:not(nav h2) {
     font-family: var(--font-display);
     font-weight: 550;
     margin-top: 0.75rem;
