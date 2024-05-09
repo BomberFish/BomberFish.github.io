@@ -23,6 +23,35 @@ let store = $store(
 
 function updatePage() {
   var root = document.documentElement;
+
+  if (
+    !(
+      store.theme.name ||
+      store.theme.shortName ||
+      store.theme.text ||
+      store.theme.overlay1 ||
+      store.theme.surface0 ||
+      store.theme.subtext0 ||
+      store.theme.base ||
+      store.theme.crust ||
+      store.theme.accent
+    )
+  ) {
+    store.theme = {
+      name: "Mocha",
+      shortName: "Mocha",
+      text: "#cdd6f4",
+      overlay1: "#7f849c",
+      surface0: "#313244",
+      subtext0: "#a6adc8",
+      base: "#1e1e2e",
+      mantle: "#181825",
+      crust: "#11111b",
+      accent: "#cba6f7",
+    }
+    updatePage();
+  }
+
   document.head
     .querySelector("meta[name=theme-color]")!
     .setAttribute("content", store.theme.mantle);
@@ -364,7 +393,7 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
       <div class="detail">
         <div class="title">
           <span>{this.detail.title}</span>
-          <sub> • ({this.detail.year})</sub>
+          <subt> • ({this.detail.year})</subt>
         </div>
         <p>{this.detail.blurb}</p>
         <kbd>↩</kbd>
@@ -768,7 +797,7 @@ const Footer: Component<{}, {}> = function () {
   `;
   return (
     <footer>
-      <sub>
+      <subt>
         Website made with &lt;3 in{" "}
         <a href="https://dreamland.js.org" target="blank">
           DreamlandJS
@@ -825,7 +854,7 @@ const Footer: Component<{}, {}> = function () {
         <p>
           bomberfish.ca is a <strong>blink-free zone</strong>.
         </p>
-      </sub>
+      </subt>
     </footer>
   );
 };
@@ -967,7 +996,7 @@ const Nav: Component<
         />
         <h2>
           BomberFish
-          <sub>(he/him)</sub>
+          <subt>(he/him)</subt>
         </h2>
       </span>
       <span id="nav">
@@ -1114,12 +1143,14 @@ const App: Component<
     }
   `;
 
-  setTimeout(()=>{
-    document.querySelector("main")?.dispatchEvent(new MouseEvent("move", {
-      clientX: window.innerWidth,
-      clientY: window.innerHeight,
-    }))
-  }, 2)
+  setTimeout(() => {
+    document.querySelector("main")?.dispatchEvent(
+      new MouseEvent("move", {
+        clientX: window.innerWidth,
+        clientY: window.innerHeight,
+      })
+    );
+  }, 2);
 
   return (
     <main
