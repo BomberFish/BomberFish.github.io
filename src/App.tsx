@@ -5,7 +5,7 @@ import "dreamland";
 let store = $store(
   {
     theme: {
-      name: "Mocha",
+      name: "Catppuccin Mocha",
       shortName: "Mocha",
       text: "#cdd6f4",
       overlay1: "#7f849c",
@@ -70,7 +70,7 @@ function updatePage() {
 
 const ThemePicker: Component<{}, {}> = function () {
   const mocha = {
-    name: "Mocha",
+    name: "Catppuccin Mocha",
     shortName: "Mocha",
     text: "#cdd6f4",
     overlay1: "#7f849c",
@@ -83,7 +83,7 @@ const ThemePicker: Component<{}, {}> = function () {
   };
 
   const macchiato = {
-    name: "Macchiato",
+    name: "Catppuccin Macchiato",
     shortName: "Macchiato",
     text: "#cad3f5",
     overlay1: "#8087a2",
@@ -96,7 +96,7 @@ const ThemePicker: Component<{}, {}> = function () {
   };
 
   const frappe = {
-    name: "Frappé",
+    name: "Catppuccin Frappé",
     shortName: "Frappe",
     text: "#c6d0f5",
     overlay1: "#838ba7",
@@ -109,7 +109,7 @@ const ThemePicker: Component<{}, {}> = function () {
   };
 
   const latte = {
-    name: "Latte",
+    name: "Catppuccin Latte",
     shortName: "Latte",
     text: "#4c4f69",
     overlay1: "#8c8fa1",
@@ -151,21 +151,23 @@ const ThemePicker: Component<{}, {}> = function () {
 
   return (
     <button
-      on:click={() => {
+      on:click={(e: MouseEvent) => {
+        e.preventDefault();
         let index = themes.indexOf(store.theme);
         store.theme = themes[(index + 1) % themes.length];
 
         updatePage();
       }}
-      on:contextMenu={(e: PointerEvent) => {
-        e.preventDefault();
-        let index = themes.indexOf(store.theme);
-        store.theme = themes[(index - 1) % themes.length];
-        updatePage();
-      }}
+      title={use(store.theme.name)}
+      // on:contextMenu={(e: PointerEvent) => {
+      //   e.preventDefault();
+      //   let index = themes.indexOf(store.theme);
+      //   store.theme = themes[(index - 1) % themes.length];
+      //   updatePage();
+      // }}
     >
       <span class="material-symbols-outlined">palette</span>&nbsp;&nbsp;
-      <span id="theme-name">{use(store.theme.name)}</span>
+      <span id="theme-name">{use(store.theme.shortName)}</span>
     </button>
   );
 };
