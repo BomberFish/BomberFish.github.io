@@ -1160,17 +1160,17 @@ const App: Component<
     <main
       on:mousemove={(e: MouseEvent) => {
         // i feel like this is way more complicated than it needs to be
-        console.debug(e.clientX, e.clientY);
+        // console.debug(e.clientX, e.clientY);
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
           console.info("user prefers less motion");
           return;
         }
         const offsetX = this.prevMouseX - e.clientX;
         const offsetY = this.prevMouseY - e.clientY;
-        console.debug(offsetX, offsetY);
+        // console.debug(offsetX, offsetY);
         const x = this.prevX - offsetX * 0.06;
         const y = this.prevY - offsetY * 0.06;
-        console.debug(x, y);
+        // console.debug(x, y);
         document.documentElement.style.setProperty("--bgmoveX", x + "px");
         document.documentElement.style.setProperty("--bgmoveY", y + "px");
         this.prevMouseX = e.clientX;
