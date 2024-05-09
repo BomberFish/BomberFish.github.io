@@ -17,6 +17,23 @@ const sharedCSS = css`
     color: color-mix(in srgb, var(--accent) 70%, var(--base) 30%) !;
   }
 
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 550;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+  p,li {
+    margin-block: 0.25rem;
+    line-height: 1.5;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .card:hover,
     .card:focus,
@@ -473,19 +490,19 @@ const projects = [
   ),
 ];
 
-const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
+const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> = function () {
   this.css = `
     background: var(--surface0);
     width: 320px;
     height: 265px;
-    border-radius: 0.9rem;
+    border-radius: 1rem!important;
     padding-bottom: 0.2rem;
     // margin: 1.5rem;
 
     transform: translateZ(50px);
 
     .img-container {
-      width: 320px;
+      width: 318px;
       height: auto;
       aspect-ratio: 512 / 277;
     }
@@ -503,8 +520,13 @@ const Card: Component<{ detail: ProjectCardDetails }, {}> = function () {
     .title {
       display: flex;
       align-items: center;
-      margin-top: 0.5rem;
+      margin-top: 0.2rem;
       font-family: var(--font-display);
+    }
+
+    p {
+      margin: 0!important;
+      margin-top: 0.025rem!important;
     }
 
     .title > span {
@@ -633,8 +655,10 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       #title {
         font-size: 2.25rem;
         margin-block: 0;
-        padding-left: 1rem;
         font-weight: 600;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
       }
 
       button {
@@ -681,7 +705,7 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       .head > * {
-        margin: 2rem 2rem;
+        margin: 1.5rem;
       }
 
       .desc {
@@ -852,6 +876,15 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 const Intro: Component<{}, {}> = function () {
   this.css = `
     width: 100%;
+    ul {
+      list-style-type: circle;
+      padding-inline-start: 2rem;
+    }
+    
+    ul ul {
+      list-style-type: "→ ";
+      padding-inline-start: 2rem;
+    }
   `;
   return (
     <article>
@@ -961,7 +994,8 @@ const Footer: Component<{}, {}> = function () {
       transition: 0.2s;
     }
 
-    #konami:hover > a {
+    #konami:hover > a,
+    #konami:focus-within > a {
       opacity: 1;
       pointer-events: auto;
       transition: 0.2s;
@@ -1361,7 +1395,7 @@ const App: Component<
         <h2 style="margin-bottom: 0.83em!important;">My work</h2>
         <div id="projects-container">
           {use(this.projects, (projects) =>
-            projects.map((project) => <Card detail={project} />)
+            projects.map((project) => <ProjectCard detail={project} />)
           )}
         </div>
         <h2>Website Design Philosophy</h2>
@@ -1851,7 +1885,7 @@ const ThreeDeeApp: Component<
   };
 
   return (
-    <div class={sharedCSS}>
+    <main class={sharedCSS}>
       <debug>
         <a href="./" style="color: var(--accent)">
           <span class="material-symbols-outlined">arrow_back</span> Back to
@@ -1945,7 +1979,13 @@ const ThreeDeeApp: Component<
               <h2>My work</h2>
               <div id="projects-container">
                 {use(this.projects, (projects) =>
-                  projects.map((project) => <Card detail={project} />)
+                  projects.map((project) => (
+                    <div>
+                      <ProjectCard detail={project} />
+                      <br></br>
+                      <br></br>
+                    </div>
+                  ))
                 )}
               </div>
             </article>
@@ -2049,7 +2089,7 @@ const ThreeDeeApp: Component<
           </Screen>
         </stage>
       </camera>
-    </div>
+    </main>
   );
 };
 
