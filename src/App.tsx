@@ -1,7 +1,7 @@
+console.log('%c Hello, World!', 'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: 3px 3px 0 #fab387 , 6px 6px 0 #f9e2af , 9px 9px 0 #a6e3a1 , 12px 12px 0 #94e2d5 , 15px 15px 0 #89b4fa , 18px 18px 0 #b4befe , 21px 21px 0 #cba6f7');
 import "dreamland";
 
 // MARK: THEMING
-
 let store = $store(
   {
     theme: {
@@ -23,7 +23,7 @@ let store = $store(
 
 function updatePage() {
   var root = document.documentElement;
-  console.log(store.theme);
+  console.debug(store.theme);
   if (
     store.theme.name == undefined ||
     store.theme.shortName == undefined ||
@@ -35,7 +35,7 @@ function updatePage() {
     store.theme.crust == undefined ||
     store.theme.accent == undefined
   ) {
-    console.log("theme is corrupted or out of date, resetting");
+    console.warn("theme is corrupted or out of date, resetting");
     store.theme = {
       name: "Mocha",
       shortName: "Mocha",
@@ -1162,7 +1162,7 @@ const App: Component<
         // i feel like this is way more complicated than it needs to be
         console.debug(e.clientX, e.clientY);
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          console.log("user prefers less motion");
+          console.info("user prefers less motion");
           return;
         }
         const offsetX = this.prevMouseX - e.clientX;
@@ -1964,9 +1964,9 @@ window.addEventListener("load", () => {
     // console.debug(source);
 
     if (store.playMusic !== false) {
-      console.log("music start");
+      console.info("music start");
       audio.play().catch((e) => {
-        console.error(e);
+        console.error("could not start audio: " + e);
         document.body.appendChild(<ClickWall />);
         return;
       });
@@ -1997,7 +1997,7 @@ window.addEventListener("load", () => {
     ];
 
     document.documentElement.addEventListener("keydown", (e: KeyboardEvent) => {
-      console.log(e.key);
+      console.debug(e.key);
 
       if (e.key === konamiCode[konamiCurrent]) {
         console.debug("match");

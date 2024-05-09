@@ -194,6 +194,10 @@ a:visited {
     height: auto;
     justify-self: center;
   }
+
+  body {
+    background: var(--base)
+  }
 }
 
 subt {
