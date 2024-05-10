@@ -1,5 +1,32 @@
 // oneko.js: https://github.com/adryd325/oneko.js
 
+var _eventHandlers = {}; // somewhere global
+
+const addListener = (node, event, handler, capture = false) => {
+  if (!(event in _eventHandlers)) {
+    _eventHandlers[event] = []
+  }
+  // here we track the events and their nodes (note that we cannot
+  // use node as Object keys, as they'd get coerced into a string
+  _eventHandlers[event].push({ node: node, handler: handler, capture: capture })
+  node.addEventListener(event, handler, capture)
+}
+
+const removeAllListeners = (targetNode, event) => {
+  // check if _eventHandlers[event] is defined
+  if (_eventHandlers[event]) {
+    // remove listeners from the matching nodes
+    _eventHandlers[event]
+      .filter(({ node }) => node === targetNode)
+      .forEach(({ node, handler, capture }) => node.removeEventListener(event, handler, capture))
+
+    // update _eventHandlers global
+    _eventHandlers[event] = _eventHandlers[event].filter(
+      ({ node }) => node !== targetNode,
+    )
+  }
+}
+
 const mobileRE = /(android|bb\d+|meego).+mobile|armv7l|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series[46]0|samsungbrowser.*mobile|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i
 const notMobileRE = /CrOS/
 
@@ -198,16 +225,16 @@ function isMobile (opts) {
         idleAnimation == null
       ) {
         let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
-        if (nekoPosX < 32) {
+        if (nekoPosX < (16 * nekoRem)) {
           avalibleIdleAnimations.push("scratchWallW");
         }
-        if (nekoPosY < 32) {
+        if (nekoPosY < (16 * nekoRem)) {
           avalibleIdleAnimations.push("scratchWallN");
         }
-        if (nekoPosX > window.innerWidth - 32) {
+        if (nekoPosX > window.innerWidth - (16 * nekoRem)) {
           avalibleIdleAnimations.push("scratchWallE");
         }
-        if (nekoPosY > window.innerHeight - 32) {
+        if (nekoPosY > window.innerHeight - (16 * nekoRem)) {
           avalibleIdleAnimations.push("scratchWallS");
         }
         idleAnimation =
@@ -223,6 +250,10 @@ function isMobile (opts) {
             break;
           }
           setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
+          removeAllListeners(nekoEl, "click");
+          addListener(nekoEl, "click", ()=>{
+            resetIdleAnimation();
+          })
           if (idleAnimationFrame > 192) {
             resetIdleAnimation();
           }

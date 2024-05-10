@@ -1,5 +1,18 @@
 import "dreamland";
 
+const articleCSS = css`
+  width: 100%;
+  ul {
+    list-style-type: circle;
+    padding-inline-start: 2rem;
+  }
+
+  ul ul {
+    list-style-type: "→ ";
+    padding-inline-start: 2rem;
+  }
+`;
+
 const sharedCSS = css`
   a:not(nav a, :has(img)) {
     text-decoration: none;
@@ -29,7 +42,8 @@ const sharedCSS = css`
     font-weight: 700;
   }
 
-  p,li {
+  p,
+  li {
     margin-block: 0.25rem;
     line-height: 1.5;
   }
@@ -873,21 +887,21 @@ const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
   };
 
 // MARK: MAIN BODY
-const Intro: Component<{}, {}> = function () {
-  this.css = `
-    width: 100%;
-    ul {
-      list-style-type: circle;
-      padding-inline-start: 2rem;
-    }
-    
-    ul ul {
-      list-style-type: "→ ";
-      padding-inline-start: 2rem;
-    }
-  `;
+
+const Article: Component<{}, {}> = function () {
   return (
-    <article>
+    <article class={articleCSS}>
+      <Intro />
+      <About />
+      <Contact />
+      <SiteMap />
+    </article>
+  );
+};
+
+const Intro: Component<{}, {}> = function () {
+  return (
+    <div>
       <h1>Hi 👋</h1>
       <p>
         I'm Hariz, a high school student from Canada. I'm a wannabe "software
@@ -896,6 +910,13 @@ const Intro: Component<{}, {}> = function () {
       <p>
         I'm into webdev, native iOS development, and a bit of security research.
       </p>
+    </div>
+  );
+};
+
+const About: Component<{}, {}> = function () {
+  return (
+    <div>
       <h2>About me</h2>
       <ul>
         <li>I was one of the winners of the 2024 Swift Student Challenge</li>
@@ -918,6 +939,13 @@ const Intro: Component<{}, {}> = function () {
         <li>I play the guitar (!!)</li>
         <li>I use Arch (btw)</li>
       </ul>
+    </div>
+  );
+};
+
+const Contact: Component<{}, {}> = function () {
+  return (
+    <div>
       <h2>Contact</h2>
       <ul>
         <li>
@@ -965,7 +993,13 @@ const Intro: Component<{}, {}> = function () {
           </ul>
         </li>
       </ul>
+    </div>
+  );
+};
 
+const SiteMap: Component<{}, {}> = function () {
+  return (
+    <div>
       <h2>Other things on this site</h2>
       <ul>
         <li>
@@ -978,7 +1012,7 @@ const Intro: Component<{}, {}> = function () {
           <a href="./tools/index.html">/tools</a>
         </li>
       </ul>
-    </article>
+    </div>
   );
 };
 
@@ -1260,6 +1294,33 @@ const WebButton: Component<
   );
 };
 
+const Projects: Component<{ projects: ProjectCardDetails[] }, {}> =
+  function () {
+    return (
+      <div id="projects-container">
+        {use(this.projects, (projects) =>
+          projects.map((project) => <ProjectCard detail={project} />)
+        )}
+      </div>
+    );
+  };
+
+const DesignPhilosophy: Component<{}, {}> = function () {
+  return (
+    <div>
+      <h2>Website Design Philosophy</h2>
+      <ul>
+        <li>Be as keyboard-accessible as possible.</li>
+        <li>
+          JavaScript is not the enemy. Take advantage of all the latest gizmos.
+        </li>
+        <li>Optimize for size. Some people use (and pay for) Canadian cellular data.</li>
+        <li>Have some fun. Don't be too bland.</li>
+      </ul>
+    </div>
+  );
+};
+
 const App: Component<
   {},
   {
@@ -1391,23 +1452,10 @@ const App: Component<
     >
       <Nav />
       <div id="content">
-        <Intro />
+        <Article />
         <h2 style="margin-bottom: 0.83em!important;">My work</h2>
-        <div id="projects-container">
-          {use(this.projects, (projects) =>
-            projects.map((project) => <ProjectCard detail={project} />)
-          )}
-        </div>
-        <h2>Website Design Philosophy</h2>
-        <ul>
-          <li>Be as keyboard-accessible as possible.</li>
-          <li>
-            JavaScript is not the enemy. Take advantage of all the latest
-            gizmos.
-          </li>
-          <li>Optimize for size. Some people use Canadian cellular data.</li>
-          <li>Have some fun. Don't be too bland.</li>
-        </ul>
+        <Projects projects={this.projects} />
+        <DesignPhilosophy />
         <br></br>
         <Footer />
       </div>
@@ -1677,6 +1725,7 @@ const ThreeDeeInfo: Component<{}, {}> = function () {
         for this site (cooleletronis {/* yes this is mispelled on purpose */} if
         you are reading this thank you), so it wouldn't be possible without him.
       </div>
+      <DesignPhilosophy />
     </article>
   );
 };
@@ -1977,17 +2026,7 @@ const ThreeDeeApp: Component<
           >
             <article>
               <h2>My work</h2>
-              <div id="projects-container">
-                {use(this.projects, (projects) =>
-                  projects.map((project) => (
-                    <div>
-                      <ProjectCard detail={project} />
-                      <br></br>
-                      <br></br>
-                    </div>
-                  ))
-                )}
-              </div>
+              <Projects projects={this.projects} />
             </article>
           </Screen>
           <Screen
@@ -1998,7 +2037,7 @@ const ThreeDeeApp: Component<
             width={window.innerWidth * 0.4}
             height={window.innerHeight * 0.5}
           >
-            <Intro />
+            <Article />
           </Screen>
           <Screen
             // ry={30}
