@@ -38,6 +38,7 @@ function isMobile (opts) {
         return
     }
     console.log("ONEKO INIT")
+    const nekoRem = 2.75;
     const isReducedMotion =
       window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
@@ -64,7 +65,7 @@ function isMobile (opts) {
     let idleAnimation = null;
     let idleAnimationFrame = 0;
   
-    const nekoSpeed = 10;
+    const nekoSpeed = (16*nekoRem) / 3;
     const spriteSets = {
       idle: [[-3, -3]],
       alert: [[-7, -3]],
@@ -129,10 +130,12 @@ function isMobile (opts) {
     };
   
     function init() {
+
       nekoEl.id = "oneko";
       nekoEl.ariaHidden = true;
-      nekoEl.style.width = "32px";
-      nekoEl.style.height = "32px";
+      nekoEl.style.width = `${nekoRem}rem`;
+      nekoEl.style.height = `${nekoRem}rem`;
+      nekoEl.style.backgroundSize = `${convertRemToPixels(nekoRem) * 8}px ${convertRemToPixels(nekoRem) * 4}px`;
       nekoEl.style.position = "fixed";
       nekoEl.style.pointerEvents = "none";
       nekoEl.style.imageRendering = "pixelated";
@@ -177,7 +180,7 @@ function isMobile (opts) {
   
     function setSprite(name, frame) {
       const sprite = spriteSets[name][frame % spriteSets[name].length];
-      nekoEl.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
+      nekoEl.style.backgroundPosition = `${sprite[0] * convertRemToPixels(nekoRem)}px ${sprite[1] * convertRemToPixels(nekoRem)}px`;
     }
   
     function resetIdleAnimation() {
