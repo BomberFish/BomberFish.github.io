@@ -21,7 +21,7 @@ export const Intro: Component<{}, {}> = function () {
         engineer" and I sometimes do cool things.
       </p>
       <p>
-        I'm into webdev, native iOS development, and a bit of security research.
+        I'm interested in webdev, native iOS development, and a bit of security research.
       </p>
     </div>
   );
