@@ -166,6 +166,7 @@ function isMobile(opts) {
   };
 
   function init() {
+    nekoEl.style.transition = "0.5s opacity";
     nekoEl.id = "oneko";
     nekoEl.ariaHidden = true;
     nekoEl.style.width = `${nekoRem}rem`;
@@ -179,7 +180,9 @@ function isMobile(opts) {
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
     nekoEl.style.zIndex = Number.MAX_VALUE;
-    nekoEl.style.transition = "none";
+    setTimeout(() => {
+    nekoEl.style.opacity = 1;
+    }, 2);
 
     let nekoFile = "./oneko-ctp.gif";
     const curScript = document.currentScript;

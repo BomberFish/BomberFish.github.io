@@ -139,3 +139,9 @@ body.Latte .card:focus-visible {
 body {
   line-height: 1.5;
 }
+
+#oneko {
+  opacity: 0;
+  background-position: -115.5px -115.5px;
+  transition: 0.5s opacity;
+}
