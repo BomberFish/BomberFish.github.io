@@ -91,7 +91,7 @@ export const sharedCSS = css`
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
     width: 4px;
-    height: 4px;
+    height: 2px;
   }
 
   ::-webkit-scrollbar-track,

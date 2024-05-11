@@ -184,7 +184,7 @@ export const TabBar: Component<
       font-weight: 500;
       font-size: 1.2rem;
       
-      text-wrap: nowrap;
+      white-space: nowrap;
 
       background: transparent;
       color: var(--text);
