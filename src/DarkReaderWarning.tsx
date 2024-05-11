@@ -51,7 +51,7 @@ export const DarkReaderWarning: Component<{}, {}> = function () {
 
   return (
     <div id="darkreader-warning">
-      <span class="material-symbols-outlined">warning</span>{" "}
+      <span class="material-symbols-rounded">warning</span>{" "}
       <p>Dark Reader breaks this site.</p>
       <p>Please disable it.</p>
     </div>

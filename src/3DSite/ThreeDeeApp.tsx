@@ -241,7 +241,7 @@ export const ThreeDeeApp: Component<
     <main class={sharedCSS}>
       <debug>
         <a href="./" style="color: var(--accent)">
-          <span class="material-symbols-outlined">arrow_back</span> Back to
+          <span class="material-symbols-rounded">arrow_back</span> Back to
           sanity
         </a>
         <br></br>
@@ -303,7 +303,7 @@ export const ThreeDeeApp: Component<
                 : document.dispatchEvent(new Event("end-music"));
             }}
           >
-            <span class="material-symbols-outlined">
+            <span class="material-symbols-rounded">
               {v !== false ? "volume_up" : "volume_off"}
             </span>
           </div>

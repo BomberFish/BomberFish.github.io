@@ -158,7 +158,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         border-radius: 0.5rem;
         padding: 0.5rem;
 
-        .material-symbols-outlined {
+        .material-symbols-rounded {
           font-size: 1.6rem;
           margin-right: 0.5rem;
         }
@@ -224,7 +224,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
               }}
             >
               <kbd>esc</kbd>
-              <span class="material-symbols-outlined">close</span>
+              <span class="material-symbols-rounded">close</span>
             </button>
           </div>
           <article>
@@ -246,7 +246,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                     this.project.links?.length === 0,
                     <p class="link">
                       <span class="link-inner">
-                        <span class="material-symbols-outlined">link_off</span>
+                        <span class="material-symbols-rounded">link_off</span>
                         No links available
                       </span>
                     </p>
@@ -255,7 +255,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                   {this.project.links?.map((link) => (
                     <a href={link.url} target="_blank" class="link">
                       <span class="link-inner">
-                        <span class="material-symbols-outlined">
+                        <span class="material-symbols-rounded">
                           {link.icon ?? "globe"}
                         </span>
                         {link.name}
