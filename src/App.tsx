@@ -40,6 +40,11 @@ const sharedCSS = css`
 
   h1 {
     font-weight: 700;
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 
   p,
@@ -85,8 +90,8 @@ const sharedCSS = css`
 
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 4px;
+    height: 4px;
   }
 
   ::-webkit-scrollbar-track,
@@ -511,7 +516,34 @@ const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> = function () {
     height: 265px;
     border-radius: 1rem!important;
     padding-bottom: 0.2rem;
-    // margin: 1.5rem;
+    cursor: pointer;
+      transform: scale(1);
+      transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+      box-shadow: 0 0 0px rgba(24, 24, 37, 0);
+      border: 0.1px dashed var(--overlay1);
+
+      &:hover {
+        transform: scale(1.02);
+        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
+        border: 0.1px dashed var(--accent);
+      }
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        border-color: var(--accent)!important;
+        border-style: solid!important;
+        transform: scale(1.05);
+        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
+      }
+
+      &.active,
+      &:active:focus {
+        transform: scale(0.95);
+        transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
+      }
 
     transform: translateZ(50px);
 
@@ -1314,9 +1346,104 @@ const DesignPhilosophy: Component<{}, {}> = function () {
         <li>
           JavaScript is not the enemy. Take advantage of all the latest gizmos.
         </li>
-        <li>Optimize for size. Some people use (and pay for) Canadian cellular data.</li>
+        <li>
+          Optimize for size. Some people use (and pay for) Canadian cellular
+          data.
+        </li>
         <li>Have some fun. Don't be too bland.</li>
       </ul>
+    </div>
+  );
+};
+
+const TabBar: Component<{ tabs: string[]; tab?: number }, {}> = function () {
+  this.tab = 0;
+  this.css = `
+  div {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    width: 100%;
+    margin-bottom: 0.25rem;
+    padding-inline: 0.5rem;
+  }
+
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+    overflow-x: auto;
+
+
+    button, button.active, button:hover, button:focus, button:active {
+      transition: all 0.35s cubic-bezier(0, 0.55, 0.45, 1);
+    }
+
+    button {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 1.2rem;
+      
+      text-wrap: nowrap;
+
+      background: transparent;
+      color: var(--text);
+      padding: 0;
+      padding-bottom: 1px;
+      border: none;
+      cursor: pointer;
+
+      border-bottom: 1px solid transparent;
+
+      &.active {
+        padding-bottom: 1px;
+        border-bottom-color: var(--accent);
+        font-weight: 700;
+      }
+
+      &:hover,
+      &:focus {
+        padding-bottom: 1px;
+        border-bottom-color: var(--overlay1);
+      }
+
+      &:hover {
+        font-weight: 900;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  `;
+
+  return (
+    <div id="tabs">
+      <div>
+        {this.tabs.map((tab, index) => (
+          <button
+            class={use(this.tab, (tab) => [tab === index ? "active" : ""])}
+            on:click={() => {
+              document
+                .getElementById("mainarticle")!
+                .classList.add("transparent");
+              document.getElementById("mainarticle")!.style.height = "0px";
+              setTimeout(() => {
+                this.tab = index;
+                document.getElementById("mainarticle")!.style.height =
+                  document
+                    .getElementById("mainarticle")!
+                    .children[0]!.getBoundingClientRect().height +
+                  convertRemToPixels(2) +
+                  "px";
+                document
+                  .getElementById("mainarticle")!
+                  .classList.remove("transparent");
+              }, 300);
+            }}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
@@ -1331,6 +1458,8 @@ const App: Component<
     prevX: number;
     prevY: number;
     timeout: boolean;
+    selectedTab: number;
+    elements: Element[];
   }
 > = function () {
   this.prevMouseX = 0;
@@ -1340,6 +1469,18 @@ const App: Component<
   this.projects = projects;
   this.rotation = 0;
   this.timeout = false;
+  this.selectedTab = 0;
+  this.elements = [
+    <Intro />,
+    <About />,
+    <Contact />,
+    <div>
+      <h2 style="margin-bottom: 0.83em!important;">My work</h2>
+      <Projects projects={this.projects} />
+    </div>,
+    <SiteMap />,
+    <DesignPhilosophy />,
+  ];
   this.css = `
     // background: var(--crust);
     color: var(--text);
@@ -1377,47 +1518,42 @@ const App: Component<
 
     #content {
       background: var(--base);
-      padding: 1em;
+      // padding: 1em;
       width: 80vw;
-    }
-
-    .card {
-      cursor: pointer;
-      transform: scale(1);
-      transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-      box-shadow: 0 0 0px rgba(24, 24, 37, 0);
-      border: 0.1px dashed var(--overlay1);
-
-      &:hover {
-        transform: scale(1.02);
-        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-        box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
-        border: 0.1px dashed var(--accent);
-      }
-
-      &:focus,
-      &:focus-visible {
-        outline: none;
-        border-color: var(--accent)!important;
-        border-style: solid!important;
-        transform: scale(1.05);
-        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-        box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
-      }
-
-      &.active,
-      &:active:focus {
-        transform: scale(0.95);
-        transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
-      }
+      border-radius: 0 0 1em 1em;
     }
 
     subt {
       color: var(--subtext0);
     }
+
+    #mainarticle {
+      height: 100%;
+      overflow: hidden;
+      transition: 0.35s, opacity 0.15s;
+    }
+
+    *:not(#tabs) {
+      padding-inline: 1em;
+    }
+
+    #mainarticle.transparent {
+      opacity: 0;
+      transition: 0.35s, opacity 0.15s;
+    }
+
+    footer {
+      padding-bottom: 1rem;
+    }
   `;
 
   setTimeout(() => {
+    document.getElementById("mainarticle")!.style.height =
+      document
+        .getElementById("mainarticle")!
+        .children[0]!.getBoundingClientRect().height +
+      convertRemToPixels(2) +
+      "px";
     document.querySelector("main")?.dispatchEvent(
       new MouseEvent("move", {
         clientX: window.innerWidth,
@@ -1452,10 +1588,20 @@ const App: Component<
     >
       <Nav />
       <div id="content">
-        <Article />
-        <h2 style="margin-bottom: 0.83em!important;">My work</h2>
-        <Projects projects={this.projects} />
-        <DesignPhilosophy />
+        <TabBar
+          tabs={[
+            "Home",
+            "About me",
+            "Contact",
+            "My work",
+            "Sitemap",
+            "About this Site",
+          ]}
+          bind:tab={use(this.selectedTab)}
+        />
+        <article id="mainarticle" class={articleCSS}>
+          {use(this.elements[this.selectedTab])}
+        </article>
         <br></br>
         <Footer />
       </div>
