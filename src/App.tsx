@@ -89,7 +89,7 @@ const App: Component<
     // height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
-    
+
     #content {
       background: var(--base);
       // padding: 1em;
@@ -127,7 +127,7 @@ const App: Component<
       document
         .getElementById("mainarticle")!
         .children[0]!.getBoundingClientRect().height +
-      convertRemToPixels(2) +
+      convertRemToPixels(1) +
       "px";
     document.querySelector("main")?.dispatchEvent(
       new MouseEvent("move", {

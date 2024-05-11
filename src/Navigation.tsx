@@ -172,7 +172,7 @@ export const TabBar: Component<
         gap: 1.5rem;
         width: 100%;
         margin-block: 0.25rem;
-        padding-inline: 0.5rem;
+        // padding-inline: 0.5rem;
     }
     
     button, button.active, button:hover, button:focus, button:active {
@@ -248,7 +248,7 @@ export const TabBar: Component<
                     document
                       .getElementById("mainarticle")!
                       .children[0]!.getBoundingClientRect().height +
-                    convertRemToPixels(2) +
+                    convertRemToPixels(1) +
                     "px";
                   document
                     .getElementById("mainarticle")!

@@ -37,7 +37,7 @@ export const sharedCSS = css`
   h2:not(nav h2) {
     font-family: var(--font-display);
     font-weight: 550;
-    margin-top: 0.75rem;
+    margin-top: 0.1rem;
     margin-bottom: 0.5rem;
   }
 
@@ -238,8 +238,7 @@ export const sharedCSS = css`
     font-size: 1.5rem;
   }
 
-  #mainarticle,
-  footer {
+  #content {
     padding-inline: 1rem;
   }
 `;

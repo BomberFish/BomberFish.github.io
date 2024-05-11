@@ -119,7 +119,11 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         }}
         tabindex="0"
       >
-        <div class="img-container">
+        <div class="img-container" style={{
+            width: "318px",
+            height: "auto",
+            aspectRatio: "512 / 277",
+        }}>
           <img
             loading="lazy"
             src={this.detail.img}
