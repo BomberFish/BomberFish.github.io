@@ -237,4 +237,9 @@ export const sharedCSS = css`
   nav h2 {
     font-size: 1.5rem;
   }
+
+  #mainarticle,
+  footer {
+    padding-inline: 1rem;
+  }
 `;

@@ -88,6 +88,7 @@ export const Nav: Component<
     h2 {
       display: flex;
       align-items: flex-start;
+      margin: 0!important;
       gap: 0.25rem;
     }
 
