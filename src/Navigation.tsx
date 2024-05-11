@@ -176,7 +176,7 @@ export const TabBar: Component<
     }
     
     button, button.active, button:hover, button:focus, button:active {
-        transition: all 0.35s cubic-bezier(0, 0.55, 0.45, 1);
+        transition: all 0.35s cubic-bezier(0, 0.55, 0.45, 1)!important;
     }
 
     button {
@@ -199,6 +199,8 @@ export const TabBar: Component<
         -webkit-user-select: none;
 
         border-bottom: 1px solid transparent;
+
+        font-weight: 475;
 
         &.active {
         padding-bottom: 1px;
