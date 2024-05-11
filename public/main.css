@@ -57,6 +57,7 @@ body {
   color: #cdd6f4;
   background: var(--crust);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 html:has(body.cool),

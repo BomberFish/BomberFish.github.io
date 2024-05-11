@@ -87,34 +87,15 @@ const App: Component<
     align-items: center;
     justify-content: flex-start;
     // height: 100vh;
-    width: 100vw;
-
-    h1,
-    h2,
-    h3 {
-      font-family: var(--font-display)
-    }
-
-    h2 {
-      font-size: 1.6rem;
-      margin-bottom: 0;
-      margin-top: 1rem;
-    }
-
-    nav h2 {
-      font-size: 1.5rem;
-    }
-
+    max-width: 100vw;
+    overflow-x: hidden;
+    
     #content {
       background: var(--base);
       // padding: 1em;
       width: 80vw;
       height: min-content;
       border-radius: 0 0 1em 1em;
-    }
-
-    subt {
-      color: var(--subtext0);
     }
 
     #mainarticle {
@@ -125,7 +106,7 @@ const App: Component<
     }
 
     *:not(#tabs) {
-      padding-inline: 1em;
+      padding-inline: 0.5em;
     }
 
     #mainarticle.transparent {

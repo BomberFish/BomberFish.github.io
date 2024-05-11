@@ -96,19 +96,19 @@ export const Nav: Component<
       color: var(--subtext0)
     }
 
-    #nav {
+    #right {
       justify-self: flex-end;
       margin-left: auto;
       // padding-right: 1.75rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.5rem;
 
-      a {
+      & > a {
+        text-decoration: none;
         transform: scale(1);
         transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         color: var(--accent);
-        text-decoration: none;
         font-size: 1.1rem;
         display: flex;
         align-items: center;
@@ -143,7 +143,7 @@ export const Nav: Component<
           <subt>(he/him)</subt>
         </h2>
       </span>
-      <span id="nav">
+      <span id="right">
         <a href="https://blog.bomberfish.ca" target="_blank">
           <span class="material-symbols-outlined">open_in_new</span>
           &nbsp;&nbsp;Blog
@@ -161,60 +161,63 @@ export const TabBar: Component<
   this.tab = 0;
   this.tabInternal = 0;
   this.css = `
-  div {
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.5rem;
-    width: 100%;
-    margin-bottom: 0.25rem;
-    padding-inline: 0.5rem;
-  }
-
-  margin-bottom: 1rem;
-  margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
     overflow-x: auto;
 
-
+    div {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+        margin-block: 0.25rem;
+        padding-inline: 0.5rem;
+    }
+    
     button, button.active, button:hover, button:focus, button:active {
-      transition: all 0.35s cubic-bezier(0, 0.55, 0.45, 1);
+        transition: all 0.35s cubic-bezier(0, 0.55, 0.45, 1);
     }
 
     button {
-      font-family: var(--font-display);
-      font-weight: 500;
-      font-size: 1.2rem;
-      
-      white-space: nowrap;
+        font-family: var(--font-display);
+        font-weight: 500;
+        font-size: 1.2rem;
+        
+        white-space: nowrap;
 
-      background: transparent;
-      color: var(--text);
-      padding: 0;
-      padding-bottom: 1px;
-      border: none;
-      outline: none!important;
-      cursor: pointer;
+        background: transparent;
+        color: var(--text);
+        padding: 0;
+        padding-bottom: 1px;
+        border: none;
+        outline: none!important;
+        cursor: pointer;
 
-      border-bottom: 1px solid transparent;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
 
-      &.active {
+        border-bottom: 1px solid transparent;
+
+        &.active {
         padding-bottom: 1px;
         border-bottom-color: var(--accent);
         font-weight: 700;
-      }
+        }
 
-      &:hover:not(.active),
-      &:focus:not(.active) {
+        &:hover:not(.active),
+        &:focus:not(.active) {
         padding-bottom: 1px;
         border-bottom-color: var(--overlay1);
-      }
+        }
 
-      &:hover:not(.active) {
+        &:hover:not(.active) {
         font-weight: 900;
-      }
+        }
 
-      &:active {
+        &:active {
         transform: scale(0.95);
-      }
+        }
     }
   `;
 
@@ -227,6 +230,7 @@ export const TabBar: Component<
               tab === index ? "active" : "",
             ])}
             on:click={() => {
+              if (this.tabInternal === index) return;
               this.tabInternal = index;
               document
                 .getElementById("mainarticle")!
@@ -251,7 +255,7 @@ export const TabBar: Component<
                 },
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches
                   ? 150
-                  : 500
+                  : 470
               );
             }}
           >

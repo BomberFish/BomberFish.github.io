@@ -127,6 +127,12 @@ export const ThemePicker: Component<{}, {}> = function () {
       .material-symbols-outlined {
         font-size: 1.5rem;
       }
+
+      @media (orientation: portrait) {
+        #theme-name {
+          display: none;
+        }
+    }
     `;
 
   return (

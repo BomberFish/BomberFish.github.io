@@ -14,8 +14,11 @@ export const articleCSS = css`
 `;
 
 export const sharedCSS = css`
+  a {
+    text-decoration: none!important;
+  }
+
   a:not(nav a, :has(img)) {
-    text-decoration: none;
     border-bottom: 1px dotted var(--accent);
     transition: 0.2s border;
   }
@@ -183,7 +186,7 @@ export const sharedCSS = css`
 
     #content,
     nav {
-      width: calc(100vw - 1em) !important;
+      width: 100vw !important;
     }
 
     .popup .inner {
@@ -207,5 +210,31 @@ export const sharedCSS = css`
       height: auto;
       justify-self: center;
     }
+  }
+
+  subt {
+    color: var(--subtext0);
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+
+  subt kbd {
+    font-size: 0.7rem;
+  }
+
+  //   h1,
+  //   h2,
+  //   h3 {
+  //     font-family: var(--font-display);
+  //   }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0;
+    margin-top: 1rem;
+  }
+
+  nav h2 {
+    font-size: 1.5rem;
   }
 `;
