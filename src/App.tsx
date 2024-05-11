@@ -1356,8 +1356,12 @@ const DesignPhilosophy: Component<{}, {}> = function () {
   );
 };
 
-const TabBar: Component<{ tabs: string[]; tab?: number }, {}> = function () {
+const TabBar: Component<
+  { tabs: string[]; tab?: number },
+  { tabInternal: number }
+> = function () {
   this.tab = 0;
+  this.tabInternal = 0;
   this.css = `
   div {
     display: flex;
@@ -1389,6 +1393,7 @@ const TabBar: Component<{ tabs: string[]; tab?: number }, {}> = function () {
       padding: 0;
       padding-bottom: 1px;
       border: none;
+      outline: none!important;
       cursor: pointer;
 
       border-bottom: 1px solid transparent;
@@ -1399,13 +1404,13 @@ const TabBar: Component<{ tabs: string[]; tab?: number }, {}> = function () {
         font-weight: 700;
       }
 
-      &:hover,
-      &:focus {
+      &:hover:not(.active),
+      &:focus:not(.active) {
         padding-bottom: 1px;
         border-bottom-color: var(--overlay1);
       }
 
-      &:hover {
+      &:hover:not(.active) {
         font-weight: 900;
       }
 
@@ -1420,8 +1425,11 @@ const TabBar: Component<{ tabs: string[]; tab?: number }, {}> = function () {
       <div>
         {this.tabs.map((tab, index) => (
           <button
-            class={use(this.tab, (tab) => [tab === index ? "active" : ""])}
+            class={use(this.tabInternal, (tab) => [
+              tab === index ? "active" : "",
+            ])}
             on:click={() => {
+              this.tabInternal = index;
               document
                 .getElementById("mainarticle")!
                 .classList.add("transparent");
@@ -1437,7 +1445,7 @@ const TabBar: Component<{ tabs: string[]; tab?: number }, {}> = function () {
                 document
                   .getElementById("mainarticle")!
                   .classList.remove("transparent");
-              }, 300);
+              }, 550);
             }}
           >
             {tab}
@@ -1531,6 +1539,7 @@ const App: Component<
       height: 100%;
       overflow: hidden;
       transition: 0.35s, opacity 0.15s;
+      transition-timing-function: ease;
     }
 
     *:not(#tabs) {
@@ -1540,6 +1549,7 @@ const App: Component<
     #mainarticle.transparent {
       opacity: 0;
       transition: 0.35s, opacity 0.15s;
+      transition-timing-function: ease;
     }
 
     footer {
