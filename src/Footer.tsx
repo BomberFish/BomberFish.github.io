@@ -1,4 +1,5 @@
 import "dreamland";
+import isMobile from "./IsMobile";
 
 export const WebButton: Component<
   {
@@ -57,9 +58,9 @@ export const Footer: Component<{}, {}> = function () {
       }
   
       #webbtns {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(max(31px, 1.9375rem), 0fr));
-        grid-gap: calc(max(31px, 1.9375rem) * 3.5);
+        display: flex;
+        // justify-content: space-evenly;
+        gap: 0.75rem;
       }
     `;
   return (
@@ -82,7 +83,7 @@ export const Footer: Component<{}, {}> = function () {
         <br></br>
         {$if(
           new URL(window.location.href).searchParams.get("higherdimension") ===
-            null,
+            null && !isMobile(),
           <div>
             <div>
               Pro tip: you can navigate this site with your keyboard! Press{" "}
@@ -108,7 +109,7 @@ export const Footer: Component<{}, {}> = function () {
         <br></br>
         <div id="webbtns">
           <WebButton
-            src="https://simpleanalyticsbadges.com/bomberfish.ca?logo=cba6f7&text=cdd6f4&background=181825&radius=8"
+            src="/simpleanalytics.svg"
             title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
             href="https://dashboard.simpleanalytics.com/bomberfish.ca"
           />
@@ -117,7 +118,13 @@ export const Footer: Component<{}, {}> = function () {
             title="Built with dreamland.js"
             href="https://dreamland.js.org"
           />
+          <WebButton
+            src="/agplv3-with-text-162x68.webp"
+            title="Licenced under the GNU Affero GPL Version 3"
+            href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+          />
         </div>
+        <br></br>
         <p>
           bomberfish.ca is a <strong>blink-free zone</strong>.
         </p>
