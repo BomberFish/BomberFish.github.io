@@ -137,6 +137,9 @@ export const DesignPhilosophy: Component<{}, {}> = function () {
         <li>Be as keyboard-accessible as possible.</li>
         <li>
           JavaScript is not the enemy. Take advantage of all the latest gizmos.
+          <ul>
+          <li>Always include source maps. Why not show off your code?</li>
+          </ul>
         </li>
         <li>
           Optimize for size. Some people use (and pay for) Canadian cellular
