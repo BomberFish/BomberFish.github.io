@@ -220,7 +220,7 @@ export const Footer: Component<{}, {}> = function () {
             href="https://omada.cafe"
           />
           <WebButton
-            src="https://coolelectronics.me/ce88x31.png"
+            src="/buttons/ce88x31.webp"
             title="CoolElectronics"
             href="https://coolelectronics.me"
           />
