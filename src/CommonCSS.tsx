@@ -130,11 +130,10 @@ export const sharedCSS = css`
     transition: opacity 0.2s;
   }
 
-  :focus,
-  :focus-visible {
-    outline: 2px solid #cba6f7;
+
+  * {
+    outline-color: #cba6f7;
     outline-offset: 2px;
-    border-radius: 0.1rem;
   }
 
   subt {
@@ -149,31 +148,6 @@ export const sharedCSS = css`
     border: 1px solid var(--subtext0);
     padding: 0.15rem 0.6rem;
     border-radius: 0.3rem;
-  }
-
-  .popup.transparent .inner {
-    top: 100vw;
-    transition: 0.2s ease-in-out;
-  }
-
-  .popup.transparent,
-  .popup {
-    transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
-  }
-
-  .popup .inner {
-    transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
-  }
-
-  .popup.transparent {
-    opacity: 0;
-  }
-
-  .popup.transparent .popup-bg {
-    transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
-    backdrop-filter: blur(0px);
-    -webkit-backdrop-filter: blur(0px);
-    background: rgba(0, 0, 0, 0);
   }
 
   @media (orientation: portrait) {

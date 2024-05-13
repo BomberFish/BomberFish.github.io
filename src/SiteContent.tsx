@@ -86,6 +86,7 @@ export const Contact: Component<{}, {}> = function () {
           <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
           <ul>
             <li>I might be slow to respond, I don't check my email often.</li>
+            <li>Every email address @bomberfish.ca is me.</li>
           </ul>
         </li>
         <li>

@@ -129,8 +129,6 @@ h0 {
   display: block;
 }
 
-:focus,
-:focus-visible {
-  outline: 2px solid #cba6f7;
-  outline-offset: 2px;
+* {
+  outline-color: #cba6f7;
 }

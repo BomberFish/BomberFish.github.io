@@ -14,7 +14,7 @@ export const projects = [
       },
       {
         name: "v2.0 (preview instance, no v86)",
-        url: "https://anura.bomberfish.ca",
+        url: "https://beta.anura.pro",
       },
     ]
   ),

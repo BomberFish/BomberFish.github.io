@@ -148,7 +148,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       .link {
-        color: var(--text);
+        color: var(--text)!important;
         background: var(--surface0);
         text-decoration: none;
         cursor: pointer
@@ -173,7 +173,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         justify-content: center;
 
         border: 0.1px solid var(--overlay1);
-        
+
         transition: color 0.2s;
       }
 
@@ -198,13 +198,39 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
         gap: 0.5rem;
       }
+
+      &.transparent .inner {
+          top: 100vw;
+          transition: 0.2s ease-in-out;
+        }
+
+        &.transparent
+         {
+          transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+        }
+
+        .inner {
+          transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
+        }
+
+        &.transparent {
+          opacity: 0;
+          pointer-events: none;
+        }
+
+        &.transparent .popup-bg {
+          transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+          backdrop-filter: blur(0px);
+          -webkit-backdrop-filter: blur(0px);
+          background: rgba(0, 0, 0, 0);
+        }
     `;
 
     return (
       <div class="popup transparent">
         <div
           class="popup-bg"
-          on:pointerdown={() => {
+          on:click={() => {
             this.root.classList.add("transparent");
             setTimeout(() => {
               this.root.remove();
@@ -232,7 +258,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
               <img
                 loading="lazy"
                 src={this.project.img}
-                on:pointerup={() => {
+                on:click={() => {
                   window.open(this.project.img, "_blank");
                 }}
                 referrerpolicy="no-referrer"
@@ -249,7 +275,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                         <span class="material-symbols-rounded">link_off</span>
                         No links available
                       </span>
-                    </p>
+                    </p>,
                   )}
 
                   {this.project.links?.map((link) => (

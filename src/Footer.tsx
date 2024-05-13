@@ -71,7 +71,7 @@ export const WebButton: Component<
     image-rendering: pixelated;
     -webkit-image-rendering: pixelated;
     width: auto;
-    height: max(31px, 1.9375rem);
+    height: max(31px, 2.5rem);
     border-radius: ${
       this.rounded ? (this.radius ? this.radius : "0.5rem") : "0px"
     }
@@ -130,7 +130,7 @@ export const Footer: Component<{}, {}> = function () {
   return (
     <footer>
       <subt>
-        Website made with &lt;3 in{" "}
+        {/* Website made with &lt;3 in{" "}
         <a href="https://dreamland.js.org" target="blank">
           DreamlandJS
         </a>
@@ -143,34 +143,9 @@ export const Footer: Component<{}, {}> = function () {
           >
             Learn more.
           </a>
-        </span>
-        <br></br>
-        {$if(
-          new URL(window.location.href).searchParams.get("higherdimension") ===
-            null && !isMobile(),
-          <div>
-            <div>
-              Pro tip: you can navigate this site with your keyboard! Press{" "}
-              <kbd>tab</kbd> to start.
-              <br></br>
-              <br></br>
-            </div>
-            <div id="konami">
-              <kbd>↑</kbd>
-              <kbd>↑</kbd>
-              <kbd>↓</kbd>
-              <kbd>↓</kbd>
-              <kbd>←</kbd>
-              <kbd>→</kbd>
-              <kbd>←</kbd>
-              <kbd>→</kbd>
-              <kbd>b</kbd>
-              <kbd>a</kbd>
-              <a href="/?higherdimension">I'm lazy</a>
-            </div>
-          </div>,
-        )}
-        <br></br>
+        </span> */}
+        {/* <br></br> */}
+        {/* <br></br> */}
         <div id="webbtns">
           <WebButton
             src="/buttons/button.gif"
@@ -212,7 +187,7 @@ export const Footer: Component<{}, {}> = function () {
           <WebButton
             src="/buttons/PoweredByNEXTSTEP.gif"
             title="Powered by NeXTSTEP (not)"
-            href="https://web.archive.org/web/19970412195005/http://www.next.com/PoweredBy/NEXTSTEP.html"
+            href="https://www.apple.com/ca/macos"
           />
           <WebButton
             src="/buttons/hg88x31.webp"
@@ -221,7 +196,7 @@ export const Footer: Component<{}, {}> = function () {
           />
           <WebButton
             src="/buttons/omada.gif"
-            title="omada.cafe"
+            title="omada.cafe, an private and secure alternative provider."
             href="https://omada.cafe"
           />
           <WebButton
@@ -239,12 +214,43 @@ export const Footer: Component<{}, {}> = function () {
             title="the profaned one"
             href="https://necoarc.dev"
           />
+          <WebButton
+            src="/buttons/eightyeightthirtyone.webp"
+            title="88x31"
+            href="https://eightyeightthirty.one"
+          />
         </div>
-        <sub></sub>
-        <br></br>
-        <p>
+        <p style={{
+          marginBlock: "1rem",
+        }}>
           bomberfish.ca is a <strong>&lt;blink&gt; free zone</strong>.
         </p>
+        {/* <br></br> */}
+        {$if(
+          new URL(window.location.href).searchParams.get("higherdimension") ===
+            null && !isMobile(),
+          <div>
+            {/* <div>
+                      Pro tip: you can navigate this site with your keyboard! Press{" "}
+                      <kbd>tab</kbd> to start.
+                      <br></br>
+                      <br></br>
+                    </div> */}
+            <div id="konami">
+              <kbd>↑</kbd>
+              <kbd>↑</kbd>
+              <kbd>↓</kbd>
+              <kbd>↓</kbd>
+              <kbd>←</kbd>
+              <kbd>→</kbd>
+              <kbd>←</kbd>
+              <kbd>→</kbd>
+              <kbd>b</kbd>
+              <kbd>a</kbd>
+              <a href="/?higherdimension">I'm lazy</a>
+            </div>
+          </div>,
+        )}
       </subt>
     </footer>
   );
