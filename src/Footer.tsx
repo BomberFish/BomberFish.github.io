@@ -81,6 +81,10 @@ export const WebButton: Component<
   this.href = this.href || "#";
   this.action = this.action || (() => {});
 
+  if (this.title) {
+    this.alt = this.alt || "A web button with the description: " + this.title;
+  }
+
   return (
     <a
       href={this.href}
@@ -92,7 +96,7 @@ export const WebButton: Component<
       <img
         loading="lazy"
         src={this.src}
-        alt={this.alt || this.title || ""}
+        alt={this.alt || "A web button."}
         title={this.title || this.alt || ""}
         referrerpolicy="no-referrer"
         crossorigin="anonymous"
@@ -220,9 +224,11 @@ export const Footer: Component<{}, {}> = function () {
             href="https://eightyeightthirty.one"
           />
         </div>
-        <p style={{
-          marginBlock: "1rem",
-        }}>
+        <p
+          style={{
+            marginBlock: "1rem",
+          }}
+        >
           bomberfish.ca is a <strong>&lt;blink&gt; free zone</strong>.
         </p>
         {/* <br></br> */}
