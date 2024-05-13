@@ -217,7 +217,7 @@ export const sharedCSS = css`
     font-size: 1.5rem;
   }
 
-  #content {
-    padding-inline: 1rem;
-  }
+  // #content {
+  //   padding-inline: 1rem;
+  // }
 `;

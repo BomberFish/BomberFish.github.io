@@ -21,6 +21,7 @@ export function updatePage() {
       shortName: "Mocha",
       text: "#cdd6f4",
       overlay1: "#7f849c",
+      surface2: "#5b6078",
       surface0: "#313244",
       subtext0: "#a6adc8",
       base: "#1e1e2e",
@@ -36,6 +37,7 @@ export function updatePage() {
     .setAttribute("content", store.theme.mantle);
   root.style.setProperty("--text", store.theme.text);
   root.style.setProperty("--overlay1", store.theme.overlay1);
+  root.style.setProperty("--surface2", store.theme.surface2);
   root.style.setProperty("--surface0", store.theme.surface0);
   root.style.setProperty("--subtext0", store.theme.subtext0);
   root.style.setProperty("--base", store.theme.base);
@@ -54,6 +56,7 @@ export const ThemePicker: Component<{}, {}> = function () {
     shortName: "Mocha",
     text: "#cdd6f4",
     overlay1: "#7f849c",
+    surface2: "#585b70",
     surface0: "#313244",
     subtext0: "#a6adc8",
     base: "#1e1e2e",
@@ -67,6 +70,7 @@ export const ThemePicker: Component<{}, {}> = function () {
     shortName: "Macchiato",
     text: "#cad3f5",
     overlay1: "#8087a2",
+    surface2: "#5b6078",
     surface0: "#363a4f",
     subtext0: "#a5adcb",
     base: "#24273a",
@@ -80,6 +84,7 @@ export const ThemePicker: Component<{}, {}> = function () {
     shortName: "Frappe",
     text: "#c6d0f5",
     overlay1: "#838ba7",
+    surface2: "#626880",
     surface0: "#414559",
     subtext0: "#a5adce",
     base: "#303446",
@@ -93,6 +98,7 @@ export const ThemePicker: Component<{}, {}> = function () {
     shortName: "Latte",
     text: "#4c4f69",
     overlay1: "#8c8fa1",
+    surface2: "#acb0be",
     surface0: "#ccd0da",
     subtext0: "#6c6f85",
     base: "#eff1f5",
@@ -116,14 +122,14 @@ export const ThemePicker: Component<{}, {}> = function () {
       // bottom: 0;
       // right: 0;
       // z-index: 1000;
-  
+
       display: flex;
       align-items: center;
-  
+
       user-select: none;
       -webkit-user-drag: none;
       -webkit-user-select: none;
-  
+
       .material-symbols-rounded {
         font-size: 1.5rem;
       }

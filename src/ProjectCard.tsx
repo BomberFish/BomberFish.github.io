@@ -15,14 +15,14 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         box-shadow: 0 0 0px rgba(24, 24, 37, 0);
         border: 0.1px dashed var(--overlay1);
-  
+
         &:hover {
           transform: scale(1.02);
           transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
           box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
           border: 0.1px dashed var(--accent);
         }
-  
+
         &:focus,
         &:focus-visible {
           outline: none;
@@ -32,21 +32,21 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
           transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
           box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
         }
-  
+
         &.active,
         &:active:focus {
           transform: scale(0.95);
           transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
         }
-  
+
       transform: translateZ(50px);
-  
+
       .img-container {
         width: 318px;
         height: auto;
         aspect-ratio: 512 / 277;
       }
-  
+
       img {
         user-select: none;
         -webkit-user-drag: none;
@@ -56,35 +56,35 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         height: 100%;
         object-fit: cover;
       }
-  
+
       .title {
         display: flex;
         align-items: center;
         margin-top: 0.2rem;
         font-family: var(--font-display);
       }
-  
+
       p {
         margin: 0!important;
         margin-top: 0.025rem!important;
       }
-  
+
       .title > span {
         font-size: 1.3rem;
         font-weight: 600;
         margin-right: 0.5rem;
       }
-  
+
       .detail {
         margin: 1rem;
         margin-top: 0.1rem;
       }
-  
+
       p {
         margin-top: 0.5rem;
         margin-bottom: 1rem;
       }
-  
+
       kbd {
         position: absolute;
         right: 1rem;
@@ -152,6 +152,7 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
         grid-gap: 2rem;
         place-items: center;
         place-content: center;
+        justify-content: space-evenly;
       `;
     return (
       <div id="projects-container">

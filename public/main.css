@@ -20,6 +20,7 @@
   --text: #cdd6f4;
   --accent: #cba6f7;
   --overlay1: #7f849c;
+  --surface2: #585b70;
   --surface0: #313244;
   --subtext0: #a6adc8;
 }
@@ -74,13 +75,13 @@ body,
 body.cool {
   background: var(--crust);
   background-image: radial-gradient(
-    var(--overlay1) calc(var(--bgscale) * var(--bgscale) * 1.5px),
+    var(--surface2) calc(var(--bgscale) * var(--bgscale) * 1.5px),
     transparent 0
   );
   background-size: calc(20px * var(--bgscale)) calc(20px * var(--bgscale));
   background-position: var(--bgmoveX) var(--bgmoveY);
 }
-/* 
+/*
 body:not(.cool) {
   transition: 0.4s background-position ease
 } */
