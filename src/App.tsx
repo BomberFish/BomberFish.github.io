@@ -105,7 +105,7 @@ const App: Component<
       transition-timing-function: ease;
     }
 
-    *:not(#tabs) {
+    #content > *:not(#tabs) {
       padding-inline: 0.5em;
     }
 
