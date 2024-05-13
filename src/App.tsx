@@ -130,6 +130,14 @@ const App: Component<
         .children[0]!.getBoundingClientRect().height +
       convertRemToPixels(1) +
       "px";
+    window.addEventListener("resize", () => {
+      document.getElementById("mainarticle")!.style.height =
+        document
+          .getElementById("mainarticle")!
+          .children[0]!.getBoundingClientRect().height +
+        convertRemToPixels(1) +
+        "px";
+    });
     document.querySelector("main")?.dispatchEvent(
       new MouseEvent("move", {
         clientX: window.innerWidth,
