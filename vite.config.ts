@@ -11,6 +11,6 @@ export default defineConfig({
   },
   server: {
     host: true,
-    cors: true,
+    cors: false,
   },
 });
