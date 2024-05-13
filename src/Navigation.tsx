@@ -221,6 +221,14 @@ export const TabBar: Component<
         &:active {
         transform: scale(0.95);
         }
+
+        &:first-of-type {
+            margin-left: 0.5rem;
+        }
+
+        &:last-of-type {
+            margin-right: 0.5rem;
+        }
     }
   `;
 

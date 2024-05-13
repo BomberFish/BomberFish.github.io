@@ -22,6 +22,7 @@ import {
 import { convertRemToPixels } from "./Utils.ts";
 import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
+import isMobile from "./IsMobile.ts";
 
 // MARK: THEMING
 export let store = $store(
@@ -163,7 +164,21 @@ const App: Component<
   return (
     <main class={sharedCSS}>
       <Nav />
+      {$if(isMobile(),
+      <TabBar
+        tabs={[
+          "Home",
+          "About me",
+          "Contact",
+          "My work",
+          "Sitemap",
+          "About this Site",
+        ]}
+        bind:tab={use(this.selectedTab)}
+      />
+      )}
       <div id="content">
+      {$if(!isMobile(),
         <TabBar
           tabs={[
             "Home",
@@ -175,6 +190,7 @@ const App: Component<
           ]}
           bind:tab={use(this.selectedTab)}
         />
+      )}
         <article id="mainarticle" class={articleCSS}>
           {use(this.elements[this.selectedTab])}
         </article>
