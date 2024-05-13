@@ -1,5 +1,6 @@
 import "dreamland";
 import ProjectCardDetails from "./Project.ts";
+import isMobile from "./IsMobile.ts";
 
 export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
   function () {
@@ -249,7 +250,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 }, 200);
               }}
             >
-              <kbd>esc</kbd>
+              {$if(!isMobile, <kbd>esc</kbd>)}
               <span class="material-symbols-rounded">close</span>
             </button>
           </div>

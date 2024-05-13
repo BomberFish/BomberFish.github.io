@@ -169,6 +169,11 @@ export const sharedCSS = css`
       transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
     }
 
+    .popup .inner,
+   .popup .head {
+      border-radius: 0;
+    }
+
     .popup .inner article {
       height: max(100%, 100vh);
     }
