@@ -2,7 +2,6 @@ import "dreamland";
 import isMobile from "./IsMobile";
 
 const CopiedToast: Component<{}, {}> = function () {
-
   this.mount = () => {
     setTimeout(() => {
       this.root.remove();
@@ -123,8 +122,9 @@ export const Footer: Component<{}, {}> = function () {
 
       #webbtns {
         display: flex;
-        // justify-content: space-evenly;
         gap: 0.75rem;
+        width: 100%;
+        flex-wrap: wrap;
       }
     `;
   return (
@@ -174,7 +174,7 @@ export const Footer: Component<{}, {}> = function () {
         <div id="webbtns">
           <WebButton
             src="/buttons/button.gif"
-            title="BomberFish"
+            title="Click to copy my button! (HTML code)"
             action={(e: MouseEvent) => {
               e.preventDefault();
               try {
@@ -195,7 +195,7 @@ export const Footer: Component<{}, {}> = function () {
             href="https://dashboard.simpleanalytics.com/bomberfish.ca"
           />
           <WebButton
-            src="/buttons/dlbadge.webp"
+            src="/buttons/dlbadge.webp" // ughhhh i know this is unofficial but it's still good
             title="Built with dreamland.js"
             href="https://dreamland.js.org"
           />
@@ -210,8 +210,13 @@ export const Footer: Component<{}, {}> = function () {
             href="https://archlinux.org"
           />
           <WebButton
+            src="/buttons/PoweredByNEXTSTEP.gif"
+            title="Powered by NeXTSTEP (not)"
+            href="https://web.archive.org/web/19970412195005/http://www.next.com/PoweredBy/NEXTSTEP.html"
+          />
+          <WebButton
             src="/buttons/hg88x31.webp"
-            title="Mercury Workshop"
+            title="Percury Mercshop"
             href="https://mercurywork.shop"
           />
           <WebButton
@@ -224,11 +229,21 @@ export const Footer: Component<{}, {}> = function () {
             title="CoolElectronics"
             href="https://coolelectronics.me"
           />
+          <WebButton
+            src="/buttons/circular-88x31.gif"
+            title="circular"
+            href="https://circulars.dev"
+          />
+          <WebButton
+            src="/buttons/necoarc-88x31.webp"
+            title="the profaned one"
+            href="https://necoarc.dev"
+          />
         </div>
         <sub></sub>
         <br></br>
         <p>
-          bomberfish.ca is a <strong>&lt;blink&gt;-free zone</strong>.
+          bomberfish.ca is a <strong>&lt;blink&gt; free zone</strong>.
         </p>
       </subt>
     </footer>
