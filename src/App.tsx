@@ -93,7 +93,7 @@ const App: Component<
     #content {
       background: var(--base);
       // padding: 1em;
-      width: 80vw;
+      width: 60vw;
       height: min-content;
       border-radius: 0 0 1em 1em;
     }

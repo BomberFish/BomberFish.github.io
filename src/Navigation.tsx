@@ -18,7 +18,7 @@ export const Nav: Component<
     justify-self: flex-start;
     z-index: 100;
     padding: 0.25em 1em;
-    width: 80vw;
+    width: 60vw;
     height: 3.5rem;
     margin: 0;
     // padding: 0;
@@ -174,7 +174,7 @@ export const TabBar: Component<
         margin-block: 0.25rem;
         // padding-inline: 0.5rem;
     }
-    
+
     button, button.active, button:hover, button:focus, button:active {
         transition: all 0.35s cubic-bezier(0, 0.55, 0.45, 1)!important;
     }
@@ -183,7 +183,7 @@ export const TabBar: Component<
         font-family: var(--font-display);
         font-weight: 500;
         font-size: 1.2rem;
-        
+
         white-space: nowrap;
 
         background: transparent;

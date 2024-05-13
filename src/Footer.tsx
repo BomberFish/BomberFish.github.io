@@ -130,9 +130,44 @@ export const Footer: Component<{}, {}> = function () {
         width: 100%;
         flex-wrap: wrap;
       }
+
+      span {
+        font-size: 1.15rem;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+        font-weight: 520;
+        font-family: var(--font-display);
+        display: flex;
+        align-items: center;
+
+      }
+
+      .question {
+      font-family: var(--font-display);
+        color: var(--subtext0);
+        display: inline-block;
+        font-size: 0.75rem;
+        margin-left: 0.25rem;
+        cursor: help;
+        padding: 0.25rem;
+        border-radius: 50%;
+        border: 1px solid var(--subtext0);
+        width: 1rem;
+        height: 1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-block: 0;
+        user-select: none;
+      }
     `;
   return (
     <footer>
+      <span>
+        Button Collection<span class="question" aria-role="button" on:click={async ()=>{
+          alert("Most of these are things/websites I think are cool, except the first four which relate directly to this site. Click on one to go to the relevant website. No website paid me to get here.")
+        }}>?</span>
+      </span>
       <subt>
         {/* Website made with &lt;3 in{" "}
         <a href="https://dreamland.js.org" target="blank">
@@ -174,9 +209,9 @@ export const Footer: Component<{}, {}> = function () {
             href="https://dashboard.simpleanalytics.com/bomberfish.ca"
           />
           <WebButton
-            src="/buttons/dlbadge.webp" // ughhhh i know this is unofficial but it's still good
-            title="Built with dreamland.js"
-            href="https://dreamland.js.org"
+            src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
+            title="Made with dreamland.js"
+            href="https://dreamland.js.org/?uwu"
           />
           <WebButton
             src="/buttons/agplv3-with-text-162x68.webp"
@@ -189,9 +224,14 @@ export const Footer: Component<{}, {}> = function () {
             href="https://archlinux.org"
           />
           <WebButton
+            src="/buttons/VisitNeXT.gif"
+            title="Visit NeXT"
+            href="https://www.next.com"
+          />
+          <WebButton
             src="/buttons/PoweredByNEXTSTEP.gif"
             title="Powered by NeXTSTEP (not)"
-            href="https://www.apple.com/ca/macos"
+            href="https://www.apple.com/macos"
           />
           <WebButton
             src="/buttons/hg88x31.webp"
@@ -222,6 +262,11 @@ export const Footer: Component<{}, {}> = function () {
             src="/buttons/eightyeightthirtyone.webp"
             title="88x31"
             href="https://eightyeightthirty.one"
+          />
+          <WebButton
+            src="/buttons/melankorin.gif"
+            title="melankorin"
+            href="https://melankorin.net"
           />
         </div>
         <p
