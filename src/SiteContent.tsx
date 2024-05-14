@@ -62,10 +62,10 @@ export const Contact: Component<{}, {}> = function () {
       <h2>Contact</h2>
       <ul>
         <li>
-          <a href="https://fosstodon.org/@BomberFish" target="blank" rel="me">
+          <a href="https://wetdry.world/@fish" target="blank" rel="me">
             Fediverse
           </a>
-          &nbsp;(@BomberFish@fosstodon.org)
+          &nbsp;(@fish@wetdry.world)
         </li>
         <li>
           <a href="https://reddit.com/u/DALEK_77" target="blank" rel="me">
