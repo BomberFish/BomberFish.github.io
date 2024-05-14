@@ -90,13 +90,14 @@ const App: Component<
     // height: 100vh;
     max-width: 100vw;
     overflow-x: hidden;
+    margin-bottom: 1.5rem;
 
     #content {
       background: var(--base);
       // padding: 1em;
       width: 60vw;
       height: min-content;
-      border-radius: 0 0 1em 1em;
+      border-radius: 0 0 1.2rem 1.2rem;
     }
 
     #mainarticle {
