@@ -9,6 +9,7 @@ export function updatePage() {
     store.theme.shortName == undefined ||
     store.theme.text == undefined ||
     store.theme.overlay1 == undefined ||
+    store.theme.surface2 == undefined ||
     store.theme.surface0 == undefined ||
     store.theme.subtext0 == undefined ||
     store.theme.base == undefined ||
