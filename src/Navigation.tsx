@@ -83,6 +83,7 @@ export const Nav: Component<
       align-items: center;
       justify-self: flex-start;
       font-family: var(--font-mono);
+
     }
 
     h2 {
@@ -90,6 +91,7 @@ export const Nav: Component<
       align-items: flex-start;
       margin: 0!important;
       gap: 0.25rem;
+      font-weight: 100;
     }
 
     subt {
@@ -108,9 +110,9 @@ export const Nav: Component<
       & > a {
         text-decoration: none;
         transform: scale(1);
-        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        // transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         color: var(--accent);
-        font-size: 1.1rem;
+        font-size: 1rem;
         display: flex;
         align-items: center;
 
@@ -118,18 +120,23 @@ export const Nav: Component<
         -webkit-user-drag: none;
         -webkit-user-select: none;
 
-        &:hover {
-          transform: scale(1.025);
-          transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-        }
+        // &:hover {
+        //   transform: scale(1.025);
+        //   transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        // }
       }
+    }
+
+    @media (orientation: portrait) {
+    #bloglink-title {
+      display: none;
+    }
     }
   `;
   return (
     <nav>
       <span id="title">
         <img
-          loading="lazy"
           src="/favicon.ico"
           alt="My profile picture"
           width="32"
@@ -153,9 +160,9 @@ export const Nav: Component<
             width="24px"
             fill="var(--accent)"
           >
-            <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h560v-240q0-17 11.5-28.5T800-480q17 0 28.5 11.5T840-440v240q0 33-23.5 56.5T760-120H200Zm560-584L416-360q-11 11-28 11t-28-11q-11-11-11-28t11-28l344-344H600q-17 0-28.5-11.5T560-800q0-17 11.5-28.5T600-840h200q17 0 28.5 11.5T840-800v200q0 17-11.5 28.5T800-560q-17 0-28.5-11.5T760-600v-104Z" />
+            <path d="M200-120q-33 0-56.5-23.5T120-200q0-33 23.5-56.5T200-280q33 0 56.5 23.5T280-200q0 33-23.5 56.5T200-120Zm480 0q0-117-44-218.5T516-516q-76-76-177.5-120T120-680v-120q142 0 265 53t216 146q93 93 146 216t53 265H680Zm-240 0q0-67-25-124.5T346-346q-44-44-101.5-69T120-440v-120q92 0 171.5 34.5T431-431q60 60 94.5 139.5T560-120H440Z" />
           </svg>
-          &nbsp;&nbsp;Blog
+          &nbsp;<span id="bloglink-title">Blog</span>
         </a>
         <ThemePicker />
       </span>

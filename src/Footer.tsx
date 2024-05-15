@@ -164,7 +164,7 @@ export const Footer: Component<{}, {}> = function () {
   return (
     <footer>
       <span>
-        Button Collection<span class="question" aria-role="button" on:click={async ()=>{
+        Button Collection<span class="question" role="button" on:click={async ()=>{
           alert("Most of these are things/websites I think are cool, except the first four which relate directly to this site. Click on one to go to the relevant website. No website paid me to get here.")
         }}>?</span>
       </span>
