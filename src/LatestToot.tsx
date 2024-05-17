@@ -121,8 +121,12 @@ export const LatestToot: Component<
 
         max-height: 15rem;
         max-width: 15rem;
+        overflow: hidden;
         }
-        & img {
+
+        & img,
+        & video,
+        & audio {
           width: 100%;
           height: auto;
           border-radius: 0.7rem;
