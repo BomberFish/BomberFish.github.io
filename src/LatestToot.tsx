@@ -116,13 +116,20 @@ export const LatestToot: Component<
 
       .files {
         display: flex;
-        max-height: 15rem;
-        max-width: 15rem;
+        flex-direction: row;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-block: 0.5rem;
+        .file {
         padding: 0.8rem;
         border-radius: 0.8rem;
-        margin-block: 0.3rem;
+
         background-color: var(--crust);
-        img {
+
+        max-height: 15rem;
+        max-width: 15rem;
+        }
+        span img {
           width: 100%;
           height: auto;
           border-radius: 0.7rem;
@@ -303,6 +310,57 @@ export const LatestToot: Component<
     }
     `);
 
+  function mediaToElement(file: any): HTMLElement {
+    switch (file.type) {
+      case "image":
+        return (
+          <span>
+            <img
+              src={file.url}
+              alt={file.description}
+              title={file.description}
+            />
+          </span>
+        );
+      case "video":
+        return (
+          <span>
+            <video
+              src={file.url}
+              alt={file.description}
+              title={file.description}
+              controls
+            />
+          </span>
+        );
+      case "audio":
+        return (
+          <span>
+            <audio
+              src={file.url}
+              alt={file.description}
+              title={file.description}
+              controls
+            />
+          </span>
+        );
+      default:
+        return (
+          <span
+            style={{
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <span class="material-symbols-rounded">attach_file</span>
+            <a href={file.url} title={file.description}>
+              {file.url.split("/").pop()}
+            </a>
+          </span>
+        );
+    }
+  }
+
   async function getStatuses(user_id: string): Promise<[Status]> {
     let notesRaw = await fetch(
       `https://wetdry.world/api/v1/accounts/${user_id}/statuses`,
@@ -341,15 +399,19 @@ export const LatestToot: Component<
 
     this.note = note;
 
+    document.dispatchEvent(new Event("force-tab-resize"));
+
+    this.renderRoot.innerHTML = note.content;
+
     if (this.note.in_reply_to_account_id) {
       let replyUser = await getUserInfo(this.note.in_reply_to_account_id);
       this.replyUser = replyUser;
     }
-
-    document.dispatchEvent(new Event("force-tab-resize"));
-
-    this.renderRoot.innerHTML = note.content;
   };
+
+  setTimeout(() => {
+    this.mount!();
+  }, 800);
 
   return (
     <div>
@@ -402,7 +464,7 @@ export const LatestToot: Component<
                 <span class="material-symbols-rounded">prompt_suggestion</span>{" "}
                 Replying to
                 <a
-                  href={`https://wetdry.world/@${this.replyUser.username}/${note.in_reply_to_account_id}`}
+                  href={`https://wetdry.world/@${this.replyUser.username}/${note.in_reply_to_id}`}
                   target="_blank"
                 >
                   <div class="plyuser">
@@ -420,7 +482,7 @@ export const LatestToot: Component<
             {note.media_attachments.length > 0 ? (
               <div class="files">
                 {note.media_attachments.map((file) => (
-                  <img src={file.url} alt={file.description} title={file.description} />
+                  <div class="file">{mediaToElement(file)}</div>
                 ))}
               </div>
             ) : (
