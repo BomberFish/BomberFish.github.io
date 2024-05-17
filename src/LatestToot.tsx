@@ -116,13 +116,15 @@ export const LatestToot: Component<
 
       .files {
         display: flex;
-        max-width: 50%;
+        max-height: 15rem;
+        max-width: 15rem;
         padding: 0.8rem;
         border-radius: 0.8rem;
         margin-block: 0.3rem;
         background-color: var(--crust);
         img {
           width: 100%;
+          height: auto;
           border-radius: 0.7rem;
         }
       }
@@ -418,7 +420,7 @@ export const LatestToot: Component<
             {note.media_attachments.length > 0 ? (
               <div class="files">
                 {note.media_attachments.map((file) => (
-                  <img src={file.url} />
+                  <img src={file.url} alt={file.description} title={file.description} />
                 ))}
               </div>
             ) : (
