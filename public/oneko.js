@@ -196,6 +196,9 @@ function isMobile(opts) {
     document.body.appendChild(nekoEl);
 
     document.addEventListener("mousemove", function (event) {
+      if (!document.getElementById("oneko")) {
+        init();
+      }
       mousePosX = event.clientX;
       mousePosY = event.clientY;
     });
