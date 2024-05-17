@@ -7,17 +7,15 @@ export const LatestToot: Component<
   { note: Status; replyUser: Account; renderRoot: HTMLDivElement }
 > = function () {
   this.css = `
-      padding: 20px;
+      padding: 1.5rem;
       width: 100%;
-      // height: 100%;
       overflow: hidden;
 
       background-color: var(--mantle);
-      padding: 20px;
       border-radius: 1rem;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 0.8rem;
 
       .material-symbols-rounded {
       font-size: 1.2rem;
@@ -37,8 +35,8 @@ export const LatestToot: Component<
       }
 
       .pfp {
-        width: 50px;
-        height: 50px;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
       }
 
@@ -50,17 +48,17 @@ export const LatestToot: Component<
         .material-symbols-rounded {
           font-size: 1.7rem;
         }
-        .left {
+        & > .left {
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 0.4rem;
         }
-        .user {
+        & > .user {
           flex-direction: column;
         }
-        .name {
-          margin-left: 10px;
+        & > .name {
+          margin-left: 0.8rem;
           display: flex;
           flex-direction: column;
           .displayname {
@@ -68,11 +66,11 @@ export const LatestToot: Component<
             font-family: var(--font-display);
             font-size: 1.2rem;
           }
-          .handle {
+          & > .handle {
             color: var(--subtext0);
           }
         }
-        .actions {
+        & > .actions {
           display: flex;
           flex-direction: row;
           gap: 0.8rem;
@@ -100,16 +98,16 @@ export const LatestToot: Component<
         .plyuser {
           // background-color: var(--crust);
           color: var(--subtext0);
-          border-radius: 5px;
+          // border-radius: 5px;
           display: flex;
           align-items: center;
           margin: 0.15rem;
           padding-right: 0.15rem;
-          img {
-            width: 20px;
-            height: 20px;
+          & > img {
+            width: 1.2rem;
+            height: 1.2rem;
             border-radius: 50%;
-            margin: 5px;
+            margin: 0.4rem;
           }
         }
       }
@@ -120,7 +118,7 @@ export const LatestToot: Component<
         gap: 0.5rem;
         flex-wrap: wrap;
         margin-block: 0.5rem;
-        .file {
+        & > .file {
         padding: 0.8rem;
         border-radius: 0.8rem;
 
@@ -129,7 +127,7 @@ export const LatestToot: Component<
         max-height: 15rem;
         max-width: 15rem;
         }
-        span img {
+        & > span img {
           width: 100%;
           height: auto;
           border-radius: 0.7rem;
@@ -159,14 +157,18 @@ export const LatestToot: Component<
           flex-direction: column!important;
           align-items: flex-start!important;
         }
+
+        // .reply:nth-child(2) {
+        //   display: none;
+        // }
       }
 
       .reactions {
         display: flex;
         gap: 1rem;
 
-        p {
-          span {
+        & > p {
+          & > span {
             color: var(--text);
           }
           color: var(--subtext0);
@@ -394,6 +396,7 @@ export const LatestToot: Component<
 
   this.mount = async () => {
     let notes = await getStatuses("112439434695773843");
+    console.log(notes);
     let note = notes[0];
     console.log(note);
 
@@ -405,6 +408,7 @@ export const LatestToot: Component<
 
     if (this.note.in_reply_to_account_id) {
       let replyUser = await getUserInfo(this.note.in_reply_to_account_id);
+      console.log(replyUser);
       this.replyUser = replyUser;
     }
   };
@@ -462,14 +466,14 @@ export const LatestToot: Component<
             {note.in_reply_to_id ? (
               <div class="reply">
                 <span class="material-symbols-rounded">prompt_suggestion</span>{" "}
-                Replying to
+                <span>Replying to</span>{" "}
                 <a
                   href={`https://wetdry.world/@${this.replyUser.username}/${note.in_reply_to_id}`}
                   target="_blank"
                 >
                   <div class="plyuser">
                     <img src={this.replyUser.avatar} />
-                    {this.replyUser.display_name}
+                    {this.replyUser.username}
                   </div>
                 </a>
               </div>

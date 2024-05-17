@@ -91,7 +91,7 @@ export const Nav: Component<
       align-items: flex-start;
       margin: 0!important;
       gap: 0.25rem;
-      font-weight: 100;
+      font-weight: 400;
     }
 
     subt {
