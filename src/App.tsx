@@ -207,7 +207,7 @@ const App: Component<
 };
 
 // MARK: WINDOW LOAD
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       e.preventDefault();
@@ -302,4 +302,11 @@ window.addEventListener("load", () => {
       document.body.appendChild(<DarkReaderWarning />);
     }
   }, 1000);
+
+  const fnt = new FontFace(
+    "Material Symbols Rounded",
+    "url(https://fonts.gstatic.com/s/materialsymbolsrounded/v181/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxc.woff2)",
+  );
+  document.fonts.add(fnt);
+  fnt.load(); // async load the font to prevent really wanky shit when something that uses it first appears
 });
