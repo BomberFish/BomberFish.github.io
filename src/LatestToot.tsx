@@ -127,10 +127,11 @@ export const LatestToot: Component<
         max-height: 15rem;
         max-width: 15rem;
         }
-        & > span img {
+        & img {
           width: 100%;
           height: auto;
           border-radius: 0.7rem;
+          cursor: pointer;
         }
       }
 
@@ -322,6 +323,8 @@ export const LatestToot: Component<
               alt={file.description}
               title={file.description}
               loading="lazy"
+              on:click={()=>{window.open(file.url, '_blank')}}
+              role="button"
             />
           </span>
         );
