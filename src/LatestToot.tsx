@@ -321,6 +321,7 @@ export const LatestToot: Component<
               src={file.url}
               alt={file.description}
               title={file.description}
+              loading="lazy"
             />
           </span>
         );
@@ -424,7 +425,7 @@ export const LatestToot: Component<
           <div class="toot">
             <div class="top">
               <div class="left">
-                <img class="pfp" src={note.account.avatar} />
+                <img class="pfp" loading="lazy" src={note.account.avatar} />
                 <div class="user">
                   <div class="name">
                     <div class="displayname">{note.account.display_name}</div>
@@ -472,7 +473,7 @@ export const LatestToot: Component<
                   target="_blank"
                 >
                   <div class="plyuser">
-                    <img src={this.replyUser.avatar} />
+                    <img loading="lazy" src={this.replyUser.avatar} />
                     {this.replyUser.username}
                   </div>
                 </a>
