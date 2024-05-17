@@ -1,6 +1,6 @@
 console.log(
   "%c Hello, World!",
-  'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: 3px 3px 0 #fab387 , 6px 6px 0 #f9e2af , 9px 9px 0 #a6e3a1 , 12px 12px 0 #94e2d5 , 15px 15px 0 #89b4fa , 18px 18px 0 #b4befe , 21px 21px 0 #cba6f7'
+  'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: 3px 3px 0 #fab387 , 6px 6px 0 #f9e2af , 9px 9px 0 #a6e3a1 , 12px 12px 0 #94e2d5 , 15px 15px 0 #89b4fa , 18px 18px 0 #b4befe , 21px 21px 0 #cba6f7',
 );
 
 import "dreamland";
@@ -22,6 +22,7 @@ import {
 import { convertRemToPixels } from "./Utils.ts";
 import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
+import { LatestToot } from "./LatestToot.tsx";
 
 // MARK: THEMING
 export let store = $store(
@@ -41,7 +42,7 @@ export let store = $store(
     },
     playMusic: true,
   },
-  { ident: "userOptions", backing: "localstorage", autosave: "auto" }
+  { ident: "userOptions", backing: "localstorage", autosave: "auto" },
 );
 
 const App: Component<
@@ -71,7 +72,11 @@ const App: Component<
     <About />,
     <Contact />,
     <div>
-      <h2 style="margin-bottom: 0.83em!important;">My work</h2>
+      <h2 style="margin-bottom: 0.7em!important;">Latest post</h2>
+      <LatestToot />
+    </div>,
+    <div>
+      <h2 style="margin-bottom: 0.7em!important;">My work</h2>
       <ProjectList projects={this.projects} />
     </div>,
     <SiteMap />,
@@ -122,32 +127,37 @@ const App: Component<
     }
   `;
 
-  setTimeout(() => {
-    // console.warn(document.getElementById("content")!.getBoundingClientRect().height);
-    // console.warn(document.getElementById("mainarticle")!.getBoundingClientRect().height);
+  function updateSize() {
     document.getElementById("mainarticle")!.style.height =
       document
         .getElementById("mainarticle")!
         .children[0]!.getBoundingClientRect().height +
       convertRemToPixels(1) +
       "px";
-    window.addEventListener("resize", () => {
-      document.getElementById("mainarticle")!.style.height =
-        document
-          .getElementById("mainarticle")!
-          .children[0]!.getBoundingClientRect().height +
-        convertRemToPixels(1) +
-        "px";
-    });
+  }
+
+  setTimeout(() => {
+    // console.warn(document.getElementById("content")!.getBoundingClientRect().height);
+    // console.warn(document.getElementById("mainarticle")!.getBoundingClientRect().height);
+    updateSize();
+
     document.querySelector("main")?.dispatchEvent(
       new MouseEvent("move", {
         clientX: window.innerWidth,
         clientY: window.innerHeight,
-      })
+      }),
     );
     // console.warn(document.getElementById("content")!.getBoundingClientRect().height);
     // console.warn(document.getElementById("mainarticle")!.getBoundingClientRect().height);
   }, 1);
+
+  window.addEventListener("resize", () => {
+    updateSize();
+  });
+
+  document.addEventListener("force-tab-resize", () => {
+    updateSize();
+  });
 
   document.addEventListener("pointermove", (e: PointerEvent) => {
     // i feel like this is way more complicated than it needs to be
@@ -179,6 +189,7 @@ const App: Component<
             "Home",
             "About me",
             "Contact",
+            "Yapping",
             "My work",
             "Sitemap",
             "About this Site",
