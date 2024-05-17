@@ -23,11 +23,6 @@ export const LatestToot: Component<
       margin-right: 0.3rem;
       }
 
-      p, div, a {
-        color: var(--text);
-        font-family: var(--font-body);
-      }
-
       a {
         color: var(--text)!important;
         text-decoration: none!important;
@@ -48,16 +43,15 @@ export const LatestToot: Component<
         .material-symbols-rounded {
           font-size: 1.7rem;
         }
-        & > .left {
+        .left {
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 0.4rem;
         }
-        & > .user {
+        .user {
           flex-direction: column;
-        }
-        & > .name {
+        .name {
           margin-left: 0.8rem;
           display: flex;
           flex-direction: column;
@@ -66,11 +60,12 @@ export const LatestToot: Component<
             font-family: var(--font-display);
             font-size: 1.2rem;
           }
-          & > .handle {
+          .handle {
             color: var(--subtext0);
           }
         }
-        & > .actions {
+        }
+        .actions {
           display: flex;
           flex-direction: row;
           gap: 0.8rem;
