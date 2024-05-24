@@ -26,7 +26,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       .inner {
         background: var(--base);
         min-width: 400px;
-        width: 60vw;
+        width: max(55vw, 50rem);
         height: 60vh;
         padding: 1rem;
         padding-top: 0;
@@ -116,6 +116,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       .desc p {
         margin-left: 0.5rem;
+        margin-bottom: 1.25rem;
       }
 
       button {

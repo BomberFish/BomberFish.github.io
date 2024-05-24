@@ -6,7 +6,7 @@ export const projects = [
     "celeste-wasm",
     "WebAssembly port of Celeste",
     2024,
-    "celeste-wasm is a port of the popular platformer Celeste to WebAssembly. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with other members of Mercury Workshop to port the game.",
+    "celeste-wasm is a port of the popular platformer Celeste to WebAssembly. I helped out with it during its development in May 2024. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with other members of Mercury Workshop to port the game.",
     [
       {
         name: "GitHub",
@@ -27,11 +27,11 @@ export const projects = [
     "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in Q2 2024, with a full release planned for later this year.",
     [
       {
-        name: "v1.x (production instance)",
+        name: "v1.x (production)",
         url: "https://anura.pro",
       },
       {
-        name: "v2.0 (preview instance, no v86)",
+        name: "v2.0 (preview)",
         url: "https://beta.anura.pro",
       },
     ]
