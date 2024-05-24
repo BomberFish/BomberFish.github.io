@@ -70,14 +70,14 @@ const App: Component<
   this.elements = [
     <Intro />,
     <About />,
+    <div>
+      <h2 style="margin-bottom: 0.7em!important;">My work</h2>
+      <ProjectList projects={this.projects} />
+    </div>,
     <Contact />,
     <div>
       <h2 style="margin-bottom: 0.7em!important;">Latest post</h2>
       <LatestToot />
-    </div>,
-    <div>
-      <h2 style="margin-bottom: 0.7em!important;">My work</h2>
-      <ProjectList projects={this.projects} />
     </div>,
     <SiteMap />,
     <DesignPhilosophy />,
@@ -188,9 +188,9 @@ const App: Component<
           tabs={[
             "Home",
             "About me",
+            "My work",
             "Contact",
             "Yapping",
-            "My work",
             "Sitemap",
             "About this Site",
           ]}

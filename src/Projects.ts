@@ -2,6 +2,24 @@ import ProjectCardDetails from "./Project";
 
 export const projects = [
   new ProjectCardDetails(
+    "/proj-thumbnails/celeste.webp",
+    "celeste-wasm",
+    "WebAssembly port of Celeste",
+    2024,
+    "celeste-wasm is a port of the popular platformer Celeste to WebAssembly. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with other members of Mercury Workshop to port the game.",
+    [
+      {
+        name: "GitHub",
+        url: "https://github.com/MercuryWorkshop/celeste-wasm",
+        icon: "code",
+      },
+      {
+        name: "Demo",
+        url: "https://celeste.r58playz.dev",
+      }
+    ]
+  ),
+  new ProjectCardDetails(
     "/proj-thumbnails/anura.webp",
     "AnuraOS",
     "Contributor to webOS since v2.x",

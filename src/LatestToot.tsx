@@ -23,10 +23,11 @@ export const LatestToot: Component<
       margin-right: 0.3rem;
       }
 
-      a {
+      #refresh, #open {
         color: var(--text)!important;
         text-decoration: none!important;
         border: none!important;
+        cursor: pointer;
       }
 
       .pfp {
@@ -461,6 +462,7 @@ export const LatestToot: Component<
                   href={note.url}
                   title="Open this post in new tab"
                   target="_blank"
+                  id="open"
                 >
                   <span class="material-symbols-rounded">open_in_new</span>
                 </a>
