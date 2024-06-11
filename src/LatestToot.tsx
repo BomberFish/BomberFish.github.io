@@ -369,7 +369,7 @@ export const LatestToot: Component<
 
   async function getStatuses(user_id: string): Promise<[Status]> {
     let notesRaw = await fetch(
-      `https://wetdry.world/api/v1/accounts/${user_id}/statuses`,
+      `https://wetdry.world/api/v1/accounts/${user_id}/statuses?exclude_replies=true`,
       {
         credentials: "omit",
         headers: {
