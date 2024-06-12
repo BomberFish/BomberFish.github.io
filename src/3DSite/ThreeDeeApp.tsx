@@ -10,6 +10,7 @@ import { FullArticle } from "../SiteContent";
 import { convertRemToPixels } from "../Utils";
 import { SuperCoolAndEpicDanceFloor } from "./3DFloor";
 import { Footer } from "../Footer";
+import { LatestToot } from "../LatestToot";
 
 let keys = new Map();
 document.addEventListener("keydown", (e) => {
@@ -342,6 +343,16 @@ export const ThreeDeeApp: Component<
             height={window.innerHeight * 0.5}
           >
             <FullArticle />
+          </Screen>
+          <Screen
+            ry={-20}
+            x={6}
+            y={-2}
+            z={-7}
+            width={window.innerWidth * 0.4}
+            height={window.innerHeight * 0.5}
+          >
+            <LatestToot />
           </Screen>
           <Screen
             // ry={30}

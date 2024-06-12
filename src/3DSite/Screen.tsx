@@ -40,6 +40,8 @@ export const Screen: Component<
       transition: 0.3s;
       overflow: auto;
       height: ${this.autoHeight ? "auto" : "100%"};
+
+      resize: both;
     
       &:hover {
         border-color: var(--accent);
