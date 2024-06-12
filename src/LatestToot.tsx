@@ -84,8 +84,46 @@ export const LatestToot: Component<
           color: var(--accent)!important;
           font-weight: 600;
         }
+
+        &.sensitive {
+          filter: blur(5px) contrast(2.5);
+          transition: filter 0.2s;
+
+          &:hover {
+            filter: blur(0) contrast(1);
+            transition: filter 0.2s;
+          }
+        }
       }
 
+      #content-warn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.3rem;
+        width: 100%;
+        font-size: 1.1rem;
+        font-weight: 500;
+
+        font-family: var(--font-display);
+
+        margin-block: 0.5rem;
+
+        background: repeating-linear-gradient(
+          45deg,
+          var(--base),
+          var(--base) 1em,
+          var(--crust) 1em,
+          var(--crust) 2em
+        );
+
+        border-radius: 2rem;
+        padding: 0.1rem;
+
+        & > span {
+          font-size: 1.3rem;
+        }
+      }
 
       .reply {
         display: flex;
@@ -123,6 +161,21 @@ export const LatestToot: Component<
         max-height: 15rem;
         max-width: 15rem;
         overflow: hidden;
+        }
+
+
+
+        & .sensitive {
+          & img,
+          & video {
+            filter: blur(40px) contrast(1.2);
+            transition: filter 0.7s;
+
+            &:hover {
+              filter: blur(0) contrast(1);
+              transition: filter 0.4s;
+            }
+          }
         }
 
         & img,
@@ -323,7 +376,9 @@ export const LatestToot: Component<
               alt={file.description}
               title={file.description}
               loading="lazy"
-              on:click={()=>{window.open(file.url, '_blank')}}
+              on:click={() => {
+                window.open(file.url, "_blank");
+              }}
               role="button"
             />
           </span>
@@ -378,7 +433,7 @@ export const LatestToot: Component<
         referrer: "https://wetdry.world/",
         method: "GET",
         mode: "cors",
-      },
+      }
     );
     let notes: [Status] = await notesRaw.json();
     return notes;
@@ -485,13 +540,32 @@ export const LatestToot: Component<
             ) : (
               ""
             )}
-            <p id="note-content" bind:this={use(this.renderRoot)}>
-              {note.content}
-            </p>
+            {!note.sensitive ? (
+              <p id="note-content" bind:this={use(this.renderRoot)}>
+                {note.content}
+              </p>
+            ) : (
+              <div>
+                <p id="content-warn">
+                  <span class="material-symbols-rounded">warning</span>{" "}
+                  {note.spoiler_text}
+                </p>
+
+                <p
+                  id="note-content"
+                  class="sensitive"
+                  bind:this={use(this.renderRoot)}
+                >
+                  {note.content}
+                </p>
+              </div>
+            )}
             {note.media_attachments.length > 0 ? (
               <div class="files">
                 {note.media_attachments.map((file) => (
-                  <div class="file">{mediaToElement(file)}</div>
+                  <div class={note.sensitive ? "file sensitive" : "file"}>
+                    {mediaToElement(file)}
+                  </div>
                 ))}
               </div>
             ) : (
@@ -534,7 +608,7 @@ export const LatestToot: Component<
           </div>
         ) : (
           <p>Loading...</p>
-        ),
+        )
       )}
     </div>
   );
