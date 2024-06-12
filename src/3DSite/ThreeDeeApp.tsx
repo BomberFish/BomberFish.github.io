@@ -438,6 +438,7 @@ export const ThreeDeeApp: Component<
             x={-4}
             y={-15}
             z={10}
+            nomove={true}
           >
             <SuperCoolAndEpicDanceFloor />
           </Screen>

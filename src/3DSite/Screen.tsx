@@ -11,6 +11,7 @@ export const Screen: Component<
     width?: number;
     height?: number;
     autoHeight?: boolean;
+    nomove?: boolean;
   },
   {
     children: Element;
@@ -25,7 +26,7 @@ export const Screen: Component<
     width: ${this.width + "px" || "auto"};
     height: ${this.height + "px" || "auto"};
 
-    transition: 0.75s transform cubic-bezier(0.37, 0, 0.63, 1);
+    transition: 0.75s transform ease-out;
 
     transform-origin: 50% 0;
     transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
@@ -45,7 +46,7 @@ export const Screen: Component<
     
       &:hover {
         border-color: var(--accent);
-        transition: border-color 0.3s;
+        transition: 0.3s;
       }
     
       width: 100%;
@@ -74,17 +75,17 @@ export const Screen: Component<
   return (
     <div
       on:mouseenter={() => {
-        if (this.rz !== undefined) {
+        if (this.rz !== undefined && !this.nomove) {
           this.z! += 0.3;
         }
       }}
       on:mouseleave={() => {
-        if (this.rz !== undefined) {
+        if (this.rz !== undefined && !this.nomove) {
           this.z! -= 0.3;
         }
       }}
       on:dblclick={() => {
-        if (this.rz !== undefined) {
+        if (this.rz !== undefined && !this.nomove) {
           this.rz! += 360;
         }
       }}
