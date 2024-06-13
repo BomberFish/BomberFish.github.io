@@ -4,7 +4,7 @@ import { Account, Status } from "./Status";
 // thanks cooleletronis (writabl) for like 90% of this code
 export const LatestToot: Component<
   {},
-  { note: Status; replyUser: Account; renderRoot: HTMLDivElement }
+  { note: Status; note_orig: Status; replyUser: Account; reblog: boolean; renderRoot: HTMLDivElement }
 > = function () {
   this.css = `
       padding: 1.5rem;
@@ -366,6 +366,10 @@ export const LatestToot: Component<
     }
     `);
 
+    this.reblog = false;
+
+    this.note_orig = this.note;
+
   function mediaToElement(file: any): HTMLElement {
     switch (file.type) {
       case "image":
@@ -457,10 +461,26 @@ export const LatestToot: Component<
     let notes = await getStatuses("112439434695773843");
     console.log(notes);
     let note = notes[0];
+    let i = 0;
+    while (note.reblog) {
+      note = notes[i];
+      i++;
+    }
     console.log(note);
+    console.log(note.reblog);
 
+    // if (note.reblog) {
+    //   console.log("reblog");
+    //   this.note = note.reblog as Status;
+    //   this.reblog = true;
+    // } else {
+    //   console.log("not a reblog");
+    //   this.note = note;
+    //   this.reblog = false;
+    // }
     this.note = note;
-
+    this.note_orig = note;
+    console.log(this.note);
     document.dispatchEvent(new Event("force-tab-resize"));
 
     this.renderRoot.innerHTML = note.content;
@@ -473,7 +493,7 @@ export const LatestToot: Component<
   };
 
   setTimeout(() => {
-    this.mount!();
+    this.mount!(); // jank workaround
   }, 800);
 
   return (
@@ -523,6 +543,22 @@ export const LatestToot: Component<
                 </a>
               </div>
             </div>
+            {this.reblog ? (
+              <div class="reply">
+                <span class="material-symbols-rounded">repeat</span> Reblogged by{" "}
+                <a
+                  href={`https://wetdry.world/@${this.note_orig.account.username}`}
+                  target="_blank"
+                >
+                  <div class="plyuser">
+                    <img loading="lazy" src={this.note_orig.account.avatar} />
+                    {this.note_orig.account.username}
+                  </div>
+                </a>
+              </div>
+            ) : (
+              ""
+            )}
             {note.in_reply_to_id ? (
               <div class="reply">
                 <span class="material-symbols-rounded">prompt_suggestion</span>{" "}
@@ -602,7 +638,7 @@ export const LatestToot: Component<
               </span>
               <div id="details">
                 {new Date(note.created_at).toLocaleString()} ·{" "}
-                {note.application.name}
+                {note.application ? note.application.name : "Unknown"}
               </div>
             </div>
           </div>
