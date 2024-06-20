@@ -23,6 +23,7 @@ import { convertRemToPixels } from "./Utils.ts";
 import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
 import { LatestToot } from "./LatestToot.tsx";
+import { Cursor } from "./Cursor.tsx";
 
 // MARK: THEMING
 export let store = $store(
@@ -293,6 +294,8 @@ window.addEventListener("load", async () => {
       }
     });
   }
+
+  // document.body.appendChild(<Cursor />);
 
   setInterval(() => {
     if (
