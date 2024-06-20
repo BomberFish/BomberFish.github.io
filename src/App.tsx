@@ -23,7 +23,7 @@ import { convertRemToPixels } from "./Utils.ts";
 import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
 import { LatestToot } from "./LatestToot.tsx";
-import { Cursor } from "./Cursor.tsx";
+// import { Cursor } from "./Cursor.tsx";
 
 // MARK: THEMING
 export let store = $store(
