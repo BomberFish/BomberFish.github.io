@@ -251,11 +251,12 @@ export const TabBar: Component<
   return (
     <div id="tabs">
       <div>
-        {this.tabs.map((tab, index) => (
+        {use(this.tabs, (tabs) => tabs.map((tab, index) => (
           <button
-            class={use(this.tabInternal, (tab) => [
-              tab === index ? "active" : "",
-            ])}
+            // class={use(this.tabInternal, (tab) => [
+            //   tab === index ? "active" : "",
+            // ])}
+            class:active={use(this.tabInternal, (tabi) => tabi == index)}
             on:click={() => {
               if (this.tabInternal === index) return;
               this.tabInternal = index;
@@ -288,7 +289,7 @@ export const TabBar: Component<
           >
             <span>{tab}</span>
           </button>
-        ))}
+        )))}
       </div>
     </div>
   );

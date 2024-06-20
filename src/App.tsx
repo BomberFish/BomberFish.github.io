@@ -197,7 +197,7 @@ const App: Component<
           bind:tab={use(this.selectedTab)}
         />
         <article id="mainarticle" class={articleCSS}>
-          {use(this.elements[this.selectedTab])}
+          {use(this.selectedTab, (tab) => this.elements[tab])}
         </article>
         <br></br>
         <Footer />
