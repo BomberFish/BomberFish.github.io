@@ -96,6 +96,18 @@ export const LatestToot: Component<
         }
       }
 
+      .file-header {
+        display: flex;
+        align-items: center;
+        padding-block: 0.5rem;
+        padding-inline: 0.8rem;
+      }
+
+      .file-inner {
+          display: flex;
+          flex-direction: column;
+      }
+
       #content-warn {
         display: flex;
         align-items: center;
@@ -147,20 +159,20 @@ export const LatestToot: Component<
       }
 
       .files {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 0.5rem;
         flex-wrap: wrap;
         margin-block: 0.5rem;
         & > .file {
-        padding: 0.8rem;
-        border-radius: 0.8rem;
+          // padding: 0.8rem;
+          border-radius: 0.7rem;
 
-        background-color: var(--crust);
+          background-color: var(--crust);
 
-        max-height: 15rem;
-        max-width: 15rem;
-        overflow: hidden;
+          max-height: 25rem;
+          max-width: 25rem;
+          overflow: hidden;
         }
 
 
@@ -183,7 +195,7 @@ export const LatestToot: Component<
         & audio {
           width: 100%;
           height: auto;
-          border-radius: 0.7rem;
+          border-radius: 0 0 0.7rem 0.7rem;
           cursor: pointer;
         }
       }
@@ -370,11 +382,19 @@ export const LatestToot: Component<
 
     this.note_orig = this.note;
 
+  function urlToFileName(url: string): string {
+    return url.split("/").pop() || "Unknown filename";
+  }
+
   function mediaToElement(file: any): HTMLElement {
     switch (file.type) {
       case "image":
         return (
-          <span>
+          <span class="file-inner">
+            <span class="file-header">
+              <span class="material-symbols-rounded">image</span>
+              <span>{urlToFileName(file.url)}</span>
+            </span>
             <img
               src={file.url}
               alt={file.description}
@@ -389,7 +409,11 @@ export const LatestToot: Component<
         );
       case "video":
         return (
-          <span>
+          <span class="file-inner">
+            <span class="file-header">
+              <span class="material-symbols-rounded">videocam</span>
+              <span>{urlToFileName(file.url)}</span>
+            </span>
             <video
               src={file.url}
               alt={file.description}
@@ -400,7 +424,11 @@ export const LatestToot: Component<
         );
       case "audio":
         return (
-          <span>
+          <span class="file-inner">
+            <span class="file-header">
+              <span class="material-symbols-rounded">audiotrack</span>
+              <span>{urlToFileName(file.url)}</span>
+            </span>
             <audio
               src={file.url}
               alt={file.description}
@@ -462,7 +490,7 @@ export const LatestToot: Component<
     console.log(notes);
     let note = notes[0];
     let i = 0;
-    while (note.reblog) {
+    while (note.reblog || note.in_reply_to_id) {
       note = notes[i];
       i++;
     }
@@ -597,25 +625,33 @@ export const LatestToot: Component<
               </div>
             )}
             {note.media_attachments.length > 0 ? (
-              <div class="files">
-                {note.media_attachments.map((file) => (
-                  <div class={note.sensitive ? "file sensitive" : "file"}>
-                    {mediaToElement(file)}
-                  </div>
-                ))}
+              <div>
+                <h3 style={{
+                  color: "var(--subtext0)",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: "640",
+                  marginBottom: "0.25rem"
+                }}>Files ({use`${note.media_attachments.length}`})</h3>
+                <div class="files">
+                  {note.media_attachments.map((file) => (
+                    <div class={note.sensitive ? "file sensitive" : "file"}>
+                      {mediaToElement(file)}
+                    </div>
+                  ))}
+                </div>
               </div>
             ) : (
               ""
             )}
 
-            {note.media_attachments.length > 0 ? (
+            {/* {note.media_attachments.length > 0 ? (
               <div class="numfiles">
                 ({note.media_attachments.length}{" "}
                 {"file" + (note.media_attachments.length > 1 ? "s" : "")})
               </div>
             ) : (
               ""
-            )}
+            )} */}
 
             <div class="footer">
               <span class="reactions">
