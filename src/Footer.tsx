@@ -72,14 +72,13 @@ export const WebButton: Component<
     -webkit-image-rendering: pixelated;
     width: auto;
     height: max(31px, 2.5rem);
-    border-radius: ${
-      this.rounded ? (this.radius ? this.radius : "0.5rem") : "0px"
+    border-radius: ${this.rounded ? (this.radius ? this.radius : "0.5rem") : "0px"
     }
   }
   `;
 
   this.href = this.href || "#";
-  this.action = this.action || (() => {});
+  this.action = this.action || (() => { });
 
   if (this.title) {
     this.alt = this.alt || "A web button with the description: " + this.title;
@@ -164,7 +163,7 @@ export const Footer: Component<{}, {}> = function () {
   return (
     <footer>
       <span>
-        Button Collection<span class="question" role="button" on:click={async ()=>{
+        Button Collection<span class="question" role="button" on:click={async () => {
           alert("Most of these are things/websites I think are cool, except the first four which relate directly to this site. Click on one to go to the relevant website. No website paid me to get here.")
         }}>?</span>
       </span>
@@ -245,8 +244,13 @@ export const Footer: Component<{}, {}> = function () {
           />
           <WebButton
             src="/buttons/ce88x31.webp"
-            title="CoolElectronics"
-            href="https://coolelectronics.me"
+            title="velzie.d"
+            href="https://velzie.rip"
+          />
+          <WebButton
+            src="/buttons/thinlqd.webp"
+            title="ThinLiquid"
+            href="https://thnlqd.nekoweb.org"
           />
           <WebButton
             src="/buttons/circular-88x31.gif"
@@ -279,7 +283,7 @@ export const Footer: Component<{}, {}> = function () {
         {/* <br></br> */}
         {$if(
           new URL(window.location.href).searchParams.get("higherdimension") ===
-            null && !isMobile(),
+          null && !isMobile(),
           <div>
             {/* <div>
                       Pro tip: you can navigate this site with your keyboard! Press{" "}
