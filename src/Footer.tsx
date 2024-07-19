@@ -259,7 +259,7 @@ const Buttons: Component<{},{}> = function() {
     }
 
     :nth-child(2n) {
-      animation-delay: 1s;
+      animation-delay: 1s!important;
     }
   }
   
@@ -301,9 +301,6 @@ const Buttons: Component<{},{}> = function() {
     }
     50% {
       transform: translateY(max(7.75px, 0.625rem));
-    }
-    100% {
-      transform: translateY(calc(-1*max(7.75px, 0.625rem));
     }
   }
   `
