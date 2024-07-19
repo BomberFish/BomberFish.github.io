@@ -234,6 +234,7 @@ const Buttons: Component<{},{}> = function() {
     height: max(50px, 4rem);
     display: flex;
     align-items: center;
+    transition: transform 0.4s linear;
   }
 
   #buttons:hover .webbtns,
@@ -307,7 +308,25 @@ const Buttons: Component<{},{}> = function() {
   }
   `
   return (
-  <div>
+  <div 
+  /* on:mouseenter={()=> {
+  document.querySelectorAll('.webbtns').forEach((el) => {
+    (el as HTMLElement).style.animationPlayState = 'paused';
+  });
+  document.querySelectorAll('.webbtns > a').forEach((el) => {
+    (el as HTMLElement).style.animationPlayState = 'paused';
+  });
+  }}
+  on:mouseleave={()=> {
+  document.querySelectorAll('.webbtns').forEach((el) => {
+    (el as HTMLElement).style.animationPlayState = 'running';
+  });
+  document.querySelectorAll('.webbtns > a').forEach((el) => {
+    (el as HTMLElement).style.animationPlayState = 'running';
+  });
+  }
+  } */
+  >
   <WebButton
       src="/buttons/button.gif"
       title="Click to copy my button! (HTML code)"
@@ -358,6 +377,11 @@ const Buttons: Component<{},{}> = function() {
       href="https://www.apple.com/macos"
     />
     <WebButton
+      src="/buttons/any-browser.webp"
+      title="View this site on any (modern) web browser!"
+      href="https://anybrowser.org/campaign/index.html"
+    />
+    <WebButton
       src="/buttons/hg88x31.webp"
       title="Percury Mercshop"
       href="https://mercurywork.shop"
@@ -376,6 +400,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/thinlqd.webp"
       title="ThinLiquid"
       href="https://thnlqd.nekoweb.org"
+    />
+    <WebButton
+      src="/buttons/foxmossbutton.webp"
+      title="FoxMoss"
+      href="https://foxmoss.com"
     />
     <WebButton
       src="/buttons/circular-88x31.gif"
@@ -430,6 +459,11 @@ const Buttons: Component<{},{}> = function() {
       href="https://www.apple.com/macos"
     />
     <WebButton
+      src="/buttons/any-browser.webp"
+      title="View this site on any (modern) web browser!"
+      href="https://anybrowser.org/campaign/index.html"
+    />
+    <WebButton
       src="/buttons/hg88x31.webp"
       title="Percury Mercshop"
       href="https://mercurywork.shop"
@@ -448,6 +482,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/thinlqd.webp"
       title="ThinLiquid"
       href="https://thnlqd.nekoweb.org"
+    />
+    <WebButton
+      src="/buttons/foxmossbutton.webp"
+      title="FoxMoss"
+      href="https://foxmoss.com"
     />
     <WebButton
       src="/buttons/circular-88x31.gif"
