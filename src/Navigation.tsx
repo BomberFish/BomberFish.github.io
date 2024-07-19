@@ -11,17 +11,12 @@ export const Nav: Component<
   this.nameState = false;
   this.css = `
     background: var(--mantle);
-    // position: fixed;
-    // top: 0;
-    // left: 0;
-    // right: 0;
     justify-self: flex-start;
     z-index: 100;
     padding: 0.25em 1em;
-    width: 60vw;
-    height: 3.5rem;
+    width: 75vw;
+    height: 3.75rem;
     margin: 0;
-    // padding: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -39,14 +34,6 @@ export const Nav: Component<
     -moz-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-
-    // border-radius: 0 0 1em 1em;
-
-    h2 {
-      justify-self: flex-start;
-      margin: 0;
-      cursor: pointer;
-    }
 
     img {
       -webkit-border-radius: 100%;
@@ -73,6 +60,9 @@ export const Nav: Component<
       background: black;
       padding: 2px;
 
+      width: 2.2rem;
+      height: 2.2rem;
+
       user-select: none;
       -webkit-user-drag: none;
       -webkit-user-select: none;
@@ -83,15 +73,60 @@ export const Nav: Component<
       align-items: center;
       justify-self: flex-start;
       font-family: var(--font-mono);
-
     }
 
     h2 {
+      justify-self: flex-start;
+      margin: 0;
+      cursor: pointer;
       display: flex;
       align-items: flex-start;
       margin: 0!important;
-      gap: 0.25rem;
+      gap: 0.1rem;
       font-weight: 400;
+      font-size: 1.75rem!important;
+
+      /* Nintendo Switch-style 3d spinning text effect */
+      & > span {
+        animation: spin 5s cubic-bezier(0.37, 0, 0.63, 1) infinite;
+
+        &:nth-of-type(1) {
+            animation-delay: 0.7s;
+        }
+        &:nth-of-type(2) {
+            animation-delay: 0.775s;
+        }
+        &:nth-of-type(3) {
+            animation-delay: 0.85s;
+        }
+        &:nth-of-type(4) {
+            animation-delay: 0.925s;
+        }
+        &:nth-of-type(5) {
+            animation-delay: 1.0s;
+        }
+        &:nth-of-type(6) {
+            animation-delay: 1.075s;
+        }
+        &:nth-of-type(7) {
+            animation-delay: 1.15s;
+        }
+        &:nth-of-type(8) {
+            animation-delay: 1.225s;
+        }
+        &:nth-of-type(9) {
+          animation-delay: 1.3s;
+        }
+        &:nth-of-type(10) {
+          animation-delay: 1.375s;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        & > span {
+          animation: none;
+        }
+      }
     }
 
     subt {
@@ -102,7 +137,6 @@ export const Nav: Component<
     #right {
       justify-self: flex-end;
       margin-left: auto;
-      // padding-right: 1.75rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -110,7 +144,6 @@ export const Nav: Component<
       & > a {
         text-decoration: none;
         transform: scale(1);
-        // transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         color: var(--accent);
         font-size: 1rem;
         display: flex;
@@ -119,18 +152,27 @@ export const Nav: Component<
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
-
-        // &:hover {
-        //   transform: scale(1.025);
-        //   transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-        // }
       }
     }
 
     @media (orientation: portrait) {
-    #bloglink-title {
-      display: none;
+      #bloglink-title {
+        display: none;
+      }
     }
+
+
+
+    @keyframes spin {
+        0% {
+            transform: rotate3d(0, 1, 0, 0deg);
+        }
+        10% {
+            transform: rotate3d(0, 1, 0, 359deg);
+        }
+        100% {
+            transform: rotate3d(0, 1, 0, 360deg);
+        }
     }
   `;
   return (
@@ -139,15 +181,24 @@ export const Nav: Component<
         <img
           src="/favicon.ico"
           alt="My profile picture"
-          width="32"
-          height="32"
           style={{ transform: use`rotate(${this.rotation}deg)` }}
-          on:pointerdown={() => {
+          on:click={(e: MouseEvent) => {
+            e.preventDefault();
+            console.log("click");
             this.rotation -= 1440;
           }}
         />
         <h2>
-          BomberFish
+          <span>B</span>
+          <span>o</span>
+          <span>m</span>
+          <span>b</span>
+          <span>e</span>
+          <span>r</span>
+          <span>F</span>
+          <span>i</span>
+          <span>s</span>
+          <span>h</span>
           <subt>(he/him)</subt>
         </h2>
       </span>
@@ -181,6 +232,15 @@ export const TabBar: Component<
     margin-top: 0.5rem;
     overflow-x: auto;
 
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0.15rem);
+        }
+        40%,60% {
+            transform: translateY(-0.15rem);
+        }
+    }
+
     div {
         display: flex;
         justify-content: flex-start;
@@ -198,6 +258,36 @@ export const TabBar: Component<
         font-family: var(--font-display);
         font-weight: 500;
         font-size: 1.2rem;
+
+        animation: bounce 1s cubic-bezier(0.2, 0, 0.8, 1) infinite;
+
+        &:nth-of-type(7) {
+          animation-delay: -0.1s;
+        }
+
+        &:nth-of-type(6) {
+          animation-delay: -0.2s;
+        }
+
+        &:nth-of-type(5) {
+          animation-delay: -0.3s;
+        }
+
+        &:nth-of-type(4) {
+          animation-delay: -0.4s;
+        }
+
+        &:nth-of-type(3) {
+          animation-delay: -0.5s;
+        }
+
+        &:nth-of-type(2) {
+          animation-delay: -0.6s;
+        }
+        
+        &:nth-of-type(1) {
+          animation-delay: -0.7s;
+        }
 
         white-space: nowrap;
 
@@ -244,6 +334,12 @@ export const TabBar: Component<
 
         &:last-of-type {
             margin-right: 1rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        button {
+            animation: none;
         }
     }
   `;

@@ -67,6 +67,7 @@ export const WebButton: Component<
   this.css = `
   width: max-content;
   height: max(31px, 1.9375rem);
+  border: none!important;
   img {
     image-rendering: pixelated;
     -webkit-image-rendering: pixelated;
@@ -108,6 +109,12 @@ export const Footer: Component<{}, {}> = function () {
   this.css = `
       #konami > kbd {
         margin-right: 0.65rem;
+
+        &.active {
+          color: var(--accent);
+          border-color: var(--accent);
+          box-shadow: 0 0 4rem 0 color-mix(in srgb, transparent 70%, var(--accent));
+        }
       }
 
       #konami > a {
@@ -123,13 +130,6 @@ export const Footer: Component<{}, {}> = function () {
         transition: 0.2s;
       }
 
-      #webbtns {
-        display: flex;
-        gap: 0.75rem;
-        width: 100%;
-        flex-wrap: wrap;
-      }
-
       span {
         font-size: 1.15rem;
         color: var(--text);
@@ -142,7 +142,7 @@ export const Footer: Component<{}, {}> = function () {
       }
 
       .question {
-      font-family: var(--font-display);
+        font-family: var(--font-display);
         color: var(--subtext0);
         display: inline-block;
         font-size: 0.75rem;
@@ -184,95 +184,7 @@ export const Footer: Component<{}, {}> = function () {
         </span> */}
         {/* <br></br> */}
         {/* <br></br> */}
-        <div id="webbtns">
-          <WebButton
-            src="/buttons/button.gif"
-            title="Click to copy my button! (HTML code)"
-            action={(e: MouseEvent) => {
-              e.preventDefault();
-              try {
-                navigator.clipboard.writeText(`
-                <a href="https://bomberfish.ca">
-                  <img src="https://bomberfish.ca/buttons/button.gif" alt="BomberFish" title="BomberFish" />
-                </a>
-              `);
-                document.body.appendChild(<CopiedToast />);
-              } catch {
-                console.error(e);
-              }
-            }}
-          />
-          <WebButton
-            src="/buttons/simpleanalytics.svg"
-            title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
-            href="https://dashboard.simpleanalytics.com/bomberfish.ca"
-          />
-          <WebButton
-            src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
-            title="Made with dreamland.js"
-            href="https://dreamland.js.org/?uwu"
-          />
-          <WebButton
-            src="/buttons/agplv3-with-text-162x68.webp"
-            title="Licenced under the GNU Affero GPL Version 3"
-            href="https://www.gnu.org/licenses/agpl-3.0.en.html"
-          />
-          <WebButton
-            src="/buttons/arch.gif"
-            title="Arch Linux"
-            href="https://archlinux.org"
-          />
-          <WebButton
-            src="/buttons/VisitNeXT.gif"
-            title="Visit NeXT"
-            href="https://www.next.com"
-          />
-          <WebButton
-            src="/buttons/PoweredByNEXTSTEP.gif"
-            title="Powered by NeXTSTEP (not)"
-            href="https://www.apple.com/macos"
-          />
-          <WebButton
-            src="/buttons/hg88x31.webp"
-            title="Percury Mercshop"
-            href="https://mercurywork.shop"
-          />
-          <WebButton
-            src="/buttons/omada.gif"
-            title="omada.cafe, an private and secure alternative provider."
-            href="https://omada.cafe"
-          />
-          <WebButton
-            src="/buttons/ce88x31.webp"
-            title="velzie.d"
-            href="https://velzie.rip"
-          />
-          <WebButton
-            src="/buttons/thinlqd.webp"
-            title="ThinLiquid"
-            href="https://thnlqd.nekoweb.org"
-          />
-          <WebButton
-            src="/buttons/circular-88x31.gif"
-            title="circular"
-            href="https://circulars.dev"
-          />
-          <WebButton
-            src="/buttons/necoarc-88x31.webp"
-            title="the profaned one"
-            href="https://necoarc.dev"
-          />
-          <WebButton
-            src="/buttons/eightyeightthirtyone.webp"
-            title="88x31"
-            href="https://eightyeightthirty.one"
-          />
-          <WebButton
-            src="/buttons/melankorin.gif"
-            title="melankorin"
-            href="https://melankorin.net"
-          />
-        </div>
+        <Buttons />
         <p
           style={{
             marginBlock: "1rem",
@@ -283,7 +195,7 @@ export const Footer: Component<{}, {}> = function () {
         {/* <br></br> */}
         {$if(
           new URL(window.location.href).searchParams.get("higherdimension") ===
-          null && !isMobile(),
+            null && !isMobile(),
           <div>
             {/* <div>
                       Pro tip: you can navigate this site with your keyboard! Press{" "}
@@ -292,16 +204,16 @@ export const Footer: Component<{}, {}> = function () {
                       <br></br>
                     </div> */}
             <div id="konami">
-              <kbd>↑</kbd>
-              <kbd>↑</kbd>
-              <kbd>↓</kbd>
-              <kbd>↓</kbd>
-              <kbd>←</kbd>
-              <kbd>→</kbd>
-              <kbd>←</kbd>
-              <kbd>→</kbd>
-              <kbd>b</kbd>
-              <kbd>a</kbd>
+              <kbd id="k0">↑</kbd>
+              <kbd id="k1">↑</kbd>
+              <kbd id="k2">↓</kbd>
+              <kbd id="k3">↓</kbd>
+              <kbd id="k4">←</kbd>
+              <kbd id="k5">→</kbd>
+              <kbd id="k6">←</kbd>
+              <kbd id="k7">→</kbd>
+              <kbd id="k8">b</kbd>
+              <kbd id="k9">a</kbd>
               <a href="/?higherdimension">I'm lazy</a>
             </div>
           </div>,
@@ -310,3 +222,256 @@ export const Footer: Component<{}, {}> = function () {
     </footer>
   );
 };
+
+const Buttons: Component<{},{}> = function() {
+  this.css = `
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+  
+  #buttons {
+    height: max(50px, 4rem);
+    display: flex;
+    align-items: center;
+  }
+
+  #buttons:hover .webbtns,
+  #buttons:hover .webbtns > a {
+    animation-play-state: paused;
+  }
+
+
+  .webbtns {
+    display: inline-flex;
+    flex-direction: row;
+    white-space: nowrap;
+    gap: 0.75rem;
+    padding-right: 0.75rem;
+    flex-wrap: nowrap;
+    
+    animation: move 10s linear infinite;
+    animation-fill-mode: both;
+
+    & > a {
+      animation: groove 2s cubic-bezier(0.3,0,0.7,0.9) infinite;
+    }
+
+    :nth-child(2n) {
+      animation-delay: 1s;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    & {
+    white-space: initial;
+    }
+
+    .webbtns, .webbtns > a {
+      display: flex;
+      flex-wrap: wrap;
+      white-space: initial;
+      animation: none;
+    }
+
+    .webbtns:nth-of-type(2) {
+      display: none;
+    }
+
+    #buttons {
+      height: initial;
+    }
+  }
+  
+
+  @keyframes move {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+    
+  @keyframes groove {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(max(7.75px, 0.625rem));
+    }
+    100% {
+      transform: translateY(calc(-1*max(7.75px, 0.625rem));
+    }
+  }
+  `
+  return (
+  <div>
+  <WebButton
+      src="/buttons/button.gif"
+      title="Click to copy my button! (HTML code)"
+      action={(e: MouseEvent) => {
+        e.preventDefault();
+        try {
+          navigator.clipboard.writeText(`
+          <a href="https://bomberfish.ca">
+            <img src="https://bomberfish.ca/buttons/button.gif" alt="BomberFish" title="BomberFish" />
+          </a>
+        `);
+          document.body.appendChild(<CopiedToast />);
+        } catch {
+          console.error(e);
+        }
+      }}
+  />
+  <div id="buttons">
+  <span class="webbtns">
+    <WebButton
+      src="/buttons/simpleanalytics.svg"
+      title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
+      href="https://dashboard.simpleanalytics.com/bomberfish.ca"
+    />
+    <WebButton
+      src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
+      title="Made with dreamland.js"
+      href="https://dreamland.js.org/?uwu"
+    />
+    <WebButton
+      src="/buttons/agplv3-with-text-162x68.webp"
+      title="Licenced under the GNU Affero GPL Version 3"
+      href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+    />
+    <WebButton
+      src="/buttons/arch.gif"
+      title="Arch Linux"
+      href="https://archlinux.org"
+    />
+    <WebButton
+      src="/buttons/VisitNeXT.gif"
+      title="Visit NeXT"
+      href="https://www.next.com"
+    />
+    <WebButton
+      src="/buttons/PoweredByNEXTSTEP.gif"
+      title="Powered by NeXTSTEP (not)"
+      href="https://www.apple.com/macos"
+    />
+    <WebButton
+      src="/buttons/hg88x31.webp"
+      title="Percury Mercshop"
+      href="https://mercurywork.shop"
+    />
+    <WebButton
+      src="/buttons/omada.gif"
+      title="omada.cafe, an private and secure alternative provider."
+      href="https://omada.cafe"
+    />
+    <WebButton
+      src="/buttons/ce88x31.webp"
+      title="velzie.d"
+      href="https://velzie.rip"
+    />
+    <WebButton
+      src="/buttons/thinlqd.webp"
+      title="ThinLiquid"
+      href="https://thnlqd.nekoweb.org"
+    />
+    <WebButton
+      src="/buttons/circular-88x31.gif"
+      title="circular"
+      href="https://circulars.dev"
+    />
+    <WebButton
+      src="/buttons/necoarc-88x31.webp"
+      title="the profaned one"
+      href="https://necoarc.dev"
+    />
+    <WebButton
+      src="/buttons/eightyeightthirtyone.webp"
+      title="88x31"
+      href="https://eightyeightthirty.one"
+    />
+    <WebButton
+      src="/buttons/melankorin.gif"
+      title="melankorin"
+      href="https://melankorin.net"
+    />
+  </span>
+  <span class="webbtns">
+    <WebButton
+      src="/buttons/simpleanalytics.svg"
+      title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
+      href="https://dashboard.simpleanalytics.com/bomberfish.ca"
+    />
+    <WebButton
+      src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
+      title="Made with dreamland.js"
+      href="https://dreamland.js.org/?uwu"
+    />
+    <WebButton
+      src="/buttons/agplv3-with-text-162x68.webp"
+      title="Licenced under the GNU Affero GPL Version 3"
+      href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+    />
+    <WebButton
+      src="/buttons/arch.gif"
+      title="Arch Linux"
+      href="https://archlinux.org"
+    />
+    <WebButton
+      src="/buttons/VisitNeXT.gif"
+      title="Visit NeXT"
+      href="https://www.next.com"
+    />
+    <WebButton
+      src="/buttons/PoweredByNEXTSTEP.gif"
+      title="Powered by NeXTSTEP (not)"
+      href="https://www.apple.com/macos"
+    />
+    <WebButton
+      src="/buttons/hg88x31.webp"
+      title="Percury Mercshop"
+      href="https://mercurywork.shop"
+    />
+    <WebButton
+      src="/buttons/omada.gif"
+      title="omada.cafe, an private and secure alternative provider."
+      href="https://omada.cafe"
+    />
+    <WebButton
+      src="/buttons/ce88x31.webp"
+      title="velzie.d"
+      href="https://velzie.rip"
+    />
+    <WebButton
+      src="/buttons/thinlqd.webp"
+      title="ThinLiquid"
+      href="https://thnlqd.nekoweb.org"
+    />
+    <WebButton
+      src="/buttons/circular-88x31.gif"
+      title="circular"
+      href="https://circulars.dev"
+    />
+    <WebButton
+      src="/buttons/necoarc-88x31.webp"
+      title="the profaned one"
+      href="https://necoarc.dev"
+    />
+    <WebButton
+      src="/buttons/eightyeightthirtyone.webp"
+      title="88x31"
+      href="https://eightyeightthirty.one"
+    />
+    <WebButton
+      src="/buttons/melankorin.gif"
+      title="melankorin"
+      href="https://melankorin.net"
+    />
+  </span>
+  </div>
+
+  </div>
+  )
+}

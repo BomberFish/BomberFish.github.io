@@ -13,6 +13,34 @@ export const FullArticle: Component<{}, {}> = function () {
 };
 
 export const Intro: Component<{}, {}> = function () {
+
+  this.css = `
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  img {
+    height: auto;
+    width: min(20rem, 50%);
+    align-self: flex-start;
+    justify-self: center;
+    float: left; /* Add this line */
+    margin-right: 1rem; /* Add this line */
+  }
+  `
+
+  return (
+    <div>
+      <div>
+      <IntroSmall />
+      <About />
+      </div>
+      <img src="/kawaii.webp" alt="Vtuber-style logo" />
+      <div style={{ clear: 'both' }}></div> {/* Add this line */}
+    </div>
+  );
+};
+
+export const IntroSmall: Component<{}, {}> = function () {
   return (
     <div>
       <h1>Hi 👋</h1>
@@ -24,8 +52,8 @@ export const Intro: Component<{}, {}> = function () {
         I'm interested in webdev, native iOS development, and a bit of security research.
       </p>
     </div>
-  );
-};
+  )
+}
 
 export const About: Component<{}, {}> = function () {
   return (
@@ -59,7 +87,7 @@ export const About: Component<{}, {}> = function () {
 export const Contact: Component<{}, {}> = function () {
   return (
     <div>
-      <h2>Contact</h2>
+      <h2>Get in touch</h2>
       <ul>
         <li>
           <a href="https://wetdry.world/@fish" target="blank" rel="me">

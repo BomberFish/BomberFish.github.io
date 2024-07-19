@@ -9,7 +9,7 @@
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
-*:not(ul>li>ul, ul>li>ul>li) {
+*:not(ul>li>ul, ul>li>ul>li, img) {
   transition: background-color .3s linear, color .1s linear, box-shadow .3s linear;
 }
 

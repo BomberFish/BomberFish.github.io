@@ -108,6 +108,8 @@ export const ThreeDeeApp: Component<
   this.z = -200;
   this.r = -10;
 
+  const fontsize = parseFloat(getComputedStyle(document.documentElement).fontSize)
+
   this.mount = () => {
     // alert(window.innerWidth)
     function easeOutCirc(x: number) {
@@ -138,7 +140,7 @@ export const ThreeDeeApp: Component<
   setInterval(() => {
     // console.debug("polling inputs", keys)
 
-    if (keydown("ArrowRight")) {
+    if (keydown("l")) {
       this.r += 0.5;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
@@ -148,7 +150,7 @@ export const ThreeDeeApp: Component<
         `${+orig - 2.5}px`
       );
     }
-    if (keydown("ArrowLeft")) {
+    if (keydown("j")) {
       this.r -= 0.5;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
@@ -159,7 +161,7 @@ export const ThreeDeeApp: Component<
       );
     }
 
-    if (keydown("ArrowUp")) {
+    if (keydown("i")) {
       this.y += keydown("Shift") ? this.speed * this.mult : this.speed;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveY")
@@ -169,7 +171,7 @@ export const ThreeDeeApp: Component<
         `${+orig + 0.35}px`
       );
     }
-    if (keydown("ArrowDown")) {
+    if (keydown("k")) {
       this.y -= keydown("Shift") ? this.speed * this.mult : this.speed;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveY")
@@ -327,7 +329,7 @@ export const ThreeDeeApp: Component<
             y={-12}
             z={-15}
             width={400}
-            height={320 * 4}
+            height={320 * 3}
           >
             <article>
               <h2>My work</h2>
@@ -339,8 +341,8 @@ export const ThreeDeeApp: Component<
             x={-4}
             y={-6}
             z={-5}
-            width={window.innerWidth * 0.4}
-            height={window.innerHeight * 0.5}
+            width={fontsize*40}
+            height={fontsize*50}
           >
             <FullArticle />
           </Screen>
@@ -349,8 +351,8 @@ export const ThreeDeeApp: Component<
             x={6}
             y={-2}
             z={-7}
-            width={window.innerWidth * 0.4}
-            height={window.innerHeight * 0.5}
+            // width={window.innerWidth * 0.4}
+            // height={window.innerHeight * 0.5}
           >
             <LatestToot />
           </Screen>
@@ -361,6 +363,7 @@ export const ThreeDeeApp: Component<
             y={5}
             z={-4}
             autoHeight={true}
+            width={fontsize*70}
           >
             <article>
               <Footer />
@@ -373,8 +376,8 @@ export const ThreeDeeApp: Component<
             x={14}
             y={-6}
             z={-10}
-            width={window.innerWidth * 0.2}
-            height={window.innerHeight * 0.5}
+            width={fontsize*20}
+            height={fontsize*30}
           >
             <ThreeDeeInfo />
           </Screen>
@@ -383,8 +386,8 @@ export const ThreeDeeApp: Component<
             x={-5}
             y={-5}
             z={-20}
-            width={window.innerWidth * 0.4}
-            height={window.innerHeight * 0.5}
+            width={fontsize*40}
+            height={fontsize*30}
           >
             <article>
               <h2>Blog</h2>

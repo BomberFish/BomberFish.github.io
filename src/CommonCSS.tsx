@@ -70,22 +70,6 @@ export const sharedCSS = css`
       transition: opacity 0.4s !important;
     }
   }
-
-  @keyframes borderPulse {
-    0% {
-      border-color: var(--crust);
-    }
-    10% {
-      border-color: var(--accent);
-    }
-    85% {
-      border-color: var(--crust);
-    }
-    100% {
-      border-color: var(--crust);
-    }
-  }
-
   ::selection {
     background: var(--accent);
     color: var(--base);
@@ -213,9 +197,9 @@ export const sharedCSS = css`
     margin-top: 0.1rem;
   }
 
-  nav h2 {
-    font-size: 1.5rem;
-  }
+  // nav h2 {
+  //   font-size: 1.5rem;
+  // }
 
   // #content {
   //   padding-inline: 1rem;

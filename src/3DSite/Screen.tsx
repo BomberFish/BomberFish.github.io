@@ -62,7 +62,7 @@ export const Screen: Component<
 
   this.mount = () => {
     // works around a bug i will fix later
-    handle(
+    useChange(
       use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${
         this.z || 0
       }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${

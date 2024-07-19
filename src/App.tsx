@@ -14,7 +14,6 @@ import { sharedCSS, articleCSS } from "./CommonCSS.tsx";
 import { updatePage } from "./Themes";
 import {
   Intro,
-  About,
   Contact,
   SiteMap,
   DesignPhilosophy,
@@ -70,7 +69,6 @@ const App: Component<
   this.selectedTab = 0;
   this.elements = [
     <Intro />,
-    <About />,
     <div>
       <h2 style="margin-bottom: 0.7em!important;">My work</h2>
       <ProjectList projects={this.projects} />
@@ -100,8 +98,8 @@ const App: Component<
 
     #content {
       background: var(--base);
-      // padding: 1em;
-      width: 60vw;
+      width: 75vw;
+      height: 60vh;
       height: min-content;
       border-radius: 0 0 1.2rem 1.2rem;
     }
@@ -187,7 +185,6 @@ const App: Component<
       <div id="content">
         <TabBar
           tabs={[
-            "Home",
             "About me",
             "My work",
             "Contact",
@@ -281,6 +278,7 @@ window.addEventListener("load", async () => {
 
       if (e.key === konamiCode[konamiCurrent]) {
         console.debug("match");
+        document.getElementById("k" + konamiCurrent)?.classList.add("active");
         e.preventDefault();
         konamiCurrent++;
 
@@ -291,6 +289,9 @@ window.addEventListener("load", async () => {
         }
       } else {
         konamiCurrent = 0;
+        for (let i = 0; i < konamiCode.length; i++) {
+          document.getElementById("k" + i)?.classList.remove("active");
+        }
       }
     });
   }
