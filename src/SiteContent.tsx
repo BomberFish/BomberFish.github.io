@@ -123,7 +123,7 @@ export const Contact: Component<{}, {}> = function () {
             <li>
               @bomberfish <strong>(Main account)</strong>
             </li>
-            <li>@hanz_was_here</li>
+            <li>@realtimsweeneyepic</li>
             <li>@pageprotectionlayer</li>
             <li>@securepagetablemonitor</li>
           </ul>

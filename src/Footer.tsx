@@ -426,6 +426,11 @@ const Buttons: Component<{},{}> = function() {
       title="melankorin"
       href="https://melankorin.net"
     />
+    <WebButton
+      src="/buttons/freemusicnow.webp"
+      title="Lucida: Free Music. No BS."
+      href="https://lucida.to"
+    />
   </span>
   <span class="webbtns">
     <WebButton
@@ -507,6 +512,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/melankorin.gif"
       title="melankorin"
       href="https://melankorin.net"
+    />
+    <WebButton
+      src="/buttons/freemusicnow.webp"
+      title="Lucida: Free Music. No BS."
+      href="https://lucida.to"
     />
   </span>
   </div>
