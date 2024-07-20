@@ -112,9 +112,7 @@ export const ThreeDeeApp: Component<
   this.y = window.innerHeight / -16;
   this.z = -200;
   this.r = -10;
-
-  const fontsize = parseFloat(getComputedStyle(document.documentElement).fontSize)
-
+  
   this.mount = () => {
     // alert(window.innerWidth)
     function easeOutCirc(x: number) {
@@ -346,8 +344,8 @@ export const ThreeDeeApp: Component<
             x={-4}
             y={-6}
             z={-5}
-            width={fontsize*40}
-            height={fontsize*50}
+            width={convertRemToPixels(40)}
+            height={convertRemToPixels(50)}
           >
             <FullArticle />
           </Screen>
@@ -368,7 +366,7 @@ export const ThreeDeeApp: Component<
             y={5}
             z={-4}
             autoHeight={true}
-            width={fontsize*70}
+            width={convertRemToPixels(70)}
           >
             <article>
               <Footer />
@@ -381,8 +379,8 @@ export const ThreeDeeApp: Component<
             x={14}
             y={-6}
             z={-10}
-            width={fontsize*20}
-            height={fontsize*30}
+            width={convertRemToPixels(20)}
+            height={convertRemToPixels(30)}
           >
             <ThreeDeeInfo />
           </Screen>
@@ -391,8 +389,8 @@ export const ThreeDeeApp: Component<
             x={-5}
             y={-5}
             z={-20}
-            width={fontsize*40}
-            height={fontsize*30}
+            width={convertRemToPixels(40)}
+            height={convertRemToPixels(30)}
           >
             <article>
               <h2>Blog</h2>
