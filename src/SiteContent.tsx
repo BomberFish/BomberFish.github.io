@@ -4,7 +4,7 @@ import { articleCSS } from "./CommonCSS";
 export const FullArticle: Component<{}, {}> = function () {
   return (
     <article class={articleCSS}>
-      <Intro />
+      <IntroSmall />
       <About />
       <Contact />
       <SiteMap />
@@ -17,14 +17,15 @@ export const Intro: Component<{}, {}> = function () {
   this.css = `
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   gap: 2rem;
   img {
     height: auto;
     width: min(20rem, 50%);
     align-self: flex-start;
-    justify-self: center;
+    justify-self: flex-end;
     float: left;
-    margin-right: 1rem;
+    margin-right: 2rem;
   }
 
   @media (orientation: portrait) {
@@ -38,10 +39,10 @@ export const Intro: Component<{}, {}> = function () {
     <div>
       <div>
       <IntroSmall />
+      <br></br>
       <About />
       </div>
       <img src="/kawaii.webp" alt="Vtuber-style logo" />
-      <div style={{ clear: 'both' }}></div> {/* Add this line */}
     </div>
   );
 };
@@ -64,7 +65,7 @@ export const IntroSmall: Component<{}, {}> = function () {
 export const About: Component<{}, {}> = function () {
   return (
     <div>
-      <h2>About me</h2>
+      <h2>Some more about me</h2>
       <ul>
         <li>I was one of the winners of the 2024 Swift Student Challenge</li>
         <li>

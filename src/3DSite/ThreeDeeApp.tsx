@@ -57,6 +57,11 @@ export const ThreeDeeApp: Component<
     width: 100%;
     height: 100%;
     perspective: var(--perspective);
+
+    * {
+    image-rendering: pixelated;
+    -webkit-image-rendering: pixelated;
+    }
   
     camera {
       position: absolute;
@@ -140,8 +145,8 @@ export const ThreeDeeApp: Component<
   setInterval(() => {
     // console.debug("polling inputs", keys)
 
-    if (keydown("l")) {
-      this.r += 0.5;
+    if (keydown("ArrowRight")) {
+      this.r += 0.5; 
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
         .replace("px", "");
@@ -150,7 +155,7 @@ export const ThreeDeeApp: Component<
         `${+orig - 2.5}px`
       );
     }
-    if (keydown("j")) {
+    if (keydown("ArrowLeft")) {
       this.r -= 0.5;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
@@ -161,7 +166,7 @@ export const ThreeDeeApp: Component<
       );
     }
 
-    if (keydown("i")) {
+    if (keydown("ArrowUp")) {
       this.y += keydown("Shift") ? this.speed * this.mult : this.speed;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveY")
@@ -171,7 +176,7 @@ export const ThreeDeeApp: Component<
         `${+orig + 0.35}px`
       );
     }
-    if (keydown("k")) {
+    if (keydown("ArrowDown")) {
       this.y -= keydown("Shift") ? this.speed * this.mult : this.speed;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveY")
@@ -329,7 +334,7 @@ export const ThreeDeeApp: Component<
             y={-12}
             z={-15}
             width={400}
-            height={320 * 3}
+            height={960}
           >
             <article>
               <h2>My work</h2>
@@ -399,39 +404,14 @@ export const ThreeDeeApp: Component<
             </article>
           </Screen>
           <Screen
-            ry={-5}
-            x={4}
-            y={-8.5}
+            ry={-20}
+            x={8}
+            y={-10}
             z={-7}
-            width={window.innerWidth * 0.4}
-            height={convertRemToPixels(3.5)}
+            width={453}
+            height={358.5}
           >
-            <div
-              style={{
-                background: "var(--mantle)",
-                margin: "0",
-                padding: "0",
-                fontSize: "1.5rem",
-                fontWeight: "600",
-                fontFamily: "var(--font-mono)",
-              }}
-            >
-              <marquee
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  loading="lazy"
-                  src="/favicon.ico"
-                  style="width: 1.5rem;height:1.5rem;border-radius:50%;margin-right:5px;"
-                  referrerpolicy="no-referrer"
-                  crossorigin="anonymous"
-                ></img>
-                BomberFish
-              </marquee>
-            </div>
+            <img src="/kawaii.webp" alt="Vtuber-style logo" style="width: 100%; height: 100%;" />
           </Screen>
           <Screen
             rx={-90}

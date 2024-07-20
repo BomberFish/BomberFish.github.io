@@ -170,7 +170,7 @@ export const Footer: Component<{}, {}> = function () {
     <footer>
       <span>
         Button Collection<span class="question" role="button" on:click={async () => {
-          alert("Most of these are things/websites I think are cool, except the first four which relate directly to this site. Click on one to go to the relevant website. No website paid me to get here.")
+          alert("All of these are websites I think are cool, people I know, or tools/software I use. Click on one to go to the relevant website. No website paid me to get here.")
         }}>?</span>
       </span>
       <subt>
@@ -391,13 +391,18 @@ const Buttons: Component<{},{}> = function() {
     />
     <WebButton
       src="/buttons/hg88x31.webp"
-      title="Percury Mercshop"
+      title="Mercury Workshop"
       href="https://mercurywork.shop"
     />
     <WebButton
       src="/buttons/omada.gif"
       title="omada.cafe, an private and secure alternative provider."
       href="https://omada.cafe"
+    />
+    <WebButton
+      src="/buttons/firefox.gif"
+      title="Firefox is EVIL!"
+      href="https://lunduke.locals.com/post/5871895/mozilla-firefox-goes-anti-privacy-pro-advertising"
     />
     <WebButton
       src="/buttons/ce88x31.webp"
@@ -501,6 +506,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/omada.gif"
       title="omada.cafe, an private and secure alternative provider."
       href="https://omada.cafe"
+    />
+    <WebButton
+      src="/buttons/firefox.gif"
+      title="Firefox is EVIL!"
+      href="https://lunduke.locals.com/post/5871895/mozilla-firefox-goes-anti-privacy-pro-advertising"
     />
     <WebButton
       src="/buttons/ce88x31.webp"

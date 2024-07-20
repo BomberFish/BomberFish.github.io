@@ -8,8 +8,8 @@ export const ThreeDeeInfo: Component<{}, {}> = function () {
       <h3>Quick Start</h3>
       <ul>
         <li>Use WASD to move</li>
-        <li>Use J and L to rotate the camera</li>
-        <li>Use I and K to move up/down</li>
+        <li>Use the left and right arrow keys to rotate the camera</li>
+        <li>Use the up and down arrow keys to move up and down</li>
       </ul>
       <p>Check behind you to see my blog.</p>
       <h3>How I did it</h3>
