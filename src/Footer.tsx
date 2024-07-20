@@ -68,6 +68,11 @@ export const WebButton: Component<
   width: max-content;
   height: max(31px, 1.9375rem);
   border: none!important;
+  transition: 0.2s ease!important;
+  &:hover {
+    scale: 1.05;
+    transition: 0.2s ease!important;
+  }
   img {
     image-rendering: pixelated;
     -webkit-image-rendering: pixelated;
@@ -349,7 +354,7 @@ const Buttons: Component<{},{}> = function() {
       href="https://dashboard.simpleanalytics.com/bomberfish.ca"
     />
     <WebButton
-      src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
+      src="/buttons/dreamland-new.webp"
       title="Made with dreamland.js"
       href="https://dreamland.js.org/?uwu"
     />
@@ -362,6 +367,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/arch.gif"
       title="Arch Linux"
       href="https://archlinux.org"
+    />
+    <WebButton
+      src="/buttons/arc.gif"
+      title="Arc from the Browser Company"
+      href="https://arc.net"
     />
     <WebButton
       src="/buttons/VisitNeXT.gif"
@@ -427,6 +437,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/freemusicnow.webp"
       title="Lucida: Free Music. No BS."
       href="https://lucida.to"
+    />
+    <WebButton
+      src="/buttons/mariokart.webp"
+      title="Play some Mario Kart!"
+      href="#"
     />
   </span>
   <span class="webbtns">
@@ -451,6 +466,11 @@ const Buttons: Component<{},{}> = function() {
       href="https://archlinux.org"
     />
     <WebButton
+      src="/buttons/arc.gif"
+      title="Arc from the Browser Company"
+      href="https://arc.net"
+    />
+    <WebButton
       src="/buttons/VisitNeXT.gif"
       title="Visit NeXT"
       href="https://www.next.com"
@@ -514,6 +534,11 @@ const Buttons: Component<{},{}> = function() {
       src="/buttons/freemusicnow.webp"
       title="Lucida: Free Music. No BS."
       href="https://lucida.to"
+    />
+    <WebButton
+      src="/buttons/mariokart.webp"
+      title="Play some Mario Kart!"
+      href="#"
     />
   </span>
   </div>
