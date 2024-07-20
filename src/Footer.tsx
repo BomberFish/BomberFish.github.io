@@ -1,5 +1,6 @@
 import "dreamland";
 import isMobile from "./IsMobile";
+import { MK64Frame } from "./N64";
 
 const CopiedToast: Component<{}, {}> = function () {
   this.mount = () => {
@@ -441,7 +442,13 @@ const Buttons: Component<{},{}> = function() {
     <WebButton
       src="/buttons/mariokart.webp"
       title="Play some Mario Kart!"
-      href="#"
+      action={(e: MouseEvent)=>{
+        e.preventDefault();
+        document
+            .querySelector("main")!
+            .appendChild(<MK64Frame />);
+          (document.activeElement as HTMLElement)?.blur();
+      }}
     />
   </span>
   <span class="webbtns">
@@ -538,7 +545,13 @@ const Buttons: Component<{},{}> = function() {
     <WebButton
       src="/buttons/mariokart.webp"
       title="Play some Mario Kart!"
-      href="#"
+      action={(e: MouseEvent)=>{
+        e.preventDefault();
+        document
+            .querySelector("main")!
+            .appendChild(<MK64Frame />);
+          (document.activeElement as HTMLElement)?.blur();
+      }}
     />
   </span>
   </div>
