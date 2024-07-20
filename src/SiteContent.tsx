@@ -23,8 +23,14 @@ export const Intro: Component<{}, {}> = function () {
     width: min(20rem, 50%);
     align-self: flex-start;
     justify-self: center;
-    float: left; /* Add this line */
-    margin-right: 1rem; /* Add this line */
+    float: left;
+    margin-right: 1rem;
+  }
+
+  @media (orientation: portrait) {
+    img {
+      display: none; /* TODO: Figure something out */
+    }
   }
   `
 
