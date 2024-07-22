@@ -269,7 +269,7 @@ const Buttons: Component<{},{}> = function() {
     }
   }
   
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) or (orientation: portrait) {
     & {
     white-space: initial;
     }
