@@ -52,9 +52,23 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         -webkit-user-drag: none;
         -webkit-user-select: none;
         border-radius: 0.9rem;
-        width: 100%;
-        height: 100%;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
         object-fit: cover;
+      }
+
+      .img-placeholder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(100% - 1px);
+        height: calc(100% - 1px);
+        border-radius: 0.9rem;
+        background: var(--base);
+        color: var(--subtext0);
+        span {
+          font-size: 3rem;
+        }
       }
 
       .title {
@@ -62,6 +76,9 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         align-items: center;
         margin-top: 0.2rem;
         font-family: var(--font-display);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       p {
@@ -120,17 +137,24 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         tabindex="0"
       >
         <div class="img-container" style={{
-            width: "318px",
-            height: "auto",
-            aspectRatio: "512 / 277",
+          width: "318px",
+          height: "auto",
+          aspectRatio: "512 / 277",
         }}>
-          <img
-            loading="lazy"
-            src={this.detail.img}
-            alt={this.detail.blurb}
-            referrerpolicy="no-referrer"
-            crossorigin="anonymous"
-          />
+          {$if(this.detail.img != undefined,
+            (<img
+              loading="lazy"
+              src={this.detail.img}
+              alt={this.detail.blurb}
+              referrerpolicy="no-referrer"
+              crossorigin="anonymous"
+            />),
+            (
+              <div class="img-placeholder">
+                <span class="material-symbols-rounded">broken_image</span>
+              </div>
+            ))
+          }
         </div>
         <div class="detail">
           <div class="title">

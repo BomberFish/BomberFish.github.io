@@ -45,6 +45,12 @@ export let store = $store(
   { ident: "userOptions", backing: "localstorage", autosave: "auto" },
 );
 
+export let globalState = $state(
+  {
+    freakyMode: false
+  }
+)
+
 const App: Component<
   {},
   {
@@ -180,7 +186,9 @@ const App: Component<
   });
 
   return (
-    <main class={sharedCSS}>
+    <main class={sharedCSS} style={{
+      fontFamily: use(globalState.freakyMode, freak => freak ? "Papyrus, cursive!important" : "var(--font-body)")
+    }}>
       <Nav />
       <div id="content">
         <TabBar

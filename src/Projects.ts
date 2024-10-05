@@ -2,6 +2,14 @@ import ProjectCardDetails from "./Project";
 
 export const projects = [
   new ProjectCardDetails(
+    undefined,
+    "QuickSign",
+    "iOS Signing App",
+    2025,
+    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. It is slated for release in early 2025.",
+    []
+  ),
+  new ProjectCardDetails(
     "/proj-thumbnails/celeste.webp",
     "celeste-wasm",
     "WebAssembly port of Celeste",
@@ -24,7 +32,7 @@ export const projects = [
     "AnuraOS",
     "Contributor to webOS since v2.x",
     2024,
-    "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0 beta, which contains my contributions, is currently slated for release in Q2 2024, with a full release planned for later this year.",
+    "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0, which contains my contributions, is currently slated for release in late 2024.",
     [
       {
         name: "v1.x (production)",
@@ -42,6 +50,14 @@ export const projects = [
     "Cancelled customization app",
     2024,
     "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0.",
+    []
+  ),
+  new ProjectCardDetails(
+    undefined,
+    "Swift Student Challenge",
+    "Competition Winner",
+    2024,
+    "In early 2024, I won the Swift Student Challenge, a programming competition run by Apple. My winning submission was a carbon footprint calculator.",
     []
   ),
   new ProjectCardDetails(

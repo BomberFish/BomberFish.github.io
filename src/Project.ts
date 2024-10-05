@@ -1,5 +1,5 @@
 export default class ProjectCardDetails {
-  img: string;
+  img: string | undefined;
   title: string;
   blurb: string;
   year: number;
@@ -7,7 +7,7 @@ export default class ProjectCardDetails {
   links?: { name: string; url: string; icon?: string }[];
 
   constructor(
-    imgURL: string,
+    imgURL: string | undefined,
     title: string,
     blurb: string,
     year: number,

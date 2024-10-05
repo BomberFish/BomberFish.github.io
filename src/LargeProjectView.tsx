@@ -257,7 +257,8 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
           </div>
           <article>
             <div class="article-inner">
-              <img
+            {$if(this.project.img,
+              (<img
                 loading="lazy"
                 src={this.project.img}
                 on:click={() => {
@@ -265,7 +266,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 }}
                 referrerpolicy="no-referrer"
                 crossorigin="anonymous"
-              />
+              />),
+              (<div></div>)
+            )}
               <div class="desc">
                 <p>{this.project.largeDesc}</p>
 

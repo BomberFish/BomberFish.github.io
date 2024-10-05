@@ -29,8 +29,15 @@ export const Intro: Component<{}, {}> = function () {
   }
 
   @media (orientation: portrait) {
-    img {
+    #kawaii {
       display: none; /* TODO: Figure something out */
+    }
+  }
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    #kawaii {
+      display: none;
     }
   }
   `
@@ -38,11 +45,11 @@ export const Intro: Component<{}, {}> = function () {
   return (
     <div>
       <div>
-      <IntroSmall />
-      <br></br>
-      <About />
+        <IntroSmall />
+        <br></br>
+        <About />
       </div>
-      <img src="/kawaii.webp" alt="Vtuber-style logo" />
+      <img id="kawaii" src="/kawaii.webp" alt="Vtuber-style logo" />
     </div>
   );
 };
@@ -52,11 +59,18 @@ export const IntroSmall: Component<{}, {}> = function () {
     <div>
       <h1>Hi 👋</h1>
       <p>
-        I'm Hariz, a high school student from Canada. I'm a wannabe "software
-        engineer" and I sometimes do cool things.
+        I'm Hariz, a high school student from Canada, and I sometimes do/make cool/lame things.
       </p>
       <p>
-        I'm interested in webdev, native iOS development, and a bit of security research.
+      <br></br>
+        As for *engineering, I'm interested in:
+        <ul>
+          <li>Hardware (building robots 'n stuff!)</li>
+          <li>Webdev (as you can tell from this immaculately put-together portfolio)</li>
+          <li>Backend (kinda)</li>
+          <li>Native iOS development</li>
+          <li>And a little bit of security research</li>
+        </ul>
       </p>
     </div>
   )
@@ -174,7 +188,7 @@ export const DesignPhilosophy: Component<{}, {}> = function () {
         <li>
           JavaScript is not the enemy. Take advantage of all the latest gizmos.
           <ul>
-          <li>Always include source maps. Why not show off your code?</li>
+            <li>Always include source maps. Why not show off your code?</li>
           </ul>
         </li>
         <li>
