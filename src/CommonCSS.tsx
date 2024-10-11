@@ -185,6 +185,25 @@ export const sharedCSS = css`
     font-size: 0.7rem;
   }
 
+  pre,
+  code {
+      font-size: 0.9rem;
+      font-family: var(--font-mono);
+      background: var(--crust);
+  }
+
+  code {
+      border-radius: 0.3rem;
+      padding-inline: 0.5rem;
+      padding-block: 0.15rem;
+  }
+
+  pre {
+    padding: 1rem;
+    border-radius: 0.6rem;
+    overflow-x: auto;
+  }
+
   //   h1,
   //   h2,
   //   h3 {

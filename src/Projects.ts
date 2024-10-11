@@ -53,7 +53,7 @@ export const projects = [
     []
   ),
   new ProjectCardDetails(
-    undefined,
+    "/proj-thumbnails/SSC2024_Social_Static_16x9.jpg",
     "Swift Student Challenge",
     "Competition Winner",
     2024,

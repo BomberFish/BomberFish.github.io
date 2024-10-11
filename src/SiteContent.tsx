@@ -59,11 +59,11 @@ export const IntroSmall: Component<{}, {}> = function () {
     <div>
       <h1>Hi 👋</h1>
       <p>
-        I'm Hariz, a high school student from Canada, and I sometimes do/make cool/lame things.
+        I'm Hariz, a 15 y/o high school student from Canada, and I sometimes do/make cool/lame things.
       </p>
       <p>
-      <br></br>
-        As for *engineering, I'm interested in:
+        <br></br>
+        As for <code>/.* engineering/g</code>, I'm interested in:
         <ul>
           <li>Hardware (building robots 'n stuff!)</li>
           <li>Webdev (as you can tell from this immaculately put-together portfolio)</li>
