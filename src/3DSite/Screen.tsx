@@ -22,7 +22,7 @@ export const Screen: Component<
     top: 0;
     left: 0;
     bottom: 0;
-  
+
     width: ${this.width + "px" || "auto"};
     height: ${this.height + "px" || "auto"};
 
@@ -32,7 +32,7 @@ export const Screen: Component<
     transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
 
     article {
-      background: #11111baa;
+      background: color-mix(in srgb, var(--crust), transparent 20%);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       padding: 0.75em;
@@ -43,12 +43,12 @@ export const Screen: Component<
       height: ${this.autoHeight ? "auto" : "100%"};
 
       resize: both;
-    
+
       &:hover {
         border-color: var(--accent);
         transition: 0.3s;
       }
-    
+
       width: 100%;
     }
   `;
@@ -63,11 +63,9 @@ export const Screen: Component<
   this.mount = () => {
     // works around a bug i will fix later
     useChange(
-      use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${
-        this.z || 0
-      }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${
-        this.rz || 0
-      }deg`,
+      use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${this.z || 0
+        }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${this.rz || 0
+        }deg`,
       (v) => ((this.root as HTMLElement).style.cssText = v)
     );
   };

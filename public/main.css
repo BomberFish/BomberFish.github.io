@@ -1,137 +1,146 @@
 :root {
-  --font-display: "Inter Tight", "Inter", "SF Pro Display", "SF Pro",
-    "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui,
-    "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Noto Color Emoji", "Segoe UI Emoji";
-  --font-body: "Inter", "SF Pro Text", "SF Pro", -apple-system,
-    BlinkMacSystemFont, system-ui, "Helvetica Neue", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+    --font-display: "Inter Tight", "Inter", "SF Pro Display", "SF Pro",
+        "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui,
+        "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Noto Color Emoji", "Segoe UI Emoji";
+    --font-body: "Inter", "SF Pro Text", "SF Pro", -apple-system,
+        BlinkMacSystemFont, system-ui, "Helvetica Neue", Helvetica, Arial,
+        sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
 *:not(ul>li>ul, ul>li>ul>li, img) {
-  transition: background-color .3s linear, color .1s linear, box-shadow .3s linear;
+    transition: background-color .3s linear, color .1s linear, box-shadow .3s linear;
 }
 
 :root {
-  --crust: #11111b;
-  --base: #1e1e2e;
-  --mantle: #181825;
-  --text: #cdd6f4;
-  --accent: #cba6f7;
-  --overlay1: #7f849c;
-  --surface2: #585b70;
-  --surface0: #313244;
-  --subtext0: #a6adc8;
+    --crust: #11111b;
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --text: #cdd6f4;
+    --accent: #cba6f7;
+    --overlay1: #7f849c;
+    --surface2: #585b70;
+    --surface0: #313244;
+    --subtext0: #a6adc8;
 }
 
 :root {
-  --perspective: 1000px;
-  --gridsize: 50px;
-  --bgmoveX: -19px;
-  --bgmoveY: -19px;
-  --bgscale: 1;
+    --perspective: 1000px;
+    --gridsize: 50px;
+    --bgmoveX: -19px;
+    --bgmoveY: -19px;
+    --bgscale: 1;
 }
 
 li::marker {
-  color: var(--accent);
+    color: var(--accent);
 }
 
 .no-js t {
-  font-weight: 500;
-  font-size: 1.2rem;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
 
 html,
 body {
-  font-family: var(--font-body);
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
+    font-family: var(--font-body);
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background: #1e1e2e;
-  color: #cdd6f4;
-  background: var(--crust);
-  color: var(--text);
-  overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #1e1e2e;
+    color: #cdd6f4;
+    background: var(--crust);
+    color: var(--text);
+    overflow-x: hidden;
 }
 
 /* * {
   cursor: none!important;
 } */
 
+body {
+    color-scheme: dark;
+}
+
+body.Latte {
+    color-scheme: light;
+}
+
 html:has(body.cool),
 body.cool {
-  display: initial;
-  padding: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  background: transparent;
+    display: initial;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: transparent;
 }
 
 body,
 body.cool {
-  background: var(--crust);
-  background-image: radial-gradient(
-    var(--surface2) calc(var(--bgscale) * var(--bgscale) * 1.5px),
-    transparent 0
-  );
-  background-size: calc(20px * var(--bgscale)) calc(20px * var(--bgscale));
-  background-position: var(--bgmoveX) var(--bgmoveY);
+    background: var(--crust);
+    background-image: radial-gradient(var(--surface2) calc(var(--bgscale) * var(--bgscale) * 1.5px),
+            transparent 0);
+    background-size: calc(20px * var(--bgscale)) calc(20px * var(--bgscale));
+    background-position: var(--bgmoveX) var(--bgmoveY);
 }
+
 /*
 body:not(.cool) {
   transition: 0.4s background-position ease
 } */
 
 #oneko {
-  z-index: 99999;
+    z-index: 99999;
 }
 
 .secretEffect {
-  border: 1px solid var(--overlay1);
-  border-radius: 2rem;
-  transition: transform 3s cubic-bezier(0.3, 0, 0.6, 1);
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transform: rotate3d(1, 1, 1, 360deg);
-  animation: scale 3s 1;
-  transform-origin: 50vw 50vh;
+    border: 1px solid var(--overlay1);
+    border-radius: 2rem;
+    transition: transform 3s cubic-bezier(0.3, 0, 0.6, 1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    transform: rotate3d(1, 1, 1, 360deg);
+    animation: scale 3s 1;
+    transform-origin: 50vw 50vh;
 }
 
 @keyframes scale {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 0.5;
-  }
-  100% {
-    scale: 1;
-  }
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.5;
+    }
+
+    100% {
+        scale: 1;
+    }
 }
 
 @media (orientation: portrait) {
 
-  main {
-    display: initial!important;
-    width:100vw;
-  }
+    main {
+        display: initial !important;
+        width: 100vw;
+    }
 
-  body {
-    background: var(--base)
-  }
+    body {
+        background: var(--base)
+    }
 
-  #darkreader-warning {
-    width: 100vw;
-    border-radius: 0;
-  }
+    #darkreader-warning {
+        width: 100vw;
+        border-radius: 0;
+    }
 }
 
 
@@ -139,15 +148,15 @@ body:not(.cool) {
 body.Latte .card:hover,
 body.Latte .card:focus,
 body.Latte .card:focus-visible {
-  box-shadow: 0 0 20px rgba(24, 24, 37, 0.3);
+    box-shadow: 0 0 20px rgba(24, 24, 37, 0.3);
 }
 
 body {
-  line-height: 1.5;
+    line-height: 1.5;
 }
 
 #oneko {
-  opacity: 0;
-  background-position: -115.5px -115.5px;
-  transition: 0.5s opacity;
+    opacity: 0;
+    background-position: -115.5px -115.5px;
+    transition: 0.5s opacity;
 }

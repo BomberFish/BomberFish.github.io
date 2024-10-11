@@ -75,6 +75,11 @@ export const sharedCSS = css`
     color: var(--base);
   }
 
+  img::selection {
+      background: color-mix(in srgb, var(--accent), transparent 40%);
+      border: 1px solid var(--accent);
+  }
+
   ::-webkit-scrollbar,
   *::-webkit-scrollbar {
     width: 4px;
@@ -83,8 +88,13 @@ export const sharedCSS = css`
 
   ::-webkit-scrollbar-track,
   *::-webkit-scrollbar-track {
-    background: transparent;
+    background: var(--crust);
   }
+
+  ::-webkit-scrollbar-track-piece,
+    *::-webkit-scrollbar-track-piece {
+        background: var(--crust);
+    }
 
   ::-webkit-scrollbar-thumb,
   *::-webkit-scrollbar-thumb {
@@ -96,7 +106,7 @@ export const sharedCSS = css`
 
   ::-webkit-scrollbar-thumb:hover,
   *::-webkit-scrollbar-thumb:hover {
-    background: var(--base);
+    background: var(--surface1);
     transition: background 0.2s;
   }
 

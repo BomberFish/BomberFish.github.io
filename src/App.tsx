@@ -264,7 +264,6 @@ window.addEventListener("load", async () => {
     let sc = document.createElement("script");
     sc.src = "/oneko.js";
     document.body.appendChild(sc);
-    updatePage();
     document.getElementById("app")!.replaceWith(<App />);
 
     var konamiCurrent = 0;
@@ -303,6 +302,8 @@ window.addEventListener("load", async () => {
       }
     });
   }
+
+  updatePage();
 
   // document.body.appendChild(<Cursor />);
 
