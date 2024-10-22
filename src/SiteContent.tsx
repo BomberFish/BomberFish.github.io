@@ -56,7 +56,7 @@ export const Intro: Component<{}, {}> = function () {
 
 export const IntroSmall: Component<{}, {}> = function () {
   return (
-    <div>
+    <section>
       <h1>Hi 👋</h1>
       <p>
         I'm Hariz, a 15 y/o high school student from Canada, and I sometimes do/make cool/lame things.
@@ -72,13 +72,13 @@ export const IntroSmall: Component<{}, {}> = function () {
           <li>And a little bit of security research</li>
         </ul>
       </p>
-    </div>
+    </section>
   )
 }
 
 export const About: Component<{}, {}> = function () {
   return (
-    <div>
+    <section>
       <h2>Some more about me</h2>
       <ul>
         <li>I was one of the winners of the 2024 Swift Student Challenge</li>
@@ -101,13 +101,13 @@ export const About: Component<{}, {}> = function () {
         <li>I play the guitar (!!)</li>
         <li>I use Arch (btw)</li>
       </ul>
-    </div>
+    </section>
   );
 };
 
 export const Contact: Component<{}, {}> = function () {
   return (
-    <div>
+    <section>
       <h2>Get in touch</h2>
       <ul>
         <li>
@@ -156,13 +156,13 @@ export const Contact: Component<{}, {}> = function () {
           </ul>
         </li>
       </ul>
-    </div>
+    </section>
   );
 };
 
 export const SiteMap: Component<{}, {}> = function () {
   return (
-    <div>
+    <section>
       <h2>Other things on this site</h2>
       <ul>
         <li>
@@ -175,13 +175,13 @@ export const SiteMap: Component<{}, {}> = function () {
           <a href="./tools/index.html">/tools</a>
         </li>
       </ul>
-    </div>
+    </section>
   );
 };
 
 export const DesignPhilosophy: Component<{}, {}> = function () {
   return (
-    <div>
+    <section>
       <h2>Website Design Philosophy</h2>
       <ul>
         <li>Be as keyboard-accessible as possible.</li>
@@ -197,6 +197,6 @@ export const DesignPhilosophy: Component<{}, {}> = function () {
         </li>
         <li>Have some fun. Don't be too bland.</li>
       </ul>
-    </div>
+    </section>
   );
 };

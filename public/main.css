@@ -9,8 +9,61 @@
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 }
 
-*:not(ul>li>ul, ul>li>ul>li, img) {
+*:not(ul>li>ul, ul>li>ul>li, img, article section *) {
     transition: background-color .3s linear, color .1s linear, box-shadow .3s linear;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--surface0) var(--crust);
+}
+
+::selection {
+    background: var(--accent);
+    color: var(--base);
+}
+
+img::selection {
+    background: color-mix(in srgb, var(--accent), transparent 40%);
+    border: 1px solid var(--accent);
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track {
+    background: var(--crust) !important;
+}
+
+::-webkit-scrollbar-track-piece,
+*::-webkit-scrollbar-track-piece {
+    background: var(--crust) !important;
+}
+
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb {
+    background: var(--surface0) !important;
+    border-radius: 9999px !important;
+    margin: 0 2px !important;
+    transition: background 0.2s !important;
+}
+
+::-webkit-scrollbar-thumb:hover,
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--surface2) !important;
+    transition: background 0.2s !important;
+}
+
+::-webkit-scrollbar-button,
+*::-webkit-scrollbar-button,
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+    display: none !important;
+    background: transparent !important;
 }
 
 :root {

@@ -2,6 +2,7 @@ import "dreamland";
 import ProjectCardDetails from "./Project.ts";
 import isMobile from "./IsMobile.ts";
 
+// TODO: Use <dialog>
 export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
   function () {
     this.mount = () => {
@@ -257,18 +258,18 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
           </div>
           <article>
             <div class="article-inner">
-            {$if(this.project.img,
-              (<img
-                loading="lazy"
-                src={this.project.img}
-                on:click={() => {
-                  window.open(this.project.img, "_blank");
-                }}
-                referrerpolicy="no-referrer"
-                crossorigin="anonymous"
-              />),
-              (<div></div>)
-            )}
+              {$if(this.project.img,
+                (<img
+                  loading="lazy"
+                  src={this.project.img}
+                  on:click={() => {
+                    window.open(this.project.img, "_blank");
+                  }}
+                  referrerpolicy="no-referrer"
+                  crossorigin="anonymous"
+                />),
+                (<div></div>)
+              )}
               <div class="desc">
                 <p>{this.project.largeDesc}</p>
 

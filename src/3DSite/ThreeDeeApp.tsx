@@ -62,7 +62,7 @@ export const ThreeDeeApp: Component<
     image-rendering: pixelated;
     -webkit-image-rendering: pixelated;
     }
-  
+
     camera {
       position: absolute;
       inset: 0;
@@ -75,7 +75,7 @@ export const ThreeDeeApp: Component<
       transform-style: preserve-3d;
       will-change: transform;
     }
-  
+
     stage {
       position: fixed;
       top: 50%!important;
@@ -91,9 +91,17 @@ export const ThreeDeeApp: Component<
       font-weight: 600;
       margin: 0;
       position: fixed;
-      top: 0.5rem;
-      left: 0.8rem;
-      width: 200px;
+      top: 0;
+      left: 0;
+      padding-top: 0.5rem;
+      padding-left: 0.8rem;
+      width: 10em;
+
+      border-radius: 0 0 0.5em 0;
+
+      z-index: 999;
+
+      background: color-mix(in srgb, var(--base), transparent 30%);
 
       a {
         display: flex;
@@ -109,10 +117,10 @@ export const ThreeDeeApp: Component<
   `;
 
   this.x = window.innerWidth / -40;
-  this.y = window.innerHeight / -16;
+  this.y = window.innerHeight / 2;
   this.z = -200;
-  this.r = -10;
-  
+  this.r = -18;
+
   this.mount = () => {
     // alert(window.innerWidth)
     function easeOutCirc(x: number) {
@@ -122,19 +130,19 @@ export const ThreeDeeApp: Component<
     console.debug("mount");
     const c = Math.abs(
       -(1000 + (2188 /* god this is so jank */ / window.innerWidth) * 200) -
-        this.z
+      this.z
     );
     console.debug(c);
     for (let i = 0; i < c; i++) {
       setTimeout(() => {
-        console.debug("z anim tick");
+        // console.debug("z anim tick");
         this.z -= 1;
       }, easeOutCirc(i / c) * 500);
     }
 
     for (let i = 0; i < 30; i++) {
       setTimeout(() => {
-        console.debug("rot anim tick");
+        // console.debug("rot anim tick");
         this.r += 1;
       }, easeOutCirc(i / 10) * 500);
     }
@@ -144,7 +152,7 @@ export const ThreeDeeApp: Component<
     // console.debug("polling inputs", keys)
 
     if (keydown("ArrowRight")) {
-      this.r += 0.5; 
+      this.r += 0.5;
       let orig = document.documentElement.style
         .getPropertyValue("--bgmoveX")
         .replace("px", "");
@@ -251,6 +259,16 @@ export const ThreeDeeApp: Component<
           sanity
         </a>
         <br></br>
+        <label
+          for="speed"
+          on:pointerdown={() => {
+            this.speed = numberInput("Enter new speed", this.speed);
+          }}
+        >
+          <div>
+            {use`Speed (${this.speed})`}
+          </div>
+        </label>
         <input
           type="range"
           min="0.1"
@@ -263,14 +281,6 @@ export const ThreeDeeApp: Component<
               10;
           }}
         />
-        <label
-          for="speed"
-          on:pointerdown={() => {
-            this.speed = numberInput("Enter new speed", this.speed);
-          }}
-        >
-          {use`Speed (${this.speed})`}
-        </label>
         <div
           on:pointerdown={() => {
             this.x = numberInput("Enter new position", this.x);
@@ -354,8 +364,8 @@ export const ThreeDeeApp: Component<
             x={6}
             y={-2}
             z={-7}
-            // width={window.innerWidth * 0.4}
-            // height={window.innerHeight * 0.5}
+          // width={window.innerWidth * 0.4}
+          // height={window.innerHeight * 0.5}
           >
             <LatestToot />
           </Screen>

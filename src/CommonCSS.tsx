@@ -70,53 +70,6 @@ export const sharedCSS = css`
       transition: opacity 0.4s !important;
     }
   }
-  ::selection {
-    background: var(--accent);
-    color: var(--base);
-  }
-
-  img::selection {
-      background: color-mix(in srgb, var(--accent), transparent 40%);
-      border: 1px solid var(--accent);
-  }
-
-  ::-webkit-scrollbar,
-  *::-webkit-scrollbar {
-    width: 4px;
-    height: 2px;
-  }
-
-  ::-webkit-scrollbar-track,
-  *::-webkit-scrollbar-track {
-    background: var(--crust);
-  }
-
-  ::-webkit-scrollbar-track-piece,
-    *::-webkit-scrollbar-track-piece {
-        background: var(--crust);
-    }
-
-  ::-webkit-scrollbar-thumb,
-  *::-webkit-scrollbar-thumb {
-    background: var(--surface0);
-    border-radius: 9999px;
-    margin: 0 2px;
-    transition: background 0.2s;
-  }
-
-  ::-webkit-scrollbar-thumb:hover,
-  *::-webkit-scrollbar-thumb:hover {
-    background: var(--surface1);
-    transition: background 0.2s;
-  }
-
-  ::-webkit-scrollbar-button,
-  *::-webkit-scrollbar-button,
-  ::-webkit-scrollbar-corner,
-  *::-webkit-scrollbar-corner {
-    display: none;
-    background: transparent;
-  }
 
   .card:focus kbd,
   .card:focus-visible kbd {
