@@ -59,7 +59,7 @@ export const IntroSmall: Component<{}, {}> = function () {
     <section>
       <h1>Hi 👋</h1>
       <p>
-        I'm Hariz, a 15 y/o high school student from Canada, and I sometimes do/make cool/lame things.
+        I'm Hariz, a 16 y/o high school student from Canada, and I sometimes do/make cool/lame things.
       </p>
       <p>
         <br></br>
