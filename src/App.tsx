@@ -14,7 +14,6 @@ import { sharedCSS, articleCSS } from "./CommonCSS.tsx";
 import { updatePage } from "./Themes";
 import {
   Intro,
-  Contact,
   SiteMap,
   DesignPhilosophy,
 } from "./SiteContent.tsx";
