@@ -79,7 +79,7 @@ const App: Component<
       <h2 style="margin-bottom: 0.7em!important;">My work</h2>
       <ProjectList projects={this.projects} />
     </div>,
-    <Contact />,
+    // <Contact />,
     <div>
       <h2 style="margin-bottom: 0.7em!important;">Latest post</h2>
       <LatestToot />
@@ -195,7 +195,6 @@ const App: Component<
           tabs={[
             "About me",
             "My work",
-            "Contact",
             "Yapping",
             "Sitemap",
             "About this Site",

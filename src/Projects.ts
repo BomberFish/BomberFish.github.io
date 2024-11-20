@@ -32,15 +32,11 @@ export const projects = [
     "AnuraOS",
     "Contributor to webOS since v2.x",
     2024,
-    "AnuraOS is the next-gen webOS and development environment with full Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0, which contains my contributions, is currently slated for release in late 2024.",
+    "AnuraOS is the next-gen webOS and development environment with full Linux emulation. That is to say, a full desktop environment running locally in your browser, with x86 Linux emulation. I've been making various contributions since March 2024, most of which reworked various parts of the UI. AnuraOS 2.0, which contains my contributions, was released in November 2024.",
     [
       {
-        name: "v1.x (production)",
+        name: "Use Anura",
         url: "https://anura.pro",
-      },
-      {
-        name: "v2.0 (preview)",
-        url: "https://beta.anura.pro",
       },
     ]
   ),

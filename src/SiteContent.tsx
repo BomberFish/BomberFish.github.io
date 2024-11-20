@@ -46,8 +46,8 @@ export const Intro: Component<{}, {}> = function () {
     <div>
       <div>
         <IntroSmall />
-        <br></br>
         <About />
+        <Contact />
       </div>
       <img id="kawaii" src="/kawaii.webp" alt="Vtuber-style logo" />
     </div>
@@ -55,9 +55,28 @@ export const Intro: Component<{}, {}> = function () {
 };
 
 export const IntroSmall: Component<{}, {}> = function () {
+  this.css = `
+  h1 {
+    font-size: 3rem!important;
+    cursor: default;
+  }
+  h1>span {
+    font-weight: 900!important;
+    transition: font-weight 0.25s ease,
+                letter-spacing 0.25s ease;
+    letter-spacing: 0em;
+  }
+
+  h1:hover > span {
+    font-weight: 100!important;
+    transition: font-weight 0.25s ease,
+                letter-spacing 0.25s ease;
+    letter-spacing: 0.05em;
+  }
+    `
   return (
     <section>
-      <h1>Hi 👋</h1>
+      <h1><span>Hi</span> 👋</h1>
       <p>
         I'm Hariz, a 16 y/o high school student from Canada, and I sometimes do/make cool/lame things.
       </p>
@@ -115,6 +134,14 @@ export const Contact: Component<{}, {}> = function () {
             Fediverse
           </a>
           &nbsp;(@fish@wetdry.world)
+          <ul>
+            <li>
+              If you use Bluesky, you can follow&nbsp;<a href="https://bsky.app/profile/fish.wetdry.world.ap.brid.gy" target="blank">@fish.wetdry.world.ap.brid.gy</a>&nbsp;to view my posts on the Fediverse. Please note this is not always up-to-date.
+            </li>
+            <li>
+              If you use neither of those, you can view my latest post in the "Yapping" tab above.
+            </li>
+          </ul>
         </li>
         <li>
           <a href="https://reddit.com/u/DALEK_77" target="blank" rel="me">
@@ -122,6 +149,7 @@ export const Contact: Component<{}, {}> = function () {
           </a>
         </li>
         <li>
+          {/* no elon i am not calling it "X" */}
           <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
             Twitter
           </a>

@@ -201,7 +201,7 @@ export const Footer: Component<{}, {}> = function () {
         {/* <br></br> */}
         {$if(
           new URL(window.location.href).searchParams.get("higherdimension") ===
-            null && !isMobile(),
+          null && !isMobile(),
           <div>
             {/* <div>
                       Pro tip: you can navigate this site with your keyboard! Press{" "}
@@ -229,13 +229,13 @@ export const Footer: Component<{}, {}> = function () {
   );
 };
 
-const Buttons: Component<{},{}> = function() {
+const Buttons: Component<{}, {}> = function () {
   this.css = `
   width: 100%;
   white-space: nowrap;
   overflow: hidden;
 
-  
+
   #buttons {
     height: max(50px, 4rem);
     display: flex;
@@ -256,7 +256,7 @@ const Buttons: Component<{},{}> = function() {
     gap: 0.75rem;
     padding-right: 0.75rem;
     flex-wrap: nowrap;
-    
+
     animation: move 10s linear infinite;
     animation-fill-mode: both;
 
@@ -268,7 +268,7 @@ const Buttons: Component<{},{}> = function() {
       animation-delay: 1s!important;
     }
   }
-  
+
   @media (prefers-reduced-motion: reduce) or (orientation: portrait) {
     & {
     white-space: initial;
@@ -289,7 +289,7 @@ const Buttons: Component<{},{}> = function() {
       height: initial;
     }
   }
-  
+
 
   @keyframes move {
     0% {
@@ -300,7 +300,7 @@ const Buttons: Component<{},{}> = function() {
       transform: translateX(-100%);
     }
   }
-    
+
   @keyframes groove {
     0% {
       transform: translateY(0);
@@ -311,261 +311,274 @@ const Buttons: Component<{},{}> = function() {
   }
   `
   return (
-  <div 
-  /* on:mouseenter={()=> {
-  document.querySelectorAll('.webbtns').forEach((el) => {
-    (el as HTMLElement).style.animationPlayState = 'paused';
-  });
-  document.querySelectorAll('.webbtns > a').forEach((el) => {
-    (el as HTMLElement).style.animationPlayState = 'paused';
-  });
-  }}
-  on:mouseleave={()=> {
-  document.querySelectorAll('.webbtns').forEach((el) => {
-    (el as HTMLElement).style.animationPlayState = 'running';
-  });
-  document.querySelectorAll('.webbtns > a').forEach((el) => {
-    (el as HTMLElement).style.animationPlayState = 'running';
-  });
-  }
-  } */
-  >
-  <WebButton
-      src="/buttons/button.gif"
-      title="Click to copy my button! (HTML code)"
-      action={(e: MouseEvent) => {
-        e.preventDefault();
-        try {
-          navigator.clipboard.writeText(`
+    <div
+    /* on:mouseenter={()=> {
+    document.querySelectorAll('.webbtns').forEach((el) => {
+      (el as HTMLElement).style.animationPlayState = 'paused';
+    });
+    document.querySelectorAll('.webbtns > a').forEach((el) => {
+      (el as HTMLElement).style.animationPlayState = 'paused';
+    });
+    }}
+    on:mouseleave={()=> {
+    document.querySelectorAll('.webbtns').forEach((el) => {
+      (el as HTMLElement).style.animationPlayState = 'running';
+    });
+    document.querySelectorAll('.webbtns > a').forEach((el) => {
+      (el as HTMLElement).style.animationPlayState = 'running';
+    });
+    }
+    } */
+    >
+      <WebButton
+        src="/buttons/button.gif"
+        title="Click to copy my button! (HTML code)"
+        action={(e: MouseEvent) => {
+          e.preventDefault();
+          try {
+            navigator.clipboard.writeText(`
           <a href="https://bomberfish.ca">
             <img src="https://bomberfish.ca/buttons/button.gif" alt="BomberFish" title="BomberFish" />
           </a>
         `);
-          document.body.appendChild(<CopiedToast />);
-        } catch {
-          console.error(e);
-        }
-      }}
-  />
-  <div id="buttons">
-  <span class="webbtns">
-    <WebButton
-      src="/buttons/simpleanalytics.svg"
-      title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
-      href="https://dashboard.simpleanalytics.com/bomberfish.ca"
-    />
-    <WebButton
-      src="/buttons/dreamland-new.webp"
-      title="Made with dreamland.js"
-      href="https://dreamland.js.org/?uwu"
-    />
-    <WebButton
-      src="/buttons/agplv3-with-text-162x68.webp"
-      title="Licenced under the GNU Affero GPL Version 3"
-      href="https://www.gnu.org/licenses/agpl-3.0.en.html"
-    />
-    <WebButton
-      src="/buttons/arch.gif"
-      title="Arch Linux"
-      href="https://archlinux.org"
-    />
-    <WebButton
-      src="/buttons/arc.gif"
-      title="Arc from the Browser Company"
-      href="https://arc.net"
-    />
-    <WebButton
-      src="/buttons/VisitNeXT.gif"
-      title="Visit NeXT"
-      href="https://www.next.com"
-    />
-    <WebButton
-      src="/buttons/PoweredByNEXTSTEP.gif"
-      title="Powered by NeXTSTEP (not)"
-      href="https://www.apple.com/macos"
-    />
-    <WebButton
-      src="/buttons/any-browser.webp"
-      title="View this site on any (modern) web browser!"
-      href="https://anybrowser.org/campaign/index.html"
-    />
-    <WebButton
-      src="/buttons/hg88x31.webp"
-      title="Mercury Workshop"
-      href="https://mercurywork.shop"
-    />
-    <WebButton
-      src="/buttons/omada.gif"
-      title="omada.cafe, an private and secure alternative provider."
-      href="https://omada.cafe"
-    />
-    <WebButton
-      src="/buttons/firefox.gif"
-      title="Firefox is EVIL!"
-      href="https://lunduke.locals.com/post/5871895/mozilla-firefox-goes-anti-privacy-pro-advertising"
-    />
-    <WebButton
-      src="/buttons/ce88x31.webp"
-      title="velzie.d"
-      href="https://velzie.rip"
-    />
-    <WebButton
-      src="/buttons/thinlqd.webp"
-      title="ThinLiquid"
-      href="https://thnlqd.nekoweb.org"
-    />
-    <WebButton
-      src="/buttons/foxmossbutton.webp"
-      title="FoxMoss"
-      href="https://foxmoss.com"
-    />
-    <WebButton
-      src="/buttons/circular-88x31.gif"
-      title="circular"
-      href="https://circulars.dev"
-    />
-    <WebButton
-      src="/buttons/necoarc-88x31.webp"
-      title="the profaned one"
-      href="https://necoarc.dev"
-    />
-    <WebButton
-      src="/buttons/eightyeightthirtyone.webp"
-      title="88x31"
-      href="https://eightyeightthirty.one"
-    />
-    <WebButton
-      src="/buttons/melankorin.gif"
-      title="melankorin"
-      href="https://melankorin.net"
-    />
-    <WebButton
-      src="/buttons/freemusicnow.webp"
-      title="Lucida: Free Music. No BS."
-      href="https://lucida.to"
-    />
-    <WebButton
-      src="/buttons/mariokart.webp"
-      title="Play some Mario Kart!"
-      action={(e: MouseEvent)=>{
-        e.preventDefault();
-        document
-            .querySelector("main")!
-            .appendChild(<MK64Frame />);
-          (document.activeElement as HTMLElement)?.blur();
-      }}
-    />
-  </span>
-  <span class="webbtns">
-    <WebButton
-      src="/buttons/simpleanalytics.svg"
-      title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
-      href="https://dashboard.simpleanalytics.com/bomberfish.ca"
-    />
-    <WebButton
-      src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
-      title="Made with dreamland.js"
-      href="https://dreamland.js.org/?uwu"
-    />
-    <WebButton
-      src="/buttons/agplv3-with-text-162x68.webp"
-      title="Licenced under the GNU Affero GPL Version 3"
-      href="https://www.gnu.org/licenses/agpl-3.0.en.html"
-    />
-    <WebButton
-      src="/buttons/arch.gif"
-      title="Arch Linux"
-      href="https://archlinux.org"
-    />
-    <WebButton
-      src="/buttons/arc.gif"
-      title="Arc from the Browser Company"
-      href="https://arc.net"
-    />
-    <WebButton
-      src="/buttons/VisitNeXT.gif"
-      title="Visit NeXT"
-      href="https://www.next.com"
-    />
-    <WebButton
-      src="/buttons/PoweredByNEXTSTEP.gif"
-      title="Powered by NeXTSTEP (not)"
-      href="https://www.apple.com/macos"
-    />
-    <WebButton
-      src="/buttons/any-browser.webp"
-      title="View this site on any (modern) web browser!"
-      href="https://anybrowser.org/campaign/index.html"
-    />
-    <WebButton
-      src="/buttons/hg88x31.webp"
-      title="Percury Mercshop"
-      href="https://mercurywork.shop"
-    />
-    <WebButton
-      src="/buttons/omada.gif"
-      title="omada.cafe, an private and secure alternative provider."
-      href="https://omada.cafe"
-    />
-    <WebButton
-      src="/buttons/firefox.gif"
-      title="Firefox is EVIL!"
-      href="https://lunduke.locals.com/post/5871895/mozilla-firefox-goes-anti-privacy-pro-advertising"
-    />
-    <WebButton
-      src="/buttons/ce88x31.webp"
-      title="velzie.d"
-      href="https://velzie.rip"
-    />
-    <WebButton
-      src="/buttons/thinlqd.webp"
-      title="ThinLiquid"
-      href="https://thnlqd.nekoweb.org"
-    />
-    <WebButton
-      src="/buttons/foxmossbutton.webp"
-      title="FoxMoss"
-      href="https://foxmoss.com"
-    />
-    <WebButton
-      src="/buttons/circular-88x31.gif"
-      title="circular"
-      href="https://circulars.dev"
-    />
-    <WebButton
-      src="/buttons/necoarc-88x31.webp"
-      title="the profaned one"
-      href="https://necoarc.dev"
-    />
-    <WebButton
-      src="/buttons/eightyeightthirtyone.webp"
-      title="88x31"
-      href="https://eightyeightthirty.one"
-    />
-    <WebButton
-      src="/buttons/melankorin.gif"
-      title="melankorin"
-      href="https://melankorin.net"
-    />
-    <WebButton
-      src="/buttons/freemusicnow.webp"
-      title="Lucida: Free Music. No BS."
-      href="https://lucida.to"
-    />
-    <WebButton
-      src="/buttons/mariokart.webp"
-      title="Play some Mario Kart!"
-      action={(e: MouseEvent)=>{
-        e.preventDefault();
-        document
-            .querySelector("main")!
-            .appendChild(<MK64Frame />);
-          (document.activeElement as HTMLElement)?.blur();
-      }}
-    />
-  </span>
-  </div>
+            document.body.appendChild(<CopiedToast />);
+          } catch {
+            console.error(e);
+          }
+        }}
+      />
+      <div id="buttons">
+        {/* TODO: Fix this unholy mess */}
+        <span class="webbtns">
+          <WebButton
+            src="/buttons/simpleanalytics.svg"
+            title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
+            href="https://dashboard.simpleanalytics.com/bomberfish.ca"
+          />
+          <WebButton
+            src="/buttons/dreamland-new.webp"
+            title="Made with dreamland.js"
+            href="https://dreamland.js.org/?uwu"
+          />
+          <WebButton
+            src="/buttons/agplv3-with-text-162x68.webp"
+            title="Licenced under the GNU Affero GPL Version 3"
+            href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+          />
+          <WebButton
+            src="/buttons/arch.gif"
+            title="Arch Linux"
+            href="https://archlinux.org"
+          />
+          <WebButton
+            src="/buttons/arc.gif"
+            title="Arc from the Browser Company"
+            href="https://arc.net"
+          />
+          <WebButton
+            src="/buttons/VisitNeXT.gif"
+            title="Visit NeXT"
+            href="https://www.next.com"
+          />
+          <WebButton
+            src="/buttons/PoweredByNEXTSTEP.gif"
+            title="Powered by NeXTSTEP (not)"
+            href="https://www.apple.com/macos"
+          />
+          <WebButton
+            src="/buttons/any-browser.webp"
+            title="View this site on any (modern) web browser!"
+            href="https://anybrowser.org/campaign/index.html"
+          />
+          <WebButton
+            src="/buttons/hg88x31.webp"
+            title="Mercury Workshop"
+            href="https://mercurywork.shop"
+          />
+          <WebButton
+            src="/buttons/omada.gif"
+            title="omada.cafe, an private and secure alternative provider."
+            href="https://omada.cafe"
+          />
+          {/* TODO: update this to mozilla's latest shenanigans */}
+          <WebButton
+            src="/buttons/firefox.gif"
+            title="Firefox is EVIL!"
+            href="https://lunduke.locals.com/post/5871895/mozilla-firefox-goes-anti-privacy-pro-advertising"
+          />
+          <WebButton
+            src="/buttons/ce88x31.webp"
+            title="velzie.d"
+            href="https://velzie.rip"
+          />
+          <WebButton
+            src="/buttons/thinlqd.webp"
+            title="ThinLiquid"
+            href="https://thnlqd.nekoweb.org"
+          />
+          <WebButton
+            src="/buttons/foxmossbutton.webp"
+            title="FoxMoss"
+            href="https://foxmoss.com"
+          />
+          <WebButton
+            src="/buttons/wearr.gif"
+            title="wearr"
+            href="https://wearr.dev"
+          />
+          <WebButton
+            src="/buttons/circular-88x31.gif"
+            title="circular"
+            href="https://circulars.dev"
+          />
+          <WebButton
+            src="/buttons/necoarc-88x31.webp"
+            title="the profaned one"
+            href="https://necoarc.dev"
+          />
+          <WebButton
+            src="/buttons/eightyeightthirtyone.webp"
+            title="88x31"
+            href="https://eightyeightthirty.one"
+          />
+          <WebButton
+            src="/buttons/melankorin.gif"
+            title="melankorin"
+            href="https://melankorin.net"
+          />
+          <WebButton
+            src="/buttons/lucida-2.gif"
+            title="Lucida: Free Music. No BS."
+            href="https://lucida.to"
+          />
+          {/* Because Nintendo can bite me */}
+          <WebButton
+            src="/buttons/mariokart.webp"
+            title="Play some Mario Kart!"
+            action={(e: MouseEvent) => {
+              e.preventDefault();
+              document
+                .querySelector("main")!
+                .appendChild(<MK64Frame />);
+              (document.activeElement as HTMLElement)?.blur();
+            }}
+          />
+        </span>
+        <span class="webbtns">
+          <WebButton
+            src="/buttons/simpleanalytics.svg"
+            title="Privacy-respecting analytics, because I kinda want to see if anyone is actually viewing my site."
+            href="https://dashboard.simpleanalytics.com/bomberfish.ca"
+          />
+          <WebButton
+            src="/buttons/dreamland-new.webp" // ughhhh i know this is unofficial but it's still good
+            title="Made with dreamland.js"
+            href="https://dreamland.js.org/?uwu"
+          />
+          <WebButton
+            src="/buttons/agplv3-with-text-162x68.webp"
+            title="Licenced under the GNU Affero GPL Version 3"
+            href="https://www.gnu.org/licenses/agpl-3.0.en.html"
+          />
+          <WebButton
+            src="/buttons/arch.gif"
+            title="Arch Linux"
+            href="https://archlinux.org"
+          />
+          <WebButton
+            src="/buttons/arc.gif"
+            title="Arc from the Browser Company"
+            href="https://arc.net"
+          />
+          <WebButton
+            src="/buttons/VisitNeXT.gif"
+            title="Visit NeXT"
+            href="https://www.next.com"
+          />
+          <WebButton
+            src="/buttons/PoweredByNEXTSTEP.gif"
+            title="Powered by NeXTSTEP (not)"
+            href="https://www.apple.com/macos"
+          />
+          <WebButton
+            src="/buttons/any-browser.webp"
+            title="View this site on any (modern) web browser!"
+            href="https://anybrowser.org/campaign/index.html"
+          />
+          <WebButton
+            src="/buttons/hg88x31.webp"
+            title="Percury Mercshop"
+            href="https://mercurywork.shop"
+          />
+          <WebButton
+            src="/buttons/omada.gif"
+            title="omada.cafe, an private and secure alternative provider."
+            href="https://omada.cafe"
+          />
+          <WebButton
+            src="/buttons/firefox.gif"
+            title="Firefox is EVIL!"
+            href="https://lunduke.locals.com/post/5871895/mozilla-firefox-goes-anti-privacy-pro-advertising"
+          />
+          <WebButton
+            src="/buttons/ce88x31.webp"
+            title="velzie.d"
+            href="https://velzie.rip"
+          />
+          <WebButton
+            src="/buttons/thinlqd.webp"
+            title="ThinLiquid"
+            href="https://thnlqd.nekoweb.org"
+          />
+          <WebButton
+            src="/buttons/foxmossbutton.webp"
+            title="FoxMoss"
+            href="https://foxmoss.com"
+          />
+          <WebButton
+            src="/buttons/wearr.gif"
+            title="wearr"
+            href="https://wearr.dev"
+          />
+          <WebButton
+            src="/buttons/circular-88x31.gif"
+            title="circular"
+            href="https://circulars.dev"
+          />
+          <WebButton
+            src="/buttons/necoarc-88x31.webp"
+            title="the profaned one"
+            href="https://necoarc.dev"
+          />
+          <WebButton
+            src="/buttons/eightyeightthirtyone.webp"
+            title="88x31"
+            href="https://eightyeightthirty.one"
+          />
+          <WebButton
+            src="/buttons/melankorin.gif"
+            title="melankorin"
+            href="https://melankorin.net"
+          />
+          <WebButton
+            src="/buttons/lucida-2.gif"
+            title="Lucida: Free Music. No BS."
+            href="https://lucida.to"
+          />
+          <WebButton
+            src="/buttons/mariokart.webp"
+            title="Play some Mario Kart!"
+            action={(e: MouseEvent) => {
+              e.preventDefault();
+              document
+                .querySelector("main")!
+                .appendChild(<MK64Frame />);
+              (document.activeElement as HTMLElement)?.blur();
+            }}
+          />
+        </span>
+      </div>
 
-  </div>
+    </div>
   )
 }
