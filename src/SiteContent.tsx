@@ -178,6 +178,9 @@ export const Contact: Component<{}, {}> = function () {
           </ul>
         </li>
         <li>
+          <a href="https://matrix.to/#/@bomberfish:omada.cafe" target="blank" rel="me">Matrix</a> (@bomberfish:omada.cafe)
+        </li>
+        <li>
           <span>Signal: @bomberfish.77</span>
           <ul>
             <li>Please only use this if all else fails.</li>
