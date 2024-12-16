@@ -118,7 +118,6 @@ export const About: Component<{}, {}> = function () {
           </a>
         </li>
         <li>I play the guitar (!!)</li>
-        <li>I use Arch (btw)</li>
       </ul>
     </section>
   );
