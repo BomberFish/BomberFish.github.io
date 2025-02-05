@@ -91,7 +91,7 @@ const App: Component<
     margin-bottom: 1.5rem;
 
     #content {
-      background: var(--base);
+      background: var(--crust);
       width: 75vw;
       height: 60vh;
       height: min-content;

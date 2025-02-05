@@ -10,7 +10,7 @@ export const Nav: Component<
   this.name = "BomberFish";
   this.nameState = false;
   this.css = `
-    background: var(--mantle);
+    background: var(--base);
     justify-self: flex-start;
     z-index: 100;
     padding: 0.25em 1em;
@@ -228,9 +228,10 @@ export const TabBar: Component<
   this.tab = 0;
   this.tabInternal = 0;
   this.css = `
-    margin-bottom: 1rem;
-    margin-top: 0.5rem;
-    overflow-x: auto;
+ 	margin-bottom: 1rem;
+    padding-block: 0.5rem;
+	overflow-x: auto;
+	// background: var(--base);
 
     @keyframes bounce {
         0%, 100% {

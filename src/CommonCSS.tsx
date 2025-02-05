@@ -152,7 +152,7 @@ export const sharedCSS = css`
   code {
       font-size: 0.9rem;
       font-family: var(--font-mono);
-      background: var(--crust);
+      background: var(--base);
   }
 
   code {

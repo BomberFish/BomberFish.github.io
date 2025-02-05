@@ -6,15 +6,14 @@ export const oled = {
 	shortName: "OLED",
 	text: "#fffaff",
 	overlay1: "#6e6b6e",
-	surface2: "#3d3a3d",
-	surface0: "#1b181b",
+	surface2: "#413f41",
+	surface0: "#1d1a1c",
 	subtext0: "#a6a4a6",
-	base: "#0f0e0f",
-	mantle: "#050405",
+	base: "#110f11",
+	mantle: "#0b0a0b",
 	crust: "#000000",
 	accent: "#eba6ff",
 }
-
 
 export const mocha = {
 	name: "Catppuccin Mocha",
@@ -97,7 +96,7 @@ export function updatePage() {
 
 	document.head
 		.querySelector("meta[name=theme-color]")!
-		.setAttribute("content", store.theme.mantle);
+		.setAttribute("content", store.theme.base);
 	root.style.setProperty("--text", store.theme.text);
 	root.style.setProperty("--overlay1", store.theme.overlay1);
 	root.style.setProperty("--surface2", store.theme.surface2);
