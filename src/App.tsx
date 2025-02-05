@@ -21,25 +21,14 @@ import { convertRemToPixels } from "./Utils.ts";
 import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
 import { LatestToot } from "./LatestToot.tsx";
+import { oled } from "./Themes";
 // import { Cursor } from "./Cursor.tsx";
 
 // MARK: THEMING
 export let store = $store(
   {
-    theme: {
-      name: "Catppuccin Mocha",
-      shortName: "Mocha",
-      text: "#cdd6f4",
-      overlay1: "#7f849c",
-      surface2: "#585b70",
-      surface0: "#313244",
-      subtext0: "#a6adc8",
-      base: "#1e1e2e",
-      mantle: "#181825",
-      crust: "#11111b",
-      accent: "#cba6f7",
-    },
-    playMusic: true,
+    theme: oled,
+    playMusic: false,
   },
   { ident: "userOptions", backing: "localstorage", autosave: "auto" },
 );
@@ -227,6 +216,14 @@ window.addEventListener("load", async () => {
   let params = new URL(window.location.href).searchParams;
   console.debug(params);
   if (params.has("higherdimension")) {
+	let app;
+	try {
+		app = <ThreeDeeApp />;
+	} catch (e) {
+		(document.querySelector(".no-js")! as HTMLElement).style.display = "block";
+		document.body.style.margin = "2%";
+		return;
+	}
     let audio: HTMLAudioElement = new Audio("/epic.ogg");
     audio.loop = true;
 
@@ -256,13 +253,21 @@ window.addEventListener("load", async () => {
       // audioCtx.resume();
     }
 
-    document.getElementById("app")!.replaceWith(<ThreeDeeApp />);
+    document.getElementById("app")!.replaceWith(app);
     document.body.classList.add("cool");
   } else {
+	let app;
+	try {
+		app = <App />;
+	} catch (e) {
+		(document.querySelector(".no-js")! as HTMLElement).style.display = "block";
+		document.body.style.margin = "2%";
+		return;
+	}
     let sc = document.createElement("script");
     sc.src = "/oneko.js";
     document.body.appendChild(sc);
-    document.getElementById("app")!.replaceWith(<App />);
+    document.getElementById("app")!.replaceWith(app);
 
     var konamiCurrent = 0;
     var konamiCode = [

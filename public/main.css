@@ -67,15 +67,15 @@ img::selection {
 }
 
 :root {
-    --crust: #11111b;
-    --base: #1e1e2e;
-    --mantle: #181825;
-    --text: #cdd6f4;
-    --accent: #cba6f7;
-    --overlay1: #7f849c;
-    --surface2: #585b70;
-    --surface0: #313244;
-    --subtext0: #a6adc8;
+    --crust: #000000;
+    --base: #0f0e0f;
+    --mantle: #050405;
+    --text: #fffaff;
+    --accent: #eba6ff;
+    --overlay1: #8a888a;
+    --surface2: #3d3a3d;
+    --surface0: #1b181b;
+    --subtext0: #a6a4a6;
 }
 
 :root {
@@ -107,8 +107,8 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    background: #1e1e2e;
-    color: #cdd6f4;
+    background: #0f0e0f;
+    color: #fffaff;
     background: var(--crust);
     color: var(--text);
     overflow-x: hidden;

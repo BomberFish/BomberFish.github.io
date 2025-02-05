@@ -2,11 +2,11 @@ import ProjectCardDetails from "./Project";
 
 export const projects = [
   new ProjectCardDetails(
-    undefined,
+    "/proj-thumbnails/Twitter Banner.png",
     "QuickSign",
     "iOS Signing App",
     2025,
-    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. It is slated for release in early 2025.",
+    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. A private beta program is slated to begin in February 2025, with a public release before the end of Q1 2025.",
     []
   ),
   new ProjectCardDetails(

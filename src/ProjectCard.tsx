@@ -7,7 +7,7 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
     this.css = `
       background: var(--surface0);
       width: 320px;
-      height: 265px;
+      height: 280px;
       border-radius: 1rem!important;
       padding-bottom: 0.2rem;
       cursor: pointer;

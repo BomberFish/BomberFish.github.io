@@ -199,7 +199,7 @@ export const Nav: Component<
           <span>i</span>
           <span>s</span>
           <span>h</span>
-          <subt>(he/him)</subt>
+          <subt>(he/they)</subt>
         </h2>
       </span>
       <span id="right">

@@ -24,6 +24,12 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
 
+	  @media (orientation: landscape) {
+	 	.inner {
+			aspect-ratio: 800 / 565;
+		} 
+	  }
+
       .inner {
         background: var(--base);
         min-width: 400px;
@@ -43,8 +49,8 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       img {
         width: auto;
-        max-width: 35vw;
-        height: 100%;
+        max-width: 50%;
+        height: calc(100% - 3rem);
         border-radius: 1.25rem;
         user-select: none;
         -webkit-user-drag: none;
@@ -154,7 +160,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         color: var(--text)!important;
         background: var(--surface0);
         text-decoration: none;
-        cursor: pointer
+        cursor: pointer;
+
+		border: none!important;
 
         font-size: 1.2rem;
 
@@ -175,7 +183,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         align-items: center;
         justify-content: center;
 
-        border: 0.1px solid var(--overlay1);
+        border: 0.1px solid var(--overlay1)!important;
 
         transition: color 0.2s;
       }

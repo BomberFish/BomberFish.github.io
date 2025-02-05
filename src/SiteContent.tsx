@@ -85,9 +85,9 @@ export const IntroSmall: Component<{}, {}> = function () {
         As for <code>/.* engineering/g</code>, I'm interested in:
         <ul>
           <li>Hardware (building robots 'n stuff!)</li>
+		  <li>iOS Development with SwiftUI</li>
           <li>Webdev (as you can tell from this immaculately put-together portfolio)</li>
           <li>Backend (kinda)</li>
-          <li>Native iOS development</li>
           <li>And a little bit of security research</li>
         </ul>
       </p>
@@ -117,7 +117,7 @@ export const About: Component<{}, {}> = function () {
             Mercury Workshop
           </a>
         </li>
-        <li>I play the guitar (!!)</li>
+        <li>I play the guitar, sorta</li>
       </ul>
     </section>
   );
@@ -129,34 +129,23 @@ export const Contact: Component<{}, {}> = function () {
       <h2>Get in touch</h2>
       <ul>
         <li>
+          <a href="https://github.com/BomberFish" target="blank" rel="me">
+            GitHub
+          </a>
+        </li>
+        <li>
           <a href="https://wetdry.world/@fish" target="blank" rel="me">
             Fediverse
           </a>
           &nbsp;(@fish@wetdry.world)
           <ul>
             <li>
-              If you use Bluesky, you can follow&nbsp;<a href="https://bsky.app/profile/fish.wetdry.world.ap.brid.gy" target="blank">@fish.wetdry.world.ap.brid.gy</a>&nbsp;to view my posts on the Fediverse. Please note this is not always up-to-date.
+              If you use Bluesky, you can follow&nbsp;<a href="https://bsky.app/profile/fish.wetdry.world.ap.brid.gy" target="blank">@fish.wetdry.world.ap.brid.gy</a>&nbsp;to view my posts on the Fediverse. Please note this is usually a few minutes behind.
             </li>
             <li>
               If you use neither of those, you can view my latest post in the "Yapping" tab above.
             </li>
           </ul>
-        </li>
-        <li>
-          <a href="https://reddit.com/u/DALEK_77" target="blank" rel="me">
-            Reddit
-          </a>
-        </li>
-        <li>
-          {/* no elon i am not calling it "X" */}
-          <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
-            Twitter
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/BomberFish" target="blank" rel="me">
-            GitHub
-          </a>
         </li>
         <li>
           <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
@@ -176,6 +165,12 @@ export const Contact: Component<{}, {}> = function () {
             <li>@securepagetablemonitor</li>
           </ul>
         </li>
+        {/* <li> */}
+          {/* no elon i am not calling it "X" */}
+          {/* <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
+            Twitter (inactive)
+          </a>
+        </li> */}
         <li>
           <a href="https://matrix.to/#/@bomberfish:omada.cafe" target="blank" rel="me">Matrix</a> (@bomberfish:omada.cafe)
         </li>
