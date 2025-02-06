@@ -4,7 +4,7 @@ import { store } from "./App";
 export const oled = {
 	name: "OLED",
 	shortName: "OLED",
-	text: "#fffaff",
+	text: "#fbf9fb",
 	overlay1: "#6e6b6e",
 	surface2: "#413f41",
 	surface0: "#1d1a1c",

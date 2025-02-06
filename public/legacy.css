@@ -8,21 +8,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
 
 body {
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: #000000;
+  color: #fbf9fb;
   font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
     "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: "Inter Tight", "Inter", "SF Pro Text", "SF Pro", -apple-system,
     system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 nav {
-  background: #181825;
+  background: #110f11;
   position: fixed;
   top: 0;
   left: 0;
@@ -95,11 +96,11 @@ img.circle {
 
 a,
 a:visited:hover {
-  color: #cba6f7;
+  color: #eba6ff;
 }
 
 a:visited {
-  color: rgb(163, 132, 199);
+  color: #cba6f7;
 }
 
 @media (prefers-color-scheme: light) {
@@ -130,5 +131,5 @@ h0 {
 }
 
 * {
-  outline-color: #cba6f7;
+  outline-color: #eba6ff;
 }

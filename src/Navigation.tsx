@@ -83,7 +83,7 @@ export const Nav: Component<
       align-items: flex-start;
       margin: 0!important;
       gap: 0.1rem;
-      font-weight: 400;
+      font-weight: 430;
       font-size: 1.75rem!important;
 
       /* Nintendo Switch-style 3d spinning text effect */
@@ -131,7 +131,8 @@ export const Nav: Component<
 
     subt {
       font-size: 0.7rem;
-      color: var(--subtext0)
+	  font-weight: 350;
+      color: var(--subtext0);
     }
 
     #right {
@@ -304,29 +305,34 @@ export const TabBar: Component<
         -webkit-user-drag: none;
         -webkit-user-select: none;
 
-        border-bottom: 2.5px solid transparent;
+        border-bottom: 3.25px solid transparent;
         border-radius: 0;
 
-        font-weight: 475;
+        font-weight: 450;
+
+		color: var(--overlay1);
 
         &.active {
-        padding-bottom: 1px;
-        border-bottom-color: var(--accent);
-        font-weight: 700;
+			color: var(--text);
+			padding-bottom: 1px;
+			border-bottom-color: var(--accent);
+			font-weight: 650;
         }
 
         &:hover:not(.active),
         &:focus:not(.active) {
-        padding-bottom: 1px;
-        border-bottom-color: var(--overlay1);
+			border-width: 2px;
+			padding-bottom: 0.1em;
+			border-bottom-color: var(--surface2);
         }
 
         &:hover:not(.active) {
-        font-weight: 900;
+        	weight: 900;
+			color: var(--subtext0);
         }
 
         &:active {
-        transform: scale(0.95);
+    	    transform: scale(0.95);
         }
 
         &:first-of-type {

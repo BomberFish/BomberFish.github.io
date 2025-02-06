@@ -21,7 +21,7 @@ export const Intro: Component<{}, {}> = function () {
   gap: 2rem;
   img {
     height: auto;
-    width: min(20rem, 50%);
+    width: min(20rem, 40%);
     align-self: flex-start;
     justify-self: flex-end;
     float: left;
@@ -57,9 +57,11 @@ export const Intro: Component<{}, {}> = function () {
 export const IntroSmall: Component<{}, {}> = function () {
   this.css = `
   h1 {
+	font-family: var(--font-body)!important;
     font-size: 3rem!important;
     cursor: default;
   }
+
   h1>span {
     font-weight: 900!important;
     transition: font-weight 0.25s ease,
@@ -71,7 +73,7 @@ export const IntroSmall: Component<{}, {}> = function () {
     font-weight: 100!important;
     transition: font-weight 0.25s ease,
                 letter-spacing 0.25s ease;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.0475em;
   }
     `
   return (
