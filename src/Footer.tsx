@@ -141,7 +141,7 @@ export const Footer: Component<{}, {}> = function () {
         color: var(--text);
         margin-bottom: 0.5rem;
         font-weight: 520;
-        font-family: var(--font-display);
+        // font-family: var(--font-display);
         display: flex;
         align-items: center;
 
