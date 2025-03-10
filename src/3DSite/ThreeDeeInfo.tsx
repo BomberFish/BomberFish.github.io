@@ -54,7 +54,7 @@ export const ThreeDeeInfo: Component<{}, {}> = function () {
       <div>Q: Where did you get the idea?</div>
       <div>
         I was mainly inspired by{" "}
-        <a href="https://coolelectronics.me" target="_blank">
+        <a href="https://velzie.rip" target="_blank">
           velzie.d's website
         </a>
         , which pulls off something similar. I actually used some of his code
