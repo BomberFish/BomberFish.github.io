@@ -5,6 +5,8 @@ export default class ProjectCardDetails {
   year: number;
   largeDesc: string;
   links?: { name: string; url: string; icon?: string }[];
+  featured?: boolean;
+  featuredPosition?: number | undefined;
 
   constructor(
     imgURL: string | undefined,
@@ -12,7 +14,9 @@ export default class ProjectCardDetails {
     blurb: string,
     year: number,
     largeDesc: string,
-    links?: { name: string; url: string; icon?: string }[]
+    links?: { name: string; url: string; icon?: string }[],
+    featured?: boolean,
+    featuredPosition?: number | undefined,
   ) {
     this.img = imgURL;
     this.title = title;
@@ -20,5 +24,7 @@ export default class ProjectCardDetails {
     this.year = year;
     this.largeDesc = largeDesc;
     this.links = links;
+    this.featured = featured;
+    this.featuredPosition = featuredPosition;
   }
 }

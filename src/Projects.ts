@@ -2,19 +2,86 @@ import ProjectCardDetails from "./Project";
 
 export const projects = [
   new ProjectCardDetails(
+    undefined,
+    "MergeFlow",
+    "Smart Git merge conflict resolution, powered by Gemini",
+    2025,
+    "In 2025, me and a small team created MergeFlow, a smart Git merge conflict resolution tool powered by Gemini. It uses advanced AI algorithms to automatically resolve merge conflicts, making the process faster and more efficient. This was created for Hack Canada 2025.",
+    [
+      {
+        name: "GitHub",
+        url: "https://github.com/BomberFish/MergeFlow",
+        icon: "code",
+      },
+      {
+        name: "Demo Video",
+        url: "https://www.youtube.com/watch?v=EkSgNgF8pcU",
+        icon: "play_circle",
+      },
+    ],
+  ),
+  new ProjectCardDetails(
+    undefined,
+    "Voltaire",
+    "Local LLM inference on iOS, with a snazzy UI.",
+    2025,
+    "Voltaire runs popular LLMs, including DeepSeek R1, LLaMa 3, and others, locally on iOS devices.",
+    [
+      {
+        name: "GitHub",
+        url: "https://github.com/BomberFish/Voltaire",
+        icon: "code",
+      },
+      {
+        name: "Demo Video",
+        url: "https://youtube.com/watch?v=MipHd-EP9ok",
+        icon: "play_circle",
+      },
+    ],
+  ),
+  new ProjectCardDetails(
+    undefined,
+    "fez-wasm",
+    "A WebAssembly port of the Fez game",
+    2025,
+    "fez-wasm is a WebAssembly port of the Fez, a puzzle-platformer first released in 2012. It is a heavy work in progress, with many portions non-functional.",
+    [
+      {
+        name: "GitHub",
+        url: "https://github.com/BomberFish/fez-wasm",
+        icon: "code",
+      },
+      {
+        name: "Play",
+        url: "https://fez.bomberfish.ca",
+        icon: "stadia_controller",
+      },
+    ],
+  ),
+  new ProjectCardDetails(
     "/proj-thumbnails/Twitter Banner.png",
     "QuickSign",
     "iOS Signing App",
     2025,
-    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. A private beta program is slated to begin in February 2025, with a public release before the end of Q1 2025.",
-    []
+    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. A private beta program is slated to begin in Q2 2025, with a public release sometime later in the year.",
+    [
+      {
+        name: "Website",
+        url: "https://quicksignteam.github.io",
+      },
+      {
+        name: "Official Twitter",
+        url: "https://twitter.com/QuickSigniOS",
+        icon: "alternate_email",
+      },
+    ],
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/celeste.webp",
     "celeste-wasm",
-    "WebAssembly port of Celeste",
+    "Port of Celeste (2018) to WebAssembly",
     2024,
-    "celeste-wasm is a port of the popular platformer Celeste to WebAssembly. I helped out with it during its development in May 2024. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with other members of Mercury Workshop to port the game.",
+    "celeste-wasm is a port of the popular platformer game Celeste to WebAssembly. I helped out with it during its development in May 2024. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with other members of Mercury Workshop to port the game.",
     [
       {
         name: "GitHub",
@@ -24,8 +91,9 @@ export const projects = [
       {
         name: "Demo",
         url: "https://celeste.r58playz.dev",
-      }
-    ]
+        icon: "stadia_controller",
+      },
+    ],
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/anura.webp",
@@ -38,7 +106,9 @@ export const projects = [
         name: "Use Anura",
         url: "https://anura.pro",
       },
-    ]
+    ],
+    true,
+    1,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/mandelapro.webp",
@@ -46,15 +116,17 @@ export const projects = [
     "Cancelled customization app",
     2024,
     "Mandela Pro was a cancelled iOS customization app I created solo in early 2024. It was intended for iOS 16.0-17.0, but was cancelled due to the release of Dopamine 2.0 for 16.x versions and the lack of interest for iOS 17.0.",
-    []
+    [],
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/SSC2024_Social_Static_16x9.jpg",
     "Swift Student Challenge",
-    "Competition Winner",
+    "2024 Competition Winner",
     2024,
     "In early 2024, I won the Swift Student Challenge, a programming competition run by Apple. My winning submission was a carbon footprint calculator.",
-    []
+    [],
+    true,
+    0,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/dssos.webp",
@@ -67,7 +139,7 @@ export const projects = [
         name: "Website",
         url: "https://dssos.nineeleven.tech",
       },
-    ]
+    ],
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/picasso.webp",
@@ -86,7 +158,9 @@ export const projects = [
         url: "https://discord.gg/b6bwaDK2VZ",
         icon: "chat",
       },
-    ]
+    ],
+    true,
+    0,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/appcommander.webp",
@@ -105,7 +179,7 @@ export const projects = [
         url: "https://github.com/BomberFish/AppCommander",
         icon: "code",
       },
-    ]
+    ],
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/cowabunga.webp",
@@ -128,6 +202,6 @@ export const projects = [
         url: "https://discord.gg/cowabunga",
         icon: "chat",
       },
-    ]
+    ],
   ),
 ];
