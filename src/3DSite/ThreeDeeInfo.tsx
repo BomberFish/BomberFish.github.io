@@ -53,9 +53,9 @@ export const ThreeDeeInfo: Component<{}, {}> = function () {
           velzie's website
         </a>
         , which pulls off something similar. i actually used some of his code
-        for this site (cooleletronis {/* yes this is mispelled on purpose */} if
-        you are reading this thank you), so it wouldn't be possible without him.
+        for this site, so it wouldn't be possible without him.
       </div>
+      <br></br>
       <DesignPhilosophy />
     </article>
   );
