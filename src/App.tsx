@@ -1,6 +1,6 @@
 console.log(
-  "%c Hello, World!",
-  'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: 3px 3px 0 #fab387 , 6px 6px 0 #f9e2af , 9px 9px 0 #a6e3a1 , 12px 12px 0 #94e2d5 , 15px 15px 0 #89b4fa , 18px 18px 0 #b4befe , 21px 21px 0 #cba6f7',
+  "%c\n hello! :3c  ",
+  'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: -2px -2px 0 #fab387 , -4px -4px 0 #f9e2af , -6px -6px 0 #a6e3a1 , -8px -8px 0 #94e2d5 , -10px -10px 0 #89b4fa , -12px -12px 0 #b4befe , -14px -14px 0 #cba6f7',
 );
 
 import "dreamland";
@@ -12,11 +12,7 @@ import { ClickWall } from "./3DSite/ClickWall.tsx";
 import { DarkReaderWarning } from "./DarkReaderWarning.tsx";
 import { sharedCSS, articleCSS } from "./CommonCSS.tsx";
 import { updatePage } from "./Themes";
-import {
-  Intro,
-  SiteMap,
-  DesignPhilosophy,
-} from "./SiteContent.tsx";
+import { Intro, SiteMap, DesignPhilosophy } from "./SiteContent.tsx";
 import { convertRemToPixels } from "./Utils.ts";
 import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
@@ -33,11 +29,9 @@ export let store = $store(
   { ident: "userOptions", backing: "localstorage", autosave: "auto" },
 );
 
-export let globalState = $state(
-  {
-    freakyMode: false
-  }
-)
+export let globalState = $state({
+  freakyMode: false,
+});
 
 const App: Component<
   {},
@@ -64,12 +58,12 @@ const App: Component<
   this.elements = [
     <Intro />,
     <div>
-      <h2 style="margin-bottom: 0.7em!important;">My work</h2>
+      <h2 style="margin-bottom: 0.7em!important;">my work</h2>
       <ProjectList projects={this.projects} />
     </div>,
     // <Contact />,
     <div>
-      <h2 style="margin-bottom: 0.7em!important;">Latest post</h2>
+      <h2 style="margin-bottom: 0.7em!important;">latest post</h2>
       <LatestToot />
     </div>,
     <SiteMap />,
@@ -174,18 +168,23 @@ const App: Component<
   });
 
   return (
-    <main class={sharedCSS} style={{
-      fontFamily: use(globalState.freakyMode, freak => freak ? "Papyrus, cursive!important" : "var(--font-body)")
-    }}>
+    <main
+      class={sharedCSS}
+      style={{
+        fontFamily: use(globalState.freakyMode, (freak) =>
+          freak ? "Papyrus, cursive!important" : "var(--font-body)",
+        ),
+      }}
+    >
       <Nav />
       <div id="content">
         <TabBar
           tabs={[
-            "About me",
-            "My work",
-            "Yapping",
-            "Sitemap",
-            "About this Site",
+            "about me",
+            "my work",
+            "yapping",
+            "sitemap",
+            "about this site",
           ]}
           bind:tab={use(this.selectedTab)}
         />
@@ -216,14 +215,15 @@ window.addEventListener("load", async () => {
   let params = new URL(window.location.href).searchParams;
   console.debug(params);
   if (params.has("higherdimension")) {
-	let app;
-	try {
-		app = <ThreeDeeApp />;
-	} catch (e) {
-		(document.querySelector(".no-js")! as HTMLElement).style.display = "block";
-		document.body.style.margin = "2%";
-		return;
-	}
+    let app;
+    try {
+      app = <ThreeDeeApp />;
+    } catch (e) {
+      (document.querySelector(".no-js")! as HTMLElement).style.display =
+        "block";
+      document.body.style.margin = "2%";
+      return;
+    }
     let audio: HTMLAudioElement = new Audio("/epic.ogg");
     audio.loop = true;
 
@@ -256,14 +256,15 @@ window.addEventListener("load", async () => {
     document.getElementById("app")!.replaceWith(app);
     document.body.classList.add("cool");
   } else {
-	let app;
-	try {
-		app = <App />;
-	} catch (e) {
-		(document.querySelector(".no-js")! as HTMLElement).style.display = "block";
-		document.body.style.margin = "2%";
-		return;
-	}
+    let app;
+    try {
+      app = <App />;
+    } catch (e) {
+      (document.querySelector(".no-js")! as HTMLElement).style.display =
+        "block";
+      document.body.style.margin = "2%";
+      return;
+    }
     let sc = document.createElement("script");
     sc.src = "/oneko.js";
     document.body.appendChild(sc);

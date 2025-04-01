@@ -13,7 +13,6 @@ export const FullArticle: Component<{}, {}> = function () {
 };
 
 export const Intro: Component<{}, {}> = function () {
-
   this.css = `
   display: flex;
   flex-direction: row;
@@ -40,7 +39,7 @@ export const Intro: Component<{}, {}> = function () {
       display: none;
     }
   }
-  `
+  `;
 
   return (
     <div>
@@ -75,51 +74,59 @@ export const IntroSmall: Component<{}, {}> = function () {
                 letter-spacing 0.25s ease;
     letter-spacing: 0.0475em;
   }
-    `
+    `;
   return (
     <section>
-      <h1><span>Hi</span> 👋</h1>
+      <h1>
+        <span>hiya!</span> 👋
+      </h1>
+      <p>i'm hariz, a 16 y/o high school student from canada :3</p>
       <p>
-        I'm Hariz, a 16 y/o high school student from Canada, and I sometimes do/make cool/lame things.
+        i sometimes make <code>use(ful|less)</code> projects and stuff.
       </p>
       <p>
         <br></br>
-        As for <code>/.* engineering/g</code>, I'm interested in:
+        as for <code>.* engineering</code>, I'm interested in:
         <ul>
-          <li>Hardware (building robots 'n stuff!)</li>
-		  <li>iOS Development with SwiftUI</li>
-          <li>Webdev (as you can tell from this immaculately put-together portfolio)</li>
-          <li>Backend (kinda)</li>
-          <li>And a little bit of security research</li>
+          <li>hardware (building robots 'n stuff!)</li>
+          <li>microcontrollers</li>
+          <li>ios development with swiftui</li>
+          <li>
+            webdev (as you can tell from this immaculately put-together
+            portfolio)
+          </li>
+          <li>backend (kinda)</li>
+          <li>and a little bit of security research!</li>
         </ul>
       </p>
     </section>
-  )
-}
+  );
+};
 
 export const About: Component<{}, {}> = function () {
   return (
     <section>
-      <h2>Some more about me</h2>
+      <h2>some more about me...</h2>
       <ul>
-        <li>I was one of the winners of the 2024 Swift Student Challenge</li>
+        <li>i was one of the winners of the 2024 swift student challenge</li>
         <li>
-          I know the following programming languages (well):
+          i am fluent in the following programming languages:
           <ul>
-            <li>Swift (the GOAT)</li>
-            <li>JavaScript/TypeScript</li>
-            <li>C/C++/Objective-C</li>
-            <li>Bash</li>
-            <li>Python</li>
+            <li>swift (the GOAT)</li>
+            <li>javascript/typescript</li>
+            <li>c/c++/objective-c</li>
+            <li>bash</li>
+            <li>python</li>
           </ul>
         </li>
         <li>
-          I'm a member of{" "}
+          i'm part of{" "}
           <a href="https://mercurywork.shop" target="blank">
-            Mercury Workshop
+            mercury workshop
           </a>
+          , a team of open-source software developers
         </li>
-        <li>I play the guitar, sorta</li>
+        <li>i'm also an amateur music producer! stay tuned for more info!</li>
       </ul>
     </section>
   );
@@ -128,39 +135,50 @@ export const About: Component<{}, {}> = function () {
 export const Contact: Component<{}, {}> = function () {
   return (
     <section>
-      <h2>Get in touch</h2>
+      <h2>get in touch!</h2>
       <ul>
         <li>
           <a href="https://github.com/BomberFish" target="blank" rel="me">
-            GitHub
+            github
           </a>
         </li>
         <li>
           <a href="https://wetdry.world/@fish" target="blank" rel="me">
-            Fediverse
+            fediverse
           </a>
           &nbsp;(@fish@wetdry.world)
           <ul>
             <li>
-              If you use Bluesky, you can follow&nbsp;<a href="https://bsky.app/profile/fish.wetdry.world.ap.brid.gy" target="blank">@fish.wetdry.world.ap.brid.gy</a>&nbsp;to view my posts on the Fediverse. Please note this is usually a few minutes behind.
+              if you use bluesky, you can follow&nbsp;
+              <a
+                href="https://bsky.app/profile/fish.wetdry.world.ap.brid.gy"
+                target="blank"
+              >
+                @fish.wetdry.world.ap.brid.gy
+              </a>
+              &nbsp;to view my posts on the fediverse. please note, this is
+              usually a few minutes behind!
             </li>
             <li>
-              If you use neither of those, you can view my latest post in the "Yapping" tab above.
+              if you use neither of those, you can view my latest post in the
+              "yapping" tab above.
             </li>
           </ul>
         </li>
         <li>
           <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
           <ul>
-            <li>I might be slow to respond, I don't check my email often.</li>
-            <li>Every email address @bomberfish.ca is me.</li>
+            <li>
+              i might be slow to respond, since i don't check my email often.
+            </li>
+            <li>every email address @bomberfish.ca belongs to me.</li>
           </ul>
         </li>
         <li>
-          Discord
+          discord
           <ul>
             <li>
-              @bomberfish <strong>(Main account)</strong>
+              @bomberfish <strong>(main account)</strong>
             </li>
             <li>@realtimsweeneyepic</li>
             <li>@pageprotectionlayer</li>
@@ -168,18 +186,25 @@ export const Contact: Component<{}, {}> = function () {
           </ul>
         </li>
         {/* <li> */}
-          {/* no elon i am not calling it "X" */}
-          {/* <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
+        {/* no elon i am not calling it "X" */}
+        {/* <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
             Twitter (inactive)
           </a>
         </li> */}
         <li>
-          <a href="https://matrix.to/#/@bomberfish:omada.cafe" target="blank" rel="me">Matrix</a> (@bomberfish:omada.cafe)
+          <a
+            href="https://matrix.to/#/@bomberfish:omada.cafe"
+            target="blank"
+            rel="me"
+          >
+            matrix
+          </a>{" "}
+          (@bomberfish:omada.cafe)
         </li>
         <li>
-          <span>Signal: @bomberfish.77</span>
+          <span>signal: @bomberfish.77</span>
           <ul>
-            <li>Please only use this if all else fails.</li>
+            <li>please only use this if all else fails!</li>
           </ul>
         </li>
       </ul>
@@ -190,7 +215,7 @@ export const Contact: Component<{}, {}> = function () {
 export const SiteMap: Component<{}, {}> = function () {
   return (
     <section>
-      <h2>Other things on this site</h2>
+      <h2>other things on this site</h2>
       <ul>
         <li>
           <a href="https://bomberfish.ca/games">/games</a>
@@ -209,20 +234,20 @@ export const SiteMap: Component<{}, {}> = function () {
 export const DesignPhilosophy: Component<{}, {}> = function () {
   return (
     <section>
-      <h2>Website Design Philosophy</h2>
+      <h2>website design philosophy</h2>
       <ul>
-        <li>Be as keyboard-accessible as possible.</li>
+        <li>be as keyboard-accessible as possible.</li>
         <li>
-          JavaScript is not the enemy. Take advantage of all the latest gizmos.
+          javascript is not the enemy. take advantage of all the latest gizmos.
           <ul>
-            <li>Always include source maps. Why not show off your code?</li>
+            <li>always include source maps. why not show off your code?</li>
           </ul>
         </li>
         <li>
-          Optimize for size. Some people use (and pay for) Canadian cellular
+          optimize for size. some people use (and pay for) Canadian cellular
           data.
         </li>
-        <li>Have some fun. Don't be too bland.</li>
+        <li>have some fun! Don't be too bland.</li>
       </ul>
     </section>
   );

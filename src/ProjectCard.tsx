@@ -6,8 +6,8 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
   function () {
     this.css = `
       background: var(--surface0);
-      width: 320px;
-      height: 280px;
+      width: 100%;
+      min-height: 280px;
       border-radius: 1rem!important;
       padding-bottom: 0.2rem;
       cursor: pointer;
@@ -42,7 +42,7 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
       transform: translateZ(50px);
 
       .img-container {
-        width: 318px;
+        width: 100%;
         height: auto;
         aspect-ratio: 512 / 277;
       }
@@ -136,25 +136,27 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         }}
         tabindex="0"
       >
-        <div class="img-container" style={{
-          width: "318px",
-          height: "auto",
-          aspectRatio: "512 / 277",
-        }}>
-          {$if(this.detail.img != undefined,
-            (<img
+        <div
+          class="img-container"
+          style={{
+            width: "100%",
+            height: "auto",
+            aspectRatio: "512 / 277",
+          }}
+        >
+          {$if(
+            this.detail.img != undefined,
+            <img
               loading="lazy"
               src={this.detail.img}
               alt={this.detail.blurb}
               referrerpolicy="no-referrer"
               crossorigin="anonymous"
-            />),
-            (
-              <div class="img-placeholder">
-                <span class="material-symbols-rounded">broken_image</span>
-              </div>
-            ))
-          }
+            />,
+            <div class="img-placeholder">
+              <span class="material-symbols-rounded">broken_image</span>
+            </div>,
+          )}
         </div>
         <div class="detail">
           <div class="title">
@@ -172,16 +174,17 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
   function () {
     this.css = `
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 0fr));
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         grid-gap: 2rem;
         place-items: center;
         place-content: center;
-        justify-content: space-evenly;
+        width: calc(100% - 4rem);
+        margin: 0 2rem;
       `;
     return (
       <div id="projects-container">
         {use(this.projects, (projects) =>
-          projects.map((project) => <ProjectCard detail={project} />)
+          projects.map((project) => <ProjectCard detail={project} />),
         )}
       </div>
     );

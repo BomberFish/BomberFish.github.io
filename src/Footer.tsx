@@ -79,13 +79,14 @@ export const WebButton: Component<
     -webkit-image-rendering: pixelated;
     width: auto;
     height: max(31px, 2.5rem);
-    border-radius: ${this.rounded ? (this.radius ? this.radius : "0.5rem") : "0px"
+    border-radius: ${
+      this.rounded ? (this.radius ? this.radius : "0.5rem") : "0px"
     }
   }
   `;
 
   this.href = this.href || "#";
-  this.action = this.action || (() => { });
+  this.action = this.action || (() => {});
 
   if (this.title) {
     this.alt = this.alt || "A web button with the description: " + this.title;
@@ -169,9 +170,18 @@ export const Footer: Component<{}, {}> = function () {
   return (
     <footer>
       <span>
-        Button Collection<span class="question" role="button" on:click={async () => {
-          alert("All of these are websites I think are cool, people I know, or tools/software I use. Click on one to go to the relevant website. No website paid me to get here.")
-        }}>?</span>
+        button collection
+        <span
+          class="question"
+          role="button"
+          on:click={async () => {
+            alert(
+              "all of these are websites i think are cool, people i know, or tools/software i use. click on one to go to the relevant website! No website paid me to get here.",
+            );
+          }}
+        >
+          ?
+        </span>
       </span>
       <subt>
         {/* Website made with &lt;3 in{" "}
@@ -201,7 +211,7 @@ export const Footer: Component<{}, {}> = function () {
         {/* <br></br> */}
         {$if(
           new URL(window.location.href).searchParams.get("higherdimension") ===
-          null && !isMobile(),
+            null && !isMobile(),
           <div>
             {/* <div>
                       Pro tip: you can navigate this site with your keyboard! Press{" "}
@@ -309,7 +319,7 @@ const Buttons: Component<{}, {}> = function () {
       transform: translateY(max(7.75px, 0.625rem));
     }
   }
-  `
+  `;
   return (
     <div
     /* on:mouseenter={()=> {
@@ -457,9 +467,7 @@ const Buttons: Component<{}, {}> = function () {
             title="Play some Mario Kart!"
             action={(e: MouseEvent) => {
               e.preventDefault();
-              document
-                .querySelector("main")!
-                .appendChild(<MK64Frame />);
+              document.querySelector("main")!.appendChild(<MK64Frame />);
               (document.activeElement as HTMLElement)?.blur();
             }}
           />
@@ -570,15 +578,12 @@ const Buttons: Component<{}, {}> = function () {
             title="Play some Mario Kart!"
             action={(e: MouseEvent) => {
               e.preventDefault();
-              document
-                .querySelector("main")!
-                .appendChild(<MK64Frame />);
+              document.querySelector("main")!.appendChild(<MK64Frame />);
               (document.activeElement as HTMLElement)?.blur();
             }}
           />
         </span>
       </div>
-
     </div>
-  )
-}
+  );
+};

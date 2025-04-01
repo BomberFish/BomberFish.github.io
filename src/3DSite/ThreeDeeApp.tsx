@@ -130,21 +130,27 @@ export const ThreeDeeApp: Component<
     console.debug("mount");
     const c = Math.abs(
       -(1000 + (2188 /* god this is so jank */ / window.innerWidth) * 200) -
-      this.z
+        this.z,
     );
     console.debug(c);
     for (let i = 0; i < c; i++) {
-      setTimeout(() => {
-        // console.debug("z anim tick");
-        this.z -= 1;
-      }, easeOutCirc(i / c) * 500);
+      setTimeout(
+        () => {
+          // console.debug("z anim tick");
+          this.z -= 1;
+        },
+        easeOutCirc(i / c) * 500,
+      );
     }
 
     for (let i = 0; i < 30; i++) {
-      setTimeout(() => {
-        // console.debug("rot anim tick");
-        this.r += 1;
-      }, easeOutCirc(i / 10) * 500);
+      setTimeout(
+        () => {
+          // console.debug("rot anim tick");
+          this.r += 1;
+        },
+        easeOutCirc(i / 10) * 500,
+      );
     }
   };
 
@@ -158,7 +164,7 @@ export const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveX",
-        `${+orig - 2.5}px`
+        `${+orig - 2.5}px`,
       );
     }
     if (keydown("ArrowLeft")) {
@@ -168,7 +174,7 @@ export const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveX",
-        `${+orig + 2.5}px`
+        `${+orig + 2.5}px`,
       );
     }
 
@@ -179,7 +185,7 @@ export const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveY",
-        `${+orig + 0.35}px`
+        `${+orig + 0.35}px`,
       );
     }
     if (keydown("ArrowDown")) {
@@ -189,7 +195,7 @@ export const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveY",
-        `${+orig - 0.35}px`
+        `${+orig - 0.35}px`,
       );
     }
 
@@ -224,7 +230,7 @@ export const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveX",
-        `${+orig - speed * 0.35}px`
+        `${+orig - speed * 0.35}px`,
       );
     }
 
@@ -236,7 +242,7 @@ export const ThreeDeeApp: Component<
         .replace("px", "");
       document.documentElement.style.setProperty(
         "--bgmoveX",
-        `${+orig - speed * 0.35}px`
+        `${+orig - speed * 0.35}px`,
       );
     }
   });
@@ -255,7 +261,7 @@ export const ThreeDeeApp: Component<
     <main class={sharedCSS}>
       <debug>
         <a href="./" style="color: var(--accent)">
-          <span class="material-symbols-rounded">arrow_back</span> Back to
+          <span class="material-symbols-rounded">arrow_back</span> back to
           sanity
         </a>
         <br></br>
@@ -265,9 +271,7 @@ export const ThreeDeeApp: Component<
             this.speed = numberInput("Enter new speed", this.speed);
           }}
         >
-          <div>
-            {use`Speed (${this.speed})`}
-          </div>
+          <div>{use`speed (${this.speed})`}</div>
         </label>
         <input
           type="range"
@@ -345,7 +349,7 @@ export const ThreeDeeApp: Component<
             height={960}
           >
             <article>
-              <h2>My work</h2>
+              <h2>my work</h2>
               <ProjectList projects={this.projects} />
             </article>
           </Screen>
@@ -364,8 +368,8 @@ export const ThreeDeeApp: Component<
             x={6}
             y={-2}
             z={-7}
-          // width={window.innerWidth * 0.4}
-          // height={window.innerHeight * 0.5}
+            // width={window.innerWidth * 0.4}
+            // height={window.innerHeight * 0.5}
           >
             <LatestToot />
           </Screen>
@@ -411,15 +415,12 @@ export const ThreeDeeApp: Component<
               ></iframe>
             </article>
           </Screen>
-          <Screen
-            ry={-20}
-            x={8}
-            y={-10}
-            z={-7}
-            width={453}
-            height={358.5}
-          >
-            <img src="/kawaii.webp" alt="Vtuber-style logo" style="width: 100%; height: 100%;" />
+          <Screen ry={-20} x={8} y={-10} z={-7} width={453} height={358.5}>
+            <img
+              src="/kawaii.webp"
+              alt="Vtuber-style logo"
+              style="width: 100%; height: 100%;"
+            />
           </Screen>
           <Screen
             rx={-90}

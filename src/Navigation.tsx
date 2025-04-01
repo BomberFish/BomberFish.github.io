@@ -190,13 +190,13 @@ export const Nav: Component<
           }}
         />
         <h2>
-          <span>B</span>
+          <span>b</span>
           <span>o</span>
           <span>m</span>
           <span>b</span>
           <span>e</span>
           <span>r</span>
-          <span>F</span>
+          <span>f</span>
           <span>i</span>
           <span>s</span>
           <span>h</span>
@@ -214,7 +214,7 @@ export const Nav: Component<
           >
             <path d="M200-120q-33 0-56.5-23.5T120-200q0-33 23.5-56.5T200-280q33 0 56.5 23.5T280-200q0 33-23.5 56.5T200-120Zm480 0q0-117-44-218.5T516-516q-76-76-177.5-120T120-680v-120q142 0 265 53t216 146q93 93 146 216t53 265H680Zm-240 0q0-67-25-124.5T346-346q-44-44-101.5-69T120-440v-120q92 0 171.5 34.5T431-431q60 60 94.5 139.5T560-120H440Z" />
           </svg>
-          &nbsp;<span id="bloglink-title">Blog</span>
+          &nbsp;<span id="bloglink-title">blog</span>
         </a>
         <ThemePicker />
       </span>
@@ -286,7 +286,7 @@ export const TabBar: Component<
         &:nth-of-type(2) {
           animation-delay: -0.6s;
         }
-        
+
         &:nth-of-type(1) {
           animation-delay: -0.7s;
         }
@@ -354,45 +354,47 @@ export const TabBar: Component<
   return (
     <div id="tabs">
       <div>
-        {use(this.tabs, (tabs) => tabs.map((tab, index) => (
-          <button
-            // class={use(this.tabInternal, (tab) => [
-            //   tab === index ? "active" : "",
-            // ])}
-            class:active={use(this.tabInternal, (tabi) => tabi == index)}
-            on:click={() => {
-              if (this.tabInternal === index) return;
-              this.tabInternal = index;
-              document
-                .getElementById("mainarticle")!
-                .classList.add("transparent");
-              if (
-                !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-              ) {
-                document.getElementById("mainarticle")!.style.height = "0px";
-              }
-              setTimeout(
-                () => {
-                  this.tab = index;
-                  document.getElementById("mainarticle")!.style.height =
+        {use(this.tabs, (tabs) =>
+          tabs.map((tab, index) => (
+            <button
+              // class={use(this.tabInternal, (tab) => [
+              //   tab === index ? "active" : "",
+              // ])}
+              class:active={use(this.tabInternal, (tabi) => tabi == index)}
+              on:click={() => {
+                if (this.tabInternal === index) return;
+                this.tabInternal = index;
+                document
+                  .getElementById("mainarticle")!
+                  .classList.add("transparent");
+                if (
+                  !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ) {
+                  document.getElementById("mainarticle")!.style.height = "0px";
+                }
+                setTimeout(
+                  () => {
+                    this.tab = index;
+                    document.getElementById("mainarticle")!.style.height =
+                      document
+                        .getElementById("mainarticle")!
+                        .children[0]!.getBoundingClientRect().height +
+                      convertRemToPixels(1) +
+                      "px";
                     document
                       .getElementById("mainarticle")!
-                      .children[0]!.getBoundingClientRect().height +
-                    convertRemToPixels(1) +
-                    "px";
-                  document
-                    .getElementById("mainarticle")!
-                    .classList.remove("transparent");
-                },
-                window.matchMedia("(prefers-reduced-motion: reduce)").matches
-                  ? 150
-                  : 470,
-              );
-            }}
-          >
-            <span>{tab}</span>
-          </button>
-        )))}
+                      .classList.remove("transparent");
+                  },
+                  window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                    ? 150
+                    : 470,
+                );
+              }}
+            >
+              <span>{tab}</span>
+            </button>
+          )),
+        )}
       </div>
     </div>
   );
