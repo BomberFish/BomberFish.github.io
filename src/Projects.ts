@@ -89,7 +89,7 @@ export const projects = [
         icon: "code",
       },
       {
-        name: "Demo",
+        name: "Play",
         url: "https://celeste.r58playz.dev",
         icon: "stadia_controller",
       },
