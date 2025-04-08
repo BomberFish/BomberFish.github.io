@@ -173,6 +173,7 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
 export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
   function () {
     this.css = `
+      .projects-group {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
         grid-gap: 2rem;
@@ -180,12 +181,27 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
         place-content: center;
         width: calc(100% - 4rem);
         margin: 0 2rem;
+      }
       `;
     return (
       <div id="projects-container">
+      <h3>featured</h3>
+      <div class="projects-group">
         {use(this.projects, (projects) =>
-          projects.map((project) => <ProjectCard detail={project} />),
+          projects
+            .filter((project) => project.featured)
+            .sort((a, b) => (a.featuredPosition || 0) - (b.featuredPosition || 0))
+            .map((project) => <ProjectCard detail={project} />),
         )}
+      </div>
+      <h3>other</h3>
+      <div class="projects-group">
+        {use(this.projects, (projects) =>
+          projects
+            .filter((project) => !project.featured)
+            .map((project) => <ProjectCard detail={project} />),
+        )}
+      </div>
       </div>
     );
   };

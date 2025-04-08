@@ -1,6 +1,25 @@
 import ProjectCardDetails from "./Project";
 
 export const projects = [
+  // new ProjectCardDetails(
+  //   "/proj-thumbnails/celeste.webp",
+  //   "Webshot",
+  //   "Port of OneShot to WebAssembly",
+  //   2024,
+  //   "Webshot is a port of OneShot: World Machine Edition to WebAssembly. Like fez-wasm and Webleste, it leverages WebAssembly support in .NET and FNA to run the game in a web browser. Unlike Webleste, I led the porting efforts."
+  //   [
+  //     {
+  //       name: "GitHub",
+  //       url: "https://github.com/MercuryWorkshop/webshot",
+  //       icon: "code",
+  //     },
+  //     {
+  //       name: "Demo",
+  //       url: "https://youtube.com/watch?v=dQw4w9WgXcQ",
+  //       icon: "stadia_controller",
+  //     },
+  //   ],
+  // ),
   new ProjectCardDetails(
     undefined,
     "MergeFlow",
@@ -42,9 +61,9 @@ export const projects = [
   new ProjectCardDetails(
     undefined,
     "fez-wasm",
-    "A WebAssembly port of the Fez game",
+    "Port of Fez (2012) to WebAssembly",
     2025,
-    "fez-wasm is a WebAssembly port of the Fez, a puzzle-platformer first released in 2012. It is a heavy work in progress, with many portions non-functional.",
+    "fez-wasm is a WebAssembly port of Fez, a puzzle-platformer first released in 2012. It is a heavy work in progress, with many portions non-functional.",
     [
       {
         name: "GitHub",
@@ -52,7 +71,7 @@ export const projects = [
         icon: "code",
       },
       {
-        name: "Play",
+        name: "Demo",
         url: "https://fez.bomberfish.ca",
         icon: "stadia_controller",
       },
@@ -78,10 +97,10 @@ export const projects = [
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/celeste.webp",
-    "celeste-wasm",
+    "Webleste",
     "Port of Celeste (2018) to WebAssembly",
     2024,
-    "celeste-wasm is a port of the popular platformer game Celeste to WebAssembly. I helped out with it during its development in May 2024. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with other members of Mercury Workshop to port the game.",
+    "Webleste (formerly celeste-wasm) is a port of the popular platformer game Celeste to WebAssembly. I helped out with it during its development in May 2024. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with my fellow colleagues at Mercury Workshop to help with porting the game.",
     [
       {
         name: "GitHub",
@@ -108,7 +127,7 @@ export const projects = [
       },
     ],
     true,
-    1,
+    2,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/mandelapro.webp",
@@ -126,7 +145,7 @@ export const projects = [
     "In early 2024, I won the Swift Student Challenge, a programming competition run by Apple. My winning submission was a carbon footprint calculator.",
     [],
     true,
-    0,
+    1,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/dssos.webp",
@@ -137,16 +156,16 @@ export const projects = [
     [
       {
         name: "Website",
-        url: "https://dssos.nineeleven.tech",
+        url: "https://bomberfish.ca/dssOS/"
       },
     ],
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/picasso.webp",
     "Picasso",
-    "iOS customization app with 100k+ users",
+    "iOS customization app with 100k+ peak monthly users",
     2023,
-    "Picasso is a customization app for iOS 15.0-17.0, using various security vulnerabilities to allow for deep customization. At its peak, it had over 100,000 active users. I worked with sourcelocation to develop it, and it was first released in August 2023.",
+    "Picasso was a customization app for iOS 15.0-17.0, taking advantage of various security vulnerabilities to allow for deep customization. At its peak, it had over 100,000 active users. I worked with sourcelocation to develop it, and it was first released in August 2023 on our own third-party marketplace separate from Apple's App Store.",
     [
       {
         name: "Source Release",
