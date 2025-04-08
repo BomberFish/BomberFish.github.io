@@ -72,7 +72,7 @@ export const IntroSmall: Component<{}, {}> = function () {
     font-weight: 100!important;
     transition: font-weight 0.25s ease,
                 letter-spacing 0.25s ease;
-    letter-spacing: 0.0475em;
+    letter-spacing: 0.09em;
   }
     `;
   return (
