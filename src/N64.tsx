@@ -7,7 +7,7 @@ export const MK64Frame: Component<{},{}> = function() {
           this.root.classList.remove("transparent");
         }, 1);
       };
-  
+
       this.css = `
         position: fixed;
         top: 0;
@@ -18,9 +18,9 @@ export const MK64Frame: Component<{},{}> = function() {
         width: 100vw;
         height: 100vh;
         transform: translateZ(100px);
-  
+
         transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
-  
+
         .inner {
           background: var(--base);
           min-width: 400px;
@@ -37,7 +37,7 @@ export const MK64Frame: Component<{},{}> = function() {
           border: 0.25px solid var(--surface0);
           overflow: hidden;
         }
-  
+
         img {
           width: auto;
           max-width: 35vw;
@@ -49,7 +49,7 @@ export const MK64Frame: Component<{},{}> = function() {
           object-fit: cover;
           cursor: pointer;
         }
-  
+
         #title {
           font-size: 2.25rem;
           margin-block: 0;
@@ -57,21 +57,22 @@ export const MK64Frame: Component<{},{}> = function() {
           text-overflow: ellipsis;
           overflow: hidden;
           white-space: nowrap;
+          font-family: var(--font-serif);
         }
-  
+
         button {
           user-select: none;
           -webkit-user-drag: none;
           -webkit-user-select: none;
         }
-  
+
         article {
           overflow: scroll;
           display: grid;
           place-items: center;
           height: 60vh;
         }
-  
+
         .article-inner {
           overflow: scroll;
           position: relative;
@@ -84,7 +85,7 @@ export const MK64Frame: Component<{},{}> = function() {
           align-self: flex-end;
           justify-self: center
         }
-  
+
         .head {
           display: flex;
           flex-direction: row;
@@ -101,22 +102,22 @@ export const MK64Frame: Component<{},{}> = function() {
           margin: 0;
           z-index: 1000;
         }
-  
+
         .head > * {
           margin: 1.5rem;
         }
-  
+
         .desc {
           align-self: flex-start;
           font-size: 1.25rem;
           margin-inline: 1rem;
         }
-  
+
         .desc p {
           margin-left: 0.5rem;
           margin-bottom: 1.25rem;
         }
-  
+
         button {
           appearance: none;
           background: none;
@@ -127,7 +128,7 @@ export const MK64Frame: Component<{},{}> = function() {
           display: flex;
           align-items: center;
         }
-  
+
         .popup-bg {
           transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
           background: rgba(17, 17, 27, 0.4);
@@ -142,82 +143,82 @@ export const MK64Frame: Component<{},{}> = function() {
           backdrop-filter: blur(1.5px);
           -webkit-backdrop-filter: blur(1.5px);
         }
-  
+
         kbd {
           margin-right: 0.65rem;
         }
-  
+
         .link {
           color: var(--text)!important;
           background: var(--surface0);
           text-decoration: none;
           cursor: pointer
-  
+
           font-size: 1.2rem;
-  
+
           border-radius: 0.5rem;
           padding: 0.5rem;
-  
+
           .material-symbols-rounded {
             font-size: 1.6rem;
             margin-right: 0.5rem;
           }
-  
+
           .link-inner {
             display: flex;
             align-items: center;
           }
-  
+
           display: flex;
           align-items: center;
           justify-content: center;
-  
+
           border: 0.1px solid var(--overlay1);
-  
+
           transition: color 0.2s;
         }
-  
+
         .link:hover {
           transition: color 0.2s;
           color: var(--accent);
         }
-  
+
         p.link {
           color: var(--subtext0);
           //font-style: italic;
           border-style: dashed;
           cursor: not-allowed;
         }
-  
+
         p.link:hover {
           color: var(--subtext0);
         }
-  
+
         .links {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(50%, 1fr));
           gap: 0.5rem;
         }
-  
+
         &.transparent .inner {
             top: 100vw;
             transition: 0.2s ease-in-out;
           }
-  
+
           &.transparent
            {
             transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
           }
-  
+
           .inner {
             transition: 0.4s cubic-bezier(0.3, 1.2, 0.4, 1);
           }
-  
+
           &.transparent {
             opacity: 0;
             pointer-events: none;
           }
-  
+
           &.transparent .popup-bg {
             transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
             backdrop-filter: blur(0px);
@@ -225,7 +226,7 @@ export const MK64Frame: Component<{},{}> = function() {
             background: rgba(0, 0, 0, 0);
           }
       `;
-  
+
       return (
         <div class="popup transparent">
           <div
@@ -240,7 +241,7 @@ export const MK64Frame: Component<{},{}> = function() {
           <div class="inner">
             <div class="head">
               <span id="title">Mario Kart 64</span>
-  
+
               <button
                 on:click={() => {
                   this.root.classList.add("transparent");

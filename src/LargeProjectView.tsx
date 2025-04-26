@@ -27,7 +27,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 	  @media (orientation: landscape) {
 	 	.inner {
 			aspect-ratio: 800 / 565;
-		} 
+		}
 	  }
 
       .inner {
@@ -66,6 +66,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        font-family: var(--font-serif);
       }
 
       button {
