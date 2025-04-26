@@ -24,11 +24,11 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
 
-	  @media (orientation: landscape) {
-	 	.inner {
-			aspect-ratio: 800 / 565;
-		}
-	  }
+   	  @media (orientation: landscape) {
+   	 	.inner {
+   			aspect-ratio: 800 / 565;
+    		}
+   	  }
 
       .inner {
         background: var(--base);
@@ -70,13 +70,15 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         left: 0;
         width: 100%;
         height: 100%;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        backdrop-filter: blur(8px);
+        mask-image: linear-gradient(rgba(0, 0, 0, 0.2) 30%, rgb(0, 0, 0, 1) 92%);
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8) 95%);
         z-index: 2;
         pointer-events: none;
+      }
+
+      #title,p {
+        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
       }
 
       #title {
@@ -86,7 +88,6 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         font-weight: 600;
         text-overflow: ellipsis;
         overflow: hidden;
-        white-space: nowrap;
         font-family: var(--font-serif);
       }
 
@@ -94,11 +95,11 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
-        min-width: 36px;
+        width: 36px;
         height: 36px;
         border-radius: 38px;
-        background: color-mix(in srgb, var(--surface2) 40%, transparent)!important;
-        backdrop-filter: blur(4px);
+        background: color-mix(in srgb, var(--surface2) 43%, transparent)!important;
+        backdrop-filter: blur(32px);
 
         overflow: hidden;
         transition: transform 0.3s ease;
@@ -208,7 +209,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         text-decoration: none;
         cursor: pointer;
 
-		border: none!important;
+        border: none!important;
 
         font-size: 1.2rem;
 

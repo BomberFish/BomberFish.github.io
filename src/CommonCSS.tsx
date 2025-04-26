@@ -130,12 +130,12 @@ export const sharedCSS = css`
       align-items: center;
     }
 
-    .popup .inner article img {
+    /* .popup .inner article img {
       width: 90vw;
       max-width: initial;
       height: auto;
       justify-self: center;
-    }
+    } */
   }
 
   subt {
