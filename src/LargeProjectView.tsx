@@ -32,6 +32,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       .inner {
         background: var(--base);
+        // background-image: url(${this.project.img});
         min-width: 400px;
         width: max(55vw, 50rem);
         height: 60vh;
@@ -48,19 +49,39 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       img {
-        width: auto;
-        max-width: 50%;
-        height: calc(100% - 3rem);
-        border-radius: 1.25rem;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
         object-fit: cover;
-        cursor: pointer;
+        z-index: 1;
+      }
+
+      .inner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+        z-index: 2;
+        pointer-events: none;
       }
 
       #title {
-        font-size: 2.25rem;
+        font-size: 4rem;
+        margin-inline: 1rem;
         margin-block: 0;
         font-weight: 600;
         text-overflow: ellipsis;
@@ -73,7 +94,27 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         user-select: none;
         -webkit-user-drag: none;
         -webkit-user-select: none;
+        min-width: 36px;
+        height: 36px;
+        border-radius: 38px;
+        background: color-mix(in srgb, var(--surface2) 40%, transparent)!important;
+        backdrop-filter: blur(4px);
+
+        overflow: hidden;
+        transition: transform 0.3s ease;
+
+        .label {
+          font-size: 12px;
+          margin-left: 2px;
+          width: 0px;
+          overflow: hidden;
+          transition: width 0.3s ease;
+        }
       }
+
+      // button:hover .label {
+      //   width: 48px;
+      // }
 
       article {
         overflow: scroll;
@@ -88,11 +129,13 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         width: 100%;
         height: calc(100% - 7rem);
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: flex-start;
         overflow: scroll;
         align-self: flex-end;
-        justify-self: center
+        justify-self: center;
+        z-index: 3;
+        margin-bottom: 2.2rem;
       }
 
       .head {
@@ -106,7 +149,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         top: -1px;
         left: 0;
         right: 0;
-        background: var(--mantle);
+        // background: var(--mantle);
         border-radius: 1.25rem 1.25rem 0 0;
         margin: 0;
         z-index: 1000;
@@ -159,7 +202,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
       .link {
         color: var(--text)!important;
-        background: var(--surface0);
+
+        background: color-mix(in srgb, var(--surface0) 60%, transparent)!important;
+        backdrop-filter: blur(30px);
         text-decoration: none;
         cursor: pointer;
 
@@ -167,7 +212,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
 
         font-size: 1.2rem;
 
-        border-radius: 0.5rem;
+        border-radius: 0.75rem;
         padding: 0.5rem;
 
         .material-symbols-rounded {
@@ -251,8 +296,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         ></div>
         <div class="inner">
           <div class="head">
-            <span id="title">{this.project.title}</span>
-
+            <div></div>
             <button
               on:click={() => {
                 this.root.classList.add("transparent");
@@ -263,22 +307,24 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
             >
               {$if(!isMobile, <kbd>esc</kbd>)}
               <span class="material-symbols-rounded">close</span>
+              <span class="label">Close</span>
             </button>
           </div>
           <article>
+            {$if(this.project.img,
+              (<img
+                loading="lazy"
+                src={this.project.img}
+                // on:click={() => {
+                //   window.open(this.project.img, "_blank");
+                // }}
+                referrerpolicy="no-referrer"
+                crossorigin="anonymous"
+              />),
+            )}
             <div class="article-inner">
-              {$if(this.project.img,
-                (<img
-                  loading="lazy"
-                  src={this.project.img}
-                  on:click={() => {
-                    window.open(this.project.img, "_blank");
-                  }}
-                  referrerpolicy="no-referrer"
-                  crossorigin="anonymous"
-                />),
-                (<div></div>)
-              )}
+              <div style="flex-grow: 1;" />
+              <span id="title">{this.project.title}</span>
               <div class="desc">
                 <p>{this.project.largeDesc}</p>
 
