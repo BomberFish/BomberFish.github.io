@@ -95,6 +95,45 @@
         format("woff2");
 }
 
+
+@font-face {
+    font-family: Apple Garamond;
+    src: url("/fonts/serif/AppleGaramond Bk.ttf") format("truetype"),local("Apple Garamond"),local("Garamond");
+    font-weight: regular;
+}
+
+@font-face {
+    font-family: Apple Garamond;
+    src: url("/fonts/serif/AppleGaramond BkIt.ttf") format("truetype"),local("Apple Garamond"),local("Garamond");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Apple Garamond;
+    src: url("/fonts/serif/AppleGaramond Bd.ttf") format("truetype"),local("Apple Garamond"),local("Garamond");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Apple Garamond;
+    src: url("/fonts/serif/AppleGaramond BdIt.ttf") format("truetype"),local("Apple Garamond"),local("Garamond");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: Apple Garamond;
+    src: url("/fonts/serif/AppleGaramond Lt.ttf") format("truetype"),local("Apple Garamond Light"),local("Garamond");
+    font-weight: light;
+}
+
+@font-face {
+    font-family: Apple Garamond;
+    src: url("/fonts/serif/AppleGaramond LtIt.ttf") format("truetype"),local("Apple Garamond Light"),local("Garamond");
+    font-weight: light;
+    font-style: italic;
+}
+
 .material-symbols-rounded {
     font-family: "Material Symbols Rounded";
     font-weight: normal;
@@ -120,5 +159,5 @@
     BlinkMacSystemFont, system-ui, "Helvetica Neue", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
   --font-mono: "Adwaita Mono", "Iosveka", ui-monospace, monospace;
+  --font-serif: "Apple Garamond", Garamond, "EB Garamond", "Times New Roman", Times, "Linux Libertine", serif;
 }
-

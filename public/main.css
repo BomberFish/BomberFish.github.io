@@ -1,14 +1,3 @@
-:root {
-    --font-display: "Inter Tight", "Inter", "SF Pro Display", "SF Pro",
-        "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui,
-        "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji",
-        "Noto Color Emoji", "Segoe UI Emoji";
-    --font-body: "Inter", "SF Pro Text", "SF Pro", -apple-system,
-        BlinkMacSystemFont, system-ui, "Helvetica Neue", Helvetica, Arial,
-        sans-serif, "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Emoji";
-    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-}
-
 *:not(ul>li>ul, ul>li>ul>li, img, article section *) {
     transition: background-color .3s linear, color .1s linear, box-shadow .3s linear;
 }

@@ -75,10 +75,11 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         display: flex;
         align-items: center;
         margin-top: 0.2rem;
-        font-family: var(--font-display);
+        font-family: var(--font-body);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        font-family: 1rem;
       }
 
       p {
@@ -87,9 +88,10 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
       }
 
       .title > span {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         font-weight: 600;
         margin-right: 0.5rem;
+        font-family: var(--font-serif);
       }
 
       .detail {
@@ -185,7 +187,7 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
       `;
     return (
       <div id="projects-container">
-      <h3>featured</h3>
+      <h2>featured</h2>
       <div class="projects-group">
         {use(this.projects, (projects) =>
           projects
@@ -193,8 +195,8 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
             .sort((a, b) => (a.featuredPosition || 0) - (b.featuredPosition || 0))
             .map((project) => <ProjectCard detail={project} />),
         )}
-      </div>
-      <h3>other</h3>
+      </div><br />
+      <h2>other</h2>
       <div class="projects-group">
         {use(this.projects, (projects) =>
           projects

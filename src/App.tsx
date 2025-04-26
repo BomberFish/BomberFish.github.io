@@ -58,7 +58,7 @@ const App: Component<
   this.elements = [
     <Intro />,
     <div>
-      <h2 style="margin-bottom: 0.7em!important;">my work</h2>
+      <h1 style="margin-bottom: 0.7em!important;">my work</h1>
       <ProjectList projects={this.projects} />
     </div>,
     // <Contact />,

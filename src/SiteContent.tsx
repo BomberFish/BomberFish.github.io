@@ -56,24 +56,25 @@ export const Intro: Component<{}, {}> = function () {
 export const IntroSmall: Component<{}, {}> = function () {
   this.css = `
   h1 {
-	font-family: var(--font-body)!important;
+	// font-family: var(--font-body)!important;
     font-size: 3rem!important;
     cursor: default;
+    font-family: bold;
   }
 
-  h1>span {
-    font-weight: 900!important;
-    transition: font-weight 0.25s ease,
-                letter-spacing 0.25s ease;
-    letter-spacing: 0em;
-  }
+  // h1>span {
+  //   font-weight: 900!important;
+  //   transition: font-weight 0.25s ease,
+  //               letter-spacing 0.25s ease;
+  //   letter-spacing: 0em;
+  // }
 
-  h1:hover > span {
-    font-weight: 100!important;
-    transition: font-weight 0.25s ease,
-                letter-spacing 0.25s ease;
-    letter-spacing: 0.09em;
-  }
+  // h1:hover > span {
+  //   font-weight: 100!important;
+  //   transition: font-weight 0.25s ease,
+  //               letter-spacing 0.25s ease;
+  //   letter-spacing: 0.09em;
+  // }
     `;
   return (
     <section>

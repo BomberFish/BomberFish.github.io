@@ -138,11 +138,11 @@ export const Footer: Component<{}, {}> = function () {
       }
 
       span {
-        font-size: 1.15rem;
+        font-size: 1.5rem;
         color: var(--text);
         margin-bottom: 0.5rem;
         font-weight: 520;
-        // font-family: var(--font-display);
+        font-family: var(--font-serif);
         display: flex;
         align-items: center;
 
@@ -152,8 +152,8 @@ export const Footer: Component<{}, {}> = function () {
         font-family: var(--font-display);
         color: var(--subtext0);
         display: inline-block;
-        font-size: 0.75rem;
-        margin-left: 0.25rem;
+        font-size: 0.9rem;
+        margin-left: 0.5rem;
         cursor: help;
         padding: 0.25rem;
         border-radius: 50%;

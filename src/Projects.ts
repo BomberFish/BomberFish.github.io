@@ -23,7 +23,7 @@ export const projects = [
   new ProjectCardDetails(
     undefined,
     "MergeFlow",
-    "Smart Git merge conflict resolution, powered by Gemini",
+    "Gemini-powered Git merge conflict resolution",
     2025,
     "In 2025, me and a small team created MergeFlow, a smart Git merge conflict resolution tool powered by Gemini. It uses advanced AI algorithms to automatically resolve merge conflicts, making the process faster and more efficient. This was created for Hack Canada 2025.",
     [
@@ -42,7 +42,7 @@ export const projects = [
   new ProjectCardDetails(
     undefined,
     "Voltaire",
-    "Local LLM inference on iOS, with a snazzy UI.",
+    "Snazzy local LLM inference app for iOS",
     2025,
     "Voltaire runs popular LLMs, including DeepSeek R1, LLaMa 3, and others, locally on iOS devices.",
     [
@@ -80,9 +80,9 @@ export const projects = [
   new ProjectCardDetails(
     "/proj-thumbnails/Twitter Banner.png",
     "QuickSign",
-    "iOS Signing App",
+    "iOS Codesigning App",
     2025,
-    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. A private beta program is slated to begin in Q2 2025, with a public release sometime later in the year.",
+    "In late 2024 I joined the development of QuickSign, an app to sign sideloaded iOS apps. A private beta program is slated to begin in May 2025, with a full public release in July.",
     [
       {
         name: "Website",
@@ -100,7 +100,7 @@ export const projects = [
     "Webleste",
     "Port of Celeste (2018) to WebAssembly",
     2024,
-    "Webleste (formerly celeste-wasm) is a port of the popular platformer game Celeste to WebAssembly. I helped out with it during its development in May 2024. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with my fellow colleagues at Mercury Workshop to help with porting the game.",
+    "Webleste (formerly celeste-wasm) is a port of the popular platformer game Celeste to WebAssembly. I helped out with it during its initial development in May 2024, and with the development of version 2.0 in April 2025. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with my fellow colleagues at Mercury Workshop to help with porting the game.",
     [
       {
         name: "GitHub",
@@ -113,6 +113,8 @@ export const projects = [
         icon: "stadia_controller",
       },
     ],
+    true,
+    2,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/anura.webp",
@@ -127,7 +129,7 @@ export const projects = [
       },
     ],
     true,
-    2,
+    3,
   ),
   new ProjectCardDetails(
     "/proj-thumbnails/mandelapro.webp",
@@ -163,7 +165,7 @@ export const projects = [
   new ProjectCardDetails(
     "/proj-thumbnails/picasso.webp",
     "Picasso",
-    "iOS customization app with 100k+ peak monthly users",
+    "iOS customization app with 100k+ peak MAU",
     2023,
     "Picasso was a customization app for iOS 15.0-17.0, taking advantage of various security vulnerabilities to allow for deep customization. At its peak, it had over 100,000 active users. I worked with sourcelocation to develop it, and it was first released in August 2023 on our own third-party marketplace separate from Apple's App Store.",
     [
@@ -184,7 +186,7 @@ export const projects = [
   new ProjectCardDetails(
     "/proj-thumbnails/appcommander.webp",
     "AppCommander",
-    "App Manager for iOS 15.0-16.1.2",
+    "App Manager for iOS 15.0-18.4",
     2023,
     "AppCommander (v1.x) was an app manager for iOS 15.0-16.1.2, and allowed the user to perform advanced app management using a sandbox escape that utilized the MacDirtyCow vunerability. Some key features included creating app backups, exporting IPA files, clearing app caches, and more. AppCommander 1.0.0 was released in July 2023.",
     [

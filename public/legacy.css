@@ -5,21 +5,19 @@
 * Browsers: last 999 version
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap');
+@import url('/typography.css');
 
 body {
   background: #000000;
   color: #fbf9fb;
-  font-family: Inter, "SF Pro Display", "SF Pro", -apple-system, system-ui,
-    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: "Inter Tight", "Inter", "SF Pro Text", "SF Pro", -apple-system,
-    system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--font-serif), serif;
 }
 
 nav {

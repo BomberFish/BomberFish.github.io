@@ -131,7 +131,7 @@ export const Nav: Component<
 
     subt {
       font-size: 0.7rem;
-	  font-weight: 350;
+      font-weight: 350;
       color: var(--subtext0);
     }
 
@@ -161,8 +161,6 @@ export const Nav: Component<
         display: none;
       }
     }
-
-
 
     @keyframes spin {
         0% {
