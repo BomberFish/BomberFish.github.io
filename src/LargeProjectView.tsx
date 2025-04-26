@@ -98,8 +98,10 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         width: 36px;
         height: 36px;
         border-radius: 38px;
-        background: color-mix(in srgb, var(--surface2) 43%, transparent)!important;
+        background: color-mix(in srgb, var(--surface2) 40%, transparent)!important;
+        transition: background 0.3s ease;
         backdrop-filter: blur(32px);
+        cursor: pointer;
 
         overflow: hidden;
         transition: transform 0.3s ease;
@@ -111,6 +113,10 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
           overflow: hidden;
           transition: width 0.3s ease;
         }
+      }
+
+      button:hover {
+        background: color-mix(in srgb, var(--surface2) 80%, transparent)!important;
       }
 
       // button:hover .label {

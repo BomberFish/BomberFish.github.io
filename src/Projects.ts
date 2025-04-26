@@ -103,14 +103,19 @@ export const projects = [
     "Webleste (formerly celeste-wasm) is a port of the popular platformer game Celeste to WebAssembly. I helped out with it during its initial development in May 2024, and with the development of version 2.0 in April 2025. It is a complete port of the game, using experimental WASM support in .NET and the FNA game engine. I worked with my fellow colleagues at Mercury Workshop to help with porting the game.",
     [
       {
+        name: "Play (v2, Preview)",
+        url: "https://celeste-wasm-threads.pages.dev/",
+        icon: "construction",
+      },
+      {
+        name: "Play (v1)",
+        url: "https://celeste.r58playz.dev",
+        icon: "stadia_controller",
+      },
+      {
         name: "GitHub",
         url: "https://github.com/MercuryWorkshop/celeste-wasm",
         icon: "code",
-      },
-      {
-        name: "Play",
-        url: "https://celeste.r58playz.dev",
-        icon: "stadia_controller",
       },
     ],
     true,
