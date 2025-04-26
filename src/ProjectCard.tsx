@@ -14,13 +14,13 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         transform: scale(1);
         transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         box-shadow: 0 0 0px rgba(24, 24, 37, 0);
-        border: 0.1px dashed var(--overlay1);
+        border: 1px dashed var(--overlay1);
 
         &:hover {
           transform: scale(1.02);
           transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
           box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
-          border: 0.1px dashed var(--accent);
+          border-color: var(--accent);
         }
 
         &:focus,

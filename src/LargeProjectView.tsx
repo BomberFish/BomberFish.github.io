@@ -36,8 +36,6 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         min-width: 400px;
         width: max(55vw, 50rem);
         height: 60vh;
-        padding: 1rem;
-        padding-top: 0;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -78,17 +76,20 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       #title,p {
-        filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.2));
+        filter: drop-shadow(0 0 30px rgb(0, 0, 0));
       }
 
       #title {
         font-size: 4rem;
-        margin-inline: 1rem;
-        margin-block: 0;
-        font-weight: 600;
+        padding-inline: 1.5rem;
+        font-weight: bold;
         text-overflow: ellipsis;
         overflow: hidden;
         font-family: var(--font-serif);
+        line-height: 1em;
+        padding-bottom: 0.25em;
+        margin-bottom: -0.1em;
+        width: 100%;
       }
 
       button {
@@ -98,8 +99,8 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         width: 36px;
         height: 36px;
         border-radius: 38px;
-        background: color-mix(in srgb, var(--surface2) 40%, transparent)!important;
-        transition: background 0.3s ease;
+        background: color-mix(in srgb, var(--surface2) 45%, transparent)!important;
+        transition: background 0.15s ease;
         backdrop-filter: blur(32px);
         cursor: pointer;
 
@@ -116,7 +117,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }
 
       button:hover {
-        background: color-mix(in srgb, var(--surface2) 80%, transparent)!important;
+        background: color-mix(in srgb, var(--surface2) 60%, transparent)!important;
       }
 
       // button:hover .label {
@@ -142,7 +143,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         align-self: flex-end;
         justify-self: center;
         z-index: 3;
-        margin-bottom: 2.2rem;
+        padding-bottom: 1rem;
       }
 
       .head {
