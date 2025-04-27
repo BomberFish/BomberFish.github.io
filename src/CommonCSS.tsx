@@ -36,18 +36,22 @@ export const sharedCSS = css`
   h1,
   h2:not(nav h2) {
     font-family: var(--font-serif);
-    font-weight: 630;
     margin-top: 0.1rem;
     margin-bottom: 0.5rem;
   }
 
   h1 {
-    font-weight: 700;
+    font-weight: bold;
     font-size: 2rem;
   }
 
   h2 {
+    font-weight: regular;
     font-size: 1.5rem;
+  }
+
+  h3 {
+    font-weight: light;
   }
 
   p,

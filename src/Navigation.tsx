@@ -68,13 +68,6 @@ export const Nav: Component<
       -webkit-user-select: none;
     }
 
-    #title {
-      display: flex;
-      align-items: center;
-      justify-self: flex-start;
-      font-family: var(--font-mono);
-    }
-
     h2 {
       justify-self: flex-start;
       margin: 0;
@@ -129,10 +122,19 @@ export const Nav: Component<
       }
     }
 
+    #title {
+      display: flex;
+      align-items: center;
+      justify-self: flex-start;
+      font-family: var(--font-serif);
+      font-weight: bold !important;
+      font-size: 2rem!important;
+    }
+
     subt {
-      font-size: 0.7rem;
-      font-weight: 350;
-      color: var(--subtext0);
+      font-size: 0.875rem !important;
+      font-family: var(--font-mono);
+      margin-top: 0.3em;
     }
 
     #right {
@@ -385,7 +387,7 @@ export const TabBar: Component<
                   },
                   window.matchMedia("(prefers-reduced-motion: reduce)").matches
                     ? 150
-                    : 470,
+                    : 530,
                 );
               }}
             >

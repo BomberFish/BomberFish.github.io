@@ -57,7 +57,7 @@ export const IntroSmall: Component<{}, {}> = function () {
   this.css = `
   h1 {
 	// font-family: var(--font-body)!important;
-    font-size: 3rem!important;
+    font-size: 4rem!important;
     cursor: default;
     font-family: bold;
   }
@@ -83,21 +83,19 @@ export const IntroSmall: Component<{}, {}> = function () {
       </h1>
       <p>i'm hariz, a 16 y/o high school student from canada :3</p>
       <p>
-        i sometimes make <code>use(ful|less)</code> projects and stuff.
+        i sometimes make <code>use(ful|less)</code> projects among other stuff.
       </p>
       <p>
         <br></br>
         as for <code>.* engineering</code>, I'm interested in:
         <ul>
-          <li>hardware (building robots 'n stuff!)</li>
-          <li>microcontrollers</li>
+          <li>embedded systems and hardware</li>
           <li>ios development with swiftui</li>
           <li>
             webdev (as you can tell from this immaculately put-together
             portfolio)
           </li>
-          <li>backend (kinda)</li>
-          <li>and a little bit of security research!</li>
+          <li>...and a little bit of security research!</li>
         </ul>
       </p>
     </section>
@@ -107,11 +105,11 @@ export const IntroSmall: Component<{}, {}> = function () {
 export const About: Component<{}, {}> = function () {
   return (
     <section>
-      <h2>some more about me...</h2>
+      <h2>i'm also...</h2>
       <ul>
-        <li>i was one of the winners of the 2024 swift student challenge</li>
+        <li>one of the winners of the 2024 swift student challenge</li>
         <li>
-          i am fluent in the following programming languages:
+          fluent in the following programming languages:
           <ul>
             <li>swift (the GOAT)</li>
             <li>javascript/typescript</li>
@@ -121,13 +119,17 @@ export const About: Component<{}, {}> = function () {
           </ul>
         </li>
         <li>
-          i'm part of{" "}
+          part of{" "}
           <a href="https://mercurywork.shop" target="blank">
             mercury workshop
           </a>
-          , a team of open-source software developers
+          , a software development team best known for the{" "}
+          <a href="https://sh1mmer.me" target="blank">
+            sh1mmer
+          </a>{" "}
+          chromebook exploit.
         </li>
-        <li>i'm also an amateur music producer! stay tuned for more info!</li>
+        <li>an amateur music producer! stay tuned for more info!</li>
       </ul>
     </section>
   );
@@ -167,7 +169,7 @@ export const Contact: Component<{}, {}> = function () {
           </ul>
         </li>
         <li>
-          <a href="mailto:hariz@bomberfish.ca">Email</a> (hariz@bomberfish.ca)
+          <a href="mailto:hariz@bomberfish.ca">email</a> (hariz@bomberfish.ca)
           <ul>
             <li>
               i might be slow to respond, since i don't check my email often.
@@ -216,7 +218,7 @@ export const Contact: Component<{}, {}> = function () {
 export const SiteMap: Component<{}, {}> = function () {
   return (
     <section>
-      <h2>other things on this site</h2>
+      <h1>other things on this site</h1>
       <ul>
         <li>
           <a href="https://bomberfish.ca/games">/games</a>

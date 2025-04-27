@@ -63,7 +63,7 @@ const App: Component<
     </div>,
     // <Contact />,
     <div>
-      <h2 style="margin-bottom: 0.7em!important;">latest post</h2>
+      <h1 style="margin-bottom: 0.7em!important;">latest post</h1>
       <LatestToot />
     </div>,
     <SiteMap />,
