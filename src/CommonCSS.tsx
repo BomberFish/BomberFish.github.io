@@ -41,17 +41,17 @@ export const sharedCSS = css`
   }
 
   h1 {
-    font-weight: bold;
+    font-weight: normal;
     font-size: 2rem;
   }
 
   h2 {
-    font-weight: regular;
+    font-weight: lighter;
     font-size: 1.5rem;
   }
 
   h3 {
-    font-weight: light;
+    font-weight: lighter;
   }
 
   p,

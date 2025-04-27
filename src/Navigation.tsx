@@ -76,7 +76,7 @@ export const Nav: Component<
       align-items: flex-start;
       margin: 0!important;
       gap: 0.1rem;
-      font-weight: 430;
+      font-weight: normal !important;
       font-size: 1.75rem!important;
 
       /* Nintendo Switch-style 3d spinning text effect */
@@ -127,7 +127,7 @@ export const Nav: Component<
       align-items: center;
       justify-self: flex-start;
       font-family: var(--font-serif);
-      font-weight: bold !important;
+      font-weight: normal !important;
       font-size: 2rem!important;
     }
 
@@ -387,7 +387,7 @@ export const TabBar: Component<
                   },
                   window.matchMedia("(prefers-reduced-motion: reduce)").matches
                     ? 150
-                    : 530,
+                    : 570,
                 );
               }}
             >

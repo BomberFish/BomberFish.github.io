@@ -56,10 +56,9 @@ export const Intro: Component<{}, {}> = function () {
 export const IntroSmall: Component<{}, {}> = function () {
   this.css = `
   h1 {
-	// font-family: var(--font-body)!important;
     font-size: 4rem!important;
     cursor: default;
-    font-family: bold;
+    font-weight: bold!important;
   }
 
   // h1>span {
