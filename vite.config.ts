@@ -8,7 +8,7 @@ export default defineConfig({
     legacy({
       targets: [
         "fully supports flexbox",
-        "partially supports grid",
+        "partially supports css-grid",
         "supports proxy",
         "not dead",
         "BlackBerry 10",
