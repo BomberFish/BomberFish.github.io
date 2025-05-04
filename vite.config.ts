@@ -16,7 +16,7 @@ export default defineConfig({
       ],
     }),
   ],
-  base: "./",
+  base: "",
   build: {
     sourcemap: true,
     cssMinify: "lightningcss",
