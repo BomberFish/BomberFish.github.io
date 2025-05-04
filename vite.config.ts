@@ -7,9 +7,10 @@ export default defineConfig({
     dreamlandPlugin(),
     legacy({
       targets: [
-        "partially supports flexbox",
+        "fully supports flexbox",
+        "partially supports grid",
+        "supports proxy",
         "not dead",
-        "Blackberry 7",
         "BlackBerry 10",
         "Firefox ESR",
       ],
