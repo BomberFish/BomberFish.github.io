@@ -3,7 +3,6 @@ name: Build and Deploy (dreamland.js)
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,20 +25,25 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Install Dependencies
-        run: 'npm i'
+        run: 'pnpm i'
       - name: 'Build'
-        run: 'bash build.sh'
+        run: 'pnpm build'
+      - name: 'Fix router'
+        run: 'cp dist/index.html dist/404.html'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: 'dist'
       - name: Deploy to GitHub Pages
         id: deployment
