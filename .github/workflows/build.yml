@@ -1,4 +1,4 @@
-name: Build & Deploy (DreamlandJS)
+name: Build and Deploy (dreamland.js)
 
 on:
   # Runs on pushes targeting the default branch

@@ -9,12 +9,15 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "terser": "^5.31.3",
-    "typescript": "^5.5.3",
-    "vite": "^5.3.4",
+    "terser": "^5.39.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.4",
     "vite-plugin-minify": "^1.5.2"
   },
   "dependencies": {
-    "dreamland": "0.0.24"
+    "@vitejs/plugin-legacy": "^6.1.1",
+    "dreamland": "^0.0.24",
+    "lightningcss": "^1.29.3",
+    "vite-plugin-dreamland": "^1.2.1"
   }
 }
