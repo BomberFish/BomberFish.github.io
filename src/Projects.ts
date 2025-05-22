@@ -108,6 +108,11 @@ export const projects = [
         icon: "stadia_controller",
       },
       {
+        name: "Writeup",
+        url: "https://velzie.rip/blog/celeste-wasm",
+        icon: "article",
+      },
+      {
         name: "GitHub",
         url: "https://github.com/MercuryWorkshop/celeste-wasm",
         icon: "code",
