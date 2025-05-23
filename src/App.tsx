@@ -3,7 +3,7 @@ console.log(
   'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: -2px -2px 0 #fab387 , -4px -4px 0 #f9e2af , -6px -6px 0 #a6e3a1 , -8px -8px 0 #94e2d5 , -10px -10px 0 #89b4fa , -12px -12px 0 #b4befe , -14px -14px 0 #cba6f7',
 );
 
-import { Component, scope, h } from "dreamland/core";
+import { Component, scope, h, createStore, createState } from "dreamland/core";
 import { ThreeDeeApp } from "./3DSite/ThreeDeeApp.tsx";
 import ProjectCardDetails from "./Project.ts";
 import { ProjectList } from "./ProjectCard.tsx";
@@ -21,7 +21,7 @@ import { oled } from "./Themes";
 // import { Cursor } from "./Cursor.tsx";
 
 // MARK: THEMING
-export let store = $store(
+export let store = createStore(
   {
     theme: oled,
     playMusic: false,
@@ -29,7 +29,7 @@ export let store = $store(
   { ident: "userOptions", backing: "localstorage", autosave: "auto" },
 );
 
-export let globalState = $state({
+export let globalState = createState({
   freakyMode: false,
 });
 
@@ -171,8 +171,7 @@ const App: Component<
     <main
       class={sharedCSS}
       style={{
-        fontFamily: use(globalState.freakyMode, (freak) =>
-          freak ? "Papyrus, cursive!important" : "var(--font-body)",
+        fontFamily: use(globalState.freakyMode ? "Papyrus, cursive!important" : "var(--font-body)",
         ),
       }}
     >
