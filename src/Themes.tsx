@@ -146,8 +146,7 @@ export const ThemePicker: Component<{}, {}> = function (cx) {
 
   return (
     <button
-      on:click={(e: MouseEvent) => {
-        e.preventDefault();
+      on:click={() => {
         let index = themes.indexOf(store.theme ?? oled);
         store.theme = themes[(index + 1) % themes.length];
 

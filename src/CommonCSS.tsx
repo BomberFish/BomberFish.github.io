@@ -1,6 +1,6 @@
-import { cascade } from "dreamland/core";
+import { scope } from "dreamland/core";
 
-export const articleCSS = cascade`
+export const articleCSS = scope`
   width: 100%;
   ul {
     list-style-type: circle;
@@ -13,7 +13,7 @@ export const articleCSS = cascade`
   }
 `;
 
-export const sharedCSS = cascade`
+export const sharedCSS = scope`
   a {
     text-decoration: none!important;
   }
