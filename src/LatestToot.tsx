@@ -7,15 +7,17 @@ export const LatestToot: Component<
   { note: Status; note_orig: Status; replyUser: Account; reblog: boolean; renderRoot: HTMLDivElement }
 > = function (cx) {
   cx.css = scope`
-      padding: 1.5rem;
-      width: 100%;
-      overflow: hidden;
+      :scope {
+        padding: 1.5rem;
+        width: 100%;
+        overflow: hidden;
 
-      background-color: var(--mantle);
-      border-radius: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+        background-color: var(--mantle);
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
 
       .material-symbols-rounded {
       font-size: 1.2rem;

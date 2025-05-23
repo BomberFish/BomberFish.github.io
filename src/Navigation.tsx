@@ -10,30 +10,18 @@ export const Nav: Component<
   this.name = "BomberFish";
   this.nameState = false;
   cx.css = scope`
-    background: var(--base);
-    justify-self: flex-start;
-    z-index: 100;
-    padding: 0.25em 1em;
-    width: min(100vw, max(60vw, 800px));
-    height: 3.75rem;
-    margin: 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+    :scope {
+      background: var(--base);
+      justify-self: flex-start;
+      z-index: 100;
+      padding: 0.25em 1em;
+      width: min(100vw, max(60vw, 800px));
+      height: 3.75rem;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
 
     h2 {
       justify-self: flex-start;
@@ -231,10 +219,12 @@ export const TabBar: Component<
   this.tab = 0;
   this.tabInternal = 0;
   cx.css = scope`
- 	margin-bottom: 1rem;
-    padding-block: 0.5rem;
-	overflow-x: auto;
-	// background: var(--base);
+    :scope {
+      margin-bottom: 1rem;
+      padding-block: 0.5rem;
+      overflow-x: auto;
+      // background: var(--base);
+    }
 
     @keyframes bounce {
         0%, 100% {

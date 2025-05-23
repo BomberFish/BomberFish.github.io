@@ -2,9 +2,11 @@ import { Component, scope, cascade, h } from "dreamland/core";
 
 export const SuperCoolAndEpicDanceFloor: Component<{}, {}> = function (cx) {
   cx.css = scope`
-    display: grid;
-    grid-template-rows: repeat(9, 1fr);
-    grid-template-columns: repeat(7, 1fr);
+    :scope {
+      display: grid;
+      grid-template-rows: repeat(9, 1fr);
+      grid-template-columns: repeat(7, 1fr);
+    }
 
     .tile {
       background: var(--base);

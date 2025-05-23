@@ -1,7 +1,9 @@
 import { scope, cascade } from "dreamland/core";
 
 export const articleCSS = scope`
-  width: 100%;
+  :scope {
+    width: 100%;
+  }
   ul {
     list-style-type: circle;
     padding-inline-start: 2rem;
@@ -13,7 +15,7 @@ export const articleCSS = scope`
   }
 `;
 
-export const sharedCSS = scope`
+export const sharedCSS = cascade`
   a {
     text-decoration: none!important;
   }

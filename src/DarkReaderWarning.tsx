@@ -28,20 +28,22 @@ export const DarkReaderWarning: Component<{}, {}> = function (cx) {
   }
 
   cx.css = scope`
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      background: var(--surface0);
-      color: var(--text);
-      padding: 0.5rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      border-top-left-radius: 0.75rem;
+      :scope {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        background: var(--surface0);
+        color: var(--text);
+        padding: 0.5rem 1rem;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        border-top-left-radius: 0.75rem;
+      }
 
       span {
         color: ${ctpRed()};

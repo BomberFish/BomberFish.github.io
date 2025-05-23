@@ -5,17 +5,19 @@ import { LargeProjectView } from "./LargeProjectView";
 export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
   function (cx) {
     cx.css = scope`
-      background: var(--surface0);
-      width: 100%;
-      min-height: 280px;
-      border-radius: 1rem!important;
-      padding-bottom: 0.2rem;
-      cursor: pointer;
-      transform: scale(1);
-      transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-      --shadow-color: color-mix(in srgb, var(--accent) 30%, transparent);
-      box-shadow: 0 0 0px var(--shadow-color);
-      border: 1px dashed var(--overlay1);
+      :scope {
+        background: var(--surface0);
+        width: 100%;
+        min-height: 280px;
+        border-radius: 1rem!important;
+        padding-bottom: 0.2rem;
+        cursor: pointer;
+        transform: scale(1);
+        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        --shadow-color: color-mix(in srgb, var(--accent) 30%, transparent);
+        box-shadow: 0 0 0px var(--shadow-color);
+        border: 1px dashed var(--overlay1);
+      }
 
       &:hover {
         transform: scale(1.02);

@@ -113,25 +113,28 @@ export const ThemePicker: Component<{}, {}> = function (cx) {
   const themes = [oled, mocha, macchiato, frappe, latte];
 
   cx.css = scope`
-      background: transparent;
-      border-radius: 0.4rem;
-      border: none;
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 1rem;
-      // padding: 0.75rem;
-      cursor: pointer;
-      // position: fixed;
-      // bottom: 0;
-      // right: 0;
-      // z-index: 1000;
+      :scope {
+        background: transparent;
+        border-radius: 0.4rem;
+        border: none;
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: 1rem;
+        // padding: 0.75rem;
+        cursor: pointer;
+        // position: fixed;
+        // bottom: 0;
+        // right: 0;
+        // z-index: 1000;
 
-      display: flex;
-      align-items: center;
+        display: flex;
+        align-items: center;
 
-      user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
 
       .material-symbols-rounded {
         font-size: 1.5rem;

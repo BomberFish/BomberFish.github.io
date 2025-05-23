@@ -54,9 +54,11 @@ export const ThreeDeeApp: Component<
   this.mult = 2;
 
   cx.css = scope`
-    width: 100%;
-    height: 100%;
-    perspective: var(--perspective);
+    :scope {
+      width: 100%;
+      height: 100%;
+      perspective: var(--perspective);
+    }
 
     * {
     image-rendering: pixelated;

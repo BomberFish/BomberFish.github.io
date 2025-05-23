@@ -10,21 +10,23 @@ const CopiedToast: Component<{}, {}> = function (cx) {
   };
 
   cx.css = scope`
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    background-color: var(--surface0);
-    color: var(--text);
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 0.5rem;
-    margin: 1rem;
+    :scope {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      background-color: var(--surface0);
+      color: var(--text);
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      border-radius: 0.5rem;
+      margin: 1rem;
 
-    animation: fadein 0.25s, fadeout 0.25s 1.75s;
+      animation: fadein 0.25s, fadeout 0.25s 1.75s;
 
-    font-weight: 520;
+      font-weight: 520;
+    }
 
     @keyframes fadein {
       from {
@@ -66,10 +68,12 @@ export const WebButton: Component<
   {}
 > = function (cx) {
   cx.css = scope`
-  width: max-content;
-  height: max(31px, 1.9375rem);
-  border: none!important;
-  transition: 0.2s ease!important;
+  :scope {
+    width: max-content;
+    height: max(31px, 1.9375rem);
+    border: none!important;
+    transition: 0.2s ease!important;
+  }
   &:hover {
     scale: 1.05;
     transition: 0.2s ease!important;
@@ -240,9 +244,11 @@ export const Footer: Component<{}, {}> = function (cx) {
 
 const Buttons: Component<{}, {}> = function (cx) {
   cx.css = scope`
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
+  :scope {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+  }
 
 
   #buttons {

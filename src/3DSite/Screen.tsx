@@ -18,10 +18,12 @@ export const Screen: Component<
   }
 > = function (cx) {
   cx.css = scope`
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    :scope {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
 
     width: ${this.width + "px" || "auto"};
     height: ${this.height + "px" || "auto"};

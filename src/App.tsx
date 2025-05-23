@@ -70,19 +70,21 @@ const App: Component<
     <DesignPhilosophy />,
   ];
   cx.css = scope`
-    // background: var(--crust);
-    color: var(--text);
-    font-family: var(--font-body);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    // height: 100vh;
-    max-width: 100vw;
-    overflow-x: hidden;
-    margin-bottom: 1.5rem;
+    :scope {
+      // background: var(--crust);
+      color: var(--text);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      // height: 100vh;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin-bottom: 1.5rem;
+    }
 
     #content {
       background: var(--crust);
