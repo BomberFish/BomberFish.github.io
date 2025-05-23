@@ -26,7 +26,7 @@ export let store = createStore(
     theme: oled,
     playMusic: false,
   },
-  { ident: "userOptions", backing: "localstorage", autosave: "auto" },
+  { ident: "siteOptions", backing: "localstorage", autosave: "auto" },
 );
 
 export let globalState = createState({
@@ -170,10 +170,10 @@ const App: Component<
   return (
     <main
       class={sharedCSS}
-      style={{
-        fontFamily: use(globalState.freakyMode ? "Papyrus, cursive!important" : "var(--font-body)",
-        ),
-      }}
+      // style={{
+      //   fontFamily: use(globalState.freakyMode ? "Papyrus, cursive!important" : "var(--font-body)",
+      //   ),
+      // }}
     >
       <Nav />
       <div id="content">
@@ -199,25 +199,27 @@ const App: Component<
 
 // MARK: WINDOW LOAD
 window.addEventListener("load", async () => {
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      e.preventDefault();
-      document.querySelectorAll(".popup").forEach((popup) => {
-        popup.classList.add("transparent");
-        setTimeout(() => {
-          popup.remove();
-        }, 200);
-      });
-    }
-  });
+  console.debug("onload");
+
+  try {
+    const fnt = new FontFace(
+      "Material Symbols Rounded",
+      "url(https://fonts.gstatic.com/s/materialsymbolsrounded/v181/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxc.woff2)",
+    );
+    document.fonts.add(fnt);
+    fnt.load(); // async load the font to prevent really wanky shit when something that uses it first appears
+  } catch {
+    // ignore
+  }
 
   let params = new URL(window.location.href).searchParams;
   console.debug(params);
+  let app;
   if (params.has("higherdimension")) {
-    let app;
     try {
       app = <ThreeDeeApp />;
     } catch (e) {
+      console.error("Error rendering page:", e);
       (document.querySelector(".no-js")! as HTMLElement).style.display =
         "block";
       document.body.style.margin = "2%";
@@ -234,14 +236,6 @@ window.addEventListener("load", async () => {
       audio.play();
     });
 
-    // const audioCtx = new AudioContext();
-    // const analyser = audioCtx.createAnalyser();
-
-    // const source = audioCtx.createMediaElementSource(audio);
-    // console.debug(source);
-    // source.connect(analyser).connect(audioCtx.destination);
-    // console.debug(source);
-
     if (store.playMusic !== false) {
       console.info("music start");
       audio.play().catch((e) => {
@@ -249,16 +243,15 @@ window.addEventListener("load", async () => {
         document.body.appendChild(<ClickWall />);
         return;
       });
-      // audioCtx.resume();
     }
 
     document.getElementById("app")!.replaceWith(app);
     document.body.classList.add("cool");
   } else {
-    let app;
     try {
       app = <App />;
     } catch (e) {
+      console.error("Error rendering page:", e);
       (document.querySelector(".no-js")! as HTMLElement).style.display =
         "block";
       document.body.style.margin = "2%";
@@ -308,7 +301,17 @@ window.addEventListener("load", async () => {
 
   updatePage();
 
-  // document.body.appendChild(<Cursor />);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      document.querySelectorAll(".popup").forEach((popup) => {
+        popup.classList.add("transparent");
+        setTimeout(() => {
+          popup.remove();
+        }, 200);
+      });
+    }
+  });
 
   setInterval(() => {
     if (
@@ -319,10 +322,4 @@ window.addEventListener("load", async () => {
     }
   }, 1000);
 
-  const fnt = new FontFace(
-    "Material Symbols Rounded",
-    "url(https://fonts.gstatic.com/s/materialsymbolsrounded/v181/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxc.woff2)",
-  );
-  document.fonts.add(fnt);
-  fnt.load(); // async load the font to prevent really wanky shit when something that uses it first appears
 });

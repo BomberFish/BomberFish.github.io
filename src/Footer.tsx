@@ -209,9 +209,8 @@ export const Footer: Component<{}, {}> = function (cx) {
           bomberfish.ca is a <strong>&lt;blink&gt; free zone</strong>.
         </p>
         {/* <br></br> */}
-        {$if(
-          new URL(window.location.href).searchParams.get("higherdimension") ===
-            null && !isMobile(),
+        {(new URL(window.location.href).searchParams.get("higherdimension") ===
+            null && !isMobile()) ?
           <div>
             {/* <div>
                       Pro tip: you can navigate this site with your keyboard! Press{" "}
@@ -232,8 +231,8 @@ export const Footer: Component<{}, {}> = function (cx) {
               <kbd id="k9">a</kbd>
               <a href="/?higherdimension">I'm lazy</a>
             </div>
-          </div>,
-        )}
+          </div> : <div></div>
+        }
       </subt>
     </footer>
   );

@@ -250,7 +250,7 @@ export const MK64Frame: Component<{},{}> = function (cx) {
                   }, 200);
                 }}
               >
-                {$if(!isMobile, <kbd>esc</kbd>)}
+                {isMobile() ? <span></span> : <kbd>esc</kbd>}
                 <span class="material-symbols-rounded">close</span>
               </button>
             </div>

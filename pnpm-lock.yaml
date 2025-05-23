@@ -10,9 +10,9 @@ dependencies:
     version: 6.1.1(terser@5.39.2)(vite@6.3.5)
   dreamland:
     specifier: github:MercuryWorkshop/dreamlandjs#vdom
-    version: github.com/MercuryWorkshop/dreamlandjs/d473396bf9656f839012474394c7d21f0036361b
+    version: github.com/MercuryWorkshop/dreamlandjs/8ef17b1c9eef69da68f6dd52701c5757bd7837bc
   lightningcss:
-    specifier: ^1.29.3
+    specifier: ^1.30.1
     version: 1.30.1
   vite-plugin-dreamland:
     specifier: ^1.2.1
@@ -20,13 +20,13 @@ dependencies:
 
 devDependencies:
   terser:
-    specifier: ^5.39.0
+    specifier: ^5.39.2
     version: 5.39.2
   typescript:
     specifier: ^5.8.3
     version: 5.8.3
   vite:
-    specifier: ^6.3.4
+    specifier: ^6.3.5
     version: 6.3.5(lightningcss@1.30.1)(terser@5.39.2)
   vite-plugin-minify:
     specifier: ^1.5.2
@@ -2148,8 +2148,8 @@ packages:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
     dev: false
 
-  github.com/MercuryWorkshop/dreamlandjs/d473396bf9656f839012474394c7d21f0036361b:
-    resolution: {tarball: https://codeload.github.com/MercuryWorkshop/dreamlandjs/tar.gz/d473396bf9656f839012474394c7d21f0036361b}
+  github.com/MercuryWorkshop/dreamlandjs/8ef17b1c9eef69da68f6dd52701c5757bd7837bc:
+    resolution: {tarball: https://codeload.github.com/MercuryWorkshop/dreamlandjs/tar.gz/8ef17b1c9eef69da68f6dd52701c5757bd7837bc}
     name: dreamland
     version: 0.1.0
     dependencies:

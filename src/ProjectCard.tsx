@@ -147,18 +147,18 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
             aspectRatio: "512 / 277",
           }}
         >
-          {$if(
-            this.detail.img != undefined,
+          {this.detail.img != undefined ? (
             <img
               loading="lazy"
               src={this.detail.img}
               alt={this.detail.blurb}
               referrerpolicy="no-referrer"
               crossorigin="anonymous"
-            />,
+            />
+          ) : (
             <div class="img-placeholder">
               <span class="material-symbols-rounded">broken_image</span>
-            </div>,
+            </div>
           )}
         </div>
         <div class="detail">
@@ -188,21 +188,40 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
       `;
     return (
       <div id="projects-container">
-      <h2>featured</h2>
-      <div class="projects-group">
-        {use(this.projects
-            .filter((project) => project.featured)
-            .sort((a, b) => (a.featuredPosition || 0) - (b.featuredPosition || 0))
-            .map((project) => <ProjectCard detail={project} />),
-        )}
-      </div><br />
-      <h2>other</h2>
-      <div class="projects-group">
-        {use(this.projects
-            .filter((project) => !project.featured)
-            .map((project) => <ProjectCard detail={project} />),
-        )}
-      </div>
+        <h2>featured</h2>
+        <div class="projects-group">
+          {/* {use(
+            this.projects
+              .filter((project) => project.featured)
+              .sort(
+                (a, b) => (a.featuredPosition || 0) - (b.featuredPosition || 0),
+              )
+              .map((project) => <ProjectCard detail={project} />),
+          )} */}
+
+          {use(this.projects).map((projs) => {
+            projs
+              .filter((project) => project.featured)
+              .sort(
+                (a, b) => (a.featuredPosition || 0) - (b.featuredPosition || 0),
+              )
+              .map((project) => <ProjectCard detail={project} />);
+          })}
+        </div>
+        <br />
+        <h2>other</h2>
+        <div class="projects-group">
+          {/* {use(
+            this.projects
+              .filter((project) => !project.featured)
+              .map((project) => <ProjectCard detail={project} />),
+          )} */}
+          {use(this.projects).map((projs) => {
+            projs
+              .filter((project) => !project.featured)
+              .map((project) => <ProjectCard detail={project} />);
+          })}
+        </div>
       </div>
     );
   };

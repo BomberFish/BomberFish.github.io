@@ -313,14 +313,14 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 }, 200);
               }}
             >
-              {$if(!isMobile, <kbd>esc</kbd>)}
+              {isMobile() ? <span></span> : <kbd>esc</kbd>}
               <span class="material-symbols-rounded">close</span>
               <span class="label">Close</span>
             </button>
           </div>
           <article>
-            {$if(this.project.img,
-              (<img
+            {use(this.project.img).andThen(
+                <img
                 loading="lazy"
                 src={this.project.img}
                 // on:click={() => {
@@ -328,8 +328,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 // }}
                 referrerpolicy="no-referrer"
                 crossorigin="anonymous"
-              />),
-            )}
+              />, undefined
+              )
+            }
             <div class="article-inner">
               <div style="flex-grow: 1;" />
               <span id="title">{this.project.title}</span>
@@ -337,14 +338,13 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 <p>{this.project.largeDesc}</p>
 
                 <div class="links">
-                  {$if(
-                    this.project.links?.length === 0,
+                  {use(this.project.links?.length === 0).andThen(
                     <p class="link">
                       <span class="link-inner">
                         <span class="material-symbols-rounded">link_off</span>
                         No links available
                       </span>
-                    </p>,
+                    </p>,undefined
                   )}
 
                   {this.project.links?.map((link) => (
