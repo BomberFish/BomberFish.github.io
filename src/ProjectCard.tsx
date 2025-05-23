@@ -11,106 +11,107 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
       border-radius: 1rem!important;
       padding-bottom: 0.2rem;
       cursor: pointer;
-        transform: scale(1);
+      transform: scale(1);
+      transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+      --shadow-color: color-mix(in srgb, var(--accent) 30%, transparent);
+      box-shadow: 0 0 0px var(--shadow-color);
+      border: 1px dashed var(--overlay1);
+
+      &:hover {
+        transform: scale(1.02);
         transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-        box-shadow: 0 0 0px rgba(24, 24, 37, 0);
-        border: 1px dashed var(--overlay1);
-
-        &:hover {
-          transform: scale(1.02);
-          transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-          box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
-          border-color: var(--accent);
-        }
-
-        &:focus,
-        &:focus-visible {
-          outline: none;
-          border-color: var(--accent)!important;
-          border-style: solid!important;
-          transform: scale(1.05);
-          transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
-          box-shadow: 0 0 20px rgba(24, 24, 37, 0.8);
-        }
-
-        &.active,
-        &:active:focus {
-          transform: scale(0.95);
-          transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
-        }
-
-      transform: translateZ(50px);
-
-      .img-container {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 512 / 277;
+        box-shadow: 0 0 30px var(--shadow-color);
+        border-color: var(--accent);
       }
 
-      img {
-        user-select: none;
-        -webkit-user-drag: none;
-        -webkit-user-select: none;
-        border-radius: 0.9rem;
-        width: calc(100% - 1px);
-        height: calc(100% - 1px);
-        object-fit: cover;
+      &:focus,
+      &:focus-visible {
+        outline: none;
+        border-color: var(--accent)!important;
+        border-style: solid!important;
+        transform: scale(1.05);
+        transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
+        box-shadow: 0 0 20px var(--shadow-color);
       }
 
-      .img-placeholder {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: calc(100% - 1px);
-        height: calc(100% - 1px);
-        border-radius: 0.9rem;
-        background: var(--base);
-        color: var(--subtext0);
-        span {
-          font-size: 3rem;
-        }
+      &.active,
+      &:active:focus {
+        transform: scale(0.95);
+        transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
       }
 
-      .title {
-        display: flex;
-        align-items: center;
-        margin-top: 0.2rem;
-        font-family: var(--font-body);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        font-family: 1rem;
-      }
+    transform: translateZ(50px);
 
-      p {
-        margin: 0!important;
-        margin-top: 0.025rem!important;
-      }
+    .img-container {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 512 / 277;
+    }
 
-      .title > span {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-right: 0.5rem;
-        font-family: var(--font-serif);
-      }
+    img {
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
+      border-radius: 0.9rem;
+      width: calc(100% - 1px);
+      height: calc(100% - 1px);
+      object-fit: cover;
+    }
 
-      .detail {
-        margin: 1rem;
-        margin-top: 0.1rem;
+    .img-placeholder {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: calc(100% - 1px);
+      height: calc(100% - 1px);
+      border-radius: 0.9rem;
+      background: var(--base);
+      color: var(--subtext0);
+      span {
+        font-size: 3rem;
       }
+    }
 
-      p {
-        margin-top: 0.5rem;
-        margin-bottom: 1rem;
-      }
+    .title {
+      display: flex;
+      align-items: center;
+      margin-top: 0.2rem;
+      font-family: var(--font-body);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: 1rem;
+    }
 
-      kbd {
-        position: absolute;
-        right: 1rem;
-        top: 75%;
-        opacity: 0;
-        transition: opacity 0.2s;
-      }
+    p {
+      margin: 0!important;
+      margin-top: 0.025rem!important;
+    }
+
+    .title > span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-right: 0.5rem;
+      font-family: var(--font-serif);
+    }
+
+    .detail {
+      margin: 1rem;
+      margin-top: 0.1rem;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    kbd {
+      position: absolute;
+      right: 1rem;
+      top: 75%;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
     `;
 
     return (

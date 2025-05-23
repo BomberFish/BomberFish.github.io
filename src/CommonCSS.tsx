@@ -18,9 +18,24 @@ export const sharedCSS = css`
     text-decoration: none!important;
   }
 
-  a:not(nav a, :has(img)) {
-    border-bottom: 1px dotted var(--accent);
-    transition: 0.2s border;
+  a:not(:has(img)) {
+    filter: drop-shadow(0 0 0px transparent);
+    transition: 0.25s ease filter;
+
+    &:not(nav a) {
+        border-bottom: 1px dotted var(--accent);
+    }
+
+    &:hover {
+        /* border-bottom-style: solid; */
+        filter: drop-shadow(0 0 4px var(--accent)) brightness(105%) contrast(110%);
+        transition: 0.25s ease filter;
+    }
+
+    &:active {
+        filter: drop-shadow(0 0 0px var(--accent)) brightness(95%) contrast(90%);
+        transition: 0.25s ease filter;
+    }
   }
 
   a,
@@ -37,7 +52,7 @@ export const sharedCSS = css`
   h2:not(nav h2) {
     font-family: var(--font-serif);
     margin-top: 0.1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
 
   h1 {

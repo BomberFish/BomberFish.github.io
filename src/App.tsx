@@ -86,7 +86,7 @@ const App: Component<
 
     #content {
       background: var(--crust);
-      width: 75vw;
+      width: min(100vw, max(60vw, 800px));
       height: 60vh;
       height: min-content;
       border-radius: 0 0 1.2rem 1.2rem;

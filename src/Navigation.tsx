@@ -14,7 +14,7 @@ export const Nav: Component<
     justify-self: flex-start;
     z-index: 100;
     padding: 0.25em 1em;
-    width: 75vw;
+    width: min(100vw, max(60vw, 800px));
     height: 3.75rem;
     margin: 0;
     display: -webkit-box;
@@ -35,43 +35,10 @@ export const Nav: Component<
     -ms-flex-align: center;
     align-items: center;
 
-    img {
-      -webkit-border-radius: 100%;
-      -moz-border-radius: 100%;
-      border-radius: 100%;
-      display: inline;
-      margin-left: 0;
-      margin-right: 0.4em;
-      -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
-      transition: -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
-      -o-transition: -o-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
-      -moz-transition: transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
-        -moz-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
-      transition: transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
-      transition: transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
-        -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
-        -moz-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
-        -o-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
-      -webkit-transform: rotate(0deg);
-      -moz-transform: rotate(0deg);
-      -ms-transform: rotate(0deg);
-      -o-transform: rotate(0deg);
-      transform: rotate(0deg);
-      background: black;
-      padding: 2px;
-
-      width: 2.2rem;
-      height: 2.2rem;
-
-      user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-    }
-
     h2 {
       justify-self: flex-start;
       margin: 0;
-      cursor: pointer;
+      user-select: none;
       display: flex;
       align-items: flex-start;
       margin: 0!important;
@@ -120,6 +87,40 @@ export const Nav: Component<
           animation: none;
         }
       }
+    }
+
+    img {
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      display: inline;
+      margin-left: 0;
+      margin-right: 0.4em;
+      cursor: pointer;
+      -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
+      transition: -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
+      -o-transition: -o-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
+      -moz-transition: transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
+        -moz-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
+      transition: transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
+      transition: transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
+        -webkit-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
+        -moz-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1),
+        -o-transform 0.5s cubic-bezier(0.3, 0, 0.6, 1);
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+      background: black;
+      padding: 2px;
+
+      width: 2.2rem;
+      height: 2.2rem;
+
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-user-select: none;
     }
 
     #title {
@@ -181,7 +182,8 @@ export const Nav: Component<
       <span id="title">
         <img
           src="/favicon.ico"
-          alt="My profile picture"
+          alt="my profile picture"
+          title="click me!"
           style={{ transform: use`rotate(${this.rotation}deg)` }}
           on:click={(e: MouseEvent) => {
             e.preventDefault();
@@ -189,7 +191,7 @@ export const Nav: Component<
             this.rotation -= 1440;
           }}
         />
-        <h2>
+        <h2 aria-label="BomberFish (he/they)">
           <span>b</span>
           <span>o</span>
           <span>m</span>
@@ -308,31 +310,37 @@ export const TabBar: Component<
         border-bottom: 3.25px solid transparent;
         border-radius: 0;
 
-        font-weight: 450;
+        font-weight: 500;
 
-		color: var(--overlay1);
+        color: var(--overlay1);
+        filter: drop-shadow(0 0 10px transparent);
+        scale: 1;
 
-        &.active {
-			color: var(--text);
-			padding-bottom: 1px;
-			border-bottom-color: var(--accent);
-			font-weight: 650;
+        &.selected {
+          filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 70%, transparent));
+     			color: var(--text);
+     			padding-bottom: 1px;
+     			border-bottom-color: var(--accent);
+     			font-weight: 700;
         }
 
-        &:hover:not(.active),
-        &:focus:not(.active) {
-			border-width: 2px;
-			padding-bottom: 0.1em;
-			border-bottom-color: var(--surface2);
+        &:hover:not(.selected),
+        &:focus:not(.selected) {
+          filter: drop-shadow(0 0 10px var(--overlay1));
+     			border-width: 2px;
+     			padding-bottom: 0.1em;
+     			border-bottom-color: var(--surface2);
         }
 
-        &:hover:not(.active) {
-        	weight: 900;
-			color: var(--subtext0);
+        &:hover:not(.selected) {
+        	font-weight: 350;
+          color: var(--subtext0);
         }
 
-        &:active {
-    	    transform: scale(0.95);
+        &:active:not(.selected) {
+   	      scale: 0.95;
+          font-weight: 250;
+          border-width: 1.5px;
         }
 
         &:first-of-type {
@@ -360,7 +368,7 @@ export const TabBar: Component<
               // class={use(this.tabInternal, (tab) => [
               //   tab === index ? "active" : "",
               // ])}
-              class:active={use(this.tabInternal, (tabi) => tabi == index)}
+              class:selected={use(this.tabInternal, (tabi) => tabi == index)}
               on:click={() => {
                 if (this.tabInternal === index) return;
                 this.tabInternal = index;

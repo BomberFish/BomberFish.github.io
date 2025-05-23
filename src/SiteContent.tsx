@@ -14,41 +14,38 @@ export const FullArticle: Component<{}, {}> = function () {
 
 export const Intro: Component<{}, {}> = function () {
   this.css = `
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 2rem;
-  img {
-    height: auto;
-    width: min(20rem, 40%);
-    align-self: flex-start;
-    justify-self: flex-end;
-    float: left;
-    margin-right: 2rem;
-  }
-
-  @media (orientation: portrait) {
     #kawaii {
-      display: none; /* TODO: Figure something out */
+      width: max(20rem, 30%);
+      height: auto;
+      margin: 0 0 1rem 2rem;
     }
-  }
 
-  @media (max-width: 800px) {
-    flex-direction: column;
-    #kawaii {
-      display: none;
+    .intro {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
     }
-  }
+
+    @media (orientation: portrait), (max-width: 800px) {
+      #kawaii {
+        display: none; /* TODO: Figure something out */
+      }
+    }
   `;
 
   return (
     <div>
       <div>
-        <IntroSmall />
+        <div class="intro">
+          <IntroSmall />
+          <img id="kawaii" src="/kawaii.webp" alt="Vtuber-style logo" />
+          <div></div>
+        </div>
         <About />
         <Contact />
       </div>
-      <img id="kawaii" src="/kawaii.webp" alt="Vtuber-style logo" />
     </div>
   );
 };
