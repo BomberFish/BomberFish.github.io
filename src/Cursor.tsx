@@ -1,17 +1,17 @@
-import "dreamland"
+import { Component, scope } from "dreamland/core"
 
-export const Cursor: Component<{}, { x: number; y: number }> = function () {
+export const Cursor: Component<{}, { x: number; y: number }> = function (cx) {
     this.x = 0
     this.y = 0
-    
-    this.mount = () => {
+
+    cx.mount = () => {
         document.addEventListener("mousemove", (e) => {
         this.x = e.clientX
         this.y = e.clientY
         })
     }
-    
-    this.css = `
+
+    cx.css = scope`
         position: fixed;
         top: 0;
         left: 0;
@@ -29,9 +29,9 @@ export const Cursor: Component<{}, { x: number; y: number }> = function () {
         span {
             filter: invert(1);
         }
-        
+
     `
-    
+
     return (
         <div id="cursor" style={use`top: ${this.y}px; left: ${this.x}px;`}>
             <span>+</span>

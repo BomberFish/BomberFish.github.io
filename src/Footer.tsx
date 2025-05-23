@@ -1,15 +1,15 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import isMobile from "./IsMobile";
 import { MK64Frame } from "./N64";
 
-const CopiedToast: Component<{}, {}> = function () {
-  this.mount = () => {
+const CopiedToast: Component<{}, {}> = function (cx) {
+  cx.mount = () => {
     setTimeout(() => {
-      this.root.remove();
+      cx.root.remove();
     }, 2000);
   };
 
-  this.css = `
+  cx.css = scope`
     position: fixed;
     bottom: 0;
     right: 0;
@@ -64,8 +64,8 @@ export const WebButton: Component<
     radius?: string;
   },
   {}
-> = function () {
-  this.css = `
+> = function (cx) {
+  cx.css = scope`
   width: max-content;
   height: max(31px, 1.9375rem);
   border: none!important;
@@ -96,8 +96,8 @@ export const WebButton: Component<
     <a
       href={this.href}
       target="_blank"
-      on:click={(e: MouseEvent) => {
-        this.action!(e);
+      on:click={(event: Event) => {
+        this.action!(event as MouseEvent);
       }}
     >
       <img
@@ -112,8 +112,8 @@ export const WebButton: Component<
   );
 };
 
-export const Footer: Component<{}, {}> = function () {
-  this.css = `
+export const Footer: Component<{}, {}> = function (cx) {
+  cx.css = scope`
       #konami > kbd {
         margin-right: 0.65rem;
 
@@ -239,8 +239,8 @@ export const Footer: Component<{}, {}> = function () {
   );
 };
 
-const Buttons: Component<{}, {}> = function () {
-  this.css = `
+const Buttons: Component<{}, {}> = function (cx) {
+  cx.css = scope`
   width: 100%;
   white-space: nowrap;
   overflow: hidden;

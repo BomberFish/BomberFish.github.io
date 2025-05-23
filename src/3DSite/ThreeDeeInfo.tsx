@@ -1,7 +1,7 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import { DesignPhilosophy } from "../SiteContent";
 
-export const ThreeDeeInfo: Component<{}, {}> = function () {
+export const ThreeDeeInfo: Component<{}, {}> = function (cx) {
   return (
     <article>
       <h2>about the 3d view!</h2>

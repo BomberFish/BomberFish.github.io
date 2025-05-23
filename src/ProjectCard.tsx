@@ -1,10 +1,10 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import ProjectCardDetails from "./Project";
 import { LargeProjectView } from "./LargeProjectView";
 
 export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
-  function () {
-    this.css = `
+  function (cx) {
+    cx.css = scope`
       background: var(--surface0);
       width: 100%;
       min-height: 280px;
@@ -123,17 +123,17 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
             .appendChild(<LargeProjectView project={this.detail} />);
           (document.activeElement as HTMLElement)?.blur();
         }}
-        on:keydown={(e: KeyboardEvent) => {
-          if (e.key === "Enter") {
-            this.root.classList.add("active");
+        on:keydown={(event: Event) => {
+          if ((event as KeyboardEvent).key === "Enter") {
+            cx.root.classList.add("active");
             setTimeout(() => {
               var ptr = new PointerEvent("pointerup", {
                 bubbles: true,
                 cancelable: true,
               });
-              this.root.dispatchEvent(ptr);
+              cx.root.dispatchEvent(ptr);
 
-              this.root.classList.remove("active");
+              cx.root.classList.remove("active");
             }, 200);
           }
         }}
@@ -174,8 +174,8 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
   };
 
 export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
-  function () {
-    this.css = `
+  function (cx) {
+    cx.css = scope`
       .projects-group {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

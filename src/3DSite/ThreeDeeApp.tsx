@@ -1,4 +1,4 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import ProjectCardDetails from "../Project";
 import { projects } from "../Projects";
 import { ProjectList } from "../ProjectCard";
@@ -47,13 +47,13 @@ export const ThreeDeeApp: Component<
     speed: number;
     mult: number;
   }
-> = function () {
+> = function (cx) {
   this.projects = projects;
   this.rotation = 0;
   this.speed = 5;
   this.mult = 2;
 
-  this.css = `
+  cx.css = scope`
     width: 100%;
     height: 100%;
     perspective: var(--perspective);
@@ -121,7 +121,7 @@ export const ThreeDeeApp: Component<
   this.z = -200;
   this.r = -18;
 
-  this.mount = () => {
+  cx.mount = () => {
     // alert(window.innerWidth)
     function easeOutCirc(x: number) {
       return Math.sqrt(1 - Math.pow(x - 1, 2));

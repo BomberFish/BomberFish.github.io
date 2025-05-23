@@ -1,12 +1,12 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import { Account, Status } from "./Status";
 
 // thanks cooleletronis (writabl) for like 90% of this code
 export const LatestToot: Component<
   {},
   { note: Status; note_orig: Status; replyUser: Account; reblog: boolean; renderRoot: HTMLDivElement }
-> = function () {
-  this.css = `
+> = function (cx) {
+  cx.css = scope`
       padding: 1.5rem;
       width: 100%;
       overflow: hidden;
@@ -485,7 +485,7 @@ export const LatestToot: Component<
     return user;
   }
 
-  this.mount = async () => {
+  cx.mount = async () => {
     let notes = await getStatuses("112439434695773843");
     console.log(notes);
     let note = notes[0];
@@ -521,7 +521,7 @@ export const LatestToot: Component<
   };
 
   setTimeout(() => {
-    this.mount!(); // jank workaround
+    cx.mount!(); // jank workaround
   }, 800);
 
   return (
@@ -547,7 +547,7 @@ export const LatestToot: Component<
                   role="button"
                   title="Refresh latest post"
                   on:click={() => {
-                    this.mount!();
+                    cx.mount!();
                     document
                       .getElementById("refresh")!
                       .classList.add("loading");
@@ -605,7 +605,7 @@ export const LatestToot: Component<
               ""
             )}
             {!note.sensitive ? (
-              <p id="note-content" bind:this={use(this.renderRoot)}>
+              <p id="note-content" this={use(this.renderRoot).bind()}>
                 {note.content}
               </p>
             ) : (
@@ -618,7 +618,7 @@ export const LatestToot: Component<
                 <p
                   id="note-content"
                   class="sensitive"
-                  bind:this={use(this.renderRoot)}
+                  this={use(this.renderRoot).bind()}
                 >
                   {note.content}
                 </p>

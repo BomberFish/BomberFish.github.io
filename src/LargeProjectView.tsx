@@ -1,17 +1,17 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import ProjectCardDetails from "./Project.ts";
 import isMobile from "./IsMobile.ts";
 
 // TODO: Use <dialog>
 export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
-  function () {
-    this.mount = () => {
+  function (cx) {
+    cx.mount = () => {
       setTimeout(() => {
-        this.root.classList.remove("transparent");
+        cx.root.classList.remove("transparent");
       }, 1);
     };
 
-    this.css = `
+    cx.css = scope`
       position: fixed;
       top: 0;
       left: 0;
@@ -296,9 +296,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         <div
           class="popup-bg"
           on:click={() => {
-            this.root.classList.add("transparent");
+            cx.root.classList.add("transparent");
             setTimeout(() => {
-              this.root.remove();
+              cx.root.remove();
             }, 200);
           }}
         ></div>
@@ -307,9 +307,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
             <div></div>
             <button
               on:click={() => {
-                this.root.classList.add("transparent");
+                cx.root.classList.add("transparent");
                 setTimeout(() => {
-                  this.root.remove();
+                  cx.root.remove();
                 }, 200);
               }}
             >

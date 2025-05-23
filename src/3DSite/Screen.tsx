@@ -1,4 +1,4 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 
 export const Screen: Component<
   {
@@ -16,8 +16,8 @@ export const Screen: Component<
   {
     children: Element;
   }
-> = function () {
-  this.css = `
+> = function (cx) {
+  cx.css = scope`
     position: absolute;
     top: 0;
     left: 0;
@@ -60,13 +60,13 @@ export const Screen: Component<
   this.ry ||= 0;
   this.rz ||= 0;
 
-  this.mount = () => {
+  cx.mount = () => {
     // works around a bug i will fix later
     useChange(
       use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${this.z || 0
         }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${this.rz || 0
         }deg`,
-      (v) => ((this.root as HTMLElement).style.cssText = v)
+      (v) => ((cx.root as HTMLElement).style.cssText = v)
     );
   };
 

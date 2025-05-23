@@ -1,15 +1,15 @@
-import "dreamland";
+import { Component, scope, h, DLBoundPointer } from "dreamland/core";
 import { ThemePicker } from "./Themes";
 import { convertRemToPixels } from "./Utils";
 
 export const Nav: Component<
   {},
   { rotation: number; name: string; nameState: boolean }
-> = function () {
+> = function (cx) {
   this.rotation = 0;
   this.name = "BomberFish";
   this.nameState = false;
-  this.css = `
+  cx.css = scope`
     background: var(--base);
     justify-self: flex-start;
     z-index: 100;
@@ -185,8 +185,8 @@ export const Nav: Component<
           alt="my profile picture"
           title="click me!"
           style={{ transform: use`rotate(${this.rotation}deg)` }}
-          on:click={(e: MouseEvent) => {
-            e.preventDefault();
+          on:click={(event: Event) => {
+            event.preventDefault();
             console.log("click");
             this.rotation -= 1440;
           }}
@@ -225,12 +225,12 @@ export const Nav: Component<
 };
 
 export const TabBar: Component<
-  { tabs: string[]; tab?: number },
+  { tabs: string[]; tab: DLBoundPointer<number> },
   { tabInternal: number }
-> = function () {
+> = function (cx) {
   this.tab = 0;
   this.tabInternal = 0;
-  this.css = `
+  cx.css = scope`
  	margin-bottom: 1rem;
     padding-block: 0.5rem;
 	overflow-x: auto;

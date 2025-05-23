@@ -1,14 +1,14 @@
-import 'dreamland'
+import { Component, scope } from "dreamland/core";
 import isMobile from "./IsMobile.ts";
 
-export const MK64Frame: Component<{},{}> = function() {
-    this.mount = () => {
+export const MK64Frame: Component<{},{}> = function (cx) {
+    cx.mount = () => {
         setTimeout(() => {
-          this.root.classList.remove("transparent");
+          cx.root.classList.remove("transparent");
         }, 1);
       };
 
-      this.css = `
+      cx.css = scope`
         position: fixed;
         top: 0;
         left: 0;
@@ -232,9 +232,9 @@ export const MK64Frame: Component<{},{}> = function() {
           <div
             class="popup-bg"
             on:click={() => {
-              this.root.classList.add("transparent");
+              cx.root.classList.add("transparent");
               setTimeout(() => {
-                this.root.remove();
+                cx.root.remove();
               }, 200);
             }}
           ></div>
@@ -244,9 +244,9 @@ export const MK64Frame: Component<{},{}> = function() {
 
               <button
                 on:click={() => {
-                  this.root.classList.add("transparent");
+                  cx.root.classList.add("transparent");
                   setTimeout(() => {
-                    this.root.remove();
+                    cx.root.remove();
                   }, 200);
                 }}
               >

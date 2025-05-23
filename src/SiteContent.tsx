@@ -1,7 +1,7 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import { articleCSS } from "./CommonCSS";
 
-export const FullArticle: Component<{}, {}> = function () {
+export const FullArticle: Component<{}, {}> = function (cx) {
   return (
     <article class={articleCSS}>
       <IntroSmall />
@@ -12,8 +12,8 @@ export const FullArticle: Component<{}, {}> = function () {
   );
 };
 
-export const Intro: Component<{}, {}> = function () {
-  this.css = `
+export const Intro: Component<{}, {}> = function (cx) {
+  cx.css = scope`
     #kawaii {
       width: max(20rem, 30%);
       height: auto;
@@ -50,8 +50,8 @@ export const Intro: Component<{}, {}> = function () {
   );
 };
 
-export const IntroSmall: Component<{}, {}> = function () {
-  this.css = `
+export const IntroSmall: Component<{}, {}> = function (cx) {
+  cx.css = scope`
   h1 {
     font-size: 4rem!important;
     cursor: default;
@@ -98,7 +98,7 @@ export const IntroSmall: Component<{}, {}> = function () {
   );
 };
 
-export const About: Component<{}, {}> = function () {
+export const About: Component<{}, {}> = function (cx) {
   return (
     <section>
       <h2>i'm also...</h2>
@@ -131,7 +131,7 @@ export const About: Component<{}, {}> = function () {
   );
 };
 
-export const Contact: Component<{}, {}> = function () {
+export const Contact: Component<{}, {}> = function (cx) {
   return (
     <section>
       <h2>get in touch!</h2>
@@ -211,7 +211,7 @@ export const Contact: Component<{}, {}> = function () {
   );
 };
 
-export const SiteMap: Component<{}, {}> = function () {
+export const SiteMap: Component<{}, {}> = function (cx) {
   return (
     <section>
       <h1>other things on this site</h1>
@@ -230,7 +230,7 @@ export const SiteMap: Component<{}, {}> = function () {
   );
 };
 
-export const DesignPhilosophy: Component<{}, {}> = function () {
+export const DesignPhilosophy: Component<{}, {}> = function (cx) {
   return (
     <section>
       <h2>website design philosophy</h2>

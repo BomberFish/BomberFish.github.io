@@ -1,7 +1,7 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 
-export const ClickWall: Component<{}, {}> = function () {
-  this.css = `
+export const ClickWall: Component<{}, {}> = function (cx) {
+  cx.css = scope`
     position: absolute;
     top: 0;
     left: 0;
@@ -15,7 +15,7 @@ export const ClickWall: Component<{}, {}> = function () {
     place-items: center;
     font-size: 3rem;
     transition: 0.4s;
-    
+
 
     &.transparent {
       background: rgba(255, 255, 255, 0);
@@ -30,9 +30,9 @@ export const ClickWall: Component<{}, {}> = function () {
   return (
     <div
       on:click={() => {
-        this.root.classList.add("transparent");
+        cx.root.classList.add("transparent");
         setTimeout(() => {
-          this.root.remove();
+          cx.root.remove();
         }, 400);
         document.dispatchEvent(new Event("music-restart"));
       }}

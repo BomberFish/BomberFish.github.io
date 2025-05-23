@@ -1,13 +1,13 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 
-export const DarkReaderWarning: Component<{}, {}> = function () {
-  this.mount = () => {
+export const DarkReaderWarning: Component<{}, {}> = function (cx) {
+  cx.mount = () => {
     setInterval(() => {
       if (
         !document.documentElement.getAttribute("data-darkreader-mode") ||
         !document.documentElement.getAttribute("data-darkreader-scheme")
       ) {
-        this.root.remove();
+        cx.root.remove();
       }
     });
   };
@@ -27,7 +27,7 @@ export const DarkReaderWarning: Component<{}, {}> = function () {
     }
   }
 
-  this.css = `
+  cx.css = scope`
       position: fixed;
       bottom: 0;
       right: 0;
@@ -42,11 +42,11 @@ export const DarkReaderWarning: Component<{}, {}> = function () {
       justify-content: center;
       gap: 0.75rem;
       border-top-left-radius: 0.75rem;
-  
+
       span {
         color: ${ctpRed()};
       }
-  
+
     `;
 
   return (

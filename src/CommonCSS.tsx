@@ -1,6 +1,6 @@
-import "dreamland";
+import { cascade } from "dreamland/core";
 
-export const articleCSS = css`
+export const articleCSS = cascade`
   width: 100%;
   ul {
     list-style-type: circle;
@@ -13,7 +13,7 @@ export const articleCSS = css`
   }
 `;
 
-export const sharedCSS = css`
+export const sharedCSS = cascade`
   a {
     text-decoration: none!important;
   }

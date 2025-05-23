@@ -1,4 +1,4 @@
-import "dreamland";
+import { Component, scope, h } from "dreamland/core";
 import { store } from "./App";
 
 export const oled = {
@@ -112,11 +112,11 @@ export function updatePage() {
 	document.body.classList.add(store.theme.shortName);
 }
 
-export const ThemePicker: Component<{}, {}> = function () {
+export const ThemePicker: Component<{}, {}> = function (cx) {
 
 	const themes = [oled, mocha, macchiato, frappe, latte];
 
-	this.css = `
+	cx.css = scope`
       background: transparent;
       border-radius: 0.4rem;
       border: none;
