@@ -88,13 +88,13 @@
 @font-face {
     font-family: "Apple Garamond";
     src: url("/fonts/serif/AppleGaramond Bd.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
-    font-weight: bold;
+    font-weight: bolder;
     font-style: normal;
 }
 @font-face {
     font-family: "Apple Garamond";
     src: url("/fonts/serif/AppleGaramond BdIt.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
-    font-weight: bold;
+    font-weight: bolder;
     font-style: italic;
 }
 @font-face {
