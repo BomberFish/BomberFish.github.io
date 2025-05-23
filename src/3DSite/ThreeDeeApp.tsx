@@ -1,9 +1,8 @@
-import "dreamland";
+import { Component, scope, cascade, h } from "dreamland/core";
 import ProjectCardDetails from "../Project";
 import { projects } from "../Projects";
 import { ProjectList } from "../ProjectCard";
 import { Screen } from "./Screen";
-import { sharedCSS } from "../CommonCSS";
 import { store } from "../App";
 import { ThreeDeeInfo } from "./ThreeDeeInfo";
 import { FullArticle } from "../SiteContent";
@@ -47,16 +46,18 @@ export const ThreeDeeApp: Component<
     speed: number;
     mult: number;
   }
-> = function () {
+> = function (cx) {
   this.projects = projects;
   this.rotation = 0;
   this.speed = 5;
   this.mult = 2;
 
-  this.css = `
-    width: 100%;
-    height: 100%;
-    perspective: var(--perspective);
+  cx.css = scope`
+    :scope {
+      width: 100%;
+      height: 100%;
+      perspective: var(--perspective);
+    }
 
     * {
     image-rendering: pixelated;
@@ -121,7 +122,7 @@ export const ThreeDeeApp: Component<
   this.z = -200;
   this.r = -18;
 
-  this.mount = () => {
+  cx.mount = () => {
     // alert(window.innerWidth)
     function easeOutCirc(x: number) {
       return Math.sqrt(1 - Math.pow(x - 1, 2));
@@ -258,7 +259,7 @@ export const ThreeDeeApp: Component<
   };
 
   return (
-    <main class={sharedCSS}>
+    <main>
       <debug>
         <a href="./" style="color: var(--accent)">
           <span class="material-symbols-rounded">arrow_back</span> back to
@@ -278,7 +279,7 @@ export const ThreeDeeApp: Component<
           min="0.1"
           max="200"
           id="speed"
-          value={use(this.speed, (v) => v * 10)}
+          value={use(this.speed).map((v: any) => v * 10)}
           on:change={() => {
             this.speed =
               +(document.getElementById("speed") as HTMLInputElement).value /
@@ -290,31 +291,31 @@ export const ThreeDeeApp: Component<
             this.x = numberInput("Enter new position", this.x);
           }}
         >
-          x: {use(this.x, (v) => v.toFixed(2))}
+          x: {use(this.x).map((v: any) => v.toFixed(2))}
         </div>
         <div
           on:pointerdown={() => {
             this.y = numberInput("Enter new position", this.y);
           }}
         >
-          y: {use(this.y, (v) => v.toFixed(2))}
+          y: {use(this.y).map((v: any) => v.toFixed(2))}
         </div>
         <div
           on:pointerdown={() => {
             this.z = numberInput("Enter new position", this.z);
           }}
         >
-          z: {use(this.z, (v) => v.toFixed(2))}
+          z: {use(this.z).map((v: any) => v.toFixed(2))}
         </div>
         <div
           on:pointerdown={() => {
             this.r = numberInput("Enter new position", this.r);
           }}
         >
-          r: {use(this.r, (v) => v.toFixed(2))}
+          r: {use(this.r).map((v: any) => v.toFixed(2))}
         </div>
         <br></br>
-        {use(store.playMusic, (v) => (
+        {use(store.playMusic).map((v: any) =>
           <div
             on:click={() => {
               store.playMusic = !store.playMusic;
@@ -327,7 +328,7 @@ export const ThreeDeeApp: Component<
               {v !== false ? "volume_up" : "volume_off"}
             </span>
           </div>
-        ))}
+        )}
       </debug>
       <camera
         style={{

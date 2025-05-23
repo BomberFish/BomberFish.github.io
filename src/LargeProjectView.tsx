@@ -1,28 +1,30 @@
-import "dreamland";
+import { Component, scope, cascade, h } from "dreamland/core";
 import ProjectCardDetails from "./Project.ts";
 import isMobile from "./IsMobile.ts";
 
 // TODO: Use <dialog>
 export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
-  function () {
-    this.mount = () => {
+  function (cx) {
+    cx.mount = () => {
       setTimeout(() => {
-        this.root.classList.remove("transparent");
+        cx.root.classList.remove("transparent");
       }, 1);
     };
 
-    this.css = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 100;
-      width: 100vw;
-      height: 100vh;
-      transform: translateZ(100px);
+    cx.css = scope`
+      :scope {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        width: 100vw;
+        height: 100vh;
+        transform: translateZ(100px);
 
-      transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+        transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
+      }
 
    	  @media (orientation: landscape) {
    	 	.inner {
@@ -296,9 +298,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
         <div
           class="popup-bg"
           on:click={() => {
-            this.root.classList.add("transparent");
+            cx.root.classList.add("transparent");
             setTimeout(() => {
-              this.root.remove();
+              cx.root.remove();
             }, 200);
           }}
         ></div>
@@ -307,20 +309,20 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
             <div></div>
             <button
               on:click={() => {
-                this.root.classList.add("transparent");
+                cx.root.classList.add("transparent");
                 setTimeout(() => {
-                  this.root.remove();
+                  cx.root.remove();
                 }, 200);
               }}
             >
-              {$if(!isMobile, <kbd>esc</kbd>)}
+              {isMobile() ? <span></span> : <kbd>esc</kbd>}
               <span class="material-symbols-rounded">close</span>
               <span class="label">Close</span>
             </button>
           </div>
           <article>
-            {$if(this.project.img,
-              (<img
+            {use(this.project.img).andThen(
+                <img
                 loading="lazy"
                 src={this.project.img}
                 // on:click={() => {
@@ -328,8 +330,9 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 // }}
                 referrerpolicy="no-referrer"
                 crossorigin="anonymous"
-              />),
-            )}
+              />, undefined
+              )
+            }
             <div class="article-inner">
               <div style="flex-grow: 1;" />
               <span id="title">{this.project.title}</span>
@@ -337,14 +340,13 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
                 <p>{this.project.largeDesc}</p>
 
                 <div class="links">
-                  {$if(
-                    this.project.links?.length === 0,
+                  {use(this.project.links?.length === 0).andThen(
                     <p class="link">
                       <span class="link-inner">
                         <span class="material-symbols-rounded">link_off</span>
                         No links available
                       </span>
-                    </p>,
+                    </p>,undefined
                   )}
 
                   {this.project.links?.map((link) => (

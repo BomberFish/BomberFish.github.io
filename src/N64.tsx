@@ -1,23 +1,25 @@
-import 'dreamland'
+import { Component, scope, cascade } from "dreamland/core";
 import isMobile from "./IsMobile.ts";
 
-export const MK64Frame: Component<{},{}> = function() {
-    this.mount = () => {
+export const MK64Frame: Component<{},{}> = function (cx) {
+    cx.mount = () => {
         setTimeout(() => {
-          this.root.classList.remove("transparent");
+          cx.root.classList.remove("transparent");
         }, 1);
       };
 
-      this.css = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 100;
-        width: 100vw;
-        height: 100vh;
-        transform: translateZ(100px);
+      cx.css = scope`
+        :scope {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 100;
+          width: 100vw;
+          height: 100vh;
+          transform: translateZ(100px);
+        }
 
         transition: 0.2s cubic-bezier(0.3, 0, 0.6, 1);
 
@@ -232,9 +234,9 @@ export const MK64Frame: Component<{},{}> = function() {
           <div
             class="popup-bg"
             on:click={() => {
-              this.root.classList.add("transparent");
+              cx.root.classList.add("transparent");
               setTimeout(() => {
-                this.root.remove();
+                cx.root.remove();
               }, 200);
             }}
           ></div>
@@ -244,13 +246,13 @@ export const MK64Frame: Component<{},{}> = function() {
 
               <button
                 on:click={() => {
-                  this.root.classList.add("transparent");
+                  cx.root.classList.add("transparent");
                   setTimeout(() => {
-                    this.root.remove();
+                    cx.root.remove();
                   }, 200);
                 }}
               >
-                {$if(!isMobile, <kbd>esc</kbd>)}
+                {isMobile() ? <span></span> : <kbd>esc</kbd>}
                 <span class="material-symbols-rounded">close</span>
               </button>
             </div>

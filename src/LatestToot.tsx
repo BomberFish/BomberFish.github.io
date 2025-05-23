@@ -1,21 +1,23 @@
-import "dreamland";
+import { Component, scope, cascade, h } from "dreamland/core";
 import { Account, Status } from "./Status";
 
 // thanks cooleletronis (writabl) for like 90% of this code
 export const LatestToot: Component<
   {},
   { note: Status; note_orig: Status; replyUser: Account; reblog: boolean; renderRoot: HTMLDivElement }
-> = function () {
-  this.css = `
-      padding: 1.5rem;
-      width: 100%;
-      overflow: hidden;
+> = function (cx) {
+  cx.css = scope`
+      :scope {
+        padding: 1.5rem;
+        width: 100%;
+        overflow: hidden;
 
-      background-color: var(--mantle);
-      border-radius: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+        background-color: var(--mantle);
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
 
       .material-symbols-rounded {
       font-size: 1.2rem;
@@ -485,7 +487,7 @@ export const LatestToot: Component<
     return user;
   }
 
-  this.mount = async () => {
+  cx.mount = async () => {
     let notes = await getStatuses("112439434695773843");
     console.log(notes);
     let note = notes[0];
@@ -521,12 +523,12 @@ export const LatestToot: Component<
   };
 
   setTimeout(() => {
-    this.mount!(); // jank workaround
+    cx.mount!(); // jank workaround
   }, 800);
 
   return (
     <div>
-      {use(this.note, (note) =>
+      {use(this.note).map(note =>
         note ? (
           <div class="toot">
             <div class="top">
@@ -547,7 +549,7 @@ export const LatestToot: Component<
                   role="button"
                   title="Refresh latest post"
                   on:click={() => {
-                    this.mount!();
+                    cx.mount!();
                     document
                       .getElementById("refresh")!
                       .classList.add("loading");
@@ -605,7 +607,7 @@ export const LatestToot: Component<
               ""
             )}
             {!note.sensitive ? (
-              <p id="note-content" bind:this={use(this.renderRoot)}>
+              <p id="note-content" this={use(this.renderRoot).bind()}>
                 {note.content}
               </p>
             ) : (
@@ -618,7 +620,7 @@ export const LatestToot: Component<
                 <p
                   id="note-content"
                   class="sensitive"
-                  bind:this={use(this.renderRoot)}
+                  this={use(this.renderRoot).bind()}
                 >
                   {note.content}
                 </p>
