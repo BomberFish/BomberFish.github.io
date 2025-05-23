@@ -189,7 +189,7 @@ const App: Component<
           tab={use(this.selectedTab).bind()}
         />
         <article id="mainarticle" class={articleCSS}>
-          {use(this.selectedTab, (tab) => this.elements[tab])}
+          {use(this.elements[this.selectedTab])}
         </article>
         <br></br>
         <Footer />

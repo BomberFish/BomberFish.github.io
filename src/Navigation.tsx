@@ -362,8 +362,7 @@ export const TabBar: Component<
   return (
     <div id="tabs">
       <div>
-        {use(this.tabs, (tabs) =>
-          tabs.map((tab, index) => (
+        {use(this.tabs.map((tab, index) => (
             <button
               // class={use(this.tabInternal, (tab) => [
               //   tab === index ? "active" : "",

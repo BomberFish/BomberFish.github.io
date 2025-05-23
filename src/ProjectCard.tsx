@@ -190,8 +190,7 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
       <div id="projects-container">
       <h2>featured</h2>
       <div class="projects-group">
-        {use(this.projects, (projects) =>
-          projects
+        {use(this.projects
             .filter((project) => project.featured)
             .sort((a, b) => (a.featuredPosition || 0) - (b.featuredPosition || 0))
             .map((project) => <ProjectCard detail={project} />),
@@ -199,8 +198,7 @@ export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
       </div><br />
       <h2>other</h2>
       <div class="projects-group">
-        {use(this.projects, (projects) =>
-          projects
+        {use(this.projects
             .filter((project) => !project.featured)
             .map((project) => <ProjectCard detail={project} />),
         )}

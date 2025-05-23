@@ -278,7 +278,7 @@ export const ThreeDeeApp: Component<
           min="0.1"
           max="200"
           id="speed"
-          value={use(this.speed, (v) => v * 10)}
+          value={use`${this.speed * 10}`}
           on:change={() => {
             this.speed =
               +(document.getElementById("speed") as HTMLInputElement).value /
@@ -290,31 +290,31 @@ export const ThreeDeeApp: Component<
             this.x = numberInput("Enter new position", this.x);
           }}
         >
-          x: {use(this.x, (v) => v.toFixed(2))}
+          x: {use`${this.x.toFixed(2)}`}
         </div>
         <div
           on:pointerdown={() => {
             this.y = numberInput("Enter new position", this.y);
           }}
         >
-          y: {use(this.y, (v) => v.toFixed(2))}
+          y: {use`${this.y.toFixed(2)}`}
         </div>
         <div
           on:pointerdown={() => {
             this.z = numberInput("Enter new position", this.z);
           }}
         >
-          z: {use(this.z, (v) => v.toFixed(2))}
+          z: {use`${this.z.toFixed(2)}`}
         </div>
         <div
           on:pointerdown={() => {
             this.r = numberInput("Enter new position", this.r);
           }}
         >
-          r: {use(this.r, (v) => v.toFixed(2))}
+          r: {use`${this.r.toFixed(2)}`}
         </div>
         <br></br>
-        {use(store.playMusic, (v) => (
+        {use(store.playMusic, (v: any) => (
           <div
             on:click={() => {
               store.playMusic = !store.playMusic;
