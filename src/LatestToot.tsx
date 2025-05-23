@@ -526,7 +526,7 @@ export const LatestToot: Component<
 
   return (
     <div>
-      {use(this.note, (note) =>
+      {use(this.note).map(note =>
         note ? (
           <div class="toot">
             <div class="top">

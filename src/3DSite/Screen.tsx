@@ -1,7 +1,8 @@
-import { Component, scope, h } from "dreamland/core";
+import { DLPointer, Component, scope, h, DLBasePointer } from "dreamland/core";
 
 export const Screen: Component<
   {
+    children: HTMLElement;
     x?: number;
     y?: number;
     z?: number;
@@ -14,7 +15,6 @@ export const Screen: Component<
     nomove?: boolean;
   },
   {
-    children: Element;
   }
 > = function (cx) {
   cx.css = scope`
@@ -62,12 +62,21 @@ export const Screen: Component<
 
   cx.mount = () => {
     // works around a bug i will fix later
-    useChange(
-      use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${this.z || 0
-        }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${this.rz || 0
-        }deg`,
-      (v) => ((cx.root as HTMLElement).style.cssText = v)
-    );
+    // useChange(
+    //   use`--pX: ${this.x || 0}; --pY: ${this.y || 0}; --pZ: ${this.z || 0
+    //     }; --rX: ${this.rx || 0}deg; --rY: ${this.ry || 0}deg; --rZ: ${this.rz || 0
+    //     }deg`,
+    //   (v: any) => ((cx.root as HTMLElement).style.cssText = v)
+    // );
+
+    use(this.x).zip(use(this.y), use(this.z), use(this.rx), use(this.ry), use(this.rz)).listen(([x, y, z, rx, ry, rz]) => {
+      cx.root.style.setProperty("--pX", `${x}px`);
+      cx.root.style.setProperty("--pY", `${y}px`);
+      cx.root.style.setProperty("--pZ", `${z}px`);
+      cx.root.style.setProperty("--rX", `${rx}deg`);
+      cx.root.style.setProperty("--rY", `${ry}deg`);
+      cx.root.style.setProperty("--rZ", `${rz}deg`);
+    });
   };
 
   return (
