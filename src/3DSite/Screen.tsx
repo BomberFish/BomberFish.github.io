@@ -23,15 +23,15 @@ export const Screen: Component<
       top: 0;
       left: 0;
       bottom: 0;
+
+      width: ${this.width + "px" || "auto"};
+      height: ${this.height + "px" || "auto"};
+
+      transition: 0.75s transform ease-out;
+
+      transform-origin: 50% 0;
+      transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
     }
-
-    width: ${this.width + "px" || "auto"};
-    height: ${this.height + "px" || "auto"};
-
-    transition: 0.75s transform ease-out;
-
-    transform-origin: 50% 0;
-    transform: rotateX(calc(var(--rX))) rotateY(calc(var(--rY))) rotateZ(calc(var(--rZ))) translate3d(calc(var(--pX)*var(--gridsize)),calc(var(--pY)*var(--gridsize)),calc(var(--pZ)*var(--gridsize)));
 
     article {
       background: color-mix(in srgb, var(--crust), transparent 20%);
