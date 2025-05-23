@@ -3,7 +3,6 @@ import ProjectCardDetails from "../Project";
 import { projects } from "../Projects";
 import { ProjectList } from "../ProjectCard";
 import { Screen } from "./Screen";
-import { sharedCSS } from "../CommonCSS";
 import { store } from "../App";
 import { ThreeDeeInfo } from "./ThreeDeeInfo";
 import { FullArticle } from "../SiteContent";
@@ -260,7 +259,7 @@ export const ThreeDeeApp: Component<
   };
 
   return (
-    <main class={sharedCSS}>
+    <main>
       <debug>
         <a href="./" style="color: var(--accent)">
           <span class="material-symbols-rounded">arrow_back</span> back to

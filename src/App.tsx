@@ -10,7 +10,7 @@ import { ProjectList } from "./ProjectCard.tsx";
 import { projects } from "./Projects.ts";
 import { ClickWall } from "./3DSite/ClickWall.tsx";
 import { DarkReaderWarning } from "./DarkReaderWarning.tsx";
-import { sharedCSS, articleCSS } from "./CommonCSS.tsx";
+import { articleCSS } from "./CommonCSS.tsx";
 import { updatePage } from "./Themes";
 import { Intro, SiteMap, DesignPhilosophy } from "./SiteContent.tsx";
 import { convertRemToPixels } from "./Utils.ts";
@@ -171,7 +171,6 @@ const App: Component<
 
   return (
     <main
-      class={sharedCSS}
       // style={{
       //   fontFamily: use(globalState.freakyMode ? "Papyrus, cursive!important" : "var(--font-body)",
       //   ),
