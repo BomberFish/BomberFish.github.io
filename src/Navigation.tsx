@@ -1,4 +1,4 @@
-import { Component, scope, h, DLBoundPointer } from "dreamland/core";
+import { Component, scope, cascade, h, DLBoundPointer } from "dreamland/core";
 import { ThemePicker } from "./Themes";
 import { convertRemToPixels } from "./Utils";
 

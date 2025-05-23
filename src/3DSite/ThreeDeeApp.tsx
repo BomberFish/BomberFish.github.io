@@ -1,4 +1,4 @@
-import { Component, scope, h } from "dreamland/core";
+import { Component, scope, cascade, h } from "dreamland/core";
 import ProjectCardDetails from "../Project";
 import { projects } from "../Projects";
 import { ProjectList } from "../ProjectCard";

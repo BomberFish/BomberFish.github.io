@@ -1,4 +1,4 @@
-import { scope } from "dreamland/core";
+import { scope, cascade } from "dreamland/core";
 
 export const articleCSS = scope`
   width: 100%;

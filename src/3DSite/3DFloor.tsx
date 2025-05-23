@@ -1,4 +1,4 @@
-import { Component, scope, h } from "dreamland/core";
+import { Component, scope, cascade, h } from "dreamland/core";
 
 export const SuperCoolAndEpicDanceFloor: Component<{}, {}> = function (cx) {
   cx.css = scope`

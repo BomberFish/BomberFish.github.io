@@ -1,4 +1,4 @@
-import { DLPointer, Component, scope, h, DLBasePointer } from "dreamland/core";
+import { DLPointer, Component, scope, cascade, h, DLBasePointer } from "dreamland/core";
 
 export const Screen: Component<
   {

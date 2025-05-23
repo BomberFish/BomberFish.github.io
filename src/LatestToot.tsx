@@ -1,4 +1,4 @@
-import { Component, scope, h } from "dreamland/core";
+import { Component, scope, cascade, h } from "dreamland/core";
 import { Account, Status } from "./Status";
 
 // thanks cooleletronis (writabl) for like 90% of this code

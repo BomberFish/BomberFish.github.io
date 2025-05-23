@@ -1,4 +1,4 @@
-import { Component, scope, h } from "dreamland/core";
+import { Component, scope, cascade, h } from "dreamland/core";
 import ProjectCardDetails from "./Project.ts";
 import isMobile from "./IsMobile.ts";
 

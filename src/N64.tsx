@@ -1,4 +1,4 @@
-import { Component, scope } from "dreamland/core";
+import { Component, scope, cascade } from "dreamland/core";
 import isMobile from "./IsMobile.ts";
 
 export const MK64Frame: Component<{},{}> = function (cx) {
