@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import { DesignPhilosophy } from "../SiteContent";
 
 export const ThreeDeeInfo: Component<{}, {}> = function (cx) {

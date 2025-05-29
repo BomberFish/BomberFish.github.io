@@ -1,4 +1,4 @@
-import { Component, scope, cascade } from "dreamland/core";
+import { Component } from "dreamland/core";
 import isMobile from "./IsMobile.ts";
 
 export const MK64Frame: Component<{},{}> = function (cx) {
@@ -8,7 +8,7 @@ export const MK64Frame: Component<{},{}> = function (cx) {
         }, 1);
       };
 
-      cx.css = scope`
+      cx.css = `
         :scope {
           position: fixed;
           top: 0;

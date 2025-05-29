@@ -1,7 +1,7 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 
 export const SuperCoolAndEpicDanceFloor: Component<{}, {}> = function (cx) {
-  cx.css = scope`
+  cx.css = `
     :scope {
       display: grid;
       grid-template-rows: repeat(9, 1fr);

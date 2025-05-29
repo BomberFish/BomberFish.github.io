@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h, DLBoundPointer } from "dreamland/core";
+import { Component, h, DLBoundPointer } from "dreamland/core";
 import { ThemePicker } from "./Themes";
 import { convertRemToPixels } from "./Utils";
 
@@ -9,7 +9,7 @@ export const Nav: Component<
   this.rotation = 0;
   this.name = "BomberFish";
   this.nameState = false;
-  cx.css = scope`
+  cx.css = `
     :scope {
       background: var(--base);
       justify-self: flex-start;
@@ -218,7 +218,7 @@ export const TabBar: Component<
 > = function (cx) {
   this.tab = 0;
   this.tabInternal = 0;
-  cx.css = scope`
+  cx.css = `
     :scope {
       margin-bottom: 1rem;
       padding-block: 0.5rem;

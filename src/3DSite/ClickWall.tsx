@@ -1,7 +1,7 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 
 export const ClickWall: Component<{}, {}> = function (cx) {
-  cx.css = scope`
+  cx.css = `
     :scope {
       position: absolute;
       top: 0;

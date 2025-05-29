@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import isMobile from "./IsMobile";
 import { MK64Frame } from "./N64";
 
@@ -9,7 +9,7 @@ const CopiedToast: Component<{}, {}> = function (cx) {
     }, 2000);
   };
 
-  cx.css = scope`
+  cx.css = `
     :scope {
       position: fixed;
       bottom: 0;
@@ -67,7 +67,7 @@ export const WebButton: Component<
   },
   {}
 > = function (cx) {
-  cx.css = scope`
+  cx.css = `
   :scope {
     width: max-content;
     height: max(31px, 1.9375rem);
@@ -117,7 +117,7 @@ export const WebButton: Component<
 };
 
 export const Footer: Component<{}, {}> = function (cx) {
-  cx.css = scope`
+  cx.css = `
       #konami > kbd {
         margin-right: 0.65rem;
 
@@ -243,7 +243,7 @@ export const Footer: Component<{}, {}> = function (cx) {
 };
 
 const Buttons: Component<{}, {}> = function (cx) {
-  cx.css = scope`
+  cx.css = `
   :scope {
     width: 100%;
     white-space: nowrap;

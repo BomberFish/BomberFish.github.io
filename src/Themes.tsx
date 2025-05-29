@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import { store } from "./App";
 
 export const oled = {
@@ -112,7 +112,7 @@ export function updatePage() {
 export const ThemePicker: Component<{}, {}> = function (cx) {
   const themes = [oled, mocha, macchiato, frappe, latte];
 
-  cx.css = scope`
+  cx.css = `
       :scope {
         background: transparent;
         border-radius: 0.4rem;

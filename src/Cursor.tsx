@@ -1,4 +1,4 @@
-import { Component, scope, cascade } from "dreamland/core"
+import { Component } from "dreamland/core"
 
 export const Cursor: Component<{}, { x: number; y: number }> = function (cx) {
     this.x = 0
@@ -11,7 +11,7 @@ export const Cursor: Component<{}, { x: number; y: number }> = function (cx) {
         })
     }
 
-    cx.css = scope`
+    cx.css = `
         :scope {
           position: fixed;
           top: 0;

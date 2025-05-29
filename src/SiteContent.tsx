@@ -1,7 +1,7 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component} from "dreamland/core";
 import { articleCSS } from "./CommonCSS";
 
-export const FullArticle: Component<{}, {}> = function (cx) {
+export const FullArticle: Component<{}, {}> = function() {
   return (
     <article class={articleCSS}>
       <IntroSmall />
@@ -13,7 +13,7 @@ export const FullArticle: Component<{}, {}> = function (cx) {
 };
 
 export const Intro: Component<{}, {}> = function (cx) {
-  cx.css = scope`
+  cx.css = `
     #kawaii {
       width: max(20rem, 30%);
       height: auto;
@@ -51,7 +51,7 @@ export const Intro: Component<{}, {}> = function (cx) {
 };
 
 export const IntroSmall: Component<{}, {}> = function (cx) {
-  cx.css = scope`
+  cx.css = `
   h1 {
     font-size: 4rem!important;
     cursor: default;

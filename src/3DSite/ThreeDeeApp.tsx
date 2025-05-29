@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import ProjectCardDetails from "../Project";
 import { projects } from "../Projects";
 import { ProjectList } from "../ProjectCard";
@@ -52,7 +52,7 @@ export const ThreeDeeApp: Component<
   this.speed = 5;
   this.mult = 2;
 
-  cx.css = scope`
+  cx.css = `
     :scope {
       width: 100%;
       height: 100%;

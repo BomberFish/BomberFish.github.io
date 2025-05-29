@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import { Account, Status } from "./Status";
 
 // thanks cooleletronis (writabl) for like 90% of this code
@@ -6,7 +6,7 @@ export const LatestToot: Component<
   {},
   { note: Status; note_orig: Status; replyUser: Account; reblog: boolean; renderRoot: HTMLDivElement }
 > = function (cx) {
-  cx.css = scope`
+  cx.css = `
       :scope {
         padding: 1.5rem;
         width: 100%;

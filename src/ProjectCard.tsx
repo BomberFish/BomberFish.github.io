@@ -1,10 +1,10 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import ProjectCardDetails from "./Project";
 import { LargeProjectView } from "./LargeProjectView";
 
 export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
   function (cx) {
-    cx.css = scope`
+    cx.css = `
       :scope {
         background: var(--surface0);
         width: 100%;
@@ -17,17 +17,18 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         --shadow-color: color-mix(in srgb, var(--accent) 30%, transparent);
         box-shadow: 0 0 0px var(--shadow-color);
         border: 1px dashed var(--overlay1);
+        transform: translateZ(50px);
       }
 
-      &:hover {
+      :scope:hover {
         transform: scale(1.02);
         transition: 0.25s cubic-bezier(0, 0.55, 0.45, 1);
         box-shadow: 0 0 30px var(--shadow-color);
         border-color: var(--accent);
       }
 
-      &:focus,
-      &:focus-visible {
+      :scope:focus,
+      :scope:focus-visible {
         outline: none;
         border-color: var(--accent)!important;
         border-style: solid!important;
@@ -36,13 +37,12 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
         box-shadow: 0 0 20px var(--shadow-color);
       }
 
-      &.active,
-      &:active:focus {
+      :scope.active,
+      :scope:active:focus {
         transform: scale(0.95);
         transition: 0.1s cubic-bezier(0, 0.55, 0.45, 1);
       }
 
-    transform: translateZ(50px);
 
     .img-container {
       width: 100%;
@@ -177,7 +177,7 @@ export const ProjectCard: Component<{ detail: ProjectCardDetails }, {}> =
 
 export const ProjectList: Component<{ projects: ProjectCardDetails[] }, {}> =
   function (cx) {
-    cx.css = scope`
+    cx.css = `
       .projects-group {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));

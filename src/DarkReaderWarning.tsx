@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 
 export const DarkReaderWarning: Component<{}, {}> = function (cx) {
   cx.mount = () => {
@@ -27,7 +27,7 @@ export const DarkReaderWarning: Component<{}, {}> = function (cx) {
     }
   }
 
-  cx.css = scope`
+  cx.css = `
       :scope {
         position: fixed;
         bottom: 0;

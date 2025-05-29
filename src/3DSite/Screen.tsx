@@ -1,4 +1,4 @@
-import { DLPointer, Component, scope, cascade, h, DLBasePointer } from "dreamland/core";
+import { Component } from "dreamland/core";
 
 export const Screen: Component<
   {
@@ -17,7 +17,7 @@ export const Screen: Component<
   {
   }
 > = function (cx) {
-  cx.css = scope`
+  cx.css = `
     :scope {
       position: absolute;
       top: 0;

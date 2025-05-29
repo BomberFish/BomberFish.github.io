@@ -1,4 +1,4 @@
-import { Component, scope, cascade, h } from "dreamland/core";
+import { Component } from "dreamland/core";
 import ProjectCardDetails from "./Project.ts";
 import isMobile from "./IsMobile.ts";
 
@@ -11,7 +11,7 @@ export const LargeProjectView: Component<{ project: ProjectCardDetails }, {}> =
       }, 1);
     };
 
-    cx.css = scope`
+    cx.css = `
       :scope {
         position: fixed;
         top: 0;
