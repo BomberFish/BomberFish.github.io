@@ -73,39 +73,39 @@
 
 @font-face {
     font-family: "Apple Garamond";
-    src: url("/fonts/serif/AppleGaramond Bk.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
+    src: url("https://bomberfish.ca/fonts/serif/AppleGaramond Bk.woff2") format("woff2"), url("https://bomberfish.ca/fonts/serif/AppleGaramond Bk.woff") format("woff"), url("https://bomberfish.ca/fonts/serif/AppleGaramond Bk.ttf") format("truetype"),local("Apple Garamond"), local("ITC Garamond Condensed"), local("ITC Garamond"), local("Garamond"), local("Adobe Garamond"), local("EB Garamond");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Apple Garamond";
-    src: url("/fonts/serif/AppleGaramond BkIt.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
+    src: url("https://bomberfish.ca/fonts/serif/AppleGaramond BkIt.woff2") format("woff2"), url("https://bomberfish.ca/fonts/serif/AppleGaramond BkIt.woff") format("woff"), url("https://bomberfish.ca/fonts/serif/AppleGaramond BkIt.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Apple Garamond";
-    src: url("/fonts/serif/AppleGaramond Bd.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
+    src: url("https://bomberfish.ca/fonts/serif/AppleGaramond Bd.woff2") format("woff2"), url("https://bomberfish.ca/fonts/serif/AppleGaramond Bd.woff") format("woff"), url("https://bomberfish.ca/fonts/serif/AppleGaramond Bd.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
     font-weight: bolder;
     font-style: normal;
 }
 @font-face {
     font-family: "Apple Garamond";
-    src: url("/fonts/serif/AppleGaramond BdIt.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
+    src: url("https://bomberfish.ca/fonts/serif/AppleGaramond BdIt.woff2") format("woff2"), url("https://bomberfish.ca/fonts/serif/AppleGaramond BdIt.woff") format("woff"), url("https://bomberfish.ca/fonts/serif/AppleGaramond BdIt.ttf") format("truetype"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
     font-weight: bolder;
     font-style: italic;
 }
 @font-face {
     font-family: "Apple Garamond";
-    src: url("/fonts/serif/AppleGaramond Lt.ttf") format("truetype"),local("Apple Garamond Light"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
+    src: url("https://bomberfish.ca/fonts/serif/AppleGaramond Lt.woff2") format("woff2"), url("https://bomberfish.ca/fonts/serif/AppleGaramond Lt.woff") format("woff"), url("https://bomberfish.ca/fonts/serif/AppleGaramond Lt.ttf") format("truetype"),local("Apple Garamond Light"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
     font-weight: lighter;
     font-style: normal;
 }
 @font-face {
     font-family: "Apple Garamond";
-    src: url("/fonts/serif/AppleGaramond LtIt.ttf") format("truetype"),local("Apple Garamond Light"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
+    src: url("https://bomberfish.ca/fonts/serif/AppleGaramond LtIt.woff2") format("woff2"), url("https://bomberfish.ca/fonts/serif/AppleGaramond LtIt.woff") format("woff"), url("https://bomberfish.ca/fonts/serif/AppleGaramond LtIt.ttf") format("truetype"),local("Apple Garamond Light"),local("Apple Garamond"),local("ITC Garamond Condensed"),local("ITC Garamond"),local("Garamond"),local("Adobe Garamond"),local("EB Garamond");
     font-weight: lighter;
     font-style: italic;
 }
