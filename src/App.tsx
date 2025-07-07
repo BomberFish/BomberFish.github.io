@@ -1,5 +1,5 @@
 console.log(
-  "%c\n hello! :3c  ",
+  "%c\n hello! :3",
   'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: -2px -2px 0 #fab387 , -4px -4px 0 #f9e2af , -6px -6px 0 #a6e3a1 , -8px -8px 0 #94e2d5 , -10px -10px 0 #89b4fa , -12px -12px 0 #b4befe , -14px -14px 0 #cba6f7',
 );
 
