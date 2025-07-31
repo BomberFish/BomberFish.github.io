@@ -1,5 +1,5 @@
-// oneko.js: https://github.com/adryd325/oneko.js
-// @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+// @ts-nocheck
+import isMobile from "./IsMobile";
 
 var _eventHandlers = {}; // somewhere global
 
@@ -34,41 +34,7 @@ const removeAllListeners = (targetNode, event) => {
   }
 };
 
-const mobileRE =
-  /(android|bb\d+|meego).+mobile|armv7l|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series[46]0|samsungbrowser.*mobile|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i;
-const notMobileRE = /CrOS/;
-
-const tabletRE = /android|ipad|playbook|silk/i;
-
-function isMobile(opts) {
-  if (!opts) opts = {};
-  let ua = opts.ua;
-  if (!ua && typeof navigator !== "undefined") ua = navigator.userAgent;
-  if (ua && ua.headers && typeof ua.headers["user-agent"] === "string") {
-    ua = ua.headers["user-agent"];
-  }
-  if (typeof ua !== "string") return false;
-
-  let result =
-    (mobileRE.test(ua) && !notMobileRE.test(ua)) ||
-    (!!opts.tablet && tabletRE.test(ua));
-
-  if (
-    !result &&
-    opts.tablet &&
-    opts.featureDetect &&
-    navigator &&
-    navigator.maxTouchPoints > 1 &&
-    ua.indexOf("Macintosh") !== -1 &&
-    ua.indexOf("Safari") !== -1
-  ) {
-    result = true;
-  }
-
-  return result;
-}
-
-(function oneko() {
+export function oneko() {
   if (isMobile({ tablet: true })) {
     return;
   }
@@ -172,9 +138,8 @@ function isMobile(opts) {
     nekoEl.ariaHidden = true;
     nekoEl.style.width = `${nekoRem}rem`;
     nekoEl.style.height = `${nekoRem}rem`;
-    nekoEl.style.backgroundSize = `${convertRemToPixels(nekoRem) * 8}px ${
-      convertRemToPixels(nekoRem) * 4
-    }px`;
+    nekoEl.style.backgroundSize = `${convertRemToPixels(nekoRem) * 8}px ${convertRemToPixels(nekoRem) * 4
+      }px`;
     nekoEl.style.position = "fixed";
     nekoEl.style.pointerEvents = "none";
     nekoEl.style.imageRendering = "pixelated";
@@ -182,14 +147,10 @@ function isMobile(opts) {
     nekoEl.style.top = `${nekoPosY - 16}px`;
     nekoEl.style.zIndex = Number.MAX_VALUE;
     setTimeout(() => {
-    nekoEl.style.opacity = 1;
+      nekoEl.style.opacity = 1;
     }, 2);
 
     let nekoFile = "./oneko-ctp.gif";
-    const curScript = document.currentScript;
-    if (curScript && curScript.dataset.cat) {
-      nekoFile = curScript.dataset.cat;
-    }
     nekoEl.style.backgroundImage = `url(${nekoFile})`;
 
     document.body.appendChild(nekoEl);
@@ -224,9 +185,8 @@ function isMobile(opts) {
 
   function setSprite(name, frame) {
     const sprite = spriteSets[name][frame % spriteSets[name].length];
-    nekoEl.style.backgroundPosition = `${
-      sprite[0] * convertRemToPixels(nekoRem)
-    }px ${sprite[1] * convertRemToPixels(nekoRem)}px`;
+    nekoEl.style.backgroundPosition = `${sprite[0] * convertRemToPixels(nekoRem)
+      }px ${sprite[1] * convertRemToPixels(nekoRem)}px`;
   }
 
   function resetIdleAnimation() {
@@ -259,7 +219,7 @@ function isMobile(opts) {
       console.log(avalibleIdleAnimations);
       idleAnimation =
         avalibleIdleAnimations[
-          Math.floor(Math.random() * avalibleIdleAnimations.length)
+        Math.floor(Math.random() * avalibleIdleAnimations.length)
         ];
     }
 
@@ -335,6 +295,4 @@ function isMobile(opts) {
   }
 
   init();
-})();
-
-// @license-end
+}

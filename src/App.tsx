@@ -18,6 +18,7 @@ import { Footer } from "./Footer.tsx";
 import { Nav, TabBar } from "./Navigation.tsx";
 import { LatestToot } from "./LatestToot.tsx";
 import { oled } from "./Themes";
+import { oneko } from "./Oneko.ts";
 // import { Cursor } from "./Cursor.tsx";
 
 // MARK: THEMING
@@ -156,8 +157,8 @@ const App: Component<
     const offsetX = this.prevMouseX - e.clientX;
     const offsetY = this.prevMouseY - e.clientY;
     // console.debug(offsetX, offsetY);
-    const x = this.prevX - offsetX * 0.06;
-    const y = this.prevY - offsetY * 0.06;
+    const x = this.prevX - offsetX * 0.15;
+    const y = this.prevY - offsetY * 0.3;
     // console.debug(x, y);
     document.documentElement.style.setProperty("--bgmoveX", x + "px");
     document.documentElement.style.setProperty("--bgmoveY", y + "px");
@@ -265,9 +266,7 @@ window.addEventListener("load", async () => {
       document.body.style.margin = "2%";
       return;
     }
-    let sc = document.createElement("script");
-    sc.src = "/oneko.js";
-    document.body.appendChild(sc);
+    oneko();
     document.getElementById("app")!.replaceWith(app);
 
     var konamiCurrent = 0;
