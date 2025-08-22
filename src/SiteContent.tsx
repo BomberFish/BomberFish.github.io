@@ -150,10 +150,10 @@ export const Contact: Component<{}, {}> = function () {
             <li>
               if you use bluesky, you can follow&nbsp;
               <a
-                href="https://bsky.app/profile/fish.wetdry.world.ap.brid.gy"
+                href="https://bsky.app/profile/bomberfish.ca"
                 target="blank"
               >
-                @fish.wetdry.world.ap.brid.gy
+                @bomberfish.ca
               </a>
               &nbsp;to view my posts on the fediverse. please note, this is
               usually a few minutes behind!
