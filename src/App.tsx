@@ -3,14 +3,14 @@ console.log(
   'font-family: "IBM Plex Mono", ui-monospace, monospace;font-weight: 900; font-size: 50px;color: #f38ba8; text-shadow: -2px -2px 0 #fab387 , -4px -4px 0 #f9e2af , -6px -6px 0 #a6e3a1 , -8px -8px 0 #94e2d5 , -10px -10px 0 #89b4fa , -12px -12px 0 #b4befe , -14px -14px 0 #cba6f7',
 );
 
-import "dreamland";
+import { Component, h, createStore, createState } from "dreamland/core";
 import { ThreeDeeApp } from "./3DSite/ThreeDeeApp.tsx";
 import ProjectCardDetails from "./Project.ts";
 import { ProjectList } from "./ProjectCard.tsx";
 import { projects } from "./Projects.ts";
 import { ClickWall } from "./3DSite/ClickWall.tsx";
 import { DarkReaderWarning } from "./DarkReaderWarning.tsx";
-import { sharedCSS, articleCSS } from "./CommonCSS.tsx";
+import { articleCSS } from "./CommonCSS.tsx";
 import { updatePage } from "./Themes";
 import { Intro, SiteMap, DesignPhilosophy } from "./SiteContent.tsx";
 import { convertRemToPixels } from "./Utils.ts";
@@ -22,15 +22,15 @@ import { oneko } from "./Oneko.ts";
 // import { Cursor } from "./Cursor.tsx";
 
 // MARK: THEMING
-export let store = $store(
+export let store = createStore(
   {
     theme: oled,
     playMusic: false,
   },
-  { ident: "userOptions", backing: "localstorage", autosave: "auto" },
+  { ident: "siteOptions", backing: "localstorage", autosave: "auto" },
 );
 
-export let globalState = $state({
+export let globalState = createState({
   freakyMode: false,
 });
 
@@ -47,7 +47,7 @@ const App: Component<
     selectedTab: number;
     elements: Element[];
   }
-> = function () {
+> = function (cx) {
   this.prevMouseX = 0;
   this.prevMouseY = 0;
   this.prevX = 0;
@@ -70,20 +70,22 @@ const App: Component<
     <SiteMap />,
     <DesignPhilosophy />,
   ];
-  this.css = `
-    // background: var(--crust);
-    color: var(--text);
-    font-family: var(--font-body);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    // height: 100vh;
-    max-width: 100vw;
-    overflow-x: hidden;
-    margin-bottom: 1.5rem;
+  cx.css = `
+    :scope {
+      // background: var(--crust);
+      color: var(--text);
+      font-family: var(--font-body);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      // height: 100vh;
+      max-width: 100vw;
+      overflow-x: hidden;
+      margin-bottom: 1.5rem;
+    }
 
     #content {
       background: var(--crust);
@@ -170,12 +172,10 @@ const App: Component<
 
   return (
     <main
-      class={sharedCSS}
-      style={{
-        fontFamily: use(globalState.freakyMode, (freak) =>
-          freak ? "Papyrus, cursive!important" : "var(--font-body)",
-        ),
-      }}
+      // style={{
+      //   fontFamily: use(globalState.freakyMode ? "Papyrus, cursive!important" : "var(--font-body)",
+      //   ),
+      // }}
     >
       <Nav />
       <div id="content">
@@ -187,10 +187,10 @@ const App: Component<
             "sitemap",
             "about this site",
           ]}
-          bind:tab={use(this.selectedTab)}
+          tab={use(this.selectedTab).bind()}
         />
         <article id="mainarticle" class={articleCSS}>
-          {use(this.selectedTab, (tab) => this.elements[tab])}
+          {use(this.elements[this.selectedTab])}
         </article>
         <br></br>
         <Footer />
@@ -201,25 +201,27 @@ const App: Component<
 
 // MARK: WINDOW LOAD
 window.addEventListener("load", async () => {
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      e.preventDefault();
-      document.querySelectorAll(".popup").forEach((popup) => {
-        popup.classList.add("transparent");
-        setTimeout(() => {
-          popup.remove();
-        }, 200);
-      });
-    }
-  });
+  console.debug("onload");
+
+  try {
+    const fnt = new FontFace(
+      "Material Symbols Rounded",
+      "url(https://fonts.gstatic.com/s/materialsymbolsrounded/v181/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxc.woff2)",
+    );
+    document.fonts.add(fnt);
+    fnt.load(); // async load the font to prevent really wanky shit when something that uses it first appears
+  } catch {
+    // ignore
+  }
 
   let params = new URL(window.location.href).searchParams;
   console.debug(params);
+  let app;
   if (params.has("higherdimension")) {
-    let app;
     try {
       app = <ThreeDeeApp />;
     } catch (e) {
+      console.error("Error rendering page:", e);
       (document.querySelector(".no-js")! as HTMLElement).style.display =
         "block";
       document.body.style.margin = "2%";
@@ -236,14 +238,6 @@ window.addEventListener("load", async () => {
       audio.play();
     });
 
-    // const audioCtx = new AudioContext();
-    // const analyser = audioCtx.createAnalyser();
-
-    // const source = audioCtx.createMediaElementSource(audio);
-    // console.debug(source);
-    // source.connect(analyser).connect(audioCtx.destination);
-    // console.debug(source);
-
     if (store.playMusic !== false) {
       console.info("music start");
       audio.play().catch((e) => {
@@ -251,16 +245,15 @@ window.addEventListener("load", async () => {
         document.body.appendChild(<ClickWall />);
         return;
       });
-      // audioCtx.resume();
     }
 
     document.getElementById("app")!.replaceWith(app);
     document.body.classList.add("cool");
   } else {
-    let app;
     try {
       app = <App />;
     } catch (e) {
+      console.error("Error rendering page:", e);
       (document.querySelector(".no-js")! as HTMLElement).style.display =
         "block";
       document.body.style.margin = "2%";
@@ -308,7 +301,17 @@ window.addEventListener("load", async () => {
 
   updatePage();
 
-  // document.body.appendChild(<Cursor />);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      document.querySelectorAll(".popup").forEach((popup) => {
+        popup.classList.add("transparent");
+        setTimeout(() => {
+          popup.remove();
+        }, 200);
+      });
+    }
+  });
 
   setInterval(() => {
     if (
@@ -319,10 +322,4 @@ window.addEventListener("load", async () => {
     }
   }, 1000);
 
-  const fnt = new FontFace(
-    "Material Symbols Rounded",
-    "url(https://fonts.gstatic.com/s/materialsymbolsrounded/v181/syl0-zNym6YjUruM-QrEh7-nyTnjDwKNJ_190FjpZIvDmUSVOK7BDB_Qb9vUSzq3wzLK-P0J-V_Zs-QtQth3-jOcbTCVpeRL2w5rwZu2rIelXxc.woff2)",
-  );
-  document.fonts.add(fnt);
-  fnt.load(); // async load the font to prevent really wanky shit when something that uses it first appears
 });

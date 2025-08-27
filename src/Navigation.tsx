@@ -1,39 +1,27 @@
-import "dreamland";
+import { Component, h, DLBoundPointer } from "dreamland/core";
 import { ThemePicker } from "./Themes";
 import { convertRemToPixels } from "./Utils";
 
 export const Nav: Component<
   {},
   { rotation: number; name: string; nameState: boolean }
-> = function () {
+> = function (cx) {
   this.rotation = 0;
   this.name = "BomberFish";
   this.nameState = false;
-  this.css = `
-    background: var(--base);
-    justify-self: flex-start;
-    z-index: 100;
-    padding: 0.25em 1em;
-    width: min(100vw, max(60vw, 800px));
-    height: 3.75rem;
-    margin: 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -moz-box-orient: horizontal;
-    -moz-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
+  cx.css = `
+    :scope {
+      background: var(--base);
+      justify-self: flex-start;
+      z-index: 100;
+      padding: 0.25em 1em;
+      width: min(100vw, max(60vw, 800px));
+      height: 3.75rem;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
 
     h2 {
       justify-self: flex-start;
@@ -185,8 +173,8 @@ export const Nav: Component<
           alt="my profile picture"
           title="click me!"
           style={{ transform: use`rotate(${this.rotation}deg)` }}
-          on:click={(e: MouseEvent) => {
-            e.preventDefault();
+          on:click={(event: Event) => {
+            event.preventDefault();
             console.log("click");
             this.rotation -= 1440;
           }}
@@ -225,16 +213,18 @@ export const Nav: Component<
 };
 
 export const TabBar: Component<
-  { tabs: string[]; tab?: number },
+  { tabs: string[]; tab: DLBoundPointer<number> },
   { tabInternal: number }
-> = function () {
+> = function (cx) {
   this.tab = 0;
   this.tabInternal = 0;
-  this.css = `
- 	margin-bottom: 1rem;
-    padding-block: 0.5rem;
-	overflow-x: auto;
-	// background: var(--base);
+  cx.css = `
+    :scope {
+      margin-bottom: 1rem;
+      padding-block: 0.5rem;
+      overflow-x: auto;
+      // background: var(--base);
+    }
 
     @keyframes bounce {
         0%, 100% {
@@ -362,13 +352,13 @@ export const TabBar: Component<
   return (
     <div id="tabs">
       <div>
-        {use(this.tabs, (tabs) =>
+        {use(this.tabs).map(tabs=> {
           tabs.map((tab, index) => (
             <button
               // class={use(this.tabInternal, (tab) => [
               //   tab === index ? "active" : "",
               // ])}
-              class:selected={use(this.tabInternal, (tabi) => tabi == index)}
+              class:selected={use(this.tabInternal).map(i=> i == index)}
               on:click={() => {
                 if (this.tabInternal === index) return;
                 this.tabInternal = index;
@@ -401,8 +391,8 @@ export const TabBar: Component<
             >
               <span>{tab}</span>
             </button>
-          )),
-        )}
+          ));
+        })}
       </div>
     </div>
   );
