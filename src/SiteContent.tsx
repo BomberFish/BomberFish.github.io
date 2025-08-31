@@ -184,12 +184,12 @@ export const Contact: Component<{}, {}> = function () {
             <li>@securepagetablemonitor</li>
           </ul>
         </li>
-        {/* <li> */}
-        {/* no elon i am not calling it "X" */}
-        {/* <a href="https://twitter.com/bomberfish77" target="blank" rel="me">
-            Twitter (inactive)
+        <li>
+        <a href="https://x.com/bomberfish77" target="blank" rel="me">
+            X
           </a>
-        </li> */}
+          &nbsp;(@bomberfish77)
+        </li>
         <li>
           <a
             href="https://matrix.to/#/@bomberfish:omada.cafe"
